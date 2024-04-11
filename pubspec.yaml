@@ -1,0 +1,49 @@
+name: portfolio
+description: "My portfolio created in flutter"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  responsive_builder: ^0.7.0
+  flutter_animate: ^4.5.0
+  auto_size_text: ^3.0.0
+  gap: ^3.0.1
+  flutter_svg: ^2.0.10+1
+  go_router: ^13.2.0
+  get_it: ^7.6.7
+  flutter_triple: ^3.0.0
+  flutter_localization: ^0.2.0
+  intl: any
+  flutter_web_plugins:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  generate: true
+
+  assets:
+    - images/
+    - vectors/
+
+  fonts:
+    - family: FiraCode
+      fonts:
+        - asset: fonts/FiraCode/FiraCode-Regular.ttf
+        - asset: fonts/FiraCode/FiraCode-Bold.ttf
+        - asset: fonts/FiraCode/FiraCode-Light.ttf
+        - asset: fonts/FiraCode/FiraCode-Medium.ttf
+        - asset: fonts/FiraCode/FiraCode-SemiBold.ttf
+
