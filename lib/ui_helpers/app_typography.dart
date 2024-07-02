@@ -28,6 +28,7 @@ abstract class TypographyFontSize {
   static const double label = 20;
   static const double small = 18;
   static const double extraSmall = 14;
+  static const double tiny = 12;
 }
 
 extension TypographyExtension on Text {

@@ -10,14 +10,18 @@ class AboutMeTextDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-        text: TextSpan(children: [
-      _CodeTextSpan(text: "1    /**\n"),
-      _CodeTextSpan(text: "2    * "),
-      _CodeTextSpan(color: AppColors.accentThree, text: AppLocale.aboutMeTitle.getString(context)),
-      _CodeTextSpan(text: " *\n"),
-      _CodeTextSpan(text: AppLocale.aboutMeText.getString(context)),
-    ]));
+    return Row(children: [
+      Expanded(
+          child: Center(
+              child: RichText(
+                  text: TextSpan(children: [
+        _CodeTextSpan(text: "1    /**\n"),
+        _CodeTextSpan(text: "2    * "),
+        _CodeTextSpan(color: AppColors.accentThree, text: AppLocale.aboutMeTitle.getString(context)),
+        _CodeTextSpan(text: " *\n"),
+        _CodeTextSpan(text: AppLocale.aboutMeText.getString(context)),
+      ])))),
+    ]);
   }
 }
 
