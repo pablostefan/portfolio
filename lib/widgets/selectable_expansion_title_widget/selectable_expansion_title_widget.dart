@@ -27,7 +27,7 @@ class _SelectableExpansionTileWidgetState extends State<SelectableExpansionTileW
         collapsedShape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         shape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         tilePadding: const EdgeInsets.only(left: AppSpacing.micro),
-        title: Text(widget.title).bodySmallMedium(),
+        title: Text(widget.title).bodyExtraSmallMedium(),
         leading: Icon(_icon, color: AppColors.white, size: AppSpacing.xxs),
         childrenPadding: const EdgeInsets.only(left: AppSpacing.nano, top: AppSpacing.femto),
         initiallyExpanded: true,

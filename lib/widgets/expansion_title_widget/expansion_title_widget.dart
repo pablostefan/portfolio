@@ -34,7 +34,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
         collapsedShape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         shape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         tilePadding: const EdgeInsets.only(left: AppSpacing.micro),
-        title: Text(widget.title).bodyExtraSmallRegular(),
+        title: Text(widget.title).bodyExtraSmallMedium(),
         leading: Icon(_icon, color: AppColors.white, size: AppSpacing.xxs),
         childrenPadding: widget.childrenPadding,
         initiallyExpanded: true,
