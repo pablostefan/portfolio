@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:get_it/get_it.dart';
+import 'package:portfolio/pages/about_me/views/about_me_desktop.dart';
 import 'package:portfolio/pages/contact/contact_page.dart';
 import 'package:portfolio/pages/hello/views/hello_desktop.dart';
 import 'package:portfolio/stores/home/home_store.dart';
@@ -31,7 +32,7 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
             body: PageView(controller: triple.state.pageController, children: [
               Container(color: AppColors.primaryTwo),
               HelloDesktop(openGithub: _store.openGithub),
-              Container(color: AppColors.primaryTwo),
+              const AboutMeDesktop(),
               Container(color: AppColors.primaryTwo),
               const ContactPage()
             ]),

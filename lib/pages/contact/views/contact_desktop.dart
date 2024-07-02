@@ -49,7 +49,8 @@ class _ContactDesktopState extends State<ContactDesktop> {
               store: _store,
               builder: (_, triple) => Expanded(
                   child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: UiHelper.getResponsiveHorizontalSpaceMedium(context)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: UiHelper.getResponsiveHorizontalSpaceExtraSmall(context)),
                       decoration: const BoxDecoration(border: Border(right: BorderSide(color: AppColors.border))),
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

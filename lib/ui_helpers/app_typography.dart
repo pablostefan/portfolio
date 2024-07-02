@@ -71,6 +71,36 @@ extension TypographyExtension on Text {
     return _getTextTypography(text: this, textStyle: defaultStyle);
   }
 
+  Text bodySmallMedium({TextStyle? style}) {
+    TextStyle defaultStyle = _getTextStyle(
+        fontSize: TypographyFontSize.small,
+        fontWeight: TypographyFontWeight.medium,
+        height: TypographyLineHeight.body,
+        mergeStyle: style);
+
+    return _getTextTypography(text: this, textStyle: defaultStyle);
+  }
+
+  Text bodyLabelRegular({TextStyle? style}) {
+    TextStyle defaultStyle = _getTextStyle(
+        fontSize: TypographyFontSize.label,
+        fontWeight: TypographyFontWeight.regular,
+        height: TypographyLineHeight.body,
+        mergeStyle: style);
+
+    return _getTextTypography(text: this, textStyle: defaultStyle);
+  }
+
+  Text bodyLabelMedium({TextStyle? style}) {
+    TextStyle defaultStyle = _getTextStyle(
+        fontSize: TypographyFontSize.label,
+        fontWeight: TypographyFontWeight.medium,
+        height: TypographyLineHeight.body,
+        mergeStyle: style);
+
+    return _getTextTypography(text: this, textStyle: defaultStyle);
+  }
+
   Text bodyExtraSmallRegular({TextStyle? style}) {
     TextStyle defaultStyle = _getTextStyle(
         fontSize: TypographyFontSize.extraSmall,

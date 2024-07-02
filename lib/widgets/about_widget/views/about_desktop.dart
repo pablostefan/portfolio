@@ -8,10 +8,21 @@ import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_typography.dart';
 import 'package:portfolio/ui_helpers/ui_helpers.dart';
 
-class AboutDesktop extends StatelessWidget {
+class AboutDesktop extends StatefulWidget {
   final VoidCallback openGithub;
 
   const AboutDesktop({super.key, required this.openGithub});
+
+  @override
+  State<AboutDesktop> createState() => _AboutDesktopState();
+}
+
+class _AboutDesktopState extends State<AboutDesktop> {
+  bool _hovering = false;
+
+  double get _scale => _hovering ? 1.05 : 1.0;
+
+  void _mouseEnter(bool hover) => setState(() => _hovering = hover);
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +45,27 @@ class AboutDesktop extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: AppSpacing.nano),
                   child: Text(AppLocale.seeGitHub.getString(context)).bodySmallRegular().color(AppColors.secondaryOne)),
               GestureDetector(
-                  onTap: openGithub,
-                  child: RichText(
-                      text: TextSpan(style: const Text("").bodySmallRegular().style, children: [
-                    Text(AppLocale.constString.getString(context))
-                        .bodySmallRegular()
-                        .color(AppColors.secondaryThree)
-                        .toTextSpan(),
-                    const TextSpan(text: " "),
-                    Text(AppLocale.githubLink.getString(context))
-                        .bodySmallRegular()
-                        .color(AppColors.accentTwo)
-                        .toTextSpan(),
-                    const TextSpan(text: " = "),
-                    const Text(AppLinks.github).bodySmallRegular().color(AppColors.accentThree).toTextSpan(),
-                  ])))
+                  onTap: widget.openGithub,
+                  child: MouseRegion(
+                      onEnter: (e) => _mouseEnter(true),
+                      onExit: (e) => _mouseEnter(false),
+                      child: AnimatedScale(
+                          scale: _scale,
+                          duration: Durations.short4,
+                          child: RichText(
+                              text: TextSpan(style: const Text("").bodySmallRegular().style, children: [
+                            Text(AppLocale.constString.getString(context))
+                                .bodySmallRegular()
+                                .color(AppColors.secondaryThree)
+                                .toTextSpan(),
+                            const TextSpan(text: " "),
+                            Text(AppLocale.githubLink.getString(context))
+                                .bodySmallRegular()
+                                .color(AppColors.accentTwo)
+                                .toTextSpan(),
+                            const TextSpan(text: " = "),
+                            const Text(AppLinks.github).bodySmallRegular().color(AppColors.accentThree).toTextSpan(),
+                          ])))))
             ]));
   }
 }

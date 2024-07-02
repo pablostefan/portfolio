@@ -20,7 +20,6 @@ class AppBarDesktop extends StatelessWidget {
           AppBarButtonWidget(
               width: AppSpacing.extraGiant,
               border: Border.all(color: AppColors.border),
-              padding: const EdgeInsets.fromLTRB(AppSpacing.xs, AppSpacing.micro, AppSpacing.none, AppSpacing.micro),
               model: AppBarButton.name,
               onTap: onTap,
               selected: selected),

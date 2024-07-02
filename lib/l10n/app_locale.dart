@@ -18,6 +18,10 @@ mixin AppLocale {
   static const String email = 'email';
   static const String message = 'message';
   static const String submitMessage = 'submitMessage';
+  static const String personalInfo = 'personalInfo';
+  static const String bio = 'bio';
+  static const String works = 'works';
+  static const String interests = 'interests';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -38,7 +42,11 @@ mixin AppLocale {
     name: '_name:',
     email: '_email:',
     message: '_message:',
-    submitMessage: 'submit-message'
+    submitMessage: 'submit-message',
+    personalInfo: 'personal-info',
+    bio: 'bio',
+    works: 'works',
+    interests: 'interests'
   };
 
   static const Map<String, dynamic> pt = {
@@ -60,20 +68,10 @@ mixin AppLocale {
     name: '_nome:',
     email: '_email:',
     message: '_mensagem:',
-    submitMessage: 'enviar-mensagem'
+    submitMessage: 'enviar-mensagem',
+    personalInfo: 'informações-pessoais',
+    bio: 'bio',
+    works: 'trabalhos',
+    interests: 'interesses'
   };
-}
-
-extension AppLocaleExtension on AppLocale {
-  static String get name => AppLocale.myName;
-
-  static String get shortName => AppLocale.shortName;
-
-  static String get hello => AppLocale.hello;
-
-  static String get aboutMe => AppLocale.aboutMe;
-
-  static String get projects => AppLocale.projects;
-
-  static String get contactMe => AppLocale.contactMe;
 }

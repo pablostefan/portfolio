@@ -6,6 +6,10 @@ enum AppVectors {
   mail._('vectors/mail.svg'),
   phone._('vectors/phone.svg'),
   us._('vectors/us.svg'),
+  person._('vectors/person.svg'),
+  personalInfo._('vectors/personal_info.svg'),
+  code._('vectors/code.svg'),
+  hobbies._('vectors/hobbies.svg'),
   br._('vectors/br.svg');
 
   const AppVectors._(this.path);
