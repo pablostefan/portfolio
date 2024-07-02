@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/pages/contact/views/contact_desktop.dart';
+import 'package:portfolio/pages/about_me/views/about_me_desktop.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class AboutMePage extends StatelessWidget {
@@ -8,8 +8,8 @@ class AboutMePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
-        mobile: (_) => const ContactDesktop(),
-        tablet: (_) => const ContactDesktop(),
-        desktop: (_) => const ContactDesktop());
+        mobile: (_) => const AboutMeDesktop(),
+        tablet: (_) => const AboutMeDesktop(),
+        desktop: (_) => const AboutMeDesktop());
   }
 }

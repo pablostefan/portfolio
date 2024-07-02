@@ -1,3 +1,5 @@
+import 'package:portfolio/constants/about_me_text_tranlate.dart';
+
 mixin AppLocale {
   static const String shortName = 'shortName';
   static const String myName = 'myName';
@@ -22,6 +24,8 @@ mixin AppLocale {
   static const String bio = 'bio';
   static const String works = 'works';
   static const String interests = 'interests';
+  static const String aboutMeTitle = 'aboutMeTitle';
+  static const String aboutMeText = 'aboutMeText';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -46,7 +50,9 @@ mixin AppLocale {
     personalInfo: 'personal-info',
     bio: 'bio',
     works: 'works',
-    interests: 'interests'
+    interests: 'interests',
+    aboutMeTitle: 'About me',
+    aboutMeText: aboutMeTextPt
   };
 
   static const Map<String, dynamic> pt = {
@@ -72,6 +78,7 @@ mixin AppLocale {
     personalInfo: 'informações-pessoais',
     bio: 'bio',
     works: 'trabalhos',
-    interests: 'interesses'
+    aboutMeTitle: 'Sobre mim',
+    aboutMeText: aboutMeTextPt
   };
 }
