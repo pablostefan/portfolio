@@ -17,6 +17,7 @@ class AboutDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: UiHelper.halfScreenWidth(context),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
         alignment: Alignment.centerRight,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
