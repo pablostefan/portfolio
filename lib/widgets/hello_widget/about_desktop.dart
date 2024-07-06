@@ -8,16 +8,16 @@ import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_typography.dart';
 import 'package:portfolio/ui_helpers/ui_helpers.dart';
 
-class AboutDesktop extends StatefulWidget {
+class HelloWidgetDesktop extends StatefulWidget {
   final VoidCallback openGithub;
 
-  const AboutDesktop({super.key, required this.openGithub});
+  const HelloWidgetDesktop({super.key, required this.openGithub});
 
   @override
-  State<AboutDesktop> createState() => _AboutDesktopState();
+  State<HelloWidgetDesktop> createState() => _HelloWidgetDesktopState();
 }
 
-class _AboutDesktopState extends State<AboutDesktop> {
+class _HelloWidgetDesktopState extends State<HelloWidgetDesktop> {
   bool _hovering = false;
 
   double get _scale => _hovering ? 1.05 : 1.0;

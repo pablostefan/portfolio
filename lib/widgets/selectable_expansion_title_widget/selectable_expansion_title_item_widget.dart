@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:portfolio/models/about_me/about_me_selected_page_model.dart';
+import 'package:portfolio/models/about_me_selected_page_model.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_typography.dart';

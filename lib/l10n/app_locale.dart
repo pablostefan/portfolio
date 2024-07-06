@@ -26,6 +26,7 @@ mixin AppLocale {
   static const String interests = 'interests';
   static const String aboutMeTitle = 'aboutMeTitle';
   static const String aboutMeText = 'aboutMeText';
+  static const String recommendations = 'recommendations';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -52,7 +53,8 @@ mixin AppLocale {
     works: 'works',
     interests: 'interests',
     aboutMeTitle: 'About me',
-    aboutMeText: aboutMeTextPt
+    aboutMeText: aboutMeTextPt,
+    recommendations: '// Recommendations'
   };
 
   static const Map<String, dynamic> pt = {
@@ -79,6 +81,7 @@ mixin AppLocale {
     bio: 'bio',
     works: 'trabalhos',
     aboutMeTitle: 'Sobre mim',
-    aboutMeText: aboutMeTextPt
+    aboutMeText: aboutMeTextPt,
+    recommendations: '// Recomendações'
   };
 }

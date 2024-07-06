@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/ui_helpers/app_image.dart';
+import 'package:portfolio/ui_helpers/app_images.dart';
 import 'package:portfolio/ui_helpers/ui_helpers.dart';
 
 class SnakeGameDesktop extends StatelessWidget {

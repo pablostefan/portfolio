@@ -3,14 +3,14 @@ import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:get_it/get_it.dart';
 import 'package:portfolio/l10n/app_locale.dart';
-import 'package:portfolio/models/about_me/about_me_selected_page_model.dart';
+import 'package:portfolio/models/about_me_selected_page_model.dart';
 import 'package:portfolio/stores/about_me/about_me_store.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/ui_helpers/app_links.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 import 'package:portfolio/view_models/about_me/about_me_view_model.dart';
-import 'package:portfolio/widgets/about_me_text_widget/about_me_text_desktop.dart';
+import 'package:portfolio/widgets/about_me_widget/about_me_text_desktop.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_item_widget.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_widget.dart';
 import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_item_widget.dart';
@@ -74,10 +74,9 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                 Expanded(
                     child: PageView(
                         physics: const NeverScrollableScrollPhysics(),
-                        scrollDirection: Axis.vertical,
                         controller: triple.state.pageController,
                         children: [
-                      const AboutMeTextDesktop(),
+                      const AboutMeWidgetDesktop(),
                       Container(color: Colors.white),
                       Container(color: Colors.black),
                     ]))

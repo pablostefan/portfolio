@@ -122,6 +122,26 @@ extension TypographyExtension on Text {
     return _getTextTypography(text: this, textStyle: defaultStyle);
   }
 
+  Text bodyTinyMedium({TextStyle? style}) {
+    TextStyle defaultStyle = _getTextStyle(
+        fontSize: TypographyFontSize.tiny,
+        fontWeight: TypographyFontWeight.medium,
+        height: TypographyLineHeight.body,
+        mergeStyle: style);
+
+    return _getTextTypography(text: this, textStyle: defaultStyle);
+  }
+
+  Text bodyTinyRegular({TextStyle? style}) {
+    TextStyle defaultStyle = _getTextStyle(
+        fontSize: TypographyFontSize.tiny,
+        fontWeight: TypographyFontWeight.regular,
+        height: TypographyLineHeight.body,
+        mergeStyle: style);
+
+    return _getTextTypography(text: this, textStyle: defaultStyle);
+  }
+
   Text _getTextTypography({required Text text, required TextStyle textStyle}) {
     return Text(text.data!,
         style: textStyle,
