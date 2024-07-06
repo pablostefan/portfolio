@@ -10,6 +10,7 @@ class SnakeGameDesktop extends StatelessWidget {
     return Container(
         margin: EdgeInsets.only(left: UiHelper.getResponsiveHorizontalSpaceSmall(context)),
         width: UiHelper.thirdScreenWidth(context),
+        constraints: BoxConstraints(maxHeight: UiHelper.screenHeightPercentage(context, .6)),
         child: Image.asset(AppImages.snakeGame.path, fit: BoxFit.contain));
   }
 }

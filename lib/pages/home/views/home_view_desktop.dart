@@ -7,8 +7,8 @@ import 'package:portfolio/pages/hello/views/hello_desktop.dart';
 import 'package:portfolio/stores/home/home_store.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/view_models/home/home_view_model.dart';
-import 'package:portfolio/widgets/app_bar_widget/app_bar_widget.dart';
-import 'package:portfolio/widgets/bottom_nav_bar_widget/bottom_nav_bar_widget.dart';
+import 'package:portfolio/widgets/app_bar_widget/views/app_bar_desktop.dart';
+import 'package:portfolio/widgets/bottom_nav_bar_widget/bottom_nav_bar_desktop.dart';
 
 class HomeViewDesktop extends StatefulWidget {
   const HomeViewDesktop({super.key});
@@ -28,7 +28,7 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
             backgroundColor: AppColors.primaryTwo,
             extendBodyBehindAppBar: true,
             extendBody: true,
-            appBar: AppBarWidget(onTap: _store.onTapAppBarButton, selected: triple.state.selected),
+            appBar: AppBarDesktop(onTap: _store.onTapAppBarButton, selected: triple.state.selected),
             body: PageView(controller: triple.state.pageController, children: [
               Container(color: AppColors.primaryTwo),
               HelloDesktop(openGithub: _store.openGithub),
@@ -36,6 +36,6 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
               Container(color: AppColors.primaryTwo),
               const ContactPage()
             ]),
-            bottomNavigationBar: BottomNavBarWidget(value: triple.state.inEn, onChanged: _store.setLanguage)));
+            bottomNavigationBar: BottomNavBarDesktop(value: triple.state.inEn, onChanged: _store.setLanguage)));
   }
 }

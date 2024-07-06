@@ -31,6 +31,10 @@ class UiHelper {
     return screenWidth(context) * percentage;
   }
 
+  static double screenHeightPercentage(BuildContext context, double percentage) {
+    return screenHeight(context) * percentage;
+  }
+
   static double halfScreenWidth(BuildContext context) => screenWidthFraction(context, dividedBy: 2);
 
   static double thirdScreenWidth(BuildContext context) => screenWidthFraction(context, dividedBy: 3);

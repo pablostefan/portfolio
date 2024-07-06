@@ -10,7 +10,7 @@ import 'package:portfolio/ui_helpers/app_links.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 import 'package:portfolio/view_models/about_me/about_me_view_model.dart';
-import 'package:portfolio/widgets/about_me_text_widget/about_me_text_widget.dart';
+import 'package:portfolio/widgets/about_me_text_widget/about_me_text_desktop.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_item_widget.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_widget.dart';
 import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_item_widget.dart';
@@ -77,7 +77,7 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                         scrollDirection: Axis.vertical,
                         controller: triple.state.pageController,
                         children: [
-                      const AboutMeTextWidget(),
+                      const AboutMeTextDesktop(),
                       Container(color: Colors.white),
                       Container(color: Colors.black),
                     ]))
