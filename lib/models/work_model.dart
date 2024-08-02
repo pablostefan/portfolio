@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/l10n/app_locale.dart';
 import 'package:portfolio/ui_helpers/app_images.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 
@@ -31,6 +32,8 @@ class WorkModel {
   final Color shadowColor;
   final List<CodeType> codeType;
   final String description;
+  final bool isCurrent;
+  final String url;
 
   WorkModel({
     required this.startDate,
@@ -41,36 +44,42 @@ class WorkModel {
     required this.background,
     required this.shadowColor,
     required this.description,
+    this.isCurrent = false,
+    this.url = "",
   });
 
   static List<WorkModel> get myWorks {
     return [
       WorkModel(
           shadowColor: Colors.white.withOpacity(.4),
-          startDate: DateTime(2021, 1, 1),
-          endDate: DateTime(2021, 1, 31),
+          startDate: DateTime(2022, 3, 1),
+          endDate: DateTime(2023, 1, 1),
+          url: "https://krykto.com",
           image: AppImages.krykto,
           background: AppImages.kryktoFirstBg,
-          name: 'Junior Mobile Developer',
-          description: "Desenvolvedor de aplicativos, responsável por criar e manter apps de criptomoedas.",
+          name: AppLocale.juniorMobileDeveloper,
+          description: AppLocale.kryktoJuniorDescription,
           codeType: [CodeType.flutter]),
       WorkModel(
           shadowColor: Colors.white.withOpacity(.4),
-          startDate: DateTime(2021, 2, 1),
-          endDate: DateTime(2021, 2, 28),
+          startDate: DateTime(2023, 1, 1),
+          endDate: DateTime(2024, 4, 1),
           image: AppImages.krykto,
+          url: "https://krykto.com",
           background: AppImages.kryktoSecondBg,
-          name: 'Mobile Developer',
-          description: "Responsável pelo setor de desenvolvimento de aplicativos na software house Krykto.",
+          name: AppLocale.mobileDeveloper,
+          description: AppLocale.kryktoDescription,
           codeType: [CodeType.android]),
       WorkModel(
           shadowColor: Colors.black.withOpacity(.4),
-          startDate: DateTime(2021, 3, 1),
-          endDate: DateTime(2021, 3, 31),
+          startDate: DateTime(2024, 4, 1),
+          endDate: DateTime.now(),
           image: AppImages.fiibo,
           background: AppImages.fiiboBg,
-          name: 'Mobile Developer',
-          description: "Na Fiibo, sou responsável pela manutenção e desenvolvimento contínuo de um aplicativo de saúde",
+          name: AppLocale.mobileDeveloper,
+          url: "https://fiibo.com.br",
+          description: AppLocale.fiiboDescription,
+          isCurrent: true,
           codeType: [CodeType.swift]),
     ];
   }

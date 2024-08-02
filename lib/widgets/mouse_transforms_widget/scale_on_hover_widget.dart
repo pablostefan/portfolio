@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ScaleOnHover extends StatefulWidget {
+class ScaleOnHoverWidget extends StatefulWidget {
   final Widget child;
-  const ScaleOnHover({super.key, required this.child});
+  final double hoverScale;
+
+  const ScaleOnHoverWidget({super.key, required this.child, this.hoverScale = 1.1});
 
   @override
-  State<ScaleOnHover> createState() => _ScaleOnHoverState();
+  State<ScaleOnHoverWidget> createState() => _ScaleOnHoverWidgetState();
 }
 
-class _ScaleOnHoverState extends State<ScaleOnHover> {
-  Matrix4 get _scaleTransform => Matrix4.identity()..scale(1.1);
+class _ScaleOnHoverWidgetState extends State<ScaleOnHoverWidget> {
+  Matrix4 get _scaleTransform => Matrix4.identity()..scale(widget.hoverScale);
+
   Matrix4 get _noScaleTransform => Matrix4.identity()..scale(1.0);
 
   Matrix4 get _transform => _hovering ? _scaleTransform : _noScaleTransform;

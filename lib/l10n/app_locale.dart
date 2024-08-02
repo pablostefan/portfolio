@@ -27,6 +27,11 @@ mixin AppLocale {
   static const String aboutMeTitle = 'aboutMeTitle';
   static const String aboutMeText = 'aboutMeText';
   static const String recommendations = 'recommendations';
+  static const String juniorMobileDeveloper = 'juniorMobileDeveloper';
+  static const String mobileDeveloper = 'mobileDeveloper';
+  static const String kryktoJuniorDescription = 'kryktoJuniorDescription';
+  static const String kryktoDescription = 'kryktoDescription';
+  static const String fiiboDescription = 'fiiboDescription';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -53,8 +58,13 @@ mixin AppLocale {
     works: 'works',
     interests: 'interests',
     aboutMeTitle: 'About me',
-    aboutMeText: aboutMeTextPt,
-    recommendations: '// Recommendations'
+    aboutMeText: aboutMeTextEn,
+    recommendations: '// Recommendations',
+    juniorMobileDeveloper: 'Junior Mobile Developer',
+    mobileDeveloper: 'Mid Mobile Developer',
+    kryktoJuniorDescription: kryktoJuniorDescriptionEn,
+    kryktoDescription: kryktoDescriptionEn,
+    fiiboDescription: fiiboDescriptionEn,
   };
 
   static const Map<String, dynamic> pt = {
@@ -83,6 +93,11 @@ mixin AppLocale {
     aboutMeTitle: 'Sobre mim',
     aboutMeText: aboutMeTextPt,
     interests: 'interesses',
-    recommendations: '// Recomendações'
+    recommendations: '// Recomendações',
+    juniorMobileDeveloper: 'Desenvolvedor Mobile Júnior',
+    mobileDeveloper: 'Desenvolvedor Mobile Pleno',
+    kryktoJuniorDescription: kryktoJuniorDescriptionPt,
+    kryktoDescription: kryktoDescriptionPt,
+    fiiboDescription: fiiboDescriptionPt,
   };
 }
