@@ -10,7 +10,7 @@ class HomeStore extends Store<HomeViewModel> {
   void setLanguage(bool inEn) {
     var language = inEn ? Languages.enUs : Languages.ptBr;
     FlutterLocalization.instance.translate(language.languageCode);
-    update(state.copyWith(inEn: inEn));
+    print(FlutterLocalization.instance.getLanguageName());
   }
 
   void onTapAppBarButton(AppBarButton button) {

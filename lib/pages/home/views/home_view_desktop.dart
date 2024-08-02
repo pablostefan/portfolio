@@ -36,6 +36,6 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
               Container(color: AppColors.primaryTwo),
               const ContactPage()
             ]),
-            bottomNavigationBar: BottomNavBarDesktop(value: triple.state.inEn, onChanged: _store.setLanguage)));
+            bottomNavigationBar: BottomNavBarDesktop(onChanged: _store.setLanguage)));
   }
 }

@@ -9,10 +9,11 @@ import 'package:portfolio/ui_helpers/app_typography.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 
 class BottomNavBarDesktop extends StatelessWidget {
-  final bool value;
   final ValueChanged<bool> onChanged;
 
-  const BottomNavBarDesktop({super.key, required this.value, required this.onChanged});
+  const BottomNavBarDesktop({super.key, required this.onChanged});
+
+  bool get _value => FlutterLocalization.instance.getLanguageName() == Languages.enUs.languageName;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class BottomNavBarDesktop extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.micro),
               child: Row(children: [
                 Opacity(
-                    opacity: value ? .5 : 1,
+                    opacity: _value ? .5 : 1,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(AppSpacing.atto),
                         child: SvgPicture.asset(Languages.ptBr.flag.path,
@@ -72,10 +73,10 @@ class BottomNavBarDesktop extends StatelessWidget {
                         child: CupertinoSwitch(
                             trackColor: const Color.fromRGBO(1, 146, 63, 1),
                             activeColor: const Color.fromRGBO(180, 4, 9, 1),
-                            value: value,
+                            value: _value,
                             onChanged: onChanged))),
                 Opacity(
-                    opacity: value ? 1 : .5,
+                    opacity: _value ? 1 : .5,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(AppSpacing.atto),
                         child: SvgPicture.asset(Languages.enUs.flag.path,
