@@ -61,7 +61,7 @@ class _SelectableExpansionTitleItemWidgetState extends State<SelectableExpansion
                           width: AppSpacing.xxs,
                           colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn)),
                       AppSpacing.gapNano,
-                      Text(widget.title).bodySmallRegular().color(_textColor)
+                      Text(widget.title).bodyExtraSmallRegular().color(_textColor)
                     ])))));
   }
 }

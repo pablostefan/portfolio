@@ -14,7 +14,7 @@ class AppModule {
 
   static void init() {
     GetIt.I.registerSingleton<HomeStore>(HomeStore());
-    GetIt.I.registerSingleton<ContactStore>(ContactStore());
-    GetIt.I.registerSingleton<AboutMeStore>(AboutMeStore());
+    GetIt.I.registerFactory<AboutMeStore>(() => AboutMeStore());
+    GetIt.I.registerFactory<ContactStore>(() => ContactStore());
   }
 }

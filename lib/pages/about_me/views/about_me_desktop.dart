@@ -10,11 +10,12 @@ import 'package:portfolio/ui_helpers/app_links.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 import 'package:portfolio/view_models/about_me/about_me_view_model.dart';
-import 'package:portfolio/widgets/about_me_widget/about_me_text_desktop.dart';
+import 'package:portfolio/widgets/about_me_widget/about_me_text_desktop_widget.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_item_widget.dart';
 import 'package:portfolio/widgets/expansion_title_widget/expansion_title_widget.dart';
 import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_item_widget.dart';
 import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_widget.dart';
+import 'package:portfolio/widgets/works/works_desktop_widget.dart';
 
 class AboutMeDesktop extends StatefulWidget {
   const AboutMeDesktop({super.key});
@@ -52,14 +53,14 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                             selectedIconColor: AppColors.accentTwo,
                             icon: AppVectors.code,
                             title: AppLocale.works.getString(context),
-                            page: AboutMePageModel.interests,
+                            page: AboutMePageModel.works,
                             selectedPage: triple.state.selectedPage,
                             onTap: _store.onTapMenuItem),
                         SelectableExpansionTitleItemWidget(
                             selectedIconColor: AppColors.secondaryThree,
                             icon: AppVectors.hobbies,
                             title: AppLocale.interests.getString(context),
-                            page: AboutMePageModel.works,
+                            page: AboutMePageModel.interests,
                             selectedPage: triple.state.selectedPage,
                             onTap: _store.onTapMenuItem),
                       ]),
@@ -75,9 +76,10 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                     child: PageView(
                         physics: const NeverScrollableScrollPhysics(),
                         controller: triple.state.pageController,
+                        scrollDirection: Axis.vertical,
                         children: [
-                      const AboutMeWidgetDesktop(),
-                      Container(color: Colors.white),
+                      const AboutMeDesktopWidget(),
+                      const WorksDesktopWidget(),
                       Container(color: Colors.black),
                     ]))
               ]));

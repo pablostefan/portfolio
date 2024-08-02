@@ -10,6 +10,11 @@ enum AppVectors {
   personalInfo._('vectors/personal_info.svg'),
   code._('vectors/code.svg'),
   hobbies._('vectors/hobbies.svg'),
+  flutter._('vectors/flutter.svg'),
+  html._('vectors/html.svg'),
+  react._('vectors/react.svg'),
+  android._('vectors/android.svg'),
+  swift._('vectors/swift.svg'),
   br._('vectors/br.svg');
 
   const AppVectors._(this.path);

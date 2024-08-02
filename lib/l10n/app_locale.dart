@@ -82,6 +82,7 @@ mixin AppLocale {
     works: 'trabalhos',
     aboutMeTitle: 'Sobre mim',
     aboutMeText: aboutMeTextPt,
+    interests: 'interesses',
     recommendations: '// Recomendações'
   };
 }
