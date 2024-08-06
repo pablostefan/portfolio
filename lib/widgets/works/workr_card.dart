@@ -3,6 +3,7 @@ import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:portfolio/extensions/date_extensions.dart';
+import 'package:portfolio/l10n/app_locale.dart';
 import 'package:portfolio/models/work_model.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
@@ -57,9 +58,14 @@ class WorkCard extends StatelessWidget {
                             child: Text(work.name.getString(context)).bodyLabelRegular().color(AppColors.secondaryTwo)),
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: AppSpacing.nano),
-                            child: Text("${work.startDate.workDate} - ${work.endDate.workDate}")
-                                .bodyExtraSmallRegular()
-                                .color(AppColors.secondaryThree)),
+                            child: Visibility(
+                                visible: work.isCurrent,
+                                replacement: Text("${work.startDate.workDate} - ${work.endDate.workDate}")
+                                    .bodyExtraSmallRegular()
+                                    .color(AppColors.secondaryThree),
+                                child: Text("${work.startDate.workDate} - ${AppLocale.currently.getString(context)}")
+                                    .bodyExtraSmallRegular()
+                                    .color(AppColors.secondaryThree))),
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: AppSpacing.nano),
                             child: Text(work.description.getString(context))

@@ -32,6 +32,7 @@ mixin AppLocale {
   static const String kryktoJuniorDescription = 'kryktoJuniorDescription';
   static const String kryktoDescription = 'kryktoDescription';
   static const String fiiboDescription = 'fiiboDescription';
+  static const String currently = 'currently';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -65,6 +66,7 @@ mixin AppLocale {
     kryktoJuniorDescription: kryktoJuniorDescriptionEn,
     kryktoDescription: kryktoDescriptionEn,
     fiiboDescription: fiiboDescriptionEn,
+    currently: 'CURRENTLY',
   };
 
   static const Map<String, dynamic> pt = {
@@ -99,5 +101,6 @@ mixin AppLocale {
     kryktoJuniorDescription: kryktoJuniorDescriptionPt,
     kryktoDescription: kryktoDescriptionPt,
     fiiboDescription: fiiboDescriptionPt,
+    currently: 'ATUALMENTE',
   };
 }

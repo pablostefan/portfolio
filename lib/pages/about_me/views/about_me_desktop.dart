@@ -56,13 +56,6 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                             page: AboutMePageModel.works,
                             selectedPage: triple.state.selectedPage,
                             onTap: _store.onTapMenuItem),
-                        SelectableExpansionTitleItemWidget(
-                            selectedIconColor: AppColors.secondaryThree,
-                            icon: AppVectors.hobbies,
-                            title: AppLocale.interests.getString(context),
-                            page: AboutMePageModel.interests,
-                            selectedPage: triple.state.selectedPage,
-                            onTap: _store.onTapMenuItem),
                       ]),
                       ExpansionTileWidget(
                           title: AppLocale.contacts.getString(context),
@@ -77,10 +70,9 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                         physics: const NeverScrollableScrollPhysics(),
                         controller: triple.state.pageController,
                         scrollDirection: Axis.vertical,
-                        children: [
-                      const AboutMeDesktopWidget(),
-                      const WorksDesktopWidget(),
-                      Container(color: Colors.black),
+                        children: const [
+                      AboutMeDesktopWidget(),
+                      WorksDesktopWidget(),
                     ]))
               ]));
         });
