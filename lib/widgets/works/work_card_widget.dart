@@ -8,12 +8,12 @@ import 'package:portfolio/models/work_model.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_typography.dart';
-import 'package:portfolio/widgets/mouse_transforms_widget/scale_on_hover_widget.dart';
+import 'package:portfolio/widgets/mouse_transforms/scale_on_hover_widget.dart';
 
-class WorkCard extends StatelessWidget {
+class WorkCardWidget extends StatelessWidget {
   final WorkModel work;
 
-  const WorkCard({super.key, required this.work});
+  const WorkCardWidget({super.key, required this.work});
 
   @override
   Widget build(BuildContext context) {

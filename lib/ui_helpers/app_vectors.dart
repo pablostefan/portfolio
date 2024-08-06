@@ -15,7 +15,11 @@ enum AppVectors {
   react._('vectors/react.svg'),
   android._('vectors/android.svg'),
   swift._('vectors/swift.svg'),
-  br._('vectors/br.svg');
+  br._('vectors/br.svg'),
+  flutterIcon._('vectors/flutter_icon.svg'),
+  reactIcon._('vectors/react_icon.svg'),
+  androidIcon._('vectors/android_icon.svg'),
+  swiftIcon._('vectors/swift_icon.svg');
 
   const AppVectors._(this.path);
 

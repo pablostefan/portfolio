@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:get_it/get_it.dart';
-import 'package:portfolio/pages/about_me/views/about_me_desktop.dart';
+import 'package:portfolio/pages/about_me/about_me_page.dart';
 import 'package:portfolio/pages/contact/contact_page.dart';
-import 'package:portfolio/pages/hello/views/hello_desktop.dart';
+import 'package:portfolio/pages/hello/hello_page.dart';
 import 'package:portfolio/stores/home/home_store.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/view_models/home/home_view_model.dart';
-import 'package:portfolio/widgets/app_bar_widget/views/app_bar_desktop.dart';
-import 'package:portfolio/widgets/bottom_nav_bar_widget/bottom_nav_bar_desktop.dart';
+import 'package:portfolio/widgets/app_bar/views/app_bar_desktop.dart';
+import 'package:portfolio/widgets/bottom_nav_bar/bottom_nav_bar_desktop.dart';
 
 class HomeViewDesktop extends StatefulWidget {
   const HomeViewDesktop({super.key});
@@ -31,8 +31,8 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
             appBar: AppBarDesktop(onTap: _store.onTapAppBarButton, selected: triple.state.selected),
             body: PageView(controller: triple.state.pageController, children: [
               Container(color: AppColors.primaryTwo),
-              HelloDesktop(openGithub: _store.openGithub),
-              const AboutMeDesktop(),
+              HelloPage(openGithub: _store.openGithub),
+              const AboutMePage(),
               Container(color: AppColors.primaryTwo),
               const ContactPage()
             ]),

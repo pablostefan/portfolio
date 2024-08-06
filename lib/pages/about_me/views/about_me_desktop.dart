@@ -10,11 +10,11 @@ import 'package:portfolio/ui_helpers/app_links.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 import 'package:portfolio/view_models/about_me/about_me_view_model.dart';
-import 'package:portfolio/widgets/about_me_widget/about_me_text_desktop_widget.dart';
-import 'package:portfolio/widgets/expansion_title_widget/expansion_title_item_widget.dart';
-import 'package:portfolio/widgets/expansion_title_widget/expansion_title_widget.dart';
-import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_item_widget.dart';
-import 'package:portfolio/widgets/selectable_expansion_title_widget/selectable_expansion_title_widget.dart';
+import 'package:portfolio/widgets/about_me/about_me_text_desktop_widget.dart';
+import 'package:portfolio/widgets/expansion_title/expansion_title_item_widget.dart';
+import 'package:portfolio/widgets/expansion_title/expansion_title_widget.dart';
+import 'package:portfolio/widgets/selectable_expansion_title/selectable_expansion_title_item_widget.dart';
+import 'package:portfolio/widgets/selectable_expansion_title/selectable_expansion_title_widget.dart';
 import 'package:portfolio/widgets/works/works_desktop_widget.dart';
 
 class AboutMeDesktop extends StatefulWidget {
@@ -40,7 +40,7 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                     width: AppSpacing.extraGiant,
                     decoration:
                         const BoxDecoration(border: Border.symmetric(vertical: BorderSide(color: AppColors.border))),
-                    child: Column(children: [
+                    child: ListView(children: [
                       SelectableExpansionTileWidget(title: AppLocale.personalInfo.getString(context), children: [
                         SelectableExpansionTitleItemWidget(
                             selectedIconColor: AppColors.accentThree,

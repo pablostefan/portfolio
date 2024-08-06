@@ -11,10 +11,10 @@ import 'package:portfolio/ui_helpers/app_typography.dart';
 import 'package:portfolio/ui_helpers/app_vectors.dart';
 import 'package:portfolio/ui_helpers/ui_helpers.dart';
 import 'package:portfolio/view_models/contact/contact_view_model.dart';
-import 'package:portfolio/widgets/code_message_widget/code_message_widget.dart';
-import 'package:portfolio/widgets/expansion_title_widget/expansion_title_item_widget.dart';
-import 'package:portfolio/widgets/expansion_title_widget/expansion_title_widget.dart';
-import 'package:portfolio/widgets/text_field_widget/text_field_widget.dart';
+import 'package:portfolio/widgets/code_message/code_message_widget.dart';
+import 'package:portfolio/widgets/expansion_title/expansion_title_item_widget.dart';
+import 'package:portfolio/widgets/expansion_title/expansion_title_widget.dart';
+import 'package:portfolio/widgets/text_field/text_field_widget.dart';
 
 class ContactDesktop extends StatefulWidget {
   const ContactDesktop({super.key});

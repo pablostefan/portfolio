@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:portfolio/ui_helpers/app_images.dart';
 import 'package:portfolio/ui_helpers/ui_helpers.dart';
-import 'package:portfolio/widgets/hello_widget/about_desktop.dart';
-import 'package:portfolio/widgets/snake_game_widget/snake_game_desktop.dart';
+import 'package:portfolio/widgets/hello/about_desktop.dart';
+import 'package:portfolio/widgets/snake_game/snake_game_desktop.dart';
 
 class HelloDesktop extends StatelessWidget {
   final VoidCallback openGithub;

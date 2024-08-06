@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/ui_helpers/app_spacing.dart';
 import 'package:portfolio/ui_helpers/app_typography.dart';
-import 'package:portfolio/widgets/app_bar_widget/models/app_bar_button.dart';
+import 'package:portfolio/widgets/app_bar/models/app_bar_button.dart';
 
 class AppBarButtonWidget extends StatefulWidget {
   final AppBarButton model;

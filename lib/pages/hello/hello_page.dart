@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/pages/hello/views/hello_desktop.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class AboutWidget extends StatelessWidget {
+class HelloPage extends StatelessWidget {
   final VoidCallback openGithub;
 
-  const AboutWidget({super.key, required this.openGithub});
+  const HelloPage({super.key, required this.openGithub});
 
   @override
   Widget build(BuildContext context) {

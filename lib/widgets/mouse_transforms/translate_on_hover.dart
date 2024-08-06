@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TranslateOnHover extends StatefulWidget {
+class TranslateOnHoverWidget extends StatefulWidget {
   final Widget child;
   final double? x;
   final double? y;
 
-  const TranslateOnHover({
+  const TranslateOnHoverWidget({
     super.key,
     required this.child,
     this.x,
@@ -13,10 +13,10 @@ class TranslateOnHover extends StatefulWidget {
   });
 
   @override
-  State<TranslateOnHover> createState() => _TranslateOnHoverState();
+  State<TranslateOnHoverWidget> createState() => _TranslateOnHoverWidgetState();
 }
 
-class _TranslateOnHoverState extends State<TranslateOnHover> {
+class _TranslateOnHoverWidgetState extends State<TranslateOnHoverWidget> {
   Matrix4 get _nonHoverTransform => Matrix4.identity()..translate(0, 0, 0);
 
   Matrix4 get _hoverTransform => Matrix4.identity()..translate(widget.x ?? 0, widget.y ?? 0);
