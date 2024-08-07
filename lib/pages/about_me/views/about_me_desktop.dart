@@ -49,6 +49,7 @@ class _AboutMeDesktopState extends State<AboutMeDesktop> {
                             page: AboutMePageModel.bio,
                             selectedPage: triple.state.selectedPage,
                             onTap: _store.onTapMenuItem),
+                        AppSpacing.gapPico,
                         SelectableExpansionTitleItemWidget(
                             selectedIconColor: AppColors.accentTwo,
                             icon: AppVectors.code,

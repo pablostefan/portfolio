@@ -25,7 +25,7 @@ class _ExpansionTitleItemWidgetState extends State<ExpansionTitleItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
         onTap: widget.onTap,
         child: Padding(
             padding: const EdgeInsets.only(bottom: AppSpacing.xxxs, left: AppSpacing.xxs),

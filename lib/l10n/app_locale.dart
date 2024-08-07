@@ -33,6 +33,11 @@ mixin AppLocale {
   static const String kryktoDescription = 'kryktoDescription';
   static const String fiiboDescription = 'fiiboDescription';
   static const String currently = 'currently';
+  static const String android = 'Android';
+  static const String flutter = 'Flutter';
+  static const String swift = 'Swift';
+  static const String react = 'React';
+  static const String technologies = 'technologies';
 
   static const Map<String, dynamic> en = {
     shortName: 'pablo-stefan',
@@ -67,6 +72,7 @@ mixin AppLocale {
     kryktoDescription: kryktoDescriptionEn,
     fiiboDescription: fiiboDescriptionEn,
     currently: 'CURRENTLY',
+    technologies: 'technologies',
   };
 
   static const Map<String, dynamic> pt = {
@@ -102,5 +108,6 @@ mixin AppLocale {
     kryktoDescription: kryktoDescriptionPt,
     fiiboDescription: fiiboDescriptionPt,
     currently: 'ATUALMENTE',
+    technologies: 'tecnologias',
   };
 }

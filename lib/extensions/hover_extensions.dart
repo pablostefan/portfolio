@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/mouse_transforms/scale_on_hover_widget.dart';
-import 'package:portfolio/widgets/mouse_transforms/translate_on_hover.dart';
+import 'package:portfolio/widgets/mouse_transforms/translate_on_hover_widget.dart';
 
 extension HoverExtensions on Widget {
   Widget get showCursorOnHover => _returnUnalteredOnMobile(MouseRegion(cursor: SystemMouseCursors.click, child: this));

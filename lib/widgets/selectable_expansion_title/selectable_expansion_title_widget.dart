@@ -7,8 +7,15 @@ class SelectableExpansionTileWidget extends StatefulWidget {
   final String title;
   final List<Widget> children;
   final bool enabled;
+  final double fontSize;
 
-  const SelectableExpansionTileWidget({super.key, required this.title, required this.children, this.enabled = true});
+  const SelectableExpansionTileWidget({
+    super.key,
+    required this.title,
+    required this.children,
+    this.enabled = true,
+    this.fontSize = TypographyFontSize.extraSmall,
+  });
 
   @override
   State<SelectableExpansionTileWidget> createState() => _SelectableExpansionTileWidgetState();
@@ -27,9 +34,9 @@ class _SelectableExpansionTileWidgetState extends State<SelectableExpansionTileW
         collapsedShape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         shape: const BorderDirectional(bottom: BorderSide(color: AppColors.border)),
         tilePadding: const EdgeInsets.only(left: AppSpacing.micro),
-        title: Text(widget.title).bodyExtraSmallMedium(),
+        title: Text(widget.title).bodyExtraSmallMedium(style: TextStyle(fontSize: widget.fontSize)),
         leading: Icon(_icon, color: AppColors.white, size: AppSpacing.xxs),
-        childrenPadding: const EdgeInsets.only(left: AppSpacing.nano, top: AppSpacing.femto),
+        childrenPadding: const EdgeInsets.only(left: AppSpacing.xxxs, bottom: AppSpacing.nano),
         initiallyExpanded: true,
         clipBehavior: Clip.none,
         controlAffinity: ListTileControlAffinity.leading,

@@ -45,10 +45,10 @@ class _SelectableExpansionTitleItemWidgetState extends State<SelectableExpansion
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
         onTap: () => widget.onTap(widget.page),
         child: Padding(
-            padding: const EdgeInsets.only(bottom: AppSpacing.xxxs, left: AppSpacing.xxs),
+            padding: const EdgeInsets.only(left: AppSpacing.xxs, top: AppSpacing.nano, bottom: AppSpacing.nano),
             child: MouseRegion(
                 onEnter: (e) => _mouseEnter(true),
                 onExit: (e) => _mouseEnter(false),

@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:portfolio/pages/about_me/about_me_page.dart';
 import 'package:portfolio/pages/contact/contact_page.dart';
 import 'package:portfolio/pages/hello/hello_page.dart';
+import 'package:portfolio/pages/projects/projects_page.dart';
 import 'package:portfolio/stores/home/home_store.dart';
 import 'package:portfolio/ui_helpers/app_colors.dart';
 import 'package:portfolio/view_models/home/home_view_model.dart';
@@ -33,7 +34,7 @@ class _HomeViewDesktopState extends State<HomeViewDesktop> {
               Container(color: AppColors.primaryTwo),
               HelloPage(openGithub: _store.openGithub),
               const AboutMePage(),
-              Container(color: AppColors.primaryTwo),
+              const ProjectsPage(),
               const ContactPage()
             ]),
             bottomNavigationBar: BottomNavBarDesktop(onChanged: _store.setLanguage)));
