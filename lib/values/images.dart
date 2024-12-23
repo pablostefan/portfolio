@@ -32,7 +32,6 @@ abstract final class ImagePath {
   static const String MEDITATION = "$imageDir/meditation.png";
   static const String ABOUT_PORTRAIT = "$imageDir/about_portrait.png";
   static const String DEV_ABOUT = "$imageDir/dev-about.jpg";
-  static const String DEV_SKILLS = "$imageDir/skills.png";
   static const String GOOGLE_PLAY = "$imageDir/google_play.png";
 
   // Certifications

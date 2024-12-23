@@ -3,7 +3,7 @@ import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 
-import 'aerium_button.dart';
+import 'portfolio_button.dart';
 
 class CertificationCard extends StatefulWidget {
   CertificationCard({

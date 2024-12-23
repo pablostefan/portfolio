@@ -19,22 +19,22 @@ class NavigationArguments {
 }
 
 class PageWrapper extends StatefulWidget {
-  PageWrapper(
-      {Key? key,
-      required this.selectedRoute,
-      required this.selectedPageName,
-      required this.navBarAnimationController,
-      required this.child,
-      this.customLoadingAnimation = const Empty(),
-      this.onLoadingAnimationDone,
-      this.hasSideTitle = true,
-      this.hasUnveilPageAnimation = true,
-      this.reverseAnimationOnPop = true,
-      this.backgroundColor,
-      this.navBarTitleColor = AppColors.grey600,
-      this.navBarSelectedTitleColor = AppColors.black,
-      this.appLogoColor = AppColors.black})
-      : super(key: key);
+  const PageWrapper({
+    super.key,
+    required this.selectedRoute,
+    required this.selectedPageName,
+    required this.navBarAnimationController,
+    required this.child,
+    this.customLoadingAnimation = const Empty(),
+    this.onLoadingAnimationDone,
+    this.hasSideTitle = true,
+    this.hasUnveilPageAnimation = true,
+    this.reverseAnimationOnPop = true,
+    this.backgroundColor,
+    this.navBarTitleColor = AppColors.grey600,
+    this.navBarSelectedTitleColor = AppColors.black,
+    this.appLogoColor = AppColors.black,
+  });
 
   final String selectedRoute;
   final String selectedPageName;
@@ -51,13 +51,13 @@ class PageWrapper extends StatefulWidget {
   final Color appLogoColor;
 
   @override
-  _PageWrapperState createState() => _PageWrapperState();
+  State<PageWrapper> createState() => _PageWrapperState();
 }
 
 class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin {
   late AnimationController forwardSlideController;
   late AnimationController unveilPageSlideController;
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   Duration duration = Duration(milliseconds: 1250);
 
   @override
@@ -128,9 +128,7 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
                   if (route == HomePage.homePageRoute) {
                     Navigator.of(context).pushNamed(
                       route,
-                      arguments: NavigationArguments(
-                        showUnVeilPageAnimation: true,
-                      ),
+                      arguments: NavigationArguments(showUnVeilPageAnimation: true),
                     );
                   } else {
                     Navigator.of(context).pushNamed(route);

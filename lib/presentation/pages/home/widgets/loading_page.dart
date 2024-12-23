@@ -200,10 +200,13 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                             width: widthOfLeftLine,
                             child: Stack(
                               children: [
-                                Container(
-                                  width: widthOfLeftLine,
-                                  height: lineHeight,
-                                  color: lineColor,
+                                Visibility(
+                                  visible: _fadeOutController.isAnimating,
+                                  child: Container(
+                                    width: widthOfLeftLine,
+                                    height: lineHeight,
+                                    color: lineColor,
+                                  ),
                                 ),
                                 Positioned(
                                   child: AnimatedContainer(
@@ -226,10 +229,13 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                             width: widthOfRightLine,
                             child: Stack(
                               children: [
-                                Container(
-                                  width: widthOfRightLine,
-                                  height: lineHeight,
-                                  color: lineColor,
+                                Visibility(
+                                  visible: _fadeOutController.isAnimating,
+                                  child: Container(
+                                    width: widthOfRightLine,
+                                    height: lineHeight,
+                                    color: lineColor,
+                                  ),
                                 ),
                                 Positioned(
                                   right: 0,
