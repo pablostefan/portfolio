@@ -1,0 +1,71 @@
+name: portfolio
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  responsive_builder: ^0.7.1
+  font_awesome_flutter: ^10.8.0
+  url_launcher: ^6.3.1
+  flutter_feather_icons: ^2.0.0+1
+  animated_text_kit: ^4.2.2
+  visibility_detector: ^0.4.0+2
+  flutter_bloc: ^8.1.6
+  layout: ^1.0.5
+  dartz: ^0.10.1
+  get_it: ^8.0.3
+  flutter_spinkit: ^5.2.1
+  freezed_annotation: ^2.4.4
+  lottie: ^3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/projects/
+    - assets/images/projects/aerium-v1/
+    - assets/images/projects/aerium-v2/
+    - assets/images/projects/disneyplus/
+    - assets/images/projects/drop/
+    - assets/images/projects/flutter_catalog/
+    - assets/images/projects/foodybite/
+    - assets/images/projects/login_catalog/
+    - assets/images/projects/nimbus/
+    - assets/images/projects/otp_package/
+    - assets/images/projects/roam/
+    - assets/images/projects/outfitr/
+    - assets/screenshots/
+
+  fonts:
+    - family: VisueltPro
+      fonts:
+        - asset: assets/fonts/visuelt/VisueltPro-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/visuelt/VisueltPro-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/visuelt/VisueltPro-Light.ttf
+          weight: 300
+        - asset: assets/fonts/visuelt/VisueltPro-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/visuelt/VisueltPro-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/visuelt/VisueltPro-Black.ttf
+          weight: 700
+        - asset: assets/fonts/visuelt/VisueltPro-Bold.ttf
+          weight: 800
+
