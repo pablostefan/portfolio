@@ -216,12 +216,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             style: textButtonStyle,
                           ),
                           SpaceW12(),
-                          Container(
-                            margin: EdgeInsets.only(top: textButtonStyle!.fontSize! / 2),
-                            child: Image.asset(
-                              ImagePath.ARROW_RIGHT,
-                              width: 25,
-                            ),
+                          Image.asset(
+                            ImagePath.ARROW_RIGHT,
+                            width: 25,
                           ),
                         ],
                       ),

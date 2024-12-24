@@ -113,7 +113,7 @@ class NavBar extends StatelessWidget {
                 PortfolioButton(
                   height: Sizes.HEIGHT_36,
                   hasIcon: false,
-                  width: 80,
+                  width: 95,
                   buttonColor: AppColors.white,
                   borderColor: appLogoColor,
                   onHoverColor: appLogoColor,

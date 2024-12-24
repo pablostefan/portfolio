@@ -2,150 +2,110 @@ part of 'values.dart';
 
 abstract final class StringConst {
   //strings
-  static const String APP_NAME = "David Legend Portfolio";
-  static const String APP_TITLE = "David Legend Portfolio";
-  static const String SITE_URL = "https://davidcobbina.com";
+  static const String APP_TITLE = "Pablo Pereira";
+  static const String SITE_URL = "https://pablopereira.com";
 
-  static const String HOME = "Home";
-  static const String ABOUT = "About";
-  static const String WORKS = "Works";
-  static const String EXPERIENCE = "Experience";
-  static const String PRIVACY_POLICY = "Privacy Policy";
-  static const String PROJECT = "Project";
-  static const String WORK = "Where I've Worked";
-  static const String SERVICES = "Services";
-  static const String CONTACT = "Contact";
-  static const String PHONE_NUMBER = "Phone Number";
-  static const String RESUME = "Resume";
-  static const String CERTIFICATIONS = "Certifications";
-  static const String EMAIL_VALUE = "davidcobbina47@gmail.com";
+  static const String HOME = "Início";
+  static const String ABOUT = "Sobre";
+  static const String WORKS = "Trabalhos";
+  static const String EXPERIENCE = "Experiência";
+  static const String PRIVACY_POLICY = "Política de Privacidade";
+  static const String PROJECT = "Projeto";
+  static const String CONTACT = "Contato";
+  static const String RESUME = "Currículo";
+  static const String CERTIFICATIONS = "Certificações";
+  static const String EMAIL_VALUE = "pablo.stefan.dev@gmail.com";
 
   // Home Page
   static const String LOGO = "Pablo";
-  static const String HI = "Hi,";
-  static const String DEV_INTRO = "I'm Pablo.";
-  static const String DEV_TITLE = "Software Engineer.";
-  static const String DEV_DESC = "Mobile Engineer / Full Stack Developer / Cloud Devops";
-  static const String SEE_MY_WORKS = "See my works";
-  static const String SCROLL_DOWN = "Scroll Down";
-  static const String CRAFTED_WITH_LOVE = "Crafted with love.";
-  static const String SELECTION = "Here is selection of my recent works.";
-  static const String THERES_MORE = "There's more";
-  static const String VIEW_ALL_PROJECTS = "view all projects";
+  static const String HI = "Oi,";
+  static const String DEV_INTRO = "Eu sou Pablo.";
+  static const String DEV_TITLE = "Engenheiro de Software.";
+  static const String DEV_DESC = "Engenheiro Mobile / Desenvolvedor Full Stack";
+  static const String SEE_MY_WORKS = "Veja meus trabalhos";
+  static const String SCROLL_DOWN = "Role para baixo";
+  static const String CRAFTED_WITH_LOVE = "Feito com amor.";
+  static const String SELECTION = "Aqui está uma seleção dos meus trabalhos recentes.";
+  static const String THERES_MORE = "Tem mais";
+  static const String VIEW_ALL_PROJECTS = "Ver todos os projetos";
 
   // Contact Page
-  static const String GET_IN_TOUCH = "Get in touch.";
+  static const String GET_IN_TOUCH = "Entre em contato.";
   static const String CONTACT_MSG =
-      "Hey There, Got a project, job offer or consulting work for me? Feel free to contact me ASAP.";
-  static const String YOUR_NAME = "Your Name";
-  static const String NAME_ERROR_MSG = "* Please enter your name";
-  static const String YOUR_EMAIL = "Your Email";
-  static const String EMAIL_ERROR_MSG = "* Please enter a valid email";
-  static const String SUBJECT = "Subject";
-  static const String SUBJECT_ERROR_MSG = "* Please tell me what this message is about";
-  static const String MESSAGE = "Message";
-  static const String MESSAGE_ERROR_MSG = "* Please enter something to send this form";
-  static const String SEND_MESSAGE = "Send Message";
-  static const String COPYRIGHT = "©  2021  Built by  $DEV_NAME,";
-  static const String DESIGNED_BY = "Designed by Julius G.";
+      "Olá! Tem um projeto, oferta de trabalho ou consultoria para mim? Sinta-se à vontade para entrar em contato!";
+  static const String YOUR_NAME = "Seu Nome";
+  static const String NAME_ERROR_MSG = "* Por favor, insira seu nome";
+  static const String YOUR_EMAIL = "Seu Email";
+  static const String EMAIL_ERROR_MSG = "* Por favor, insira um email válido";
+  static const String SUBJECT = "Assunto";
+  static const String SUBJECT_ERROR_MSG = "* Por favor, diga sobre o que é esta mensagem";
+  static const String MESSAGE = "Mensagem";
+  static const String MESSAGE_ERROR_MSG = "* Por favor, insira algo para enviar este formulário";
+  static const String SEND_MESSAGE = "Enviar Mensagem";
+  static const String COPYRIGHT = "© 2024 Feito por $DEV_NAME,";
+  static const String DESIGNED_BY = "Design por Julius G.";
   static const String DESIGN_LINK = "https://www.behance.net/gallery/63574251/Personal-Portfolio-Website-Design";
-  static const String MESSAGE_ME = "Message me";
-  static const String EMAIL_RESPONSE = "Thanks for reaching out to me! I will get back to you ASAP";
+  static const String MESSAGE_ME = "Me mande uma mensagem";
+  static const String EMAIL_RESPONSE = "Obrigado por entrar em contato! Responderei o mais rápido possível.";
   static const String EMAIL_FAILED_RESPONSE =
-      "Something went wrong. Please send me an email manually - ${StringConst.DEV_EMAIL}";
+      "Algo deu errado. Por favor, envie um email manualmente - ${StringConst.EMAIL_VALUE}";
 
   // About Page
   static const String ABOUT_DEV_CATCH_LINE =
-      "I am a passionate front-end developer and ui/ux designer with a keen eye for details.";
-  static const String ABOUT_DEV_CATCH_LINE_1 = "I specialize in building high ";
-  static const String ABOUT_DEV_CATCH_LINE_2 = "quality mobile & web applications.";
-
-  // static const String ABOUT_DEV_CATCH_LINE_3 = "& web applications";
-  static const String ABOUT_DEV_CATCH_LINE_4 = "I also have a strong";
-  static const String ABOUT_DEV_CATCH_LINE_5 = "passion for opensource work.";
-  static const String ABOUT_DEV_STORY = "Story";
-  static const String ABOUT_DEV_STORY_TITLE = "A little bit about myself.";
+      "Sou um desenvolvedor front-end apaixonado e designer de UI/UX com um olhar atento aos detalhes.";
+  static const String ABOUT_DEV_CATCH_LINE_1 = "Especializado em criar ";
+  static const String ABOUT_DEV_CATCH_LINE_2 = "aplicativos móveis e web de alta qualidade.";
+  static const String ABOUT_DEV_CATCH_LINE_4 = "Eu também tenho uma forte";
+  static const String ABOUT_DEV_CATCH_LINE_5 = "paixão pelo trabalho open-source.";
+  static const String ABOUT_DEV_STORY = "História";
+  static const String ABOUT_DEV_STORY_TITLE = "Um pouco sobre mim.";
   static const String ABOUT_DEV_STORY_CONTENT_1 =
-      "I am full stack software engineer with great passion for building high quality applications. I have an extensive experience building frontend (mobile & web) and backend applications. I occasionally work as a tech consultant and I am enthusiastic about Devops & Cloud computing technologies.";
+      "Sou engenheiro de software full stack apaixonado por criar aplicativos de alta qualidade. Tenho uma ampla experiência desenvolvendo aplicativos frontend (mobile e web) e backend.";
   static const String ABOUT_DEV_STORY_CONTENT_2 =
-      "I have a Masters in IT from Carnegie Mellon University where I majored in Software Engineering. I have strong technical skills as well as excellent interpersonal skills, which has enabled me to work & interact with clients all over the world.";
+      "Tenho um Mestrado em TI pela Carnegie Mellon University, onde me especializei em Engenharia de Software. Tenho fortes habilidades técnicas e excelentes habilidades interpessoais.";
   static const String ABOUT_DEV_STORY_CONTENT_3 =
-      "I am very great at finding solutions to problems and I have a very keen eye for details. I enjoy building fun/useful projects in my free time and open sourcing them. I am an avid reader, lover of all forms art & music, a big fan of poetry & I love travelling.";
-  static const String ABOUT_DEV_TECHNOLOGY = "Technology";
-  static const String MOBILE_TECH = "Mobile Technologies";
-  static const String OTHER_TECH = "Web / Cloud / Design Technologies";
-  static const String ABOUT_DEV_TECHNOLOGY_TITLE = "What I use.";
+      "Sou ótimo em encontrar soluções para problemas e adoro criar projetos divertidos em meu tempo livre. Sou um leitor ávido, amante de todas as formas de arte e música, fã de poesia e adoro viajar.";
+  static const String ABOUT_DEV_TECHNOLOGY = "Tecnologia";
+  static const String MOBILE_TECH = "Tecnologias Mobile";
+  static const String OTHER_TECH = "Web / Nuvem / Design";
+  static const String ABOUT_DEV_TECHNOLOGY_TITLE = "O que eu uso.";
   static const String ABOUT_DEV_TECHNOLOGY_CONTENT =
-      "I use a number of tools to aid my creative process when bringing things to life. Listed below are the tools and technologies that I have used over the years.";
-  static const String ABOUT_DEV_CONTACT = "Contact";
-  static const String ABOUT_DEV_CONTACT_SOCIAL = "Social.";
+      "Uso diversas ferramentas para ajudar no meu processo criativo ao dar vida às ideias. Abaixo estão as ferramentas e tecnologias que usei ao longo dos anos.";
+  static const String ABOUT_DEV_CONTACT = "Contato";
+  static const String ABOUT_DEV_CONTACT_SOCIAL = "Redes Sociais.";
   static const String ABOUT_DEV_CONTACT_EMAIL = "Email.";
-  static const String FAMOUS_QUOTE = "“I have no special talents. I am only passionately curious.”";
+  static const String FAMOUS_QUOTE = "“Não tenho talentos especiais. Sou apenas apaixonadamente curioso.”";
   static const String FAMOUS_QUOTE_AUTHOR = "Albert Einstein";
-  static const String WORK_TOGETHER = "Let's work together.";
-  static const String AVAILABLE_FOR_FREELANCE = "I'm available for Consultancy & Freelancing.";
-  static const String SAY_HELLO = "Say Hello";
+  static const String WORK_TOGETHER = "Vamos trabalhar juntos.";
+  static const String AVAILABLE_FOR_FREELANCE = "Estou disponível para Consultoria e Freelancing.";
+  static const String SAY_HELLO = "Diga Oi";
 
   // Works Page
-  static const String VIEW_PROJECT = "View Project";
-  static const String MY_WORKS = "My Works.";
-  static const String NOTE_WORTHY_PROJECTS = "Other Noteworthy Projects.";
+  static const String VIEW_PROJECT = "Ver Projeto";
+  static const String MY_WORKS = "Meus Trabalhos.";
+  static const String NOTE_WORTHY_PROJECTS = "Outros Projetos Relevantes.";
   static const String NOTE_WORTHY_PROJECTS_DESC =
-      "Here are some projects worth mentioning. They are also available on my github repository";
+      "Aqui estão alguns projetos que valem a pena mencionar. Eles também estão disponíveis no meu repositório do GitHub.";
 
   // Project Detail
-  static const String ABOUT_PROJECT = "About Project";
-  static const String PLATFORM = "Platform";
-  static const String CATEGORY = "Category";
-  static const String AUTHOR = "Author";
+  static const String ABOUT_PROJECT = "Sobre o Projeto";
+  static const String PLATFORM = "Plataforma";
+  static const String CATEGORY = "Categoria";
+  static const String AUTHOR = "Autor";
   static const String DESIGNER = "Designer";
-  static const String TECHNOLOGY_USED = "Technology Used";
-  static const String LAUNCH_APP = "Launch App";
-  static const String SOURCE_CODE = "Source Code";
-  static const String NEXT_PROJECT = "Next Project";
-
-  static const String VIEW = "View";
-  static const String COMING_SOON = "COMING SOON !!";
-  static const String BUILT_WITH_FLUTTER = "Built using ";
-  static const String DEV_EMAIL = "davidcobbina47@gmail.com";
-  static const String EMAIL_URL = "mailto:<$DEV_EMAIL>?subject=&body=";
-
-  static const String KEY_SKILLS = "KEY SKILLS";
-  static const String EXPERIENCE_2 = "EXPERIENCE";
-  static const String EDUCATION = "EDUCATION";
-
-  static const String SEND_ME_A_MESSAGE = "Send me a message";
-  static const String VIEW_PORTFOLIO = "View Portfolio";
-
-  static const String PROJECT_NAME = "Project Name";
-
-  static const String INTRO = "Hi, my name is";
+  static const String TECHNOLOGY_USED = "Tecnologia Utilizada";
+  static const String LAUNCH_APP = "Abrir Aplicativo";
+  static const String SOURCE_CODE = "Código Fonte";
+  static const String NEXT_PROJECT = "Próximo Projeto";
+  static const String VIEW = "Visualizar";
+  static const String BUILT_WITH_FLUTTER = "Construído usando ";
+  static const String EMAIL_URL = "mailto:<$EMAIL_VALUE>?subject=&body=";
   static const String DEV_NAME = "Pablo Stefan";
-  static const String PUNCH_LINE = "I build things with flutter";
-  static const String SPECIALITY = "FLUTTER DEV";
-  static const String DESIGNED_IN = "Made in Ghana with ";
-  static const String BUILT_BY = "Built by Pablo Stefan ";
-
-  //Form Hint Texts
-  static const String NAME_HINT_TEXT = "Name";
-  static const String PHONE_HINT_TEXT = "Phone (Optional)";
-  static const String EMAIL_HINT_TEXT = "Email";
-  static const String MESSAGE_HINT_TEXT = "Message";
 
   //Skills
   static const String FLUTTER = "Flutter";
   static const String JETPACK_COMPOSE = "Jetpack Compose";
-  static const String JAVA = "Java";
-  static const String ANDROID = "Android";
   static const String PYTHON = "Python";
-  static const String KOTLIN = "Kotlin";
-  static const String JAVASCRIPT = "Javascript";
-  static const String PHP = "PHP";
-  static const String LARAVEL = "Laravel";
-  static const String SQL = "SQL";
-  static const String WORDPRESS = "Wordpress";
-  static const String BOOTSTRAP = "Bootstrap";
-  static const String HTML_CSS = "HTML/CSS";
 
   //routes
   static const String LOADING_PAGE = "/";
@@ -163,19 +123,13 @@ abstract final class StringConst {
   static const String CERTIFICATION_PAGE = "/certifications";
 
   //Socials
-
-  static const String GITHUB_URL = "https://github.com/david-legend";
-  static const String LINKED_IN_URL = "https://www.linkedin.com/in/david-cobbina-7b0226119";
-  static const String TWITTER_URL = "https://twitter.com/DavidLegend47";
-  static const String INSTAGRAM_URL = "https://www.instagram.com/david_legend_47";
+  static const String GITHUB_URL = "https://github.com/pablostefan";
+  static const String LINKED_IN_URL = "https://www.linkedin.com/in/pablosgpereira";
   static const String TELEGRAM_URL = "https://t.me/DavidLegend";
 
   //Contacts
-  static const String CONNECT = "Connect with me";
   static const String EMAIL = "Email";
   static const String LINKED_IN = "LinkedIn";
-  static const String TWITTER = "Twitter";
-  static const String INSTAGRAM = "Instagram";
   static const String TELEGRAM = "Telegram";
   static const String GITHUB = "Github";
 
@@ -202,7 +156,6 @@ abstract final class StringConst {
   //Experience
   static const String CURRENT_MONTH_YEAR = "May 2020 - Current";
   static const String STARTED_MONTH_YEAR = "May 2017";
-
   static const String COMPANY_2 = "Shrinq";
   static const String COMPANY_2_URL = "https://shrinqghana.com/";
   static const String POSITION_2 = "Software Engineer";
@@ -214,7 +167,6 @@ abstract final class StringConst {
       "Developed and maintained client & in-house projects primarily using Javascript, React js, Next js, Express and Node js";
   static const String LOCATION_2 = "Asylum Down - Accra";
   static const String DURATION_2 = "April 2018 - June 2019";
-
   static const String COMPANY_3 = "Bewsys";
   static const String COMPANY_3_URL = "https://bewsys.com/";
   static const String POSITION_3 = "Software Engineer";
@@ -323,7 +275,6 @@ abstract final class StringConst {
   static const String DISNEY_PLUS = "Disney Plus";
   static const String DISNEY_PLUS_PLATFORM = "Android.";
   static const String DISNEY_PLUS_CATEGORY = "UI Kit.";
-  static const String DISNEY_PLUS_SUBTITLE = "Disney+, But Better";
   static const String DISNEY_PLUS_DETAIL =
       "Disney Plus is an amazing UI Kit  designed by Andre Carioca. He describes the UI Kit as his attempt of making the current disney plus app better. For me, this project is my attempt at learning and playing with Jetpack Compose. It contains everything that I am learning about the current state of native android development with Kotlin & Jetpack Compose";
   static const String DISNEY_PLUS_PLAYSTORE_URL = "";
@@ -370,62 +321,40 @@ abstract final class StringConst {
 
   //Noteworthy Projects
   static const String PROGRAMMING_FOR_DATA_SCIENCE = "Programming For Data Science";
-  static const String PROGRAMMING_FOR_DATA_SCIENCE_PLATFORM = "Python.";
-  static const String PROGRAMMING_FOR_DATA_SCIENCE_SUBTITLE = "Udacity Programming For Data Science Course";
   static const String PROGRAMMING_FOR_DATA_SCIENCE_DETAIL = "Udacity Programming For Data Science Course.";
   static const String PROGRAMMING_FOR_DATA_SCIENCE_GITHUB_URL =
       "https://github.com/david-legend/programming-for-data-science-nanodegree";
-  static const String PROGRAMMING_FOR_DATA_SCIENCE_DETAIL_WEB_URL = "";
 
   static const String FINOPP = "Finopp";
-  static const String FINOPP_PLATFORM = "Android / IOS.";
-  static const String FINOPP_SUBTITLE =
-      "Finopp - Financial Opportunities - Its an app that connects startups to Investors. I built this UI as a prototype to compete in the African app launchpad(http://techleaders.eg/aal/competition/).";
   static const String FINOPP_DETAIL =
       "Finopp - Financial Opportunities - Its an app that connects startups to Investors. I built this UI as a prototype to compete in the African app launchpad(http://techleaders.eg/aal/competition/).";
   static const String FINOPP_GITHUB_URL = "https://github.com/david-legend/finopp";
-  static const String FINOPP_DETAIL_WEB_URL = "";
 
   static const String UDAGRAM_IMAGE_FILTERING = "Udagram Image Filtering App";
   static const String UDAGRAM_IMAGE_FILTERING_TECH = "Kubernetes / Docker / Ionic / Node.";
-  static const String UDAGRAM_IMAGE_FILTERING_SUBTITLE =
-      "Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.";
   static const String UDAGRAM_IMAGE_FILTERING_DETAIL =
       "Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.";
   static const String UDAGRAM_IMAGE_FILTERING_GITHUB_URL = "https://github.com/david-legend/udagram";
-  static const String UDAGRAM_IMAGE_FILTERING_DETAIL_WEB_URL = "";
 
   static const String SERVERLESS_TODO = "Serverless Todo App";
   static const String SERVERLESS_TODO_TECH = "Serverless / AWS Lambda / API GateWay / Node / React";
-  static const String SERVERLESS_TODO_SUBTITLE = "Simple TODO application using AWS Lambda and Serverless framework";
   static const String SERVERLESS_TODO_DETAIL = "Simple TODO application using AWS Lambda and Serverless framework";
   static const String SERVERLESS_TODO_GITHUB_URL = "https://github.com/david-legend/serverless-todo-app";
-  static const String SERVERLESS_TODO_DETAIL_WEB_URL = "";
 
   static const String PYTHON_ALGORITHMS = "Python Algorithms";
-  static const String PYTHON_ALGORITHMS_PLATFORM = "Python.";
-  static const String PYTHON_ALGORITHMS_SUBTITLE =
-      "Data structures and interview questions implemented in JavaScript with explanations and links to further readings.";
   static const String PYTHON_ALGORITHMS_DETAIL =
       "Data structures and interview questions implemented in JavaScript with explanations and links to further readings.";
   static const String PYTHON_ALGORITHMS_GITHUB_URL = "https://github.com/david-legend/python-algorithms";
-  static const String PYTHON_ALGORITHMS_DETAIL_WEB_URL = "";
 
   static const String AMOR_APP = "Amor";
-  static const String AMOR_APP_PLATFORM = "Web.";
-  static const String AMOR_APP_SUBTITLE = "beautifully designed portfolio website built with flutter.";
   static const String AMOR_APP_DETAIL = "beautifully designed portfolio website built with flutter.";
   static const String AMOR_APP_GITHUB_URL = "https://github.com/david-legend/amor";
   static const String AMOR_APP_WEB_URL = "https://david-legend.github.io/amor/";
 
   static const String ONBOARDING_APP = "Onboarding Template UI Kit.";
-  static const String ONBOARDING_APP_PLATFORM = "Android / IOS.";
-  static const String ONBOARDING_APP_SUBTITLE =
-      "A beautifully crafted app that takes you through an onboarding experience.";
   static const String ONBOARDING_APP_DETAIL =
       "A beautifully crafted app that takes you through an onboarding experience.";
   static const String ONBOARDING_APP_GITHUB_URL = "https://github.com/david-legend/onboarding-app";
-  static const String ONBOARDING_APP_PLAYSTORE_URL = "";
 
   // Font Family
   static const String VISUELT_PRO = "VisueltPro";

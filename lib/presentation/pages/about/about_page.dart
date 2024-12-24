@@ -102,9 +102,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       ),
     );
 
-    TextTheme textTheme = Theme
-        .of(context)
-        .textTheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? bodyLargeStyle = textTheme.bodyLarge?.copyWith(
       fontSize: Sizes.TEXT_SIZE_18,
       color: AppColors.grey750,
@@ -283,7 +281,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           ),
                           SpaceH40(),
                           AnimatedLineThroughText(
-                            text: StringConst.DEV_EMAIL,
+                            text: StringConst.EMAIL_VALUE,
                             hasSlideBoxAnimation: true,
                             controller: _contactController,
                             onTap: () {
@@ -356,9 +354,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
   }
 
   List<Widget> _buildSocials(List<SocialData> data) {
-    TextTheme textTheme = Theme
-        .of(context)
-        .textTheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? style = textTheme.bodyLarge?.copyWith(color: AppColors.grey750);
     TextStyle? slashStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.grey750,

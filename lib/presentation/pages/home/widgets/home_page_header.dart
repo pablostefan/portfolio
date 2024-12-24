@@ -153,8 +153,8 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                           child: ClipOval(
                             child: Image.asset(
                               ImagePath.DEV,
-                              width: screenWidth * .63,
-                              height: screenWidth * .63,
+                              width: screenWidth * .624,
+                              height: screenWidth * .624,
                             ),
                           ),
                         ),
@@ -195,14 +195,11 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                           controller: lottieController,
                           fit: BoxFit.cover,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 7),
-                          child: ClipOval(
-                            child: Image.asset(
-                              ImagePath.DEV,
-                              width: screenWidth * 0.275,
-                              height: screenWidth * 0.275,
-                            ),
+                        ClipOval(
+                          child: Image.asset(
+                            ImagePath.DEV,
+                            width: screenWidth * 0.27,
+                            height: screenWidth * 0.27,
                           ),
                         ),
                       ],
@@ -373,14 +370,14 @@ class _AboutDevState extends State<AboutDev> {
         SpaceH30(),
         AnimatedPositionedWidget(
           controller: curvedAnimation,
-          width: 200,
+          width: 300,
           height: 60,
           child: AnimatedBubbleButton(
             color: AppColors.grey100,
             imageColor: AppColors.black,
             startOffset: Offset(0, 0),
             targetOffset: Offset(0.1, 0),
-            targetWidth: 200,
+            targetWidth: 240,
             startBorderRadius: const BorderRadius.all(
               Radius.circular(100.0),
             ),
