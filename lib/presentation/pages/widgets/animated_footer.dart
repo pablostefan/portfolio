@@ -4,7 +4,6 @@ import 'package:portfolio/presentation/pages/contact_page.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
 import 'package:portfolio/presentation/widgets/animated_bubble_button.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
-import 'package:portfolio/presentation/widgets/animated_positioned_widget.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -83,42 +82,13 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Spacer(flex: 2),
-            Container(
-              height: circleImageSize,
-              child: Stack(
-                children: [
-                  Positioned(
-                    right: responsiveSize(
-                      context,
-                      assignWidth(context, 0.2),
-                      assignWidth(context, 0.3),
-                      md: assignWidth(context, 0.2),
-                    ),
-                    child: AnimatedPositionedWidget(
-                      controller: CurvedAnimation(
-                        parent: controller,
-                        curve: Curves.fastOutSlowIn,
-                      ),
-                      width: circleImageSize,
-                      height: circleImageSize,
-                      child: Image.asset(
-                        ImagePath.CIRCLE,
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: AnimatedPositionedText(
-                      text: StringConst.WORK_TOGETHER,
-                      textAlign: TextAlign.center,
-                      textStyle: titleStyle,
-                      controller: CurvedAnimation(
-                        parent: controller,
-                        curve: Curves.fastOutSlowIn,
-                      ),
-                    ),
-                  ),
-                ],
+            AnimatedPositionedText(
+              text: StringConst.WORK_TOGETHER,
+              textAlign: TextAlign.center,
+              textStyle: titleStyle,
+              controller: CurvedAnimation(
+                parent: controller,
+                curve: Curves.fastOutSlowIn,
               ),
             ),
             Spacer(),

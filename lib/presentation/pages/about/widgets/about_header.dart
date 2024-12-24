@@ -26,8 +26,8 @@ class AboutHeader extends StatelessWidget {
     );
     double imageWidthLg = responsiveSize(
       context,
-      width * 0.3,
-      width * 0.3,
+      width * 0.4,
+      width * 0.4,
       md: width * 0.4,
     );
     return ResponsiveBuilder(
@@ -64,7 +64,7 @@ class AboutHeader extends StatelessWidget {
                   width: width * 0.55,
                 ),
               ),
-              SizedBox(width: spacing),
+              const Spacer(),
               ClipRRect(
                 borderRadius: BorderRadius.circular(40),
                 child: ConstrainedBox(

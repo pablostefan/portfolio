@@ -119,10 +119,10 @@ class Data {
   static List<String> mobileTechnologies = [
     "Android",
     "Kotlin",
-    "Jetpack Compose",
+    "Java",
     "Flutter",
-    "Dart"
-        "Java Android",
+    "Dart",
+    "Swift",
   ];
 
   static List<String> otherTechnologies = [
@@ -150,7 +150,6 @@ class Data {
     "Firebase",
     "Figma",
     "Adobe XD",
-    "Wordpress",
   ];
   static List<SocialData> socialData1 = [
     SocialData(

@@ -176,13 +176,13 @@ class BuiltWithFlutter extends StatelessWidget {
         ),
         FlutterLogo(size: 14),
         Text(
-          " with ",
+          " com ",
           style: style,
         ),
         Icon(
           FontAwesomeIcons.solidHeart,
           size: 14,
-          color: AppColors.errorRed,
+          color: AppColors.roam,
         )
       ],
     );

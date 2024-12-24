@@ -76,7 +76,7 @@ abstract final class StringConst {
   static const String ABOUT_DEV_CONTACT_EMAIL = "Email.";
   static const String FAMOUS_QUOTE = "“Não tenho talentos especiais. Sou apenas apaixonadamente curioso.”";
   static const String FAMOUS_QUOTE_AUTHOR = "Albert Einstein";
-  static const String WORK_TOGETHER = "Vamos trabalhar juntos.";
+  static const String WORK_TOGETHER = "Vamos trabalhar juntos!";
   static const String AVAILABLE_FOR_FREELANCE = "Estou disponível para Consultoria e Freelancing.";
   static const String SAY_HELLO = "Diga Oi";
 
