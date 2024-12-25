@@ -14,7 +14,7 @@ class ScrollDownButton extends StatelessWidget {
           child: Text(
             StringConst.SCROLL_DOWN.toUpperCase(),
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  fontSize: 12,
+                  fontSize: 10,
                   letterSpacing: 1.7,
                 ),
           ),
@@ -22,7 +22,7 @@ class ScrollDownButton extends StatelessWidget {
         SpaceH16(),
         Image.asset(
           ImagePath.ARROW_DOWN,
-          height: 24,
+          height: 20,
         ),
       ],
     );

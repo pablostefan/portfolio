@@ -55,9 +55,9 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
       color: AppColors.accentColor,
       fontSize: responsiveSize(
         context,
-        Sizes.TEXT_SIZE_30,
-        Sizes.TEXT_SIZE_60,
-        md: Sizes.TEXT_SIZE_50,
+        Sizes.TEXT_SIZE_20,
+        Sizes.TEXT_SIZE_50,
+        md: Sizes.TEXT_SIZE_40,
       ),
     );
     TextStyle? subtitleStyle = style?.copyWith(

@@ -2,7 +2,7 @@ part of 'values.dart';
 
 abstract final class StringConst {
   //strings
-  static const String APP_TITLE = "Pablo Pereira";
+  static const String APP_TITLE = "Pablo Stefan";
   static const String SITE_URL = "https://pablopereira.com";
 
   static const String HOME = "Início";
@@ -21,11 +21,11 @@ abstract final class StringConst {
   static const String HI = "Oi,";
   static const String DEV_INTRO = "Eu sou Pablo.";
   static const String DEV_TITLE = "Engenheiro de Software.";
-  static const String DEV_DESC = "Engenheiro Mobile / Desenvolvedor Full Stack";
-  static const String SEE_MY_WORKS = "Veja meus trabalhos";
-  static const String SCROLL_DOWN = "Role para baixo";
-  static const String CRAFTED_WITH_LOVE = "Feito com amor.";
-  static const String SELECTION = "Aqui está uma seleção dos meus trabalhos recentes.";
+  static const String DEV_DESC = "Desenvolvedor mobile com foco em qualidade e inovação!";
+  static const String SEE_MY_WORKS = "Conheça Meu Trabalho";
+  static const String SCROLL_DOWN = "Continue explorando";
+  static const String CRAFTED_WITH_LOVE = "Desenvolvimento com Excelência";
+  static const String SELECTION = "Explore meus trabalhos mais recentes e veja como posso contribuir com suas ideias.";
   static const String THERES_MORE = "Tem mais";
   static const String VIEW_ALL_PROJECTS = "Ver todos os projetos";
 
@@ -53,31 +53,31 @@ abstract final class StringConst {
   // About Page
   static const String ABOUT_DEV_CATCH_LINE =
       "Sou um desenvolvedor front-end apaixonado e designer de UI/UX com um olhar atento aos detalhes.";
-  static const String ABOUT_DEV_CATCH_LINE_1 = "Especializado em criar ";
+  static const String ABOUT_DEV_CATCH_LINE_1 = "Especializado no desenvolvimento";
   static const String ABOUT_DEV_CATCH_LINE_2 = "aplicativos móveis e web de alta qualidade.";
-  static const String ABOUT_DEV_CATCH_LINE_4 = "Eu também tenho uma forte";
-  static const String ABOUT_DEV_CATCH_LINE_5 = "paixão pelo trabalho open-source.";
+  static const String ABOUT_DEV_CATCH_LINE_4 = "Experiência em soluções";
+  static const String ABOUT_DEV_CATCH_LINE_5 = "para saúde, gestão de condomínios, pagamentos e criptomoedas.";
   static const String ABOUT_DEV_STORY = "História";
   static const String ABOUT_DEV_STORY_TITLE = "Um pouco sobre mim.";
   static const String ABOUT_DEV_STORY_CONTENT_1 =
-      "Sou engenheiro de software full stack apaixonado por criar aplicativos de alta qualidade. Tenho uma ampla experiência desenvolvendo aplicativos frontend (mobile e web) e backend.";
+      "Sou um profissional com 3 anos de experiência em Flutter, Android e iOS, atuação em projetos nas áreas de saúde e bem-estar, gestão de condomínios, pagamentos e criptomoedas.";
   static const String ABOUT_DEV_STORY_CONTENT_2 =
-      "Tenho um Mestrado em TI pela Carnegie Mellon University, onde me especializei em Engenharia de Software. Tenho fortes habilidades técnicas e excelentes habilidades interpessoais.";
+      "Especialista em CI/CD, APIs RESTful e GraphQL, com experiência na publicação de apps nas lojas Google Play e App Store, além de customizações com White Labels e Flavors.";
   static const String ABOUT_DEV_STORY_CONTENT_3 =
-      "Sou ótimo em encontrar soluções para problemas e adoro criar projetos divertidos em meu tempo livre. Sou um leitor ávido, amante de todas as formas de arte e música, fã de poesia e adoro viajar.";
+      "Atuei no desenvolvimento de aplicativos como Fiibo (saúde), Alpha Conds (condomínios) e Krykto (cripto), além de soluções para máquinas de pagamento.";
   static const String ABOUT_DEV_TECHNOLOGY = "Tecnologia";
   static const String MOBILE_TECH = "Tecnologias Mobile";
   static const String OTHER_TECH = "Web / Nuvem / Design";
-  static const String ABOUT_DEV_TECHNOLOGY_TITLE = "O que eu uso.";
+  static const String ABOUT_DEV_TECHNOLOGY_TITLE = "Tecnologias que Domino.";
   static const String ABOUT_DEV_TECHNOLOGY_CONTENT =
       "Uso diversas ferramentas para ajudar no meu processo criativo ao dar vida às ideias. Abaixo estão as ferramentas e tecnologias que usei ao longo dos anos.";
   static const String ABOUT_DEV_CONTACT = "Contato";
-  static const String ABOUT_DEV_CONTACT_SOCIAL = "Redes Sociais.";
+  static const String ABOUT_DEV_CONTACT_SOCIAL = "Entre em Contato.";
   static const String ABOUT_DEV_CONTACT_EMAIL = "Email.";
-  static const String FAMOUS_QUOTE = "“Não tenho talentos especiais. Sou apenas apaixonadamente curioso.”";
-  static const String FAMOUS_QUOTE_AUTHOR = "Albert Einstein";
-  static const String WORK_TOGETHER = "Vamos trabalhar juntos!";
-  static const String AVAILABLE_FOR_FREELANCE = "Estou disponível para Consultoria e Freelancing.";
+  static const String FAMOUS_QUOTE = "“O sucesso é a soma de pequenos esforços repetidos dia após dia.”";
+  static const String FAMOUS_QUOTE_AUTHOR = "Robert Collier";
+  static const String WORK_TOGETHER = "Pronto para criar algo incrível juntos?";
+  static const String AVAILABLE_FOR_FREELANCE = "Estou disponível para consultoria e projetos freelance.";
   static const String SAY_HELLO = "Diga Oi";
 
   // Works Page

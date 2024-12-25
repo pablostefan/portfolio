@@ -37,9 +37,9 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
   late Animation<double> opacityAnimation;
   late Animation<double> fadeAnimation;
   late Color lineColor;
-  final Duration _scaleDuration = Duration(milliseconds: 750);
-  final Duration _leftRightContainerDuration = Duration(milliseconds: 750);
-  final Duration _containerDuration = Duration(milliseconds: 2000);
+  final Duration _scaleDuration = Duration(milliseconds: 300);
+  final Duration _leftRightContainerDuration = Duration(milliseconds: 200);
+  final Duration _containerDuration = Duration(milliseconds: 500);
   bool _leftRightAnimationStarted = false;
   bool _leftRightAnimationDone = false;
   bool _isAnimationOver = false;

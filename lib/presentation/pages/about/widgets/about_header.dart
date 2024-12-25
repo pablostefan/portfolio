@@ -18,12 +18,6 @@ class AboutHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double spacing = responsiveSize(
-      context,
-      width * 0.15,
-      width * 0.15,
-      md: width * 0.05,
-    );
     double imageWidthLg = responsiveSize(
       context,
       width * 0.4,
@@ -101,7 +95,7 @@ class AboutDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? style = textTheme.bodyLarge?.copyWith(
-      fontSize: responsiveSize(context, 30, 44, md: 34),
+      fontSize: responsiveSize(context, 26, 40, md: 35),
       height: 1.2,
       fontWeight: FontWeight.w200,
     );
@@ -124,7 +118,7 @@ class AboutDescription extends StatelessWidget {
           heightFactor: 2,
           textStyle: style,
         ),
-        SpaceH8(),
+        SpaceH4(),
         AnimatedTextSlideBoxTransition(
           controller: controller,
           text: StringConst.ABOUT_DEV_CATCH_LINE_4,

@@ -32,59 +32,49 @@ class HomePageHeader extends StatefulWidget {
 }
 
 class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStateMixin {
-  late AnimationController controller;
-  late AnimationController lottieController;
-  late AnimationController scrollDownButtonController;
-  late Animation<Offset> animation;
-  late Animation<Offset> scrollDownBtnAnimation;
+  late AnimationController _controller;
+  late AnimationController _lottieController;
+  late AnimationController _scrollDownButtonController;
 
   @override
   void initState() {
-    scrollDownButtonController = AnimationController(
+    _scrollDownButtonController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
     );
-    lottieController = AnimationController(
+    _lottieController = AnimationController(
       duration: const Duration(seconds: 20),
       vsync: this,
     )..repeat();
-    controller = AnimationController(
+    _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1500),
     )..repeat();
-    animation = Tween<Offset>(
-      begin: Offset(0, 0.05),
-      end: Offset(0, -0.05),
-    ).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-    controller.addStatusListener((status) {
+
+    _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        controller.reverse();
+        _controller.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        controller.forward();
+        _controller.forward();
       }
     });
-    lottieController.addStatusListener((status) {
+    _lottieController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        lottieController.reset();
-        lottieController.forward();
+        _lottieController.reset();
+        _lottieController.forward();
         // rotationController.reverse();
       }
     });
-    controller.forward();
-    lottieController.forward();
+    _controller.forward();
+    _lottieController.forward();
     super.initState();
   }
 
   @override
   void dispose() {
-    controller.dispose();
-    scrollDownButtonController.dispose();
-    lottieController.dispose();
+    _controller.dispose();
+    _scrollDownButtonController.dispose();
+    _lottieController.dispose();
     super.dispose();
   }
 
@@ -145,7 +135,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                         Lottie.network(
                           "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
                           width: screenWidth,
-                          controller: lottieController,
+                          controller: _lottieController,
                           fit: BoxFit.cover,
                         ),
                         Padding(
@@ -192,7 +182,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                         Lottie.network(
                           "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
                           width: screenWidth * 0.35,
-                          controller: lottieController,
+                          controller: _lottieController,
                           fit: BoxFit.cover,
                         ),
                         ClipOval(
@@ -220,6 +210,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                 } else {
                   return InkWell(
                     hoverColor: Colors.transparent,
+                    enableFeedback: false,
                     onTap: () {
                       Scrollable.ensureVisible(
                         widget.scrollToWorksKey.currentContext!,
@@ -229,10 +220,10 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                     child: Container(
                       margin: EdgeInsets.only(right: 24, bottom: 40),
                       child: MouseRegion(
-                        onEnter: (e) => scrollDownButtonController.forward(),
-                        onExit: (e) => scrollDownButtonController.reverse(),
+                        onEnter: (e) => _scrollDownButtonController.forward(),
+                        onExit: (e) => _scrollDownButtonController.reverse(),
                         child: AnimatedSlideTransition(
-                          controller: scrollDownButtonController,
+                          controller: _scrollDownButtonController,
                           beginOffset: Offset(0, 0),
                           targetOffset: Offset(0, 0.1),
                           child: ScrollDownButton(),
@@ -370,14 +361,14 @@ class _AboutDevState extends State<AboutDev> {
         SpaceH30(),
         AnimatedPositionedWidget(
           controller: curvedAnimation,
-          width: 300,
+          width: 340,
           height: 60,
           child: AnimatedBubbleButton(
             color: AppColors.grey100,
             imageColor: AppColors.black,
             startOffset: Offset(0, 0),
             targetOffset: Offset(0.1, 0),
-            targetWidth: 240,
+            targetWidth: 290,
             startBorderRadius: const BorderRadius.all(
               Radius.circular(100.0),
             ),
