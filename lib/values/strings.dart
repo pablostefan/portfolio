@@ -357,6 +357,6 @@ abstract final class StringConst {
   static const String VISUELT_PRO = "VisueltPro";
 
   //API
-  static const String BASE_URL = "https://portfolio-api-liart.vercel.app/api";
+  static const String BASE_URL = "https://api.emailjs.com/api/v1.0/email/send";
   static const String GET_IN_TOUCH_POINT = "/getintouch";
 }

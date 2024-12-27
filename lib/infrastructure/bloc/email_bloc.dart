@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:portfolio/infrastructure/api/email_repository.dart';
@@ -11,28 +9,31 @@ part 'email_state.dart';
 class EmailBloc extends Bloc<EmailEvent, EmailState> {
   final EmailRepository _emailRepository;
 
-  EmailState get initialState => EmailState.initial();
+  EmailBloc(this._emailRepository) : super(const EmailState.initial()) {
+    // Configurando o handler para o evento SendEmail
+    on<SendEmail>(_onSendEmail);
+  }
 
-  EmailBloc(this._emailRepository) : super(EmailState.initial());
+  // Handler para o evento SendEmail
+  Future<void> _onSendEmail(
+    SendEmail event,
+    Emitter<EmailState> emit,
+  ) async {
+    emit(const EmailState.sendingEmail());
 
-  Stream<EmailState> mapEventToState(
-    EmailEvent event,
-  ) async* {
-    yield EmailState.sendingEmail();
-
-    final response = await _emailRepository.sendEmail(
+    final result = await _emailRepository.sendEmail(
       name: event.name,
       email: event.email,
       subject: event.subject,
       message: event.message,
     );
 
-    yield* response.fold(
-      (failure) async* {
-        yield EmailState.failure();
+    result.fold(
+      (failure) {
+        emit(const EmailState.failure());
       },
-      (data) async* {
-        yield EmailState.emailSentSuccessFully();
+      (success) {
+        emit(const EmailState.emailSentSuccessFully());
       },
     );
   }

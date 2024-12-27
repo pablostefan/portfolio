@@ -1,13 +1,8 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
-import 'package:portfolio/infrastructure/api/email_model.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:portfolio/infrastructure/failures/email_failure.dart';
-import 'package:portfolio/values/values.dart';
 
 abstract class EmailApi {
-  ///portfolio-api-chi.vercel.app/api/getintouch
-  Future<Email> sendEmail({
+  Future<void> sendEmail({
     required String name,
     required String email,
     required String subject,
@@ -16,35 +11,27 @@ abstract class EmailApi {
 }
 
 class EmailApiImpl implements EmailApi {
-  final http.Client client;
-
-  EmailApiImpl({required this.client});
-
   @override
-  Future<Email> sendEmail({
+  Future<void> sendEmail({
     required String name,
     required String email,
     required String subject,
     required String message,
   }) async {
     try {
-      final response = await client.post(
-        Uri.parse(StringConst.BASE_URL + StringConst.GET_IN_TOUCH_POINT),
-        body: jsonEncode({
-          "name": name,
-          "email": email,
-          "subject": subject,
-          "message": message,
-        }),
+      await emailjs.send(
+        'service_lkvgczg',
+        'template_zjx2nfy',
+        {
+          'user_name': name,
+          'user_email': email,
+          'user_subject': subject,
+          'user_message': message,
+        },
+        const emailjs.Options(publicKey: 'JUDU2bYOE2ba2BtRZ', privateKey: 'qx5vk_5-E87jjZ-E5Cuh1'),
       );
-
-      if (response.statusCode == 200) {
-        return Email(status: "success");
-      } else {
-        throw EmailFailure.serverError();
-      }
     } catch (e) {
-      print("Errorss  ${e.toString()}");
+      // Outros erros inesperados
       throw EmailFailure.serverError();
     }
   }
