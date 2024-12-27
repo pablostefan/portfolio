@@ -181,7 +181,7 @@ class _ExperiencePageState extends State<ExperiencePage> with TickerProviderStat
                       Sizes.TEXT_SIZE_16,
                       Sizes.TEXT_SIZE_18,
                     ),
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],

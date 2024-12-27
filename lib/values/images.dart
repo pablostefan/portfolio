@@ -33,11 +33,11 @@ abstract final class ImagePath {
   static const String GOOGLE_PLAY = "$imageDir/google_play.png";
 
   // Certifications
-  static const String ANDROID_BASICS_CERT = "$imageDir/android_basics_cert.png";
-  static const String CLOUD_DEVELOPER_CERT = "$imageDir/cloud_developer_cert.png";
-  static const String CMU_MASTERS_CERT = "$imageDir/cmu_cert.png";
-  static const String ASSOCIATE_ANDROID_DEV = "$imageDir/associate_android_dev.png";
-  static const String DATA_SCIENCE_CERT = "$imageDir/data_science_cert.png";
+  static const String ANDROID_CERT = "$imageDir/certificado_android.png";
+  static const String COODESH_CERT = "$imageDir/certificado_codesh.png";
+  static const String XP_MOBILE_CERT = "$imageDir/certificado_mobile.png";
+  static const String XP_ARCHITECT_CERT = "$imageDir/certificado_arquiteto.png";
+  static const String FLUTTER_ANDROID_CERT = "$imageDir/certificado_flutter.png";
 
   // Projects
 

@@ -72,9 +72,7 @@ class _WorksPageState extends State<WorksPage> with TickerProviderStateMixin {
       },
       child: ListView(
         padding: EdgeInsets.zero,
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           PageHeader(
             headingText: StringConst.WORKS,

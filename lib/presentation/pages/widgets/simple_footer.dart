@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
@@ -167,23 +166,13 @@ class BuiltWithFlutter extends StatelessWidget {
     );
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.alphabetic,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           StringConst.BUILT_WITH_FLUTTER,
           style: style,
         ),
         FlutterLogo(size: 14),
-        Text(
-          " com ",
-          style: style,
-        ),
-        Icon(
-          FontAwesomeIcons.solidHeart,
-          size: 14,
-          color: AppColors.roam,
-        )
       ],
     );
   }

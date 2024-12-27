@@ -6,7 +6,8 @@ import 'package:portfolio/values/values.dart';
 import 'portfolio_button.dart';
 
 class CertificationCard extends StatefulWidget {
-  CertificationCard({
+  const CertificationCard({
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.subtitle,
@@ -41,7 +42,7 @@ class CertificationCard extends StatefulWidget {
   final bool isMobileOrTablet;
 
   @override
-  _CertificationCardState createState() => _CertificationCardState();
+  State<CertificationCard> createState() => _CertificationCardState();
 }
 
 class _CertificationCardState extends State<CertificationCard> with SingleTickerProviderStateMixin {
@@ -95,7 +96,7 @@ class _CertificationCardState extends State<CertificationCard> with SingleTicker
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onTap,
-      child: Container(
+      child: SizedBox(
         width: widget.width,
         height: widget.height,
         child: MouseRegion(
@@ -107,7 +108,7 @@ class _CertificationCardState extends State<CertificationCard> with SingleTicker
                 widget.imageUrl,
                 width: widget.width,
                 height: widget.height,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
               // if it is not a tablet or mobile device, allow on hover effect
               !widget.isMobileOrTablet && _hovering
@@ -133,7 +134,7 @@ class _CertificationCardState extends State<CertificationCard> with SingleTicker
                           PortfolioButton(
                             height: Sizes.HEIGHT_36,
                             hasIcon: false,
-                            width: 80,
+                            width: 90,
                             buttonColor: AppColors.white,
                             borderColor: AppColors.black,
                             onHoverColor: AppColors.black,
@@ -192,7 +193,7 @@ class _CertificationCardState extends State<CertificationCard> with SingleTicker
         PortfolioButton(
           height: Sizes.HEIGHT_36,
           hasIcon: false,
-          width: 80,
+          width: 90,
           buttonColor: AppColors.white,
           borderColor: AppColors.black,
           onHoverColor: AppColors.black,

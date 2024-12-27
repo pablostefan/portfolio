@@ -21,10 +21,10 @@ abstract final class StringConst {
   static const String HI = "Oi,";
   static const String DEV_INTRO = "Eu sou Pablo.";
   static const String DEV_TITLE = "Engenheiro de Software.";
-  static const String DEV_DESC = "Desenvolvedor mobile com foco em qualidade e inovação!";
+  static const String DEV_DESC = "Desenvolvedor mobile com foco em qualidade e inovação.";
   static const String SEE_MY_WORKS = "Conheça Meu Trabalho";
   static const String SCROLL_DOWN = "Continue explorando";
-  static const String CRAFTED_WITH_LOVE = "Desenvolvimento com Excelência";
+  static const String CRAFTED_WITH_LOVE = "Desenvolvimento com excelência";
   static const String SELECTION = "Explore meus trabalhos mais recentes e veja como posso contribuir com suas ideias.";
   static const String THERES_MORE = "Tem mais";
   static const String VIEW_ALL_PROJECTS = "Ver todos os projetos";
@@ -134,74 +134,71 @@ abstract final class StringConst {
   static const String GITHUB = "Github";
 
   //Certificate Urls
-  static const String CMU_CERT_URL =
-      "https://www.cmu.edu/hub/registrar/graduation/diplomas/electronic/validation/index.html";
-  static const String ASSOCIATE_ANDROID_DEV_URL = "https://www.credential.net/b296da88-d6be-4bb5-9756-b13efea3a421";
-  static const String DATA_SCIENCE_CERT_URL = "https://graduation.udacity.com/confirm/7CGEJAFR";
-  static const String CLOUD_DEVELOPER_URL = "https://confirm.udacity.com/PJU23DCP";
-  static const String ANDROID_BASICS_CERT_URL = "https://graduation.udacity.com/confirm/9VTDRN5K";
+  static const String XP_CERT_URL = "https://certificados.xpeducacao.com.br";
+  static const String FLUTTER_ANDROID_URL =
+      "https://udemy-certificate.s3.amazonaws.com/pdf/UC-2d0993dc-b188-4542-951d-570210fa40a3.pdf";
+  static const String COODESH_URL = "https://coodesh.com/share/certificate/8639ab20-3c84-11ee-9234-83e79ee27e51";
+  static const String ANDROID_CERT_URL =
+      "https://udemy-certificate.s3.amazonaws.com/pdf/UC-08e56b62-acf8-4a53-a9eb-b4ad2be4bddb.pdf";
 
   //AwardedBy
-  static const String GOOGLE = "Google";
-  static const String UDACITY = "Udacity";
-  static const String CMU = "Carnegie Mellon University";
+  static const String COODESH = "Coodesh";
+  static const String UDEMY = "Udemy";
+  static const String XP_EDUCATION = "XP Educação";
 
   //CertificationType
-  static const String MSC_IT = "Msc In Information Technology";
-  static const String ASSOCIATE_ANDROID_DEV = "Associate Android Developer";
-  static const String CLOUD_DEVELOPER = "Cloud Developer";
-  static const String DATA_SCIENCE = "Data Science";
-  static const String ANDROID_BASICS = "Android Basics";
+  static const String XP_MOBILE = "Desenvolvedor Mobile Multiplataforma";
+  static const String XP_ARCHITECT = "Arquiteto de Software";
+  static const String COODESH_TITLE = "FLUTTER";
+  static const String FLUTTER_ANDROID = "Aprenda Flutter e Desenvolva Apps Para Android";
+  static const String ANDROID = "Desenvolvimento de Aplicativos Android usando Kotlin";
 
   //Experience
-  static const String CURRENT_MONTH_YEAR = "May 2020 - Current";
-  static const String STARTED_MONTH_YEAR = "May 2017";
-  static const String COMPANY_2 = "Shrinq";
-  static const String COMPANY_2_URL = "https://shrinqghana.com/";
-  static const String POSITION_2 = "Software Engineer";
-  static const String COMPANY_2_ROLE_1 =
-      "Built a mobile app to track the status of all requested fibre broadband for Vodafone Ghana using Java Android.";
-  static const String COMPANY_2_ROLE_2 =
-      "Worked on a team of 2 to build an ID verification application using Java Android.";
-  static const String COMPANY_2_ROLE_3 =
-      "Developed and maintained client & in-house projects primarily using Javascript, React js, Next js, Express and Node js";
-  static const String LOCATION_2 = "Asylum Down - Accra";
-  static const String DURATION_2 = "April 2018 - June 2019";
-  static const String COMPANY_3 = "Bewsys";
-  static const String COMPANY_3_URL = "https://bewsys.com/";
-  static const String POSITION_3 = "Software Engineer";
-  static const String COMPANY_3_ROLE_1 =
-      "Worked in a team of 3 to design and implement backend infrastructure of an inmate management system for the National Prison of South Sudan.";
-  static const String COMPANY_3_ROLE_2 =
-      "Architected and implemented a mobile application for the Palestinian Agriculture Advisory System.";
-  static const String COMPANY_3_ROLE_3 =
-      "Modified existing software to correct errors, upgrade interfaces and improve performance.";
-  static const String LOCATION_3 = "East Legon - Accra";
-  static const String DURATION_3 = "August 2019 - April 2020";
+  static const String COMPANY_KRYKTO = "Krykto";
+  static const String COMPANY_KRYKTO_URL = "https://www.krykto.com";
+  static const String POSITION_KRYKTO = "Desenvolvedor Mobile (Flutter)";
+  static const String COMPANY_KRYKTO_ROLE_1 =
+      "Liderança de uma equipe de 3 desenvolvedores, incluindo treinamento e orientação para promover o desenvolvimento e a eficiência do time;";
+  static const String COMPANY_KRYKTO_ROLE_2 =
+      "Desenvolvimento de novas features, garantindo a implementação eficiente e de alta qualidade utilizando o Framework Flutter;";
+  static const String COMPANY_KRYKTO_ROLE_3 =
+      "Realização de revisões de código e fornecimento de feedback à equipe mobile;";
+  static const String COMPANY_KRYKTO_ROLE_4 =
+      "Responsável por projetar e implementar arquiteturas modulares de aplicativos, seguindo os principais padrões e boas práticas de desenvolvimento. Foco em escrever código limpo, eficiente e reutilizável, garantindo a qualidade, escalabilidade e fácil manutenção do software;";
+  static const String COMPANY_KRYKTO_ROLE_5 =
+      "Elaboração e sugestão das melhores práticas e soluções para o aplicativo; ";
+  static const String COMPANY_KRYKTO_ROLE_6 =
+      "Atendimento e colaboração com desenvolvedores, designers e partes interessadas para garantir entregas de alta qualidade dentro dos prazos estabelecidos;";
+  static const String COMPANY_KRYKTO_ROLE_7 =
+      " Implantação e execução de testes unitários, de widgets e de integração, garantindo a robustez e a qualidade dos aplicativos;";
+  static const String COMPANY_KRYKTO_ROLE_8 =
+      "Participação ativa em reuniões de planejamento e revisões de sprint, fornecendo estimativas de esforço e contribuindo com ideias e sugestões para melhorar o processo de desenvolvimento;";
+  static const String LOCATION_KRYKTO = "Ribeirão Preto - Brasil";
+  static const String DURATION_KRYKTO = "JAN 2023 - ABR 2024";
 
-  static const String COMPANY_4 = "Brij Money";
-  static const String COMPANY_4_URL = "https://www.brij.money/";
-  static const String POSITION_4 = "Software Engineer Intern";
-  static const String COMPANY_4_ROLE_1 =
-      "Worked closely with designers & backend engineers to develop and ship merchants feature which allowed end users to purchase items from a merchant store on the Brij app.";
-  static const String COMPANY_4_ROLE_2 =
-      "Developed and shipped airtime & bundle purchasing feature on the Brij mobile app.";
-  static const String COMPANY_4_ROLE_3 =
-      "Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences across brij’s iOS and Android mobile apps.";
-  static const String LOCATION_4 = "Accra - Ghana";
-  static const String DURATION_4 = "June 2021 - Aug 2021";
-
-  static const String COMPANY_5 = "Consultant";
-  static const String COMPANY_5_URL = SITE_URL;
-  static const String POSITION_5 = "Software Engineer Consultant";
-  static const String COMPANY_5_ROLE_1 =
-      "Led engineering team to develop & ship a SaaS grid monitoring mobile application platform for Hive Power company in Switzerland.";
-  static const String COMPANY_5_ROLE_2 =
-      "Designed and built technology infrastructure for a leading Ghanaian Insurance company";
-  static const String COMPANY_5_ROLE_3 =
-      "Worked with GoFlow Services in India to improve the architecture of an already existing video streaming mobile application (BeThere).";
-  static const String LOCATION_5 = "Kigali - Rwanda";
-  static const String DURATION_5 = "May 2020 - Sept 2022";
+  static const String COMPANY_FIIBO = "Fiibo";
+  static const String COMPANY_FIIBO_URL = "https://fiibo.com.br";
+  static const String POSITION_FIIBO = "Desenvolvedor Mobile (Flutter)";
+  static const String COMPANY_FIIBO_ROLE_1 =
+      "Implantação e manutenção de pipelines de CI/CD, garantindo a automação e eficiência no processo de integração e entrega contínua;";
+  static const String COMPANY_FIIBO_ROLE_2 =
+      "Responsável pela criação de White Labels e configuração de Flavors, permitindo a personalização e adaptação de aplicativos para diferentes marcas e clientes;";
+  static const String COMPANY_FIIBO_ROLE_3 =
+      "Desenvolvimento e manutenção do aplicativo principal da empresa, focado em saúde e bem-estar;";
+  static const String COMPANY_FIIBO_ROLE_4 =
+      "Implementação de novas funcionalidades e melhorias contínuas no aplicativo para atender às necessidades e aprimorar a experiência dos usuários;";
+  static const String COMPANY_FIIBO_ROLE_5 =
+      "Monitoramento e análise de métricas de desempenho do aplicativo, utilizando ferramentas como Firebase Analytics e New Relic;";
+  static const String COMPANY_FIIBO_ROLE_6 =
+      "Desenvolvimento de funcionalidades offline-first, permitindo a utilização do aplicativo mesmo em ambientes sem conectividade;";
+  static const String COMPANY_FIIBO_ROLE_7 =
+      "Mentoria e apoio técnico a membros da equipe de desenvolvimento, promovendo o crescimento e o compartilhamento de conhecimento;";
+  static const String COMPANY_FIIBO_ROLE_8 =
+      "Implementação de animações avançadas e interações intuitivas para melhorar a experiência do usuário.";
+  static const String COMPANY_FIIBO_ROLE_9 =
+      "Condução e liderança das provas de conceito (POCs) para validar novas soluções e tecnologias;";
+  static const String LOCATION_FIIBO = "São Paulo - Brasil";
+  static const String DURATION_FIIBO = "ABR 2020 - Atual";
 
   //Portfolio, Projects
   static const String PORTFOLIO_SITE_V2 = "Aerium V2";

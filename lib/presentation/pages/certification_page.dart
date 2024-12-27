@@ -161,12 +161,7 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
             actionTitle: StringConst.VIEW,
             isMobileOrTablet: isDisplayMobileOrTablet(context) ? true : false,
             height: isDisplayMobile(context) ? assignHeight(context, 0.40) : assignHeight(context, 0.45),
-            width: isDisplayMobile(context)
-                ? assignWidth(
-                    context,
-                    0.8,
-                  )
-                : (width - spacing) / 2,
+            width: isDisplayMobile(context) ? assignWidth(context, 0.8) : (width - spacing) / 2,
           ),
         ),
       );
