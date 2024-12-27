@@ -65,12 +65,12 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
     super.dispose();
   }
 
-  bool isFormValid() {
+  bool get _isFormValid {
     return _nameFilled && _subjectFilled && _messageFilled && _emailFilled;
   }
 
   void sendEmail() {
-    if (isFormValid()) {
+    if (_isFormValid) {
       setState(() {
         isSendingEmail = true;
       });

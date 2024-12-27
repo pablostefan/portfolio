@@ -38,6 +38,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
 
   @override
   void initState() {
+    super.initState();
     _scrollDownButtonController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
@@ -67,7 +68,6 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
     });
     _controller.forward();
     _lottieController.forward();
-    super.initState();
   }
 
   @override
@@ -111,8 +111,8 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       top: responsiveSize(
         context,
         30,
-        screenHeight * 0.25,
-        sm: screenHeight * 0.25,
+        screenHeight * 0.17,
+        sm: screenHeight * 0.17,
       ),
       bottom: responsiveSize(context, 20, 40),
     );

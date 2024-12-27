@@ -89,27 +89,27 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     double contentAreaWidth = responsiveSize(
       context,
-      assignWidth(context, 0.8),
-      assignWidth(context, 0.75),
-      sm: assignWidth(context, 0.8),
+      assignWidth(context, .8),
+      assignWidth(context, .75),
+      sm: assignWidth(context, .8),
     );
     EdgeInsetsGeometry padding = EdgeInsets.only(
       left: responsiveSize(
         context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
+        assignWidth(context, .1),
+        assignWidth(context, .15),
       ),
       right: responsiveSize(
         context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.10),
+        assignWidth(context, .1),
+        assignWidth(context, .1),
         // sm: assignWidth(context, 0.10),
       ),
       top: responsiveSize(
         context,
-        assignHeight(context, 0.15),
-        assignHeight(context, 0.15),
-        // sm: assignWidth(context, 0.10),
+        assignHeight(context, .2),
+        assignHeight(context, .2),
+        sm: assignWidth(context, .15),
       ),
     );
 
@@ -147,9 +147,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       selectedRoute: AboutPage.aboutPageRoute,
       selectedPageName: StringConst.ABOUT,
       navBarAnimationController: _controller,
-      onLoadingAnimationDone: () {
-        _controller.forward();
-      },
+      onLoadingAnimationDone: _controller.forward,
       child: ListView(
         padding: EdgeInsets.zero,
         controller: _scrollController,

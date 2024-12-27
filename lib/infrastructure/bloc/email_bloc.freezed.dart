@@ -235,8 +235,12 @@ class _$SendEmail implements SendEmail {
 }
 
 abstract class SendEmail implements EmailEvent {
-  const factory SendEmail(
-      {required String name, required String email, required String subject, required String message}) = _$SendEmail;
+  const factory SendEmail({
+    required String name,
+    required String email,
+    required String subject,
+    required String message,
+  }) = _$SendEmail;
 
   @override
   String get name => throw _privateConstructorUsedError;

@@ -20,6 +20,7 @@ class EmailApiImpl implements EmailApi {
 
   EmailApiImpl({required this.client});
 
+  @override
   Future<Email> sendEmail({
     required String name,
     required String email,
