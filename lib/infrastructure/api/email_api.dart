@@ -1,37 +1,23 @@
 import 'package:emailjs/emailjs.dart' as emailjs;
+import 'package:portfolio/infrastructure/api/email_model.dart';
 import 'package:portfolio/infrastructure/failures/email_failure.dart';
+import 'package:portfolio/values/env.dart';
 
 abstract class EmailApi {
-  Future<void> sendEmail({
-    required String name,
-    required String email,
-    required String subject,
-    required String message,
-  });
+  Future<void> sendEmail(Email email);
 }
 
 class EmailApiImpl implements EmailApi {
   @override
-  Future<void> sendEmail({
-    required String name,
-    required String email,
-    required String subject,
-    required String message,
-  }) async {
+  Future<void> sendEmail(Email email) async {
     try {
       await emailjs.send(
-        'service_lkvgczg',
-        'template_zjx2nfy',
-        {
-          'user_name': name,
-          'user_email': email,
-          'user_subject': subject,
-          'user_message': message,
-        },
-        const emailjs.Options(publicKey: 'JUDU2bYOE2ba2BtRZ', privateKey: 'qx5vk_5-E87jjZ-E5Cuh1'),
+        ENV.service,
+        ENV.template,
+        email.toJson(),
+        const emailjs.Options(publicKey: ENV.publicKey, privateKey: ENV.privateKey),
       );
     } catch (e) {
-      // Outros erros inesperados
       throw EmailFailure.serverError();
     }
   }

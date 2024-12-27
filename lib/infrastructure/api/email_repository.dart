@@ -1,14 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:portfolio/infrastructure/api/email_api.dart';
+import 'package:portfolio/infrastructure/api/email_model.dart';
 import 'package:portfolio/infrastructure/failures/email_failure.dart';
 
 abstract class EmailRepository {
-  Future<Either<EmailFailure, void>> sendEmail({
-    required String name,
-    required String email,
-    required String subject,
-    required String message,
-  });
+  Future<Either<EmailFailure, void>> sendEmail(Email email);
 }
 
 class EmailRepositoryImpl implements EmailRepository {
@@ -17,20 +13,13 @@ class EmailRepositoryImpl implements EmailRepository {
   EmailRepositoryImpl({required this.emailApi});
 
   @override
-  Future<Either<EmailFailure, void>> sendEmail({
-    required String name,
-    required String email,
-    required String subject,
-    required String message,
-  }) async {
+  Future<Either<EmailFailure, void>> sendEmail(Email email) async {
     try {
-      return Right(await emailApi.sendEmail(name: name, email: email, subject: subject, message: message));
+      return Right(await emailApi.sendEmail(email));
+    } on EmailFailure catch (e) {
+      return Left(e);
     } catch (e) {
-      if (e == EmailFailure.serverError()) {
-        return Left(EmailFailure.serverError());
-      } else {
-        return Left(EmailFailure.networkError());
-      }
+      return Left(EmailFailure.networkError());
     }
   }
 }

@@ -1,15 +1,27 @@
-import 'dart:convert';
-
-Email emailModelFromJson(String str) => Email.fromJson(json.decode(str));
-
-String emailModelToJson(Email data) => json.encode(data.toJson());
-
 class Email {
-  Email({required this.status});
+  Email({
+    required this.name,
+    required this.email,
+    required this.subject,
+    required this.message,
+  });
 
-  String status;
+  String name;
+  String email;
+  String subject;
+  String message;
 
-  factory Email.fromJson(Map<String, dynamic> json) => Email(status: json["status"]);
+  factory Email.fromJson(Map<String, dynamic> json) => Email(
+        name: json["name"],
+        email: json["email"],
+        subject: json["subject"],
+        message: json["message"],
+      );
 
-  Map<String, dynamic> toJson() => {"status": status};
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "email": email,
+        "subject": subject,
+        "message": message,
+      };
 }
