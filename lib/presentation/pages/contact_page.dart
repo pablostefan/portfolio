@@ -117,18 +117,18 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
     EdgeInsetsGeometry padding = EdgeInsets.only(
       left: responsiveSize(
         context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
+        assignWidth(context, .1),
+        assignWidth(context, .15),
       ),
       right: responsiveSize(
         context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.25),
+        assignWidth(context, .1),
+        assignWidth(context, .25),
       ),
       top: responsiveSize(
         context,
-        assignHeight(context, 0.25),
-        assignHeight(context, 0.3),
+        assignHeight(context, .1),
+        assignHeight(context, .15),
       ),
     );
     TextStyle? headingStyle = textTheme.headlineLarge?.copyWith(
@@ -236,9 +236,7 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                                 hintText: StringConst.YOUR_NAME,
                                 controller: _nameController,
                                 filled: _nameFilled,
-                                onChanged: (value) {
-                                  isNameValid(value);
-                                },
+                                onChanged: isNameValid,
                               ),
                               SpaceH20(),
                               PortfolioTextFormField(
@@ -248,9 +246,7 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                                 hintText: StringConst.EMAIL,
                                 controller: _emailController,
                                 filled: _emailFilled,
-                                onChanged: (value) {
-                                  isEmailValid(value);
-                                },
+                                onChanged: isEmailValid,
                               ),
                               SpaceH20(),
                               PortfolioTextFormField(
@@ -260,9 +256,7 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                                 hintText: StringConst.SUBJECT,
                                 controller: _subjectController,
                                 filled: _subjectFilled,
-                                onChanged: (value) {
-                                  isSubjectValid(value);
-                                },
+                                onChanged: isSubjectValid,
                               ),
                               SpaceH20(),
                               PortfolioTextFormField(
@@ -273,10 +267,8 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                                 controller: _messageController,
                                 filled: _messageFilled,
                                 textInputType: TextInputType.multiline,
-                                maxLines: 10,
-                                onChanged: (value) {
-                                  isMessageValid(value);
-                                },
+                                maxLines: 5,
+                                onChanged: isMessageValid,
                               ),
                               SpaceH20(),
                               Align(

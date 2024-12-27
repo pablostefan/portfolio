@@ -15,9 +15,7 @@ class AppTheme {
       textTheme: _textTheme,
       iconTheme: IconThemeData(color: AppColors.white),
       canvasColor: colorScheme.background,
-      appBarTheme: AppBarTheme(
-        color: AppColors.primaryColor,
-      ),
+      appBarTheme: AppBarTheme(color: AppColors.primaryColor),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: AppColors.black,
         selectionColor: AppColors.textSelectionColor,

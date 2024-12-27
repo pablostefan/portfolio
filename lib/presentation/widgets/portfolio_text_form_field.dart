@@ -23,7 +23,7 @@ class PortfolioTextFormField extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.inputFormatters,
-    this.fillColor = AppColors.lightGreen,
+    this.fillColor = AppColors.fillColor,
     this.filled = false,
     this.maxLines = 1,
     this.controller,
