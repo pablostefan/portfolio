@@ -18,8 +18,8 @@ List<String> titles = [
   StringConst.TECHNOLOGY_USED,
 ];
 
-class Aboutproject extends StatefulWidget {
-  const Aboutproject({
+class AboutProject extends StatefulWidget {
+  const AboutProject({
     super.key,
     required this.controller,
     required this.projectDataController,
@@ -33,10 +33,10 @@ class Aboutproject extends StatefulWidget {
   final double width;
 
   @override
-  State<Aboutproject> createState() => _AboutprojectState();
+  State<AboutProject> createState() => _AboutProjectState();
 }
 
-class _AboutprojectState extends State<Aboutproject> {
+class _AboutProjectState extends State<AboutProject> {
   @override
   void initState() {
     super.initState();
@@ -68,9 +68,7 @@ class _AboutprojectState extends State<Aboutproject> {
     );
     double projectDataSpacing = responsiveSize(context, widget.width * 0.1, 48, md: 36);
     double widthOfProjectItem = (projectDataWidth - (projectDataSpacing)) / 2;
-    BorderRadiusGeometry borderRadius = BorderRadius.all(
-      Radius.circular(100.0),
-    );
+    BorderRadiusGeometry borderRadius = BorderRadius.all(Radius.circular(100.0));
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
       fontSize: responsiveSize(
@@ -103,7 +101,7 @@ class _AboutprojectState extends State<Aboutproject> {
           text: widget.projectData.portfolioDescription,
           textStyle: bodyTextStyle,
         ),
-        // SpaceH12(),
+        SpaceH40(),
         SizedBox(
           width: projectDataWidth,
           child: Wrap(
@@ -131,76 +129,76 @@ class _AboutprojectState extends State<Aboutproject> {
             ],
           ),
         ),
-        widget.projectData.designer != null ? SpaceH30() : Empty(),
-        widget.projectData.designer != null
-            ? ProjectData(
+        Visibility(visible: widget.projectData.designer != null, child: SpaceH30()),
+        Visibility(
+            visible: widget.projectData.designer != null,
+            child: ProjectData(
                 controller: widget.projectDataController,
                 title: StringConst.DESIGNER,
-                subtitle: widget.projectData.designer!,
-              )
-            : Empty(),
-        widget.projectData.technologyUsed != null ? SpaceH30() : Empty(),
-        widget.projectData.technologyUsed != null
-            ? ProjectData(
+                subtitle: widget.projectData.designer ?? '')),
+        Visibility(visible: widget.projectData.technologyUsed != null, child: SpaceH30()),
+        Visibility(
+            visible: widget.projectData.technologyUsed != null,
+            child: ProjectData(
                 controller: widget.projectDataController,
                 title: StringConst.TECHNOLOGY_USED,
-                subtitle: widget.projectData.technologyUsed!,
-              )
-            : Empty(),
+                subtitle: widget.projectData.technologyUsed ?? '')),
         SpaceH30(),
         Row(
           children: [
-            widget.projectData.isLive
-                ? AnimatedPositionedWidget(
-                    controller: CurvedAnimation(
-                      parent: widget.projectDataController,
-                      curve: Animations.textSlideInCurve,
-                    ),
-                    width: targetWidth,
-                    height: initialWidth,
-                    child: AnimatedBubbleButton(
-                      title: StringConst.LAUNCH_APP,
-                      color: AppColors.grey100,
-                      imageColor: AppColors.black,
-                      startBorderRadius: borderRadius,
-                      startWidth: initialWidth,
-                      height: initialWidth,
-                      targetWidth: targetWidth,
-                      titleStyle: buttonStyle,
-                      onTap: () {
-                        Functions.launchUrl(widget.projectData.webUrl);
-                      },
-                      startOffset: Offset(0, 0),
-                      targetOffset: Offset(0.1, 0),
-                    ),
-                  )
-                : Empty(),
-            widget.projectData.isLive ? Spacer() : Empty(),
-            widget.projectData.isPublic
-                ? AnimatedPositionedWidget(
-                    controller: CurvedAnimation(
-                      parent: widget.projectDataController,
-                      curve: Animations.textSlideInCurve,
-                    ),
-                    width: targetWidth,
-                    height: initialWidth,
-                    child: AnimatedBubbleButton(
-                      title: StringConst.SOURCE_CODE,
-                      color: AppColors.grey100,
-                      imageColor: AppColors.black,
-                      startBorderRadius: borderRadius,
-                      startWidth: initialWidth,
-                      height: initialWidth,
-                      targetWidth: targetWidth,
-                      titleStyle: buttonStyle,
-                      startOffset: Offset(0, 0),
-                      targetOffset: Offset(0.1, 0),
-                      onTap: () {
-                        Functions.launchUrl(widget.projectData.gitHubUrl);
-                      },
-                    ),
-                  )
-                : Empty(),
+            Visibility(
+              visible: widget.projectData.isLive && widget.projectData.webUrl.isNotEmpty,
+              child: AnimatedPositionedWidget(
+                controller: CurvedAnimation(
+                  parent: widget.projectDataController,
+                  curve: Animations.textSlideInCurve,
+                ),
+                width: targetWidth,
+                height: initialWidth,
+                child: AnimatedBubbleButton(
+                  title: StringConst.LAUNCH_WEB,
+                  color: AppColors.grey100,
+                  imageColor: AppColors.black,
+                  startBorderRadius: borderRadius,
+                  startWidth: initialWidth,
+                  height: initialWidth,
+                  targetWidth: targetWidth,
+                  titleStyle: buttonStyle,
+                  onTap: () {
+                    Functions.launchUrl(widget.projectData.webUrl);
+                  },
+                  startOffset: Offset(0, 0),
+                  targetOffset: Offset(0.1, 0),
+                ),
+              ),
+            ),
+            Visibility(visible: widget.projectData.isLive, child: Spacer()),
+            Visibility(
+              visible: widget.projectData.isPublic && widget.projectData.gitHubUrl.isNotEmpty,
+              child: AnimatedPositionedWidget(
+                controller: CurvedAnimation(
+                  parent: widget.projectDataController,
+                  curve: Animations.textSlideInCurve,
+                ),
+                width: targetWidth,
+                height: initialWidth,
+                child: AnimatedBubbleButton(
+                  title: StringConst.SOURCE_CODE,
+                  color: AppColors.grey100,
+                  imageColor: AppColors.black,
+                  startBorderRadius: borderRadius,
+                  startWidth: initialWidth,
+                  height: initialWidth,
+                  targetWidth: targetWidth,
+                  titleStyle: buttonStyle,
+                  startOffset: Offset(0, 0),
+                  targetOffset: Offset(0.1, 0),
+                  onTap: () {
+                    Functions.launchUrl(widget.projectData.gitHubUrl);
+                  },
+                ),
+              ),
+            ),
             widget.projectData.isPublic ? Spacer() : Empty(),
           ],
         ),

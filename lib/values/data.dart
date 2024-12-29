@@ -165,7 +165,7 @@ class Data {
   ];
 
   static List<ProjectItemData> recentWorks = [
-    Projects.DISNEY_PLUS,
+    Projects.FIIBO,
     Projects.FLUTTER_CATALOG,
     Projects.DROP,
     Projects.ROAM,
@@ -175,7 +175,7 @@ class Data {
   ];
 
   static List<ProjectItemData> projects = [
-    Projects.DISNEY_PLUS,
+    Projects.FIIBO,
     Projects.FLUTTER_CATALOG,
     Projects.DROP,
     Projects.ROAM,
@@ -340,38 +340,21 @@ class Data {
 }
 
 class Projects {
-  static ProjectItemData DISNEY_PLUS = ProjectItemData(
-    title: StringConst.DISNEY_PLUS,
-    subtitle: StringConst.DISNEY_PLUS,
-    platform: StringConst.DISNEY_PLUS_PLATFORM,
-    primaryColor: AppColors.disneyPlus,
-    image: ImagePath.DISNEY_PLUS_COVER,
-    coverUrl: ImagePath.DISNEY_PLUS_SCREENS,
-    navSelectedTitleColor: AppColors.flutterCatalogSelectedNavTitle,
-    appLogoColor: AppColors.flutterCatalogAppLogo,
-    projectAssets: [
-      ImagePath.DISNEY_PLUS_1,
-      ImagePath.DISNEY_PLUS_2,
-      ImagePath.DISNEY_PLUS_3,
-      ImagePath.DISNEY_PLUS_4,
-      ImagePath.DISNEY_PLUS_5,
-      ImagePath.DISNEY_PLUS_6,
-      ImagePath.DISNEY_PLUS_7,
-      ImagePath.DISNEY_PLUS_8,
-      ImagePath.DISNEY_PLUS_9,
-      ImagePath.DISNEY_PLUS_10,
-      ImagePath.DISNEY_PLUS_11,
-      ImagePath.DISNEY_PLUS_12,
-      ImagePath.DISNEY_PLUS_13,
-    ],
-    category: StringConst.DISNEY_PLUS_CATEGORY,
-    portfolioDescription: StringConst.DISNEY_PLUS_DETAIL,
-    isPublic: true,
-    isOnPlayStore: false,
-    technologyUsed: StringConst.JETPACK_COMPOSE,
-    gitHubUrl: StringConst.DISNEY_PLUS_GITHUB_URL,
-    playStoreUrl: StringConst.DISNEY_PLUS_PLAYSTORE_URL,
-  );
+  static ProjectItemData FIIBO = ProjectItemData(
+      title: StringConst.FIIBO,
+      subtitle: StringConst.FIIBO,
+      platform: StringConst.FIIBO_PLUS_PLATFORM,
+      primaryColor: AppColors.fiibo,
+      image: ImagePath.FIIBO_COVER,
+      coverUrl: ImagePath.FIIBO_SCREENS,
+      navSelectedTitleColor: AppColors.fiibo,
+      appLogoColor: AppColors.fiibo,
+      category: StringConst.FIIBO_CATEGORY,
+      portfolioDescription: StringConst.FIIBO_DETAIL,
+      isLive: true,
+      webUrl: StringConst.FIIBO_URL,
+      technologyUsed: StringConst.FLUTTER);
+
   static ProjectItemData FLUTTER_CATALOG = ProjectItemData(
     title: StringConst.FLUTTER_CATALOG,
     subtitle: StringConst.FLUTTER_CATALOG,

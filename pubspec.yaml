@@ -45,9 +45,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/projects/
+    - assets/images/projects/fiibo/
     - assets/images/projects/aerium-v1/
     - assets/images/projects/aerium-v2/
-    - assets/images/projects/disneyplus/
     - assets/images/projects/drop/
     - assets/images/projects/flutter_catalog/
     - assets/images/projects/foodybite/

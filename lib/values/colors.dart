@@ -32,8 +32,8 @@ abstract final class AppColors {
   static const Color errorRed = Color(0xFFFF2019);
 
   // Project Primary Colors
-  // static const Color disneyPlus = Color(0xFF000000);
-  static const Color disneyPlus = Color(0xFFB41100);
+
+  static const Color fiibo = Color(0xFFe92043);
 
   static const Color nimbus = Color(0xFFF6C350);
   static const Color nimbusNavTitle = AppColors.black;

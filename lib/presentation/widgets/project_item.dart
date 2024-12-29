@@ -56,7 +56,7 @@ class ProjectItemData {
 
 class ProjectData extends StatelessWidget {
   const ProjectData({
-    Key? key,
+    super.key,
     required this.projectNumber,
     required this.title,
     required this.subtitle,
@@ -70,7 +70,7 @@ class ProjectData extends StatelessWidget {
     this.indicatorWidth = Sizes.WIDTH_150,
     this.indicatorMargin,
     this.leadingMargin,
-  }) : super(key: key);
+  });
 
   final String projectNumber;
   final String title;
@@ -88,8 +88,7 @@ class ProjectData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Row(
+    return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -108,10 +107,7 @@ class ProjectData extends StatelessWidget {
                 curve: curve,
               ),
               SpaceW4(),
-              Text(
-                projectNumber,
-                style: projectNumberStyle,
-              ),
+              Text(projectNumber, style: projectNumberStyle),
             ],
           ),
         ),
@@ -125,7 +121,7 @@ class ProjectData extends StatelessWidget {
           ],
         ),
       ],
-    ));
+    );
   }
 }
 
@@ -144,14 +140,14 @@ const double heightOfButtonSm = startWidthOfButtonSm;
 
 class ProjectItemLg extends StatefulWidget {
   const ProjectItemLg({
-    Key? key,
+    super.key,
     required this.projectNumber,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
     required this.containerColor,
-    this.projectItemheight,
-    this.subheight,
+    this.projectItemHeight,
+    this.subHeight,
     this.coloredContainerHeight,
     this.coloredContainerWidth,
     this.buttonTitle = StringConst.VIEW,
@@ -163,7 +159,7 @@ class ProjectItemLg extends StatefulWidget {
     this.duration = const Duration(milliseconds: 300),
     this.padding,
     this.onTap,
-  }) : super(key: key);
+  });
 
   /// signifies the position of the project in the list
   final String projectNumber;
@@ -200,10 +196,10 @@ class ProjectItemLg extends StatefulWidget {
   final Duration duration;
 
   /// full height of the project item
-  final double? projectItemheight;
+  final double? projectItemHeight;
 
   /// height of the portion that contains the title, subtitle and button
-  final double? subheight;
+  final double? subHeight;
 
   /// height of the colored container under the project image cover
   final double? coloredContainerWidth;
@@ -218,7 +214,7 @@ class ProjectItemLg extends StatefulWidget {
   final GestureTapCallback? onTap;
 
   @override
-  _ProjectItemLgState createState() => _ProjectItemLgState();
+  State<ProjectItemLg> createState() => _ProjectItemLgState();
 }
 
 class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProviderStateMixin {
@@ -229,12 +225,8 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
 
   @override
   void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
-
     super.initState();
+    _controller = AnimationController(vsync: this, duration: widget.duration);
   }
 
   void _mouseEnter(bool hovering) {
@@ -256,39 +248,23 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     // width of the project item - it takes the entire width of the device
     double projectItemWidth = widthOfScreen(context);
     // height of the overall project item - it defaults to 40% of the height of the device
-    double projectItemHeight = widget.projectItemheight ??
-        assignHeight(
-          context,
-          0.4,
-        );
+    double projectItemHeight = widget.projectItemHeight ?? assignHeight(context, 0.4);
     // it defaults to 75% of the height of the full [projectItemHeight]
-    double subheight = widget.subheight ?? (3 / 4 * projectItemHeight);
-    // defaults to 80% of the height of the [subheight]
-    double containerHeight = widget.coloredContainerHeight ?? (subheight * 0.8);
-    // defaults to 25% of the width of the screen on large screens
-    double containerWidth = widget.coloredContainerWidth ??
-        responsiveSize(
-          context,
-          assignWidth(context, 0.25),
-          assignWidth(context, 0.25), // 25%
-          md: assignWidth(context, 0.33), // 33%
-          sm: assignWidth(context, 0.35), // 30%
-        );
+    double subHeight = widget.subHeight ?? (3 / 4 * projectItemHeight);
+    // defaults to 80% of the height of the [subHeight]
+    double containerHeight = widget.coloredContainerHeight ?? (subHeight * 0.8);
     // computes the position of the button, positions the button in the middle
-    // of the container using subheight as it's height
-    double positionOfButton = (subheight / 2) - startWidthOfButton;
-    // computes the position of the colored container, positions the container in the middle
-    // of the button
-    double positionOfColoredContainer = positionOfButton + (heightOfButton / 2);
+    // of the container using subHeight as it's height
+    double positionOfButton = (subHeight / 2) - startWidthOfButton;
     // width of project cover - takes 1/3 of the width of the screen
     double imageWidth = responsiveSize(
       context,
-      projectItemWidth / 2.5,
-      projectItemWidth / 4,
-      md: projectItemWidth / 3,
-      sm: projectItemWidth / 2.8,
+      projectItemWidth / 3,
+      projectItemWidth / 4.5,
+      md: projectItemWidth / 3.5,
+      sm: projectItemWidth / 3.3,
     );
-    Animation<double> _animation = Tween<double>(
+    Animation<double> animation = Tween<double>(
       begin: responsiveSize(
         context,
         -imageWidth * 2.2,
@@ -349,15 +325,15 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     return MouseRegion(
       onEnter: (e) => _mouseEnter(true),
       onExit: (e) => _mouseEnter(false),
-      child: Container(
+      child: SizedBox(
         height: projectItemHeight,
         width: projectItemWidth,
         child: Stack(
           children: [
             Container(
               width: projectItemWidth,
-              height: subheight,
-              padding: widget.padding ?? EdgeInsets.only(top: subheight / 4),
+              height: subHeight,
+              padding: widget.padding ?? EdgeInsets.only(top: subHeight / 4),
               color: _isHovering ? widget.backgroundOnHoverColor : widget.backgroundColor,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -371,14 +347,9 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
                       projectNumber: widget.projectNumber,
                       indicatorWidth: _isHovering ? assignWidth(context, 0.18) : assignWidth(context, 0.12),
                       leadingMargin: EdgeInsets.only(
-                        top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) /
-                            2.5, // computes margin dynamically based on the title and defaultNumber Size
-                        right: Sizes.MARGIN_8,
-                      ),
-                      indicatorMargin: EdgeInsets.only(
-                        top: defaultNumberStyle.fontSize! / 2.5,
-                        right: Sizes.MARGIN_8,
-                      ),
+                          top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
+                          right: Sizes.MARGIN_8),
+                      indicatorMargin: EdgeInsets.only(top: defaultNumberStyle.fontSize! / 2.5, right: Sizes.MARGIN_8),
                       title: widget.title,
                       subtitle: widget.subtitle,
                       subtitleStyle: defaultSubtitleStyle,
@@ -390,28 +361,21 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
               ),
             ),
             Positioned(
-              top: positionOfColoredContainer,
-              right: assignWidth(context, 0.1),
-              child: AnimatedContainer(
-                width: _isHovering ? containerWidth : 0,
-                color: widget.containerColor,
-                duration: Duration(milliseconds: 450),
-                height: containerHeight,
-                curve: Curves.fastOutSlowIn,
-              ),
-            ),
-            Positioned(
               right: 0,
               child: Transform(
-                origin: Offset(_animation.value, 0),
+                origin: Offset(animation.value, 0),
                 transform: Matrix4.identity()
                   ..setEntry(3, 2, 0.0095)
                   ..rotateY(0.075),
-                child: Image.asset(
-                  widget.imageUrl,
+                child: Container(
                   width: imageWidth,
                   height: containerHeight,
-                  fit: BoxFit.cover,
+                  color: widget.containerColor,
+                  child: Image.asset(
+                    widget.imageUrl,
+                    height: containerHeight,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
             ),
@@ -443,7 +407,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
 
 class ProjectItemSm extends StatefulWidget {
   const ProjectItemSm({
-    Key? key,
+    super.key,
     required this.projectNumber,
     required this.title,
     required this.subtitle,
@@ -459,7 +423,7 @@ class ProjectItemSm extends StatefulWidget {
     this.imageHeight,
     this.duration = const Duration(milliseconds: 350),
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String projectNumber;
   final String title;
@@ -480,7 +444,7 @@ class ProjectItemSm extends StatefulWidget {
   final GestureTapCallback? onTap;
 
   @override
-  _ProjectItemSmState createState() => _ProjectItemSmState();
+  State<ProjectItemSm> createState() => _ProjectItemSmState();
 }
 
 class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProviderStateMixin {
@@ -489,11 +453,9 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
 
   @override
   void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
     super.initState();
+
+    _controller = AnimationController(vsync: this, duration: widget.duration);
   }
 
   void _mouseEnter(bool hovering) {
@@ -556,11 +518,11 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
     return MouseRegion(
       onEnter: (e) => _mouseEnter(true),
       onExit: (e) => _mouseEnter(false),
-      child: Container(
+      child: SizedBox(
         width: projectItemWidth,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: heightOfProjectImageCover + (heightOfColoredContainer - positionOfColoredContainer),
               child: Stack(
                 children: [

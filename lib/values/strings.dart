@@ -94,7 +94,7 @@ abstract final class StringConst {
   static const String AUTHOR = "Autor";
   static const String DESIGNER = "Designer";
   static const String TECHNOLOGY_USED = "Tecnologia Utilizada";
-  static const String LAUNCH_APP = "Abrir Aplicativo";
+  static const String LAUNCH_WEB = "Abrir Site";
   static const String SOURCE_CODE = "Código Fonte";
   static const String NEXT_PROJECT = "Próximo Projeto";
   static const String VIEW = "Visualizar";
@@ -269,13 +269,11 @@ abstract final class StringConst {
   static const String OTP_TEXT_FIELD_GITHUB_URL = "https://github.com/david-legend/otp_textfield";
   static const String OTP_TEXT_FIELD_WEB_URL = "https://pub.dev/packages/flutter_otp_text_field";
 
-  static const String DISNEY_PLUS = "Disney Plus";
-  static const String DISNEY_PLUS_PLATFORM = "Android.";
-  static const String DISNEY_PLUS_CATEGORY = "UI Kit.";
-  static const String DISNEY_PLUS_DETAIL =
-      "Disney Plus is an amazing UI Kit  designed by Andre Carioca. He describes the UI Kit as his attempt of making the current disney plus app better. For me, this project is my attempt at learning and playing with Jetpack Compose. It contains everything that I am learning about the current state of native android development with Kotlin & Jetpack Compose";
-  static const String DISNEY_PLUS_PLAYSTORE_URL = "";
-  static const String DISNEY_PLUS_GITHUB_URL = "https://github.com/david-legend/disneyPlus";
+  static const String FIIBO = "Fiibo";
+  static const String FIIBO_PLUS_PLATFORM = "Android / IOS.";
+  static const String FIIBO_CATEGORY = "Saúde.";
+  static const String FIIBO_DETAIL = "O primeiro marketplace de benefícios de saúde e bem-estar do Brasil";
+  static const String FIIBO_URL = "https://fiibo.com.br";
 
   static const String FLUTTER_CATALOG = "Flutter Catalog";
   static const String FLUTTER_CATALOG_PLATFORM = "Android / IOS.";

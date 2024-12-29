@@ -4,14 +4,11 @@ import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/project_detail/widgets/about_project.dart';
 import 'package:portfolio/presentation/pages/project_detail/widgets/next_project.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
-import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
-import 'package:portfolio/presentation/widgets/animated_wave.dart';
 import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -93,15 +90,13 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
   @override
   Widget build(BuildContext context) {
     getArguments();
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? coverTitleStyle = textTheme.headlineLarge?.copyWith(
-      color: AppColors.white,
-      fontSize: 40,
-    );
-    TextStyle? coverSubtitleStyle = textTheme.bodyLarge?.copyWith(
-      color: AppColors.white,
-    );
+
     EdgeInsetsGeometry padding = EdgeInsets.only(
+      top: responsiveSize(
+        context,
+        assignHeight(context, .05),
+        assignHeight(context, .1),
+      ),
       left: responsiveSize(
         context,
         assignWidth(context, 0.10),
@@ -136,59 +131,15 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
           parent: AlwaysScrollableScrollPhysics(),
         ),
         children: [
-          SizedBox(
-            width: widthOfScreen(context),
-            height: heightOfScreen(context),
-            child: Stack(
-              children: [
-                Image.asset(
-                  projectDetails.data.coverUrl,
-                  fit: BoxFit.cover,
-                  width: widthOfScreen(context),
-                  height: heightOfScreen(context),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: waveLineHeight + 40),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AnimatedTextSlideBoxTransition(
-                          controller: _controller,
-                          widthFactor: 1.20,
-                          text: "${projectDetails.data.title}.",
-                          coverColor: projectDetails.data.primaryColor,
-                          textStyle: coverTitleStyle,
-                          textAlign: TextAlign.center,
-                        ),
-                        SpaceH20(),
-                        AnimatedTextSlideBoxTransition(
-                          controller: _controller,
-                          widthFactor: 1.20,
-                          text: projectDetails.data.category,
-                          coverColor: projectDetails.data.primaryColor,
-                          textStyle: coverSubtitleStyle,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: AnimatedWaveLine(
-                      height: waveLineHeight,
-                      controller: _waveController,
-                      color: projectDetails.data.primaryColor,
-                    ),
-                  ),
-                )
-              ],
+          Container(
+            color: projectDetails.data.primaryColor,
+            padding: EdgeInsets.only(top: 70),
+            child: Image.asset(
+              projectDetails.data.coverUrl,
+              fit: BoxFit.fitWidth,
+              width: widthOfScreen(context),
             ),
           ),
-          CustomSpacer(heightFactor: 0.15),
           VisibilityDetector(
             key: Key('about-project'),
             onVisibilityChanged: (visibilityInfo) {
@@ -201,7 +152,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
               padding: padding,
               child: ContentArea(
                 width: contentAreaWidth,
-                child: Aboutproject(
+                child: AboutProject(
                   projectData: projectDetails.data,
                   controller: _aboutProjectController,
                   projectDataController: _projectDataController,
