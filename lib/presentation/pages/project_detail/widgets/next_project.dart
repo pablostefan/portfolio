@@ -68,9 +68,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
     TextTheme textTheme = Theme.of(context).textTheme;
     final EdgeInsetsGeometry marginLeft = EdgeInsets.only(left: 16);
     double projectTitleFontSize = responsiveSize(context, 28, 48, md: 40, sm: 36);
-    BorderRadiusGeometry borderRadius = BorderRadius.all(
-      Radius.circular(100.0),
-    );
+    BorderRadiusGeometry borderRadius = BorderRadius.all(Radius.circular(100.0));
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
       fontSize: responsiveSize(
@@ -89,158 +87,146 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
       builder: (context, sizingInformation) {
         double screenWidth = sizingInformation.screenSize.width;
 
-        if (screenWidth <= RefinedBreakpoints().tabletSmall) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                StringConst.NEXT_PROJECT,
-                style: textTheme.bodyLarge?.copyWith(
-                  fontSize: responsiveSize(context, 11, Sizes.TEXT_SIZE_12),
-                  letterSpacing: 2,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              SpaceH20(),
-              Text(
-                widget.nextProject.title,
-                textAlign: TextAlign.center,
-                style: projectTitleStyle,
-              ),
-              SpaceH20(),
-              SizedBox(
-                width: widthOfScreen(context),
-                height: assignHeight(context, 0.3),
-                child: Image.asset(
-                  widget.nextProject.coverUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SpaceH30(),
-              AnimatedBubbleButton(
-                title: StringConst.VIEW_PROJECT,
-                color: AppColors.grey100,
-                imageColor: AppColors.black,
-                startBorderRadius: borderRadius,
-                titleStyle: buttonStyle,
-                startOffset: Offset(0, 0),
-                targetOffset: Offset(0.1, 0),
-                onTap: () {
-                  if (widget.navigateToNextProject != null) {
-                    widget.navigateToNextProject!();
-                  }
-                },
-              ),
-            ],
-          );
-        } else {
-          return SizedBox(
-            height: assignHeight(context, 0.3),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                MouseRegion(
-                  onEnter: (e) => _mouseEnter(true),
-                  onExit: (e) => _mouseEnter(false),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        margin: marginLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              StringConst.NEXT_PROJECT,
-                              style: textTheme.bodyLarge?.copyWith(
-                                fontSize: responsiveSize(
-                                  context,
-                                  11,
-                                  Sizes.TEXT_SIZE_12,
+        return Visibility(
+            visible: screenWidth <= RefinedBreakpoints().tabletSmall,
+            replacement: SizedBox(
+              height: assignHeight(context, 0.3),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  MouseRegion(
+                    onEnter: (e) => _mouseEnter(true),
+                    onExit: (e) => _mouseEnter(false),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          margin: marginLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                StringConst.NEXT_PROJECT,
+                                style: textTheme.bodyLarge?.copyWith(
+                                  fontSize: responsiveSize(
+                                    context,
+                                    11,
+                                    Sizes.TEXT_SIZE_12,
+                                  ),
+                                  letterSpacing: 2,
+                                  fontWeight: FontWeight.w300,
                                 ),
-                                letterSpacing: 2,
-                                fontWeight: FontWeight.w300,
                               ),
-                            ),
-                            SpaceH20(),
-                            isDisplayMobileOrTablet(context)
-                                ? Text(
+                              SpaceH20(),
+                              Visibility(
+                                  visible: isDisplayMobileOrTablet(context),
+                                  replacement: AnimatedSwitcher(
+                                    duration: Animations.switcherDuration,
+                                    child: Opacity(
+                                      opacity: _isHovering ? 1.0 : 0.2,
+                                      child: Text(
+                                        widget.nextProject.title,
+                                        textAlign: TextAlign.center,
+                                        style: projectTitleStyle,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
                                     widget.nextProject.title,
                                     textAlign: TextAlign.center,
                                     style: projectTitleStyle,
-                                  )
-                                : AnimatedSwitcher(
-                                    duration: Animations.switcherDuration,
-                                    child: _isHovering
-                                        ? Text(
-                                            widget.nextProject.title,
-                                            textAlign: TextAlign.center,
-                                            style: projectTitleStyle,
-                                          )
-                                        : Stack(
-                                            children: [
-                                              Text(
-                                                widget.nextProject.title,
-                                                textAlign: TextAlign.center,
-                                                style: projectTitleStyle,
-                                              ),
-                                              Text(
-                                                widget.nextProject.title,
-                                                textAlign: TextAlign.center,
-                                                style: projectTitleStyle?.copyWith(
-                                                  color: AppColors.white,
-                                                  fontSize: projectTitleFontSize - 0.25,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                  ),
-                          ],
+                                  ))
+                            ],
+                          ),
                         ),
-                      ),
-                      SpaceH20(),
-                      AnimatedBubbleButton(
-                        title: StringConst.VIEW_PROJECT,
-                        color: AppColors.grey100,
-                        imageColor: AppColors.black,
-                        startBorderRadius: borderRadius,
-                        titleStyle: buttonStyle,
-                        startOffset: Offset(0, 0),
-                        targetOffset: Offset(0.1, 0),
-                        onTap: () {
-                          if (widget.navigateToNextProject != null) {
-                            widget.navigateToNextProject!();
-                          }
-                        },
-                      ),
-                    ],
+                        SpaceH20(),
+                        AnimatedBubbleButton(
+                          title: StringConst.VIEW_PROJECT,
+                          color: AppColors.grey100,
+                          imageColor: AppColors.black,
+                          startBorderRadius: borderRadius,
+                          titleStyle: buttonStyle,
+                          startOffset: Offset(0, 0),
+                          targetOffset: Offset(0.1, 0),
+                          onTap: () {
+                            if (widget.navigateToNextProject != null) {
+                              widget.navigateToNextProject!();
+                            }
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(width: widget.width * 0.15),
-                Expanded(
-                  child: SizedBox(
-                    width: widget.width * 0.55,
-                    height: assignHeight(context, 0.3),
-                    child: ScaleTransition(
-                      scale: scaleAnimation,
-                      child: Image.asset(
-                        widget.nextProject.coverUrl,
-                        fit: BoxFit.cover,
-                        color: _isHovering ? Colors.transparent : Colors.grey,
-                        colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
+                  SizedBox(width: widget.width * 0.15),
+                  Expanded(
+                    child: SizedBox(
+                      width: widget.width * 0.55,
+                      height: assignHeight(context, 0.3),
+                      child: ScaleTransition(
+                        scale: scaleAnimation,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            widget.nextProject.coverUrl,
+                            fit: BoxFit.cover,
+                            color: _isHovering ? Colors.transparent : Colors.grey,
+                            colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
+                          ),
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  StringConst.NEXT_PROJECT,
+                  style: textTheme.bodyLarge?.copyWith(
+                    fontSize: responsiveSize(context, 11, Sizes.TEXT_SIZE_12),
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                SpaceH20(),
+                Text(
+                  widget.nextProject.title,
+                  textAlign: TextAlign.center,
+                  style: projectTitleStyle,
+                ),
+                SpaceH20(),
+                SizedBox(
+                  width: widthOfScreen(context),
+                  height: assignHeight(context, 0.3),
+                  child: Image.asset(
+                    widget.nextProject.coverUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SpaceH30(),
+                AnimatedBubbleButton(
+                  title: StringConst.VIEW_PROJECT,
+                  color: AppColors.grey100,
+                  imageColor: AppColors.black,
+                  startBorderRadius: borderRadius,
+                  titleStyle: buttonStyle,
+                  startOffset: Offset(0, 0),
+                  targetOffset: Offset(0.1, 0),
+                  onTap: () {
+                    if (widget.navigateToNextProject != null) {
+                      widget.navigateToNextProject!();
+                    }
+                  },
                 ),
               ],
-            ),
-          );
-        }
+            ));
       },
     );
   }

@@ -125,7 +125,7 @@ abstract final class StringConst {
   //Socials
   static const String GITHUB_URL = "https://github.com/pablostefan";
   static const String LINKED_IN_URL = "https://www.linkedin.com/in/pablosgpereira";
-  static const String TELEGRAM_URL = "https://t.me/DavidLegend";
+  static const String TELEGRAM_URL = "https://t.me/pablo_stefan";
 
   //Contacts
   static const String EMAIL = "Email";
@@ -270,10 +270,16 @@ abstract final class StringConst {
   static const String OTP_TEXT_FIELD_WEB_URL = "https://pub.dev/packages/flutter_otp_text_field";
 
   static const String FIIBO = "Fiibo";
-  static const String FIIBO_PLUS_PLATFORM = "Android / IOS.";
+  static const String FIIBO_PLATFORM = "Android / IOS.";
   static const String FIIBO_CATEGORY = "Saúde.";
-  static const String FIIBO_DETAIL = "O primeiro marketplace de benefícios de saúde e bem-estar do Brasil";
+  static const String FIIBO_DETAIL = "O primeiro marketplace de benefícios de saúde e bem-estar do Brasil.";
   static const String FIIBO_URL = "https://fiibo.com.br";
+
+  static const String KRYKTO = "Krykto";
+  static const String KRYKTO_PLATFORM = "Android / IOS.";
+  static const String KRYKTO_CATEGORY = "Criptomoedas.";
+  static const String KRYKTO_DETAIL = "Rede social para investidores em criptografia.";
+  static const String KRYKTO_URL = "https://www.krykto.com";
 
   static const String FLUTTER_CATALOG = "Flutter Catalog";
   static const String FLUTTER_CATALOG_PLATFORM = "Android / IOS.";

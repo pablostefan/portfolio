@@ -34,6 +34,8 @@ abstract final class AppColors {
   // Project Primary Colors
 
   static const Color fiibo = Color(0xFFe92043);
+  static const Color krykto = Color(0xFF212222);
+  static const Color kryktoLogo = Color(0xFF2762CB);
 
   static const Color nimbus = Color(0xFFF6C350);
   static const Color nimbusNavTitle = AppColors.black;

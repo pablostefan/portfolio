@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
+import 'package:portfolio/presentation/pages/project_detail/models/project_details.dart';
 import 'package:portfolio/presentation/pages/project_detail/widgets/about_project.dart';
 import 'package:portfolio/presentation/pages/project_detail/widgets/next_project.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
@@ -8,25 +12,8 @@ import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
-import 'package:portfolio/presentation/widgets/project_item.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-
-class ProjectDetailArguments {
-  final ProjectItemData data;
-  final List<ProjectItemData> dataSource;
-  final int currentIndex;
-  final ProjectItemData? nextProject;
-  final bool hasNextProject;
-
-  ProjectDetailArguments({
-    required this.dataSource,
-    required this.data,
-    required this.currentIndex,
-    required this.hasNextProject,
-    this.nextProject,
-  });
-}
 
 class ProjectDetailPage extends StatefulWidget {
   static const String projectDetailPageRoute = StringConst.PROJECT_DETAIL_PAGE;
@@ -47,6 +34,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
 
   @override
   void initState() {
+    super.initState();
     _waveController = AnimationController(
       vsync: this,
       duration: Animations.waveDuration,
@@ -71,7 +59,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
       duration: Animations.slideAnimationDurationShort,
     );
     _waveController.forward();
-    super.initState();
   }
 
   @override
@@ -82,9 +69,17 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
     super.dispose();
   }
 
-  ProjectDetailArguments getArguments() {
-    projectDetails = ModalRoute.of(context)!.settings.arguments as ProjectDetailArguments;
-    return projectDetails;
+  void getArguments() {
+    final Object? args = ModalRoute.of(context)?.settings.arguments;
+    if (args != null) {
+      projectDetails = args as ProjectDetailArguments;
+      html.window.localStorage['projectDetailArguments'] = args.toJson();
+    } else {
+      final storedArguments = html.window.localStorage['projectDetailArguments'];
+      if (storedArguments != null) {
+        projectDetails = ProjectDetailArguments.fromMap(json.decode(storedArguments));
+      }
+    }
   }
 
   @override

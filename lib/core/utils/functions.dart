@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/presentation/pages/project_detail/models/project_details.dart';
 import 'package:portfolio/presentation/pages/project_detail/project_detail_page.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,9 +15,11 @@ class Functions {
     int maxLines = 1,
     double maxWidth = double.infinity,
   }) {
-    final TextPainter textPainter =
-        TextPainter(text: TextSpan(text: text, style: style), maxLines: maxLines, textDirection: TextDirection.ltr)
-          ..layout(minWidth: 0, maxWidth: maxWidth);
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      maxLines: maxLines,
+      textDirection: TextDirection.ltr,
+    )..layout(minWidth: 0, maxWidth: maxWidth);
     return textPainter.size;
   }
 

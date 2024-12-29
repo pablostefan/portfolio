@@ -52,6 +52,60 @@ class ProjectItemData {
   final bool isLive;
   final String webUrl;
   final String? technologyUsed;
+
+  factory ProjectItemData.fromMap(Map<String, dynamic> map) {
+    return ProjectItemData(
+      primaryColor: Color(map['primaryColor']),
+      navTitleColor: Color(map['navTitleColor']),
+      navSelectedTitleColor: Color(map['navSelectedTitleColor']),
+      appLogoColor: Color(map['appLogoColor']),
+      image: map['image'],
+      coverUrl: map['coverUrl'],
+      category: map['category'],
+      projectAssets: List<String>.from(map['projectAssets']),
+      portfolioDescription: map['portfolioDescription'],
+      imageSize: map['imageSize'],
+      title: map['title'],
+      subtitle: map['subtitle'],
+      platform: map['platform'],
+      designer: map['designer'],
+      isPublic: map['isPublic'],
+      hasBeenReleased: map['hasBeenReleased'],
+      gitHubUrl: map['gitHubUrl'],
+      isOnPlayStore: map['isOnPlayStore'],
+      playStoreUrl: map['playStoreUrl'],
+      isLive: map['isLive'],
+      webUrl: map['webUrl'],
+      technologyUsed: map['technologyUsed'],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'primaryColor': primaryColor.value,
+      'navTitleColor': navTitleColor.value,
+      'navSelectedTitleColor': navSelectedTitleColor.value,
+      'appLogoColor': appLogoColor.value,
+      'image': image,
+      'coverUrl': coverUrl,
+      'category': category,
+      'projectAssets': projectAssets,
+      'portfolioDescription': portfolioDescription,
+      'imageSize': imageSize,
+      'title': title,
+      'subtitle': subtitle,
+      'platform': platform,
+      'designer': designer,
+      'isPublic': isPublic,
+      'hasBeenReleased': hasBeenReleased,
+      'gitHubUrl': gitHubUrl,
+      'isOnPlayStore': isOnPlayStore,
+      'playStoreUrl': playStoreUrl,
+      'isLive': isLive,
+      'webUrl': webUrl,
+      'technologyUsed': technologyUsed,
+    };
+  }
 }
 
 class ProjectData extends StatelessWidget {

@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void getArguments() {
-    final Object? args = ModalRoute.of(context)!.settings.arguments;
+    final Object? args = ModalRoute.of(context)?.settings.arguments;
     // if page is being loaded for the first time, args will be null.
     // if args is null, I set boolean values to run the appropriate animation
     // In this case, if null run loading animation, if not null run the unveil animation
@@ -158,16 +158,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ResponsiveBuilder(
             builder: (context, sizingInformation) {
               double screenWidth = sizingInformation.screenSize.width;
-              if (screenWidth <= RefinedBreakpoints().tabletSmall) {
-                return Column(
-                  children: _buildProjectsForMobile(
-                    data: Data.recentWorks,
-                    projectHeight: projectItemHeight.toInt(),
-                    subHeight: subHeight.toInt(),
-                  ),
-                );
-              } else {
-                return SizedBox(
+              return Visibility(
+                visible: screenWidth <= RefinedBreakpoints().tabletSmall,
+                replacement: SizedBox(
                   height: (subHeight * (Data.recentWorks.length)) + extra,
                   child: Stack(
                     children: _buildRecentProjects(
@@ -176,8 +169,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       subHeight: subHeight.toInt(),
                     ),
                   ),
-                );
-              }
+                ),
+                child: Column(
+                  children: _buildProjectsForMobile(
+                    data: Data.recentWorks,
+                    projectHeight: projectItemHeight.toInt(),
+                    subHeight: subHeight.toInt(),
+                  ),
+                ),
+              );
             },
           ),
           CustomSpacer(heightFactor: 0.05),
