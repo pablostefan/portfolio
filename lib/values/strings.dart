@@ -101,6 +101,7 @@ abstract final class StringConst {
   static const String BUILT_WITH_FLUTTER = "Construído usando ";
   static const String EMAIL_URL = "mailto:<$EMAIL_VALUE>?subject=&body=";
   static const String DEV_NAME = "Pablo Stefan";
+  static const String IN_STORE = "Disponível na loja";
 
   //Skills
   static const String FLUTTER = "Flutter";
@@ -280,6 +281,12 @@ abstract final class StringConst {
   static const String KRYKTO_CATEGORY = "Criptomoedas.";
   static const String KRYKTO_DETAIL = "Rede social para investidores em criptografia.";
   static const String KRYKTO_URL = "https://www.krykto.com";
+
+  static const String FORBES = "Forbes +";
+  static const String FORBES_PLATFORM = "Android / IOS.";
+  static const String FORBES_CATEGORY = "Aprendizagem.";
+  static const String FORBES_DETAIL = "Plataforma de aprendizagem, que tem, na curadoria Forbes.";
+  static const String FORBES_URL = "https://www.forbesplus.com.br";
 
   static const String FLUTTER_CATALOG = "Flutter Catalog";
   static const String FLUTTER_CATALOG_PLATFORM = "Android / IOS.";

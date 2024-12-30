@@ -167,11 +167,13 @@ class Data {
   static List<ProjectItemData> recentWorks = [
     Projects.FIIBO,
     Projects.KRYKTO,
+    Projects.FORBES,
   ];
 
   static List<ProjectItemData> projects = [
     Projects.FIIBO,
     Projects.KRYKTO,
+    Projects.FORBES,
   ];
 
   static List<NoteWorthyProjectDetails> noteworthyProjects = [
@@ -338,6 +340,7 @@ class Projects {
       category: StringConst.FIIBO_CATEGORY,
       portfolioDescription: StringConst.FIIBO_DETAIL,
       isLive: true,
+      isOnPlayStore: true,
       webUrl: StringConst.FIIBO_URL,
       technologyUsed: StringConst.FLUTTER);
 
@@ -354,5 +357,21 @@ class Projects {
       portfolioDescription: StringConst.KRYKTO_DETAIL,
       isLive: true,
       webUrl: StringConst.KRYKTO_URL,
+      technologyUsed: StringConst.FLUTTER);
+
+  static ProjectItemData FORBES = ProjectItemData(
+      title: StringConst.FORBES,
+      subtitle: StringConst.FORBES,
+      platform: StringConst.FORBES_PLATFORM,
+      primaryColor: AppColors.forbes,
+      image: ImagePath.FORBES_COVER,
+      coverUrl: ImagePath.FORBES_SCREENS,
+      navSelectedTitleColor: AppColors.forbes,
+      appLogoColor: AppColors.forbes,
+      category: StringConst.FORBES_CATEGORY,
+      portfolioDescription: StringConst.FORBES_DETAIL,
+      isOnPlayStore: true,
+      isLive: true,
+      webUrl: StringConst.FORBES_URL,
       technologyUsed: StringConst.FLUTTER);
 }

@@ -5,7 +5,6 @@ import 'package:portfolio/presentation/widgets/animated_bubble_button.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_widget.dart';
 import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
-import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
@@ -126,24 +125,23 @@ class _AboutProjectState extends State<AboutProject> {
                 title: StringConst.AUTHOR,
                 subtitle: StringConst.DEV_NAME,
               ),
+              if (widget.projectData.designer != null)
+                ProjectData(
+                    width: widthOfProjectItem,
+                    controller: widget.projectDataController,
+                    title: StringConst.DESIGNER,
+                    subtitle: widget.projectData.designer ?? ''),
+              if (widget.projectData.technologyUsed != null)
+                ProjectData(
+                    width: widthOfProjectItem,
+                    controller: widget.projectDataController,
+                    title: StringConst.TECHNOLOGY_USED,
+                    subtitle: widget.projectData.technologyUsed ?? ''),
             ],
           ),
         ),
-        Visibility(visible: widget.projectData.designer != null, child: SpaceH30()),
-        Visibility(
-            visible: widget.projectData.designer != null,
-            child: ProjectData(
-                controller: widget.projectDataController,
-                title: StringConst.DESIGNER,
-                subtitle: widget.projectData.designer ?? '')),
-        Visibility(visible: widget.projectData.technologyUsed != null, child: SpaceH30()),
-        Visibility(
-            visible: widget.projectData.technologyUsed != null,
-            child: ProjectData(
-                controller: widget.projectDataController,
-                title: StringConst.TECHNOLOGY_USED,
-                subtitle: widget.projectData.technologyUsed ?? '')),
         SpaceH30(),
+        Container(),
         Row(
           children: [
             Visibility(
@@ -199,12 +197,24 @@ class _AboutProjectState extends State<AboutProject> {
                 ),
               ),
             ),
-            widget.projectData.isPublic ? Spacer() : Empty(),
           ],
         ),
-        widget.projectData.isPublic || widget.projectData.isLive ? SpaceH30() : Empty(),
-        widget.projectData.isOnPlayStore
-            ? InkWell(
+        Visibility(visible: widget.projectData.isOnPlayStore, child: SpaceH80()),
+        Visibility(
+          visible: widget.projectData.isOnPlayStore,
+          child: AnimatedTextSlideBoxTransition(
+            controller: widget.controller,
+            text: StringConst.IN_STORE,
+            coverColor: AppColors.white,
+            textStyle: textTheme.headlineSmall?.copyWith(fontSize: Sizes.TEXT_SIZE_40),
+          ),
+        ),
+        Visibility(visible: widget.projectData.isOnPlayStore, child: SpaceH30()),
+        Visibility(
+          visible: widget.projectData.isOnPlayStore,
+          child: Row(
+            children: [
+              InkWell(
                 onTap: () {
                   Functions.launchUrl(widget.projectData.playStoreUrl);
                 },
@@ -218,11 +228,32 @@ class _AboutProjectState extends State<AboutProject> {
                   child: Image.asset(
                     ImagePath.GOOGLE_PLAY,
                     width: googlePlayButtonWidth,
-                    // fit: BoxFit.fitHeight,
                   ),
                 ),
-              )
-            : Empty(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: InkWell(
+                  onTap: () {
+                    Functions.launchUrl(widget.projectData.playStoreUrl);
+                  },
+                  child: AnimatedPositionedWidget(
+                    controller: CurvedAnimation(
+                      parent: widget.projectDataController,
+                      curve: Animations.textSlideInCurve,
+                    ),
+                    width: googlePlayButtonWidth,
+                    height: 50,
+                    child: Image.asset(
+                      ImagePath.APP_STORE,
+                      width: googlePlayButtonWidth,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

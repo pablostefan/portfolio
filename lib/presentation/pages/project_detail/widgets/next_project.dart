@@ -165,14 +165,13 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                   Expanded(
                     child: SizedBox(
                       width: widget.width * 0.55,
-                      height: assignHeight(context, 0.3),
                       child: ScaleTransition(
                         scale: scaleAnimation,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
                             widget.nextProject.coverUrl,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                             color: _isHovering ? Colors.transparent : Colors.grey,
                             colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
                           ),
@@ -204,10 +203,12 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                 SpaceH20(),
                 SizedBox(
                   width: widthOfScreen(context),
-                  height: assignHeight(context, 0.3),
-                  child: Image.asset(
-                    widget.nextProject.coverUrl,
-                    fit: BoxFit.cover,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      widget.nextProject.coverUrl,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                 ),
                 SpaceH30(),

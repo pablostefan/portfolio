@@ -23,7 +23,7 @@ abstract final class ImagePath {
   static const String PLAYSTORE = "$imageDir/playstore.png";
   static const String ARROW_RIGHT = "$imageDir/right-arrow.png";
   static const String ARROW_DOWN = "$imageDir/down-arrow.png";
-  static const String ARROW_DOWN_2 = "$imageDir/down-arrow-2.png";
+  static const String ARROW_DOWN_2 = "$imageDir/down-arrow-header.png";
   static const String ARROW_UP = "$imageDir/up-arrow.png";
   static const String ARROW_DOWN_IOS = "$imageDir/ios-down-arrow.png";
   static const String CAESAR = "$imageDir/ceasar-bust.png";
@@ -31,6 +31,7 @@ abstract final class ImagePath {
   static const String ABOUT_PORTRAIT = "$imageDir/about_portrait.png";
   static const String DEV_ABOUT = "$imageDir/dev-about.jpg";
   static const String GOOGLE_PLAY = "$imageDir/google_play.png";
+  static const String APP_STORE = "$imageDir/app_store.png";
 
   // Certifications
   static const String ANDROID_CERT = "$imageDir/certificado_android.png";
@@ -48,4 +49,8 @@ abstract final class ImagePath {
   // Krykto
   static const String KRYKTO_COVER = "$projectsDir/krykto/cover.png";
   static const String KRYKTO_SCREENS = "$projectsDir/krykto/header.png";
+
+  // Forbes
+  static const String FORBES_COVER = "$projectsDir/forbes/cover.png";
+  static const String FORBES_SCREENS = "$projectsDir/forbes/header.png";
 }

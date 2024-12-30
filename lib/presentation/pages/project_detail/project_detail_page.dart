@@ -10,7 +10,6 @@ import 'package:portfolio/presentation/pages/project_detail/widgets/next_project
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
 import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
-import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -122,9 +121,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
       },
       child: ListView(
         padding: EdgeInsets.zero,
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           Container(
             color: projectDetails.data.primaryColor,
@@ -156,48 +153,32 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
               ),
             ),
           ),
-          CustomSpacer(heightFactor: 0.15),
-          ..._buildProjectAlbum(projectDetails.data.projectAssets),
-          projectDetails.hasNextProject ? CustomSpacer(heightFactor: 0.15) : Empty(),
-          projectDetails.hasNextProject
-              ? Padding(
-                  padding: padding,
-                  child: ContentArea(
-                    width: contentAreaWidth,
-                    child: NextProject(
-                      width: contentAreaWidth,
-                      nextProject: projectDetails.nextProject!,
-                      navigateToNextProject: () {
-                        Functions.navigateToProject(
-                          context: context,
-                          dataSource: projectDetails.dataSource,
-                          currentProject: projectDetails.nextProject!,
-                          currentProjectIndex: projectDetails.currentIndex + 1,
-                        );
-                      },
-                    ),
-                  ),
-                )
-              : Empty(),
-          projectDetails.hasNextProject ? CustomSpacer(heightFactor: 0.15) : Empty(),
+          Container(),
+          Visibility(
+            visible: projectDetails.hasNextProject,
+            child: Padding(
+              padding: padding,
+              child: ContentArea(
+                width: contentAreaWidth,
+                child: NextProject(
+                  width: contentAreaWidth,
+                  nextProject: projectDetails.nextProject!,
+                  navigateToNextProject: () {
+                    Functions.navigateToProject(
+                      context: context,
+                      dataSource: projectDetails.dataSource,
+                      currentProject: projectDetails.nextProject!,
+                      currentProjectIndex: projectDetails.currentIndex + 1,
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+          Visibility(visible: projectDetails.hasNextProject, child: CustomSpacer(heightFactor: 0.15)),
           SimpleFooter(),
         ],
       ),
     );
-  }
-
-  List<Widget> _buildProjectAlbum(List<String> data) {
-    List<Widget> items = [];
-
-    for (int index = 0; index < data.length; index++) {
-      items.add(
-        Image.asset(
-          data[index],
-          fit: BoxFit.cover,
-        ),
-      );
-    }
-
-    return items;
   }
 }
