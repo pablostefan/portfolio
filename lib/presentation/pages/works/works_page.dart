@@ -7,12 +7,11 @@ import 'package:portfolio/presentation/pages/works/widgets/noteworthy_projects.d
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class WorksPage extends StatefulWidget {
-  static const String worksPageRoute = StringConst.WORKS_PAGE;
-
   const WorksPage({super.key});
 
   @override
@@ -63,13 +62,11 @@ class _WorksPageState extends State<WorksPage> with TickerProviderStateMixin {
       ),
     );
     return PageWrapper(
-      selectedRoute: WorksPage.worksPageRoute,
+      selectedRoute: Routes.work,
       selectedPageName: StringConst.WORKS,
       navBarAnimationController: _headingTextController,
       hasSideTitle: false,
-      onLoadingAnimationDone: () {
-        _headingTextController.forward();
-      },
+      onLoadingAnimationDone: _headingTextController.forward,
       child: ListView(
         padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),

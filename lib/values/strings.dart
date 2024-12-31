@@ -108,21 +108,6 @@ abstract final class StringConst {
   static const String JETPACK_COMPOSE = "Jetpack Compose";
   static const String PYTHON = "Python";
 
-  //routes
-  static const String LOADING_PAGE = "/";
-  static const String HOME_PAGE = "/home";
-  static const String ABOUT_PAGE = "/about";
-  static const String WORKS_PAGE = "/works";
-  static const String CONTACT_PAGE = "/contact";
-  static const String PROJECT_PAGE = "/project";
-  static const String PROJECT_DETAIL_PAGE = "/project-detail";
-  static const String SERVICES_PAGE = "/services";
-  static const String MESSAGE_PAGE = "/message-me";
-  static const String EXPERIENCE_PAGE = "/experience";
-  static const String PRIVACY_POLICY_PAGE = "/privacy-policy";
-  static const String RESUME_PAGE = "/resume";
-  static const String CERTIFICATION_PAGE = "/certifications";
-
   //Socials
   static const String GITHUB_URL = "https://github.com/pablostefan";
   static const String LINKED_IN_URL = "https://www.linkedin.com/in/pablosgpereira";

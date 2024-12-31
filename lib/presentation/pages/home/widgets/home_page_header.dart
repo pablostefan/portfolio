@@ -4,7 +4,6 @@ import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/home/widgets/scroll_down.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
-import 'package:portfolio/presentation/pages/works/works_page.dart';
 import 'package:portfolio/presentation/widgets/animated_bubble_button.dart';
 import 'package:portfolio/presentation/widgets/animated_line_through_text.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
@@ -12,6 +11,7 @@ import 'package:portfolio/presentation/widgets/animated_positioned_widget.dart';
 import 'package:portfolio/presentation/widgets/animated_slide_transition.dart';
 import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -384,7 +384,7 @@ class _AboutDevState extends State<AboutDev> {
               fontWeight: FontWeight.w500,
             ),
             onTap: () {
-              Navigator.pushNamed(context, WorksPage.worksPageRoute);
+              Navigator.pushNamed(context, Routes.work);
             },
           ),
         ),

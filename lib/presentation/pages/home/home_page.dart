@@ -4,7 +4,6 @@ import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/home/widgets/home_page_header.dart';
 import 'package:portfolio/presentation/pages/home/widgets/loading_page.dart';
 import 'package:portfolio/presentation/pages/widgets/animated_footer.dart';
-import 'package:portfolio/presentation/pages/works/works_page.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
 import 'package:portfolio/presentation/widgets/animated_slide_transition.dart';
 import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
@@ -12,13 +11,12 @@ import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class HomePage extends StatefulWidget {
-  static const String homePageRoute = StringConst.HOME_PAGE;
-
   const HomePage({super.key});
 
   @override
@@ -92,7 +90,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
     );
     return PageWrapper(
-      selectedRoute: HomePage.homePageRoute,
+      selectedRoute: Routes.home,
       selectedPageName: StringConst.HOME,
       navBarAnimationController: _slideTextController,
       hasSideTitle: false,
@@ -203,9 +201,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     beginOffset: Offset(0, 0),
                     targetOffset: Offset(0.05, 0),
                     child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, WorksPage.worksPageRoute);
-                      },
+                      onPressed: () => Navigator.pushNamed(context, Routes.work),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,

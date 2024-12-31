@@ -7,6 +7,7 @@ import 'package:portfolio/presentation/pages/home/home_page.dart';
 import 'package:portfolio/presentation/pages/privacy_policy_page.dart';
 import 'package:portfolio/presentation/pages/project_detail/project_detail_page.dart';
 import 'package:portfolio/presentation/pages/works/works_page.dart';
+import 'package:portfolio/routing/routes.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String? /*Map<String, String>*/);
 
@@ -37,35 +38,35 @@ class RouteConfiguration {
   /// take priority.
   static List<Path> paths = [
     Path(
-      r'^' + PrivacyPolicyPage.pageRoute,
+      r'^' + Routes.privacyPolicy,
       (context, matches) => const PrivacyPolicyPage(),
     ),
     Path(
-      r'^' + ContactPage.contactPageRoute,
+      r'^' + Routes.contact,
       (context, matches) => const ContactPage(),
     ),
     Path(
-      r'^' + AboutPage.aboutPageRoute,
+      r'^' + Routes.about,
       (context, matches) => const AboutPage(),
     ),
     Path(
-      r'^' + WorksPage.worksPageRoute,
+      r'^' + Routes.work,
       (context, matches) => const WorksPage(),
     ),
     Path(
-      r'^' + ProjectDetailPage.projectDetailPageRoute,
+      r'^' + Routes.projectDetail,
       (context, matches) => const ProjectDetailPage(),
     ),
     Path(
-      r'^' + ExperiencePage.experiencePageRoute,
+      r'^' + Routes.experience,
       (context, matches) => const ExperiencePage(),
     ),
     Path(
-      r'^' + CertificationPage.certificationPageRoute,
+      r'^' + Routes.certifications,
       (context, matches) => const CertificationPage(),
     ),
     Path(
-      r'^' + HomePage.homePageRoute,
+      r'^' + Routes.home,
       (context, matches) => HomePage(),
     ),
   ];

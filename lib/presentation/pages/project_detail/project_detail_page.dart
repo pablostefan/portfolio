@@ -11,12 +11,11 @@ import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
 import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ProjectDetailPage extends StatefulWidget {
-  static const String projectDetailPageRoute = StringConst.PROJECT_DETAIL_PAGE;
-
   const ProjectDetailPage({super.key});
 
   @override
@@ -109,7 +108,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
     );
     return PageWrapper(
       backgroundColor: AppColors.white,
-      selectedRoute: ProjectDetailPage.projectDetailPageRoute,
+      selectedRoute: Routes.projectDetail,
       hasSideTitle: false,
       selectedPageName: StringConst.PROJECT,
       navBarAnimationController: _controller,

@@ -9,12 +9,11 @@ import 'package:portfolio/presentation/widgets/content_builder.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ExperiencePage extends StatefulWidget {
-  static const String experiencePageRoute = StringConst.EXPERIENCE_PAGE;
-
   const ExperiencePage({super.key});
 
   @override
@@ -31,6 +30,8 @@ class _ExperiencePageState extends State<ExperiencePage> with TickerProviderStat
 
   @override
   void initState() {
+    super.initState();
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 1200),
       vsync: this,
@@ -57,7 +58,6 @@ class _ExperiencePageState extends State<ExperiencePage> with TickerProviderStat
       _experience3Controller,
       _experience4Controller,
     ];
-    super.initState();
   }
 
   @override
@@ -97,7 +97,7 @@ class _ExperiencePageState extends State<ExperiencePage> with TickerProviderStat
     );
 
     return PageWrapper(
-      selectedRoute: ExperiencePage.experiencePageRoute,
+      selectedRoute: Routes.experience,
       selectedPageName: StringConst.EXPERIENCE,
       navBarAnimationController: _controller,
       onLoadingAnimationDone: () {

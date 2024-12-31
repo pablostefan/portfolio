@@ -5,11 +5,10 @@ import 'package:portfolio/presentation/pages/widgets/page_header.dart';
 import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 
 class PrivacyPolicyPage extends StatefulWidget {
-  static const String pageRoute = StringConst.PRIVACY_POLICY_PAGE;
-
   const PrivacyPolicyPage({super.key});
 
   @override
@@ -55,12 +54,10 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> with TickerProvid
       ),
     );
     return PageWrapper(
-      selectedRoute: PrivacyPolicyPage.pageRoute,
+      selectedRoute: Routes.privacyPolicy,
       selectedPageName: StringConst.PRIVACY_POLICY,
       navBarAnimationController: _controller,
-      onLoadingAnimationDone: () {
-        _controller.forward();
-      },
+      onLoadingAnimationDone: _controller.forward,
       child: ListView(
         padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(

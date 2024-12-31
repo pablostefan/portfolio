@@ -90,12 +90,12 @@ class SubMenuData {
 
 class Data {
   static List<NavItemData> menuItems = [
-    NavItemData(name: StringConst.HOME, route: StringConst.HOME_PAGE),
-    NavItemData(name: StringConst.ABOUT, route: StringConst.ABOUT_PAGE),
-    NavItemData(name: StringConst.WORKS, route: StringConst.WORKS_PAGE),
-    NavItemData(name: StringConst.EXPERIENCE, route: StringConst.EXPERIENCE_PAGE),
-    NavItemData(name: StringConst.CERTIFICATIONS, route: StringConst.CERTIFICATION_PAGE),
-    NavItemData(name: StringConst.CONTACT, route: StringConst.CONTACT_PAGE),
+    NavItemData(name: StringConst.HOME, route: Routes.home),
+    NavItemData(name: StringConst.ABOUT, route: Routes.about),
+    NavItemData(name: StringConst.WORKS, route: Routes.work),
+    NavItemData(name: StringConst.EXPERIENCE, route: Routes.experience),
+    NavItemData(name: StringConst.CERTIFICATIONS, route: Routes.certifications),
+    NavItemData(name: StringConst.CONTACT, route: Routes.contact),
   ];
 
   static List<SocialData> socialData = [

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
 import 'package:portfolio/presentation/widgets/nav_item.dart';
 import 'package:portfolio/presentation/widgets/project_item.dart';
+import 'package:portfolio/routing/routes.dart';
 
 part 'animations.dart';
 part 'borders.dart';

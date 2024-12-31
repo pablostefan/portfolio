@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/presentation/pages/home/home_page.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
 import 'package:portfolio/presentation/widgets/app_logo.dart';
 import 'package:portfolio/presentation/widgets/nav_item.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 
 class AppDrawer extends StatefulWidget {
-  AppDrawer({
+  const AppDrawer({
+    super.key,
     required this.menuList,
     required this.selectedItemRouteName,
     required this.controller,
@@ -27,7 +28,7 @@ class AppDrawer extends StatefulWidget {
   final GestureTapCallback? onClose;
 
   @override
-  _AppDrawerState createState() => _AppDrawerState();
+  State<AppDrawer> createState() => _AppDrawerState();
 }
 
 class _AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMixin {
@@ -79,7 +80,7 @@ class _AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMix
       color: AppColors.grey500,
       fontSize: Sizes.TEXT_SIZE_10,
     );
-    return Container(
+    return SizedBox(
       width: widget.width ?? widthOfScreen(context),
       height: heightOfScreen(context),
       child: Drawer(
@@ -183,7 +184,7 @@ class _AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMix
           child: NavItem(
             controller: widget.controller,
             onTap: () {
-              if (menuList[index].route == HomePage.homePageRoute) {
+              if (menuList[index].route == Routes.home) {
                 Navigator.of(context).pushNamed(
                   menuList[index].route,
                   arguments: NavigationArguments(

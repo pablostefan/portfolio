@@ -13,11 +13,10 @@ import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/portfolio_button.dart';
 import 'package:portfolio/presentation/widgets/portfolio_text_form_field.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 
 class ContactPage extends StatefulWidget {
-  static const String contactPageRoute = StringConst.CONTACT_PAGE;
-
   const ContactPage({super.key});
 
   @override
@@ -180,12 +179,10 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
         },
         builder: (context, state) {
           return PageWrapper(
-            selectedRoute: ContactPage.contactPageRoute,
+            selectedRoute: Routes.contact,
             selectedPageName: StringConst.CONTACT,
             navBarAnimationController: _controller,
-            onLoadingAnimationDone: () {
-              _controller.forward();
-            },
+            onLoadingAnimationDone: _controller.forward,
             child: ListView(
               padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(

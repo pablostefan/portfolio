@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/presentation/pages/home/home_page.dart';
 import 'package:portfolio/presentation/pages/widgets/nav_bar.dart';
 import 'package:portfolio/presentation/widgets/app_drawer.dart';
 import 'package:portfolio/presentation/widgets/empty.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 
 import 'loading_slider.dart';
@@ -125,7 +125,7 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
               forwardSlideController.forward();
               forwardSlideController.addStatusListener((status) {
                 if (status == AnimationStatus.completed) {
-                  if (route == HomePage.homePageRoute) {
+                  if (route == Routes.home) {
                     Navigator.of(context).pushNamed(
                       route,
                       arguments: NavigationArguments(showUnVeilPageAnimation: true),

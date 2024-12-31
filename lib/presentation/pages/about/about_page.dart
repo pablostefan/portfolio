@@ -15,6 +15,7 @@ import 'package:portfolio/presentation/widgets/content_builder.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -22,7 +23,6 @@ import 'package:visibility_detector/visibility_detector.dart';
 const kDuration = Duration(milliseconds: 600);
 
 class AboutPage extends StatefulWidget {
-  static const String aboutPageRoute = StringConst.ABOUT_PAGE;
 
   const AboutPage({super.key});
 
@@ -144,7 +144,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       assignWidth(context, 0.5),
     );
     return PageWrapper(
-      selectedRoute: AboutPage.aboutPageRoute,
+      selectedRoute: Routes.about,
       selectedPageName: StringConst.ABOUT,
       navBarAnimationController: _controller,
       onLoadingAnimationDone: _controller.forward,

@@ -7,11 +7,11 @@ import 'package:portfolio/presentation/widgets/certification_card.dart';
 import 'package:portfolio/presentation/widgets/content_area.dart';
 import 'package:portfolio/presentation/widgets/custom_spacer.dart';
 import 'package:portfolio/presentation/widgets/page_wrapper.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class CertificationPage extends StatefulWidget {
-  static const String certificationPageRoute = StringConst.CERTIFICATION_PAGE;
 
   const CertificationPage({super.key});
 
@@ -73,7 +73,7 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
       ),
     );
     return PageWrapper(
-      selectedRoute: CertificationPage.certificationPageRoute,
+      selectedRoute: Routes.certifications,
       selectedPageName: StringConst.CERTIFICATIONS,
       navBarAnimationController: _headingTextController,
       onLoadingAnimationDone: () {
