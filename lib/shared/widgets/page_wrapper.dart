@@ -55,30 +55,34 @@ class PageWrapper extends StatefulWidget {
 }
 
 class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin {
-  late AnimationController forwardSlideController;
-  late AnimationController unveilPageSlideController;
+  late final AnimationController _forwardSlideController;
+  late final AnimationController _unveilPageSlideController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  Duration duration = Duration(milliseconds: 1250);
+  static const _animationDuration = Duration(milliseconds: 600);
 
   @override
   void initState() {
     super.initState();
-    forwardSlideController = AnimationController(
+
+    _forwardSlideController = AnimationController(
       vsync: this,
-      duration: duration,
-    );
-    unveilPageSlideController = AnimationController(
-      vsync: this,
-      duration: duration,
+      duration: _animationDuration,
     );
 
+    _unveilPageSlideController = AnimationController(
+      vsync: this,
+      duration: _animationDuration,
+    );
+
+    _initializeUnveilAnimation();
+  }
+
+  void _initializeUnveilAnimation() {
     if (widget.hasUnveilPageAnimation) {
-      unveilPageSlideController.forward();
-      unveilPageSlideController.addStatusListener((status) {
+      _unveilPageSlideController.forward();
+      _unveilPageSlideController.addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          if (widget.onLoadingAnimationDone != null) {
-            widget.onLoadingAnimationDone!();
-          }
+          widget.onLoadingAnimationDone?.call();
         }
       });
     }
@@ -86,20 +90,14 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
 
   @override
   void dispose() {
-    forwardSlideController.dispose();
-    unveilPageSlideController.dispose();
+    _forwardSlideController.dispose();
+    _unveilPageSlideController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // simple hack to reverse animation when navigation is popped
-    // I don't know if there's a better way to do this, but for now it works
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (forwardSlideController.isCompleted && widget.reverseAnimationOnPop) {
-        forwardSlideController.reverse();
-      }
-    });
+    _handleReverseAnimationOnPop();
 
     return Scaffold(
       key: _scaffoldKey,
@@ -112,58 +110,82 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
       body: Stack(
         children: [
           widget.child,
-          NavBar(
-            selectedRouteTitle: widget.selectedPageName,
-            controller: widget.navBarAnimationController,
-            selectedRouteName: widget.selectedRoute,
-            hasSideTitle: widget.hasSideTitle,
-            appLogoColor: widget.appLogoColor,
-            titleColor: widget.navBarTitleColor,
-            selectedTitleColor: widget.navBarSelectedTitleColor,
-            onNavItemWebTap: (String route) {
-              forwardSlideController.forward();
-              forwardSlideController.addStatusListener((status) {
-                if (status == AnimationStatus.completed) {
-                  if (route == Routes.home) {
-                    Navigator.of(context).pushNamed(
-                      route,
-                      arguments: NavigationArguments(showUnVeilPageAnimation: true),
-                    );
-                  } else {
-                    Navigator.of(context).pushNamed(route);
-                  }
-                }
-              });
-            },
-            onMenuTap: () {
-              if (_scaffoldKey.currentState!.isEndDrawerOpen) {
-                _scaffoldKey.currentState?.openEndDrawer();
-              } else {
-                _scaffoldKey.currentState?.openDrawer();
-              }
-            },
-          ),
-          LoadingSlider(
-            controller: forwardSlideController,
-            width: widthOfScreen(context),
-            height: heightOfScreen(context),
-          ),
-          Visibility(
-            visible: widget.hasUnveilPageAnimation,
-            replacement: widget.customLoadingAnimation,
-            child: Positioned(
-              right: 0,
-              child: LoadingSlider(
-                controller: unveilPageSlideController,
-                curve: Curves.fastOutSlowIn,
-                width: widthOfScreen(context),
-                height: heightOfScreen(context),
-                isSlideForward: false,
-              ),
-            ),
-          ),
+          _buildNavBar(context),
+          _buildLoadingSlider(context, _forwardSlideController),
+          _buildUnveilPageAnimation(context),
         ],
       ),
     );
+  }
+
+  void _handleReverseAnimationOnPop() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_forwardSlideController.isCompleted && widget.reverseAnimationOnPop) {
+        _forwardSlideController.reverse();
+      }
+    });
+  }
+
+  Widget _buildNavBar(BuildContext context) {
+    return NavBar(
+      selectedRouteTitle: widget.selectedPageName,
+      controller: widget.navBarAnimationController,
+      selectedRouteName: widget.selectedRoute,
+      hasSideTitle: widget.hasSideTitle,
+      appLogoColor: widget.appLogoColor,
+      titleColor: widget.navBarTitleColor,
+      selectedTitleColor: widget.navBarSelectedTitleColor,
+      onNavItemWebTap: (route) => _navigateToRoute(context, route),
+      onMenuTap: _toggleDrawer,
+    );
+  }
+
+  Widget _buildLoadingSlider(BuildContext context, AnimationController controller) {
+    return LoadingSlider(
+      controller: controller,
+      width: widthOfScreen(context),
+      height: heightOfScreen(context),
+    );
+  }
+
+  Widget _buildUnveilPageAnimation(BuildContext context) {
+    return Visibility(
+      visible: widget.hasUnveilPageAnimation,
+      replacement: widget.customLoadingAnimation,
+      child: Positioned(
+        right: 0,
+        child: LoadingSlider(
+          controller: _unveilPageSlideController,
+          curve: Curves.fastOutSlowIn,
+          width: widthOfScreen(context),
+          height: heightOfScreen(context),
+          isSlideForward: false,
+        ),
+      ),
+    );
+  }
+
+  void _navigateToRoute(BuildContext context, String route) {
+    _forwardSlideController.forward();
+    _forwardSlideController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        if (route == Routes.home) {
+          Navigator.of(context).pushNamed(
+            route,
+            arguments: NavigationArguments(showUnVeilPageAnimation: true),
+          );
+        } else {
+          Navigator.of(context).pushNamed(route);
+        }
+      }
+    });
+  }
+
+  void _toggleDrawer() {
+    if (_scaffoldKey.currentState!.isEndDrawerOpen) {
+      _scaffoldKey.currentState?.openEndDrawer();
+    } else {
+      _scaffoldKey.currentState?.openDrawer();
+    }
   }
 }

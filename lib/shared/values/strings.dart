@@ -72,11 +72,10 @@ abstract final class StringConst {
   static const String ABOUT_DEV_TECHNOLOGY_CONTENT =
       "Uso diversas ferramentas para ajudar no meu processo criativo ao dar vida às ideias. Abaixo estão as ferramentas e tecnologias que usei ao longo dos anos.";
   static const String ABOUT_DEV_CONTACT = "Contato";
-  static const String ABOUT_DEV_CONTACT_SOCIAL = "Entre em Contato.";
   static const String ABOUT_DEV_CONTACT_EMAIL = "Email.";
-  static const String FAMOUS_QUOTE = "“O sucesso é a soma de pequenos esforços repetidos dia após dia.”";
+  static const String FAMOUS_QUOTE = "“O sucesso é a soma de pequenos esforços repetidos dia após dia”.";
   static const String FAMOUS_QUOTE_AUTHOR = "Robert Collier";
-  static const String WORK_TOGETHER = "Pronto para criar algo incrível juntos?";
+  static const String WORK_TOGETHER = "Pronto para criarmos algo incrível juntos?";
   static const String AVAILABLE_FOR_FREELANCE = "Estou disponível para consultoria e projetos freelance.";
   static const String SAY_HELLO = "Diga Oi";
 

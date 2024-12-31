@@ -60,11 +60,7 @@ class PortfolioTextFormField extends StatelessWidget {
       children: [
         hasTitle ? Text(title, style: titleStyle) : Empty(),
         TextFormField(
-          style: textStyle ??
-              textTheme.bodyLarge?.copyWith(
-                color: AppColors.black,
-                fontWeight: FontWeight.w400,
-              ),
+          style: textStyle ?? textTheme.bodyLarge?.copyWith(color: AppColors.black, fontWeight: FontWeight.w400),
           controller: controller,
           keyboardType: textInputType,
           onChanged: onChanged,
@@ -81,10 +77,7 @@ class PortfolioTextFormField extends StatelessWidget {
             enabledBorder: enabledBorder,
             focusedBorder: focusedBorder,
             hintText: hintText,
-            hintStyle: hintTextStyle ??
-                textTheme.bodyLarge?.copyWith(
-                  color: AppColors.grey600,
-                ),
+            hintStyle: hintTextStyle ?? textTheme.bodyLarge?.copyWith(color: AppColors.grey600),
           ),
           obscureText: obscured,
         ),

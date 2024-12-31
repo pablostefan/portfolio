@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/presentation/project_detail/models/project_details.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -45,6 +46,25 @@ class Functions {
         data: currentProject,
         nextProject: nextProject,
         hasNextProject: hasNextProject,
+      ),
+    );
+  }
+
+  static void showSnackBar({
+    required BuildContext context,
+    required String message,
+    Color backgroundColor = AppColors.grey,
+  }) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: backgroundColor,
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: textTheme.bodyMedium?.copyWith(fontSize: Sizes.TEXT_SIZE_16, color: AppColors.black),
+        ),
+        duration: Animations.emailSnackBarDuration,
       ),
     );
   }

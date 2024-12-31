@@ -266,7 +266,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           number: "/03 ",
                           width: contentAreaWidth,
                           section: StringConst.ABOUT_DEV_CONTACT.toUpperCase(),
-                          title: StringConst.ABOUT_DEV_CONTACT_SOCIAL,
+                          title: StringConst.GET_IN_TOUCH,
                           body: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

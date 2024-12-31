@@ -30,6 +30,7 @@ abstract final class AppColors {
 
   // Red
   static const Color errorRed = Color(0xFFFF2019);
+  static const Color errorRed100 = Color(0xFFEF4E48);
 
   // Project Primary Colors
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/shared/values/values.dart';
 
-class LoadingSlider extends AnimatedWidget {
+class LoadingSlider extends StatelessWidget {
   const LoadingSlider({
     super.key,
     required this.width,
@@ -10,7 +10,7 @@ class LoadingSlider extends AnimatedWidget {
     this.curve = Curves.fastLinearToSlowEaseIn,
     this.isSlideForward = true,
     this.color = AppColors.black,
-  }) : super(listenable: controller);
+  });
 
   final AnimationController controller;
   final Curve curve;
@@ -19,32 +19,29 @@ class LoadingSlider extends AnimatedWidget {
   final Color color;
   final bool isSlideForward;
 
-  Animation<double> get forwardSlideAnimation => Tween<double>(
-        begin: 0,
-        end: width,
-      ).animate(
-        CurvedAnimation(
-          parent: controller,
-          curve: curve,
-        ),
-      );
-
-  Animation<double> get backwardsSlideAnimation => Tween<double>(
-        begin: width,
-        end: 0,
-      ).animate(
-        CurvedAnimation(
-          parent: controller,
-          curve: curve,
-        ),
-      );
+  Animation<double> get _animation {
+    return Tween<double>(
+      begin: isSlideForward ? 0 : width,
+      end: isSlideForward ? width : 0,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: curve,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: isSlideForward ? forwardSlideAnimation.value : backwardsSlideAnimation.value,
-      color: color,
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Container(
+          height: height,
+          width: _animation.value,
+          color: color,
+        );
+      },
     );
   }
 }
