@@ -1,17 +1,17 @@
-class Email {
-  Email({
+class EmailEntity {
+  String name;
+  String email;
+  String subject;
+  String message;
+
+  EmailEntity({
     required this.name,
     required this.email,
     required this.subject,
     required this.message,
   });
 
-  String name;
-  String email;
-  String subject;
-  String message;
-
-  factory Email.fromJson(Map<String, dynamic> json) => Email(
+  factory EmailEntity.fromJson(Map<String, dynamic> json) => EmailEntity(
         name: json["name"],
         email: json["email"],
         subject: json["subject"],

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/extensions.dart';
-import 'package:portfolio/infrastructure/bloc/email_bloc.dart';
-import 'package:portfolio/injection_container.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
 import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
 import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
@@ -26,7 +23,6 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
-  late EmailBloc emailBloc;
   bool isSendingEmail = false;
   bool isBodyVisible = false;
   bool _nameFilled = false;
@@ -37,13 +33,14 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
   bool _emailHasError = false;
   bool _subjectHasError = false;
   bool _messageHasError = false;
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _subjectController = TextEditingController();
-  TextEditingController _messageController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _subjectController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: Animations.slideAnimationDurationLong,
@@ -54,8 +51,6 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
         curve: Interval(0.6, 1.0, curve: Curves.ease),
       ),
     );
-    emailBloc = getIt<EmailBloc>();
-    super.initState();
   }
 
   @override
@@ -73,14 +68,6 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
       setState(() {
         isSendingEmail = true;
       });
-      emailBloc.add(
-        SendEmail(
-          name: _nameController.text,
-          email: _emailController.text,
-          subject: _subjectController.text,
-          message: _messageController.text,
-        ),
-      );
     } else {
       isNameValid(_nameController.text);
       isEmailValid(_emailController.text);
@@ -134,163 +121,119 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
       color: AppColors.black,
       fontSize: responsiveSize(context, 40, 60),
     );
-    return BlocConsumer<EmailBloc, EmailState>(
-        bloc: emailBloc,
-        listener: (context, state) {
-          if (state == EmailState.failure()) {
-            setState(() {
-              isSendingEmail = false;
-            });
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: AppColors.errorRed,
-                content: Text(
-                  StringConst.EMAIL_FAILED_RESPONSE,
-                  textAlign: TextAlign.center,
-                  style: textTheme.bodyLarge?.copyWith(
-                    fontSize: Sizes.TEXT_SIZE_16,
-                    color: AppColors.black,
+
+    return PageWrapper(
+      selectedRoute: Routes.contact,
+      selectedPageName: StringConst.CONTACT,
+      navBarAnimationController: _controller,
+      onLoadingAnimationDone: _controller.forward,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        children: [
+          Padding(
+            padding: padding,
+            child: ContentArea(
+              width: contentAreaWidth,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AnimatedTextSlideBoxTransition(
+                    controller: _controller,
+                    text: StringConst.GET_IN_TOUCH,
+                    textStyle: headingStyle,
                   ),
-                ),
-                duration: Animations.emailSnackBarDuration,
-              ),
-            );
-          }
-          if (state == EmailState.emailSentSuccessFully()) {
-            setState(() {
-              isSendingEmail = false;
-            });
-            clearText();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: AppColors.white,
-                content: Text(
-                  StringConst.EMAIL_RESPONSE,
-                  textAlign: TextAlign.center,
-                  style: textTheme.bodyLarge?.copyWith(
-                    fontSize: Sizes.TEXT_SIZE_16,
-                    color: AppColors.black,
-                  ),
-                ),
-                duration: Animations.emailSnackBarDuration,
-              ),
-            );
-          }
-        },
-        builder: (context, state) {
-          return PageWrapper(
-            selectedRoute: Routes.contact,
-            selectedPageName: StringConst.CONTACT,
-            navBarAnimationController: _controller,
-            onLoadingAnimationDone: _controller.forward,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              children: [
-                Padding(
-                  padding: padding,
-                  child: ContentArea(
+                  CustomSpacer(heightFactor: 0.05),
+                  AnimatedPositionedText(
                     width: contentAreaWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AnimatedTextSlideBoxTransition(
-                          controller: _controller,
-                          text: StringConst.GET_IN_TOUCH,
-                          textStyle: headingStyle,
-                        ),
-                        CustomSpacer(heightFactor: 0.05),
-                        AnimatedPositionedText(
-                          width: contentAreaWidth,
-                          controller: CurvedAnimation(
-                            parent: _controller,
-                            curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
-                          ),
-                          text: StringConst.CONTACT_MSG,
-                          maxLines: 5,
-                          textStyle: textTheme.bodyLarge?.copyWith(
-                            color: AppColors.grey700,
-                            height: 2.0,
-                            fontSize: responsiveSize(
-                              context,
-                              Sizes.TEXT_SIZE_16,
-                              Sizes.TEXT_SIZE_18,
-                            ),
-                          ),
-                        ),
-                        CustomSpacer(heightFactor: 0.05),
-                        SlideTransition(
-                          position: _slideAnimation,
-                          child: Column(
-                            children: [
-                              PortfolioTextFormField(
-                                hasTitle: _nameHasError,
-                                title: StringConst.NAME_ERROR_MSG,
-                                titleStyle: _nameHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.YOUR_NAME,
-                                controller: _nameController,
-                                filled: _nameFilled,
-                                onChanged: isNameValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _emailHasError,
-                                title: StringConst.EMAIL_ERROR_MSG,
-                                titleStyle: _emailHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.EMAIL,
-                                controller: _emailController,
-                                filled: _emailFilled,
-                                onChanged: isEmailValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _subjectHasError,
-                                title: StringConst.SUBJECT_ERROR_MSG,
-                                titleStyle: _subjectHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.SUBJECT,
-                                controller: _subjectController,
-                                filled: _subjectFilled,
-                                onChanged: isSubjectValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _messageHasError,
-                                title: StringConst.MESSAGE_ERROR_MSG,
-                                titleStyle: _messageHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.MESSAGE,
-                                controller: _messageController,
-                                filled: _messageFilled,
-                                textInputType: TextInputType.multiline,
-                                maxLines: 5,
-                                onChanged: isMessageValid,
-                              ),
-                              SpaceH20(),
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: PortfolioButton(
-                                  height: Sizes.HEIGHT_56,
-                                  width: buttonWidth,
-                                  isLoading: isSendingEmail,
-                                  title: StringConst.SEND_MESSAGE.toUpperCase(),
-                                  onPressed: sendEmail,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
+                    controller: CurvedAnimation(
+                      parent: _controller,
+                      curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
+                    ),
+                    text: StringConst.CONTACT_MSG,
+                    maxLines: 5,
+                    textStyle: textTheme.bodyLarge?.copyWith(
+                      color: AppColors.grey700,
+                      height: 2.0,
+                      fontSize: responsiveSize(
+                        context,
+                        Sizes.TEXT_SIZE_16,
+                        Sizes.TEXT_SIZE_18,
+                      ),
                     ),
                   ),
-                ),
-                CustomSpacer(heightFactor: 0.15),
-                SimpleFooter(),
-              ],
+                  CustomSpacer(heightFactor: 0.05),
+                  SlideTransition(
+                    position: _slideAnimation,
+                    child: Column(
+                      children: [
+                        PortfolioTextFormField(
+                          hasTitle: _nameHasError,
+                          title: StringConst.NAME_ERROR_MSG,
+                          titleStyle: _nameHasError ? errorStyle : initialErrorStyle,
+                          hintText: StringConst.YOUR_NAME,
+                          controller: _nameController,
+                          filled: _nameFilled,
+                          onChanged: isNameValid,
+                        ),
+                        SpaceH20(),
+                        PortfolioTextFormField(
+                          hasTitle: _emailHasError,
+                          title: StringConst.EMAIL_ERROR_MSG,
+                          titleStyle: _emailHasError ? errorStyle : initialErrorStyle,
+                          hintText: StringConst.EMAIL,
+                          controller: _emailController,
+                          filled: _emailFilled,
+                          onChanged: isEmailValid,
+                        ),
+                        SpaceH20(),
+                        PortfolioTextFormField(
+                          hasTitle: _subjectHasError,
+                          title: StringConst.SUBJECT_ERROR_MSG,
+                          titleStyle: _subjectHasError ? errorStyle : initialErrorStyle,
+                          hintText: StringConst.SUBJECT,
+                          controller: _subjectController,
+                          filled: _subjectFilled,
+                          onChanged: isSubjectValid,
+                        ),
+                        SpaceH20(),
+                        PortfolioTextFormField(
+                          hasTitle: _messageHasError,
+                          title: StringConst.MESSAGE_ERROR_MSG,
+                          titleStyle: _messageHasError ? errorStyle : initialErrorStyle,
+                          hintText: StringConst.MESSAGE,
+                          controller: _messageController,
+                          filled: _messageFilled,
+                          textInputType: TextInputType.multiline,
+                          maxLines: 5,
+                          onChanged: isMessageValid,
+                        ),
+                        SpaceH20(),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: PortfolioButton(
+                            height: Sizes.HEIGHT_56,
+                            width: buttonWidth,
+                            isLoading: isSendingEmail,
+                            title: StringConst.SEND_MESSAGE.toUpperCase(),
+                            onPressed: sendEmail,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          );
-        });
+          ),
+          CustomSpacer(heightFactor: 0.15),
+          SimpleFooter(),
+        ],
+      ),
+    );
   }
 
   bool isTextValid(String value) {
