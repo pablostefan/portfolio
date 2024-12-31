@@ -48,6 +48,7 @@ flutter:
     - assets/images/projects/fiibo/
     - assets/images/projects/krykto/
     - assets/images/projects/forbes/
+    - assets/images/projects/foxbit/
     - assets/screenshots/
 
   fonts:

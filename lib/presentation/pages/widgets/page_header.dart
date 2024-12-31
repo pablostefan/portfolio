@@ -26,6 +26,7 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
     controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1500),
@@ -51,12 +52,12 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
       }
     });
     controller.forward();
-    super.initState();
   }
 
   @override
   void dispose() {
     controller.dispose();
+    lottieController.dispose();
     super.dispose();
   }
 

@@ -53,4 +53,8 @@ abstract final class ImagePath {
   // Forbes
   static const String FORBES_COVER = "$projectsDir/forbes/cover.png";
   static const String FORBES_SCREENS = "$projectsDir/forbes/header.png";
+
+  // Foxbit
+  static const String FOXBIT_COVER = "$projectsDir/foxbit/cover.png";
+  static const String FOXBIT_SCREENS = "$projectsDir/foxbit/header.png";
 }

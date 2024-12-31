@@ -235,7 +235,7 @@ class _AboutProjectState extends State<AboutProject> {
                 padding: const EdgeInsets.only(left: 40),
                 child: InkWell(
                   onTap: () {
-                    Functions.launchUrl(widget.projectData.playStoreUrl);
+                    Functions.launchUrl(widget.projectData.appStoreUrl);
                   },
                   child: AnimatedPositionedWidget(
                     controller: CurvedAnimation(

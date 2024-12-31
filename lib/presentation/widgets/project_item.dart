@@ -25,6 +25,7 @@ class ProjectItemData {
     this.hasBeenReleased = true,
     this.playStoreUrl = "",
     this.webUrl = "",
+    this.appStoreUrl = "",
     this.navTitleColor = AppColors.grey600,
     this.navSelectedTitleColor = AppColors.black,
     this.appLogoColor = AppColors.black,
@@ -52,6 +53,7 @@ class ProjectItemData {
   final bool isLive;
   final String webUrl;
   final String? technologyUsed;
+  final String appStoreUrl;
 
   factory ProjectItemData.fromMap(Map<String, dynamic> map) {
     return ProjectItemData(
@@ -77,6 +79,7 @@ class ProjectItemData {
       isLive: map['isLive'],
       webUrl: map['webUrl'],
       technologyUsed: map['technologyUsed'],
+      appStoreUrl: map['appStoreUrl'],
     );
   }
 
@@ -104,6 +107,7 @@ class ProjectItemData {
       'isLive': isLive,
       'webUrl': webUrl,
       'technologyUsed': technologyUsed,
+      'appStoreUrl': appStoreUrl,
     };
   }
 }

@@ -153,7 +153,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
               ),
             ),
           ),
-          Container(),
           Visibility(
             visible: projectDetails.hasNextProject,
             child: Padding(
@@ -162,7 +161,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
                 width: contentAreaWidth,
                 child: NextProject(
                   width: contentAreaWidth,
-                  nextProject: projectDetails.nextProject!,
+                  nextProject: projectDetails.nextProject,
                   navigateToNextProject: () {
                     Functions.navigateToProject(
                       context: context,
@@ -175,7 +174,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
               ),
             ),
           ),
-          Visibility(visible: projectDetails.hasNextProject, child: CustomSpacer(heightFactor: 0.15)),
+          CustomSpacer(heightFactor: 0.15),
           SimpleFooter(),
         ],
       ),

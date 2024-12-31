@@ -85,17 +85,17 @@ class _WorksPageState extends State<WorksPage> with TickerProviderStateMixin {
               if (screenWidth <= RefinedBreakpoints().tabletSmall) {
                 return Column(
                   children: _buildProjectsForMobile(
-                    data: Data.projects,
+                    data: Data.recentWorks,
                     projectHeight: projectItemHeight.toInt(),
                     subHeight: subHeight.toInt(),
                   ),
                 );
               } else {
                 return SizedBox(
-                  height: (subHeight * (Data.projects.length)) + extra,
+                  height: (subHeight * (Data.recentWorks.length)) + extra,
                   child: Stack(
                     children: _buildProjects(
-                      data: Data.projects,
+                      data: Data.recentWorks,
                       projectHeight: projectItemHeight.toInt(),
                       subHeight: subHeight.toInt(),
                     ),

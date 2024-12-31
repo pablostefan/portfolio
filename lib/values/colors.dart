@@ -37,6 +37,7 @@ abstract final class AppColors {
   static const Color krykto = Color(0xFF212222);
   static const Color kryktoLogo = Color(0xFF2762CB);
   static const Color forbes = Color(0xFF254d7e);
+  static const Color foxbit = Color(0xFF0d1a54);
 
   static const Color nimbus = Color(0xFFF6C350);
   static const Color nimbusNavTitle = AppColors.black;

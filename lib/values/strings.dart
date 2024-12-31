@@ -201,80 +201,13 @@ abstract final class StringConst {
   static const String LOCATION_FIIBO = "São Paulo - Brasil";
   static const String DURATION_FIIBO = "ABR 2020 - Atual";
 
-  //Portfolio, Projects
-  static const String PORTFOLIO_SITE_V2 = "Aerium V2";
-  static const String PORTFOLIO_SITE_V2_PLATFORM = "Web";
-  static const String PORTFOLIO_SITE_V2_CATEGORY = "Portfolio / CV.";
-  static const String PORTFOLIO_SITE_V2_DESIGNER = "Julius Guevarra.";
-  static const String PORTFOLIO_SITE_V2_SUBTITLE = "A beautiful portfolio website built with flutter web.";
-  static const String PORTFOLIO_SITE_V2_DETAIL =
-      "As you can tell, you're currently on my portfolio website (Aerium-v2) right now. Aerium-v2 is an elegant progressive web app built to help developers tell their story by showcasing their works and skills.";
-  static const String PORTFOLIO_SITE_V2_GITHUB_URL = "https://github.com/david-legend/david-legend.github.io";
-  static const String PORTFOLIO_SITE_V2_WEB_URL = "https://davidcobbina.com/";
-
-  static const String DROP = "Drop";
-  static const String DROP_PLATFORM = "Android / IOS.";
-  static const String DROP_CATEGORY = "Ecommerce.";
-  static const String DROP_DESIGNER = "Stepan Slobodiansky.";
-  static const String DROP_SUBTITLE = "A beautiful ecommerce mobile application.";
-  static const String DROP_DETAIL =
-      "Drop is an online store which provides users with a simple, smooth experience and enabling users to get their hands on the latest and newest drops.";
-  static const String DROP_GITHUB_URL = "https://github.com/david-legend/drop";
-  static const String DROP_PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.davidcobbina.drop";
-
-  static const String NIMBUS = "Nimbus";
-  static const String NIMBUS_PLATFORM = "Web.";
-  static const String NIMBUS_CATEGORY = "Portfolio / CV.";
-  static const String NIMBUS_DESIGNER = "Web Genius Labs.";
-  static const String NIMBUS_SUBTITLE = "Nimbus (Portfolio & CV), a beautifully designed portfolio website.";
-  static const String NIMBUS_DETAIL = "Nimbus is a beautifully designed Portfolio & CV website built with flutter";
-  static const String NIMBUS_GITHUB_URL = "https://github.com/david-legend/nimbus";
-  static const String NIMBUS_WEB_URL = "https://david-legend.github.io/nimbus/";
-
-  static const String ROAM = "Roam";
-  static const String ROAM_PLATFORM = "Android / IOS.";
-  static const String ROAM_CATEGORY = "Travel.";
-  static const String ROAM_DESIGNER = "Georgina Sekyi.";
-  static const String ROAM_SUBTITLE = "UI / UX Case study for a travel advisory app.";
-  static const String ROAM_DETAIL =
-      "Roam is a UI / UX Case study for a travel advisory app done by Georgina Sekyi and built by me using flutter.";
-  static const String ROAM_GITHUB_URL = "https://github.com/david-legend/roam";
-  static const String ROAM_PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.davidcobbina.roam";
-
-  static const String LOGIN_CATALOG = "Login Catalog";
-  static const String LOGIN_CATALOG_PLATFORM = "Android / IOS.";
-  static const String LOGIN_CATALOG_CATEGORY = "UI Kit.";
-  static const String LOGIN_CATALOG_SUBTITLE = "A beautiful catalog of login designs";
-  static const String LOGIN_CATALOG_DETAIL =
-      "Login Catalog is a beautiful catalog of login designs built with flutter. The goal is to catalog as many as a 1000 different login/Signup designs to help flutter devs get right to the most important part of their app.";
-  static const String LOGIN_CATALOG_PLAYSTORE_URL =
-      "https://play.google.com/store/apps/details?id=dev.davidcobbina.logincatalog";
-  static const String LOGIN_CATALOG_GITHUB_URL = "https://github.com/david-legend/login_catalog";
-
-  static const String FOODY_BITE = "FoodyBite";
-  static const String FOODY_BITE_PLATFORM = "Android / IOS.";
-  static const String FOODY_BITE_CATEGORY = "Food / Restaurant.";
-  static const String FOODY_BITE_DESIGNER = "Yagnesh P.";
-  static const String FOODY_BITE_SUBTITLE = "A useful free ui kit design for food related apps";
-  static const String FOODY_BITE_DETAIL =
-      "Foodybite is a free ui kit designed by Yagnesh Pipariya and built by Pablo Stefan. The goal of this project is to fast track development and inspire developers who want to build a food related app.";
-  static const String FOODY_BITE_PLAYSTORE_URL = "";
-  static const String FOODY_BITE_GITHUB_URL = "https://github.com/david-legend/foodybite";
-
-  static const String OTP_TEXT_FIELD = "Otp Textfield";
-  static const String OTP_TEXT_FIELD_PLATFORM = "Flutter Package/Library.";
-  static const String OTP_TEXT_FIELD_CATEGORY = "Package.";
-  static const String OTP_TEXT_FIELD_SUBTITLE = "A useful flutter package for helping with otp";
-  static const String OTP_TEXT_FIELD_DETAIL =
-      "Otp text field is a simple flutter package built to help flutter devs easily implement OTP in their app. It is highly customizable and very easy to use.";
-  static const String OTP_TEXT_FIELD_GITHUB_URL = "https://github.com/david-legend/otp_textfield";
-  static const String OTP_TEXT_FIELD_WEB_URL = "https://pub.dev/packages/flutter_otp_text_field";
-
   static const String FIIBO = "Fiibo";
   static const String FIIBO_PLATFORM = "Android / IOS.";
   static const String FIIBO_CATEGORY = "Saúde.";
   static const String FIIBO_DETAIL = "O primeiro marketplace de benefícios de saúde e bem-estar do Brasil.";
   static const String FIIBO_URL = "https://fiibo.com.br";
+  static const String FIIBO_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=br.com.inter_brasil_app";
+  static const String FIIBO_APP_STORE_URL = "  https://apps.apple.com/br/app/fiibo/id1624101922";
 
   static const String KRYKTO = "Krykto";
   static const String KRYKTO_PLATFORM = "Android / IOS.";
@@ -287,82 +220,29 @@ abstract final class StringConst {
   static const String FORBES_CATEGORY = "Aprendizagem.";
   static const String FORBES_DETAIL = "Plataforma de aprendizagem, que tem, na curadoria Forbes.";
   static const String FORBES_URL = "https://www.forbesplus.com.br";
+  static const String FORBES_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=br.com.forbesplus";
+  static const String FORBES_APP_STORE_URL = "  https://apps.apple.com/br/app/forbes-plus/id1603118493";
 
-  static const String FLUTTER_CATALOG = "Flutter Catalog";
-  static const String FLUTTER_CATALOG_PLATFORM = "Android / IOS.";
-  static const String FLUTTER_CATALOG_CATEGORY = "UI Kit.";
-  static const String FLUTTER_CATALOG_SUBTITLE = "A beautiful catalog of login designs";
-  static const String FLUTTER_CATALOG_DETAIL =
-      "Flutter Catalog is a beautiful catalog of designs built with flutter. The goal is to catalog different components and building blocks of a mobile app to help flutter devs get right to the most important part of their app.";
-  static const String FLUTTER_CATALOG_PLAYSTORE_URL =
-      "https://play.google.com/store/apps/details?id=dev.davidcobbina.fluttercatalog";
-  static const String FLUTTER_CATALOG_GITHUB_URL = "https://github.com/david-legend/flutter_catalog";
+  static const String FOXBIT = "Foxbit Pay";
+  static const String FOXBIT_PLATFORM = "Android / IOS.";
+  static const String FOXBIT_CATEGORY = "Pagamentos.";
+  static const String FOXBIT_DETAIL =
+      "solução que permite que pessoas físicas e jurídicas aceitem criptomoedas como pagamento.";
+  static const String FOXBIT_URL = "https://foxbitbusiness.com.br/foxbit-pay/";
+  static const String FOXBIT_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=br.com.foxbit.pay";
+  static const String FOXBIT_APP_STORE_URL = "https://apps.apple.com/br/app/foxbit-pay/id1667357279";
 
-  static const String AERIUM = "Aerium";
-  static const String AERIUM_PLATFORM = "Web.";
-  static const String AERIUM_CATEGORY = "Portfolio / CV.";
-  static const String AERIUM_DESIGNER = "Pavel G.";
-  static const String AERIUM_SUBTITLE = "A progressive web app for showcasing your portfolio.";
-  static const String AERIUM_DETAIL =
-      "Aerium is the first iteration of my portfolio. Aerium is an elegant portfolio website built to help developers tell their story by showcasing their works and skills.";
-  static const String AERIUM_GITHUB_URL = "https://github.com/david-legend/aerium";
-  static const String AERIUM_WEB_URL = "http://david-legend.github.io/aerium";
+  static const String EMPIRICUS = "Empiricus";
+  static const String EMPIRICUS_URL = "https://github.com/pablostefan/empiricus";
 
-  static const String AERIUM_V2 = "Aerium V2 ";
-  static const String AERIUM_V2_PLATFORM = "Web.";
-  static const String AERIUM_V2_CATEGORY = "Portfolio / CV.";
-  static const String AERIUM_V2_DESIGNER = "Julius G.";
-  static const String AERIUM_V2_SUBTITLE = "A progressive web app for showcasing your portfolio.";
-  static const String AERIUM_V2_DETAIL =
-      "As you can tell, you're currently on Aerium v2 right now. It is the second iteration of my portfolio website. Aerium V2 is an elegant progressive website built to help developers tell their story by showcasing their works and skills.";
-  static const String AERIUM_V2_GITHUB_URL = "https://github.com/david-legend/david-legend.github.io";
-  static const String AERIUM_V2_WEB_URL = "https://davidcobbina.com/#/";
+  static const String MOVIE_APP = "Movie App";
+  static const String MOVIE_APP_URL = "https://github.com/pablostefan/movie_app";
 
-  static const String OUTFITR = "Outfitr";
-  static const String OUTFITR_PLATFORM = "Android / IOS.";
-  static const String OUTFITR_CATEGORY = "Ecommerce.";
-  static const String OUTFITR_SUBTITLE = "Design your fashion app faster and easier with Outfitr Fashion UI Kit.";
-  static const String OUTFITR_DETAIL =
-      "With over 30 unique screens, Outfitr UI Kit is a valuable resource for any developer or enterpreneur that wants to standout from the crowd.";
-  static const String OUTFITR_GITHUB_URL = "https://github.com/david-legend/david-legend.github.io";
-  static const String OUTFITR_WEB_URL = "https://davidcobbina.com/#/";
+  static const String REGEX_PATTERN = "Regex Pattern Text Field";
+  static const String REGEX_PATTERN_URL = "https://github.com/pablostefan/regex_pattern_text_field";
 
-  //Noteworthy Projects
-  static const String PROGRAMMING_FOR_DATA_SCIENCE = "Programming For Data Science";
-  static const String PROGRAMMING_FOR_DATA_SCIENCE_DETAIL = "Udacity Programming For Data Science Course.";
-  static const String PROGRAMMING_FOR_DATA_SCIENCE_GITHUB_URL =
-      "https://github.com/david-legend/programming-for-data-science-nanodegree";
-
-  static const String FINOPP = "Finopp";
-  static const String FINOPP_DETAIL =
-      "Finopp - Financial Opportunities - Its an app that connects startups to Investors. I built this UI as a prototype to compete in the African app launchpad(http://techleaders.eg/aal/competition/).";
-  static const String FINOPP_GITHUB_URL = "https://github.com/david-legend/finopp";
-
-  static const String UDAGRAM_IMAGE_FILTERING = "Udagram Image Filtering App";
-  static const String UDAGRAM_IMAGE_FILTERING_TECH = "Kubernetes / Docker / Ionic / Node.";
-  static const String UDAGRAM_IMAGE_FILTERING_DETAIL =
-      "Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.";
-  static const String UDAGRAM_IMAGE_FILTERING_GITHUB_URL = "https://github.com/david-legend/udagram";
-
-  static const String SERVERLESS_TODO = "Serverless Todo App";
-  static const String SERVERLESS_TODO_TECH = "Serverless / AWS Lambda / API GateWay / Node / React";
-  static const String SERVERLESS_TODO_DETAIL = "Simple TODO application using AWS Lambda and Serverless framework";
-  static const String SERVERLESS_TODO_GITHUB_URL = "https://github.com/david-legend/serverless-todo-app";
-
-  static const String PYTHON_ALGORITHMS = "Python Algorithms";
-  static const String PYTHON_ALGORITHMS_DETAIL =
-      "Data structures and interview questions implemented in JavaScript with explanations and links to further readings.";
-  static const String PYTHON_ALGORITHMS_GITHUB_URL = "https://github.com/david-legend/python-algorithms";
-
-  static const String AMOR_APP = "Amor";
-  static const String AMOR_APP_DETAIL = "beautifully designed portfolio website built with flutter.";
-  static const String AMOR_APP_GITHUB_URL = "https://github.com/david-legend/amor";
-  static const String AMOR_APP_WEB_URL = "https://david-legend.github.io/amor/";
-
-  static const String ONBOARDING_APP = "Onboarding Template UI Kit.";
-  static const String ONBOARDING_APP_DETAIL =
-      "A beautifully crafted app that takes you through an onboarding experience.";
-  static const String ONBOARDING_APP_GITHUB_URL = "https://github.com/david-legend/onboarding-app";
+  static const String ANIMATED_CHARTS = "Animated Charts";
+  static const String ANIMATED_CHARTS_URL = "https://github.com/pablostefan/animated_charts";
 
   // Font Family
   static const String VISUELT_PRO = "VisueltPro";

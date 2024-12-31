@@ -10,11 +10,11 @@ class NextProject extends StatefulWidget {
   const NextProject({
     super.key,
     required this.width,
-    required this.nextProject,
+    this.nextProject,
     this.navigateToNextProject,
   });
 
-  final ProjectItemData nextProject;
+  final ProjectItemData? nextProject;
   final double width;
   final VoidCallback? navigateToNextProject;
 
@@ -129,14 +129,14 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                                     child: Opacity(
                                       opacity: _isHovering ? 1.0 : 0.2,
                                       child: Text(
-                                        widget.nextProject.title,
+                                        widget.nextProject?.title ?? "",
                                         textAlign: TextAlign.center,
                                         style: projectTitleStyle,
                                       ),
                                     ),
                                   ),
                                   child: Text(
-                                    widget.nextProject.title,
+                                    widget.nextProject?.title ?? "",
                                     textAlign: TextAlign.center,
                                     style: projectTitleStyle,
                                   ))
@@ -170,7 +170,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
-                            widget.nextProject.coverUrl,
+                            widget.nextProject?.coverUrl ?? "",
                             fit: BoxFit.fitWidth,
                             color: _isHovering ? Colors.transparent : Colors.grey,
                             colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
@@ -196,7 +196,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                 ),
                 SpaceH20(),
                 Text(
-                  widget.nextProject.title,
+                  widget.nextProject?.title ?? "",
                   textAlign: TextAlign.center,
                   style: projectTitleStyle,
                 ),
@@ -206,7 +206,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Image.asset(
-                      widget.nextProject.coverUrl,
+                      widget.nextProject?.coverUrl ?? "",
                       fit: BoxFit.fitWidth,
                     ),
                   ),
