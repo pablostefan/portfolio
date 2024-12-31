@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/presentation/about/about_page.dart';
-import 'package:portfolio/presentation/certification_page.dart';
-import 'package:portfolio/presentation/contact_page.dart';
+import 'package:portfolio/presentation/certification/certification_page.dart';
+import 'package:portfolio/presentation/contact/contact_page.dart';
 import 'package:portfolio/presentation/error/error_page.dart';
-import 'package:portfolio/presentation/experience_page.dart';
+import 'package:portfolio/presentation/experience/experience_page.dart';
 import 'package:portfolio/presentation/home/home_page.dart';
-import 'package:portfolio/presentation/privacy_policy_page.dart';
+import 'package:portfolio/presentation/privacy_policy/privacy_policy_page.dart';
 import 'package:portfolio/presentation/project_detail/project_detail_page.dart';
 import 'package:portfolio/presentation/works/works_page.dart';
 import 'package:portfolio/routing/path.dart';
