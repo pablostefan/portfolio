@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/extensions.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
-import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
-import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
-import 'package:portfolio/presentation/widgets/content_area.dart';
-import 'package:portfolio/presentation/widgets/custom_spacer.dart';
-import 'package:portfolio/presentation/widgets/page_wrapper.dart';
-import 'package:portfolio/presentation/widgets/portfolio_button.dart';
-import 'package:portfolio/presentation/widgets/portfolio_text_form_field.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
+import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
+import 'package:portfolio/shared/widgets/content_area.dart';
+import 'package:portfolio/shared/widgets/custom_spacer.dart';
+import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/portfolio_button.dart';
+import 'package:portfolio/shared/widgets/portfolio_text_form_field.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 
 class ContactPage extends StatefulWidget {

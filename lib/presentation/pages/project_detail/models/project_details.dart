@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:portfolio/presentation/widgets/project_item.dart';
+import 'package:portfolio/shared/widgets/project_item.dart';
 
 class ProjectDetailArguments {
   final ProjectItemData data;

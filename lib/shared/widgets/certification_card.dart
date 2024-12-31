@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/widgets/empty.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/shared/widgets/empty.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 
 import 'portfolio_button.dart';

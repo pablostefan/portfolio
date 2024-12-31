@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
-import 'package:portfolio/presentation/widgets/empty.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/shared/widgets/empty.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 
 const double lineHeight = 2;
 Color defaultLineColor = AppColors.accentColor2.withOpacity(0.35);
 
 class LoadingHomePageAnimation extends StatefulWidget {
-
   const LoadingHomePageAnimation({
     super.key,
     required this.text,

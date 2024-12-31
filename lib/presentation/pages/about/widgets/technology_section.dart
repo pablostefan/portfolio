@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
-import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
+import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/presentation/widgets/animated_slide_transition.dart';
-import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
+import 'package:portfolio/shared/widgets/animated_slide_transition.dart';
+import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
 import 'package:portfolio/values/values.dart';
 
 class PageHeader extends StatefulWidget {

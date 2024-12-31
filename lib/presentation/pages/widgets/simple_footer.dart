@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
-import 'package:portfolio/presentation/widgets/animated_line_through_text.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
+import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

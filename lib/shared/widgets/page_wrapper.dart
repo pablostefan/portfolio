@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/presentation/pages/widgets/nav_bar.dart';
-import 'package:portfolio/presentation/widgets/app_drawer.dart';
-import 'package:portfolio/presentation/widgets/empty.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/app_drawer.dart';
+import 'package:portfolio/shared/widgets/empty.dart';
 import 'package:portfolio/values/values.dart';
 
 import 'loading_slider.dart';
@@ -62,6 +62,7 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
 
   @override
   void initState() {
+    super.initState();
     forwardSlideController = AnimationController(
       vsync: this,
       duration: duration,
@@ -81,8 +82,6 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
         }
       });
     }
-
-    super.initState();
   }
 
   @override

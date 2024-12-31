@@ -3,16 +3,15 @@ import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/widgets/page_header.dart';
 import 'package:portfolio/presentation/pages/widgets/simple_footer.dart';
-import 'package:portfolio/presentation/widgets/certification_card.dart';
-import 'package:portfolio/presentation/widgets/content_area.dart';
-import 'package:portfolio/presentation/widgets/custom_spacer.dart';
-import 'package:portfolio/presentation/widgets/page_wrapper.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/certification_card.dart';
+import 'package:portfolio/shared/widgets/content_area.dart';
+import 'package:portfolio/shared/widgets/custom_spacer.dart';
+import 'package:portfolio/shared/widgets/page_wrapper.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class CertificationPage extends StatefulWidget {
-
   const CertificationPage({super.key});
 
   @override

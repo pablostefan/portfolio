@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
 import 'package:portfolio/presentation/pages/widgets/animated_footer.dart';
 import 'package:portfolio/presentation/pages/widgets/page_header.dart';
-import 'package:portfolio/presentation/widgets/content_area.dart';
-import 'package:portfolio/presentation/widgets/page_wrapper.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/content_area.dart';
+import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 
 class PrivacyPolicyPage extends StatefulWidget {

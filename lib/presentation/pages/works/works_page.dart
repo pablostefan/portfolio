@@ -4,10 +4,10 @@ import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/pages/widgets/animated_footer.dart';
 import 'package:portfolio/presentation/pages/widgets/page_header.dart';
 import 'package:portfolio/presentation/pages/works/widgets/noteworthy_projects.dart';
-import 'package:portfolio/presentation/widgets/custom_spacer.dart';
-import 'package:portfolio/presentation/widgets/page_wrapper.dart';
-import 'package:portfolio/presentation/widgets/project_item.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/custom_spacer.dart';
+import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

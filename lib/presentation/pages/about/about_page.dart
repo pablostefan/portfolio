@@ -6,16 +6,16 @@ import 'package:portfolio/presentation/pages/about/widgets/technology_section.da
 import 'package:portfolio/presentation/pages/home/widgets/scroll_down.dart';
 import 'package:portfolio/presentation/pages/widgets/animated_footer.dart';
 import 'package:portfolio/presentation/pages/widgets/socials.dart';
-import 'package:portfolio/presentation/widgets/animated_line_through_text.dart';
-import 'package:portfolio/presentation/widgets/animated_positioned_text.dart';
-import 'package:portfolio/presentation/widgets/animated_slide_transition.dart';
-import 'package:portfolio/presentation/widgets/animated_text_slide_box_transition.dart';
-import 'package:portfolio/presentation/widgets/content_area.dart';
-import 'package:portfolio/presentation/widgets/content_builder.dart';
-import 'package:portfolio/presentation/widgets/custom_spacer.dart';
-import 'package:portfolio/presentation/widgets/page_wrapper.dart';
-import 'package:portfolio/presentation/widgets/spaces.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
+import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
+import 'package:portfolio/shared/widgets/animated_slide_transition.dart';
+import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
+import 'package:portfolio/shared/widgets/content_area.dart';
+import 'package:portfolio/shared/widgets/content_builder.dart';
+import 'package:portfolio/shared/widgets/custom_spacer.dart';
+import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/values/values.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -23,7 +23,6 @@ import 'package:visibility_detector/visibility_detector.dart';
 const kDuration = Duration(milliseconds: 600);
 
 class AboutPage extends StatefulWidget {
-
   const AboutPage({super.key});
 
   @override
@@ -186,7 +185,6 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                                 controller: storySectionAnimation,
                                 width: widthOfBody,
                                 maxLines: 30,
-                                // factor: 1.25,
                                 text: StringConst.ABOUT_DEV_STORY_CONTENT_1,
                                 textStyle: bodyLargeStyle,
                               ),
