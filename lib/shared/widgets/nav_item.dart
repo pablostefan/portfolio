@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/values/values.dart';
+import 'package:portfolio/shared/values/values.dart';
 
 import 'animated_line_through_text.dart';
 

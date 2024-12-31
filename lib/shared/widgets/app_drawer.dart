@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/presentation/pages/widgets/socials.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/app_logo.dart';
 import 'package:portfolio/shared/widgets/nav_item.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/socials.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
-import 'package:portfolio/values/values.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({

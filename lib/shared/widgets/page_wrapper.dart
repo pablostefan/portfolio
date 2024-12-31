@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/presentation/pages/widgets/nav_bar.dart';
 import 'package:portfolio/routing/routes.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/app_drawer.dart';
 import 'package:portfolio/shared/widgets/empty.dart';
-import 'package:portfolio/values/values.dart';
+import 'package:portfolio/shared/widgets/nav_bar.dart';
 
 import 'loading_slider.dart';
 
@@ -148,18 +148,20 @@ class _PageWrapperState extends State<PageWrapper> with TickerProviderStateMixin
             width: widthOfScreen(context),
             height: heightOfScreen(context),
           ),
-          widget.hasUnveilPageAnimation
-              ? Positioned(
-                  right: 0,
-                  child: LoadingSlider(
-                    controller: unveilPageSlideController,
-                    curve: Curves.fastOutSlowIn,
-                    width: widthOfScreen(context),
-                    height: heightOfScreen(context),
-                    isSlideForward: false,
-                  ),
-                )
-              : widget.customLoadingAnimation,
+          Visibility(
+            visible: widget.hasUnveilPageAnimation,
+            replacement: widget.customLoadingAnimation,
+            child: Positioned(
+              right: 0,
+              child: LoadingSlider(
+                controller: unveilPageSlideController,
+                curve: Curves.fastOutSlowIn,
+                width: widthOfScreen(context),
+                height: heightOfScreen(context),
+                isSlideForward: false,
+              ),
+            ),
+          ),
         ],
       ),
     );

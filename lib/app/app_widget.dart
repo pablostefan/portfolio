@@ -4,7 +4,7 @@ import 'package:portfolio/core/injection/injection.dart';
 import 'package:portfolio/routing/router.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/theme/app_theme.dart';
-import 'package:portfolio/values/values.dart';
+import 'package:portfolio/shared/values/values.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({super.key});

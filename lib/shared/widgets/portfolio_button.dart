@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
-import 'package:portfolio/values/values.dart';
 
 class PortfolioButton extends StatefulWidget {
   const PortfolioButton({

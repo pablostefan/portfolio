@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/pages/project_detail/models/project_details.dart';
+import 'package:portfolio/presentation/project_detail/models/project_details.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';

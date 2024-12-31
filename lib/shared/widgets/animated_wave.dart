@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/values/values.dart';
+import 'package:portfolio/shared/values/values.dart';
 
 class AnimatedWaveLine extends AnimatedWidget {
   const AnimatedWaveLine({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/functions.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_slide_box.dart';
-import 'package:portfolio/values/values.dart';
 
 class AnimatedTextSlideBoxTransition extends StatefulWidget {
   const AnimatedTextSlideBoxTransition({

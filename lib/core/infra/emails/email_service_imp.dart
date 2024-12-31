@@ -1,6 +1,6 @@
 import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:portfolio/core/infra/emails/email_service.dart';
-import 'package:portfolio/values/env.dart';
+import 'package:portfolio/shared/values/env.dart';
 
 class EmailServiceImp implements EmailService {
   @override
