@@ -19,9 +19,9 @@ class EmailEntity {
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        "subject": subject,
-        "message": message,
+        "user_name": name,
+        "user_email": email,
+        "user_subject": subject,
+        "user_message": message,
       };
 }

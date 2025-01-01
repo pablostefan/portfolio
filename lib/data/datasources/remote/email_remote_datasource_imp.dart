@@ -1,5 +1,5 @@
 import 'package:portfolio/core/error/base_failure.dart';
-import 'package:portfolio/core/infra/emails/email_service.dart';
+import 'package:portfolio/core/infra/email/email_service.dart';
 import 'package:portfolio/data/datasources/email_datasource.dart';
 import 'package:portfolio/domain/entities/email_entity.dart';
 
