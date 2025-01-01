@@ -36,13 +36,16 @@ class AboutHeader extends StatelessWidget {
                 width: widthOfScreen(context),
               ),
               SpaceH30(),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(80),
-                child: Image.asset(
-                  ImagePath.DEV,
-                  fit: BoxFit.cover,
-                  width: widthOfScreen(context),
-                  height: assignHeight(context, 0.45),
+              FadeTransition(
+                opacity: controller,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(80),
+                  child: Image.asset(
+                    ImagePath.DEV,
+                    fit: BoxFit.cover,
+                    width: widthOfScreen(context),
+                    height: assignHeight(context, 0.45),
+                  ),
                 ),
               ),
             ],
@@ -67,9 +70,12 @@ class AboutHeader extends StatelessWidget {
                     minWidth: imageWidthLg,
                     maxHeight: assignHeight(context, 0.55),
                   ),
-                  child: Image.asset(
-                    ImagePath.DEV,
-                    fit: BoxFit.cover,
+                  child: FadeTransition(
+                    opacity: controller,
+                    child: Image.asset(
+                      ImagePath.DEV,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

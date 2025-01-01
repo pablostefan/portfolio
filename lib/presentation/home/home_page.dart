@@ -96,6 +96,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       hasSideTitle: false,
       hasUnveilPageAnimation: _arguments.showUnVeilPageAnimation,
       onLoadingAnimationDone: _slideTextController.forward,
+      hasCustomAnimation: true,
       customLoadingAnimation: LoadingHomePageAnimation(
           text: StringConst.DEV_NAME,
           style: textTheme.headlineSmall!.copyWith(color: AppColors.white),

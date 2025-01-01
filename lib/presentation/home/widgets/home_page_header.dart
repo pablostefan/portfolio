@@ -39,6 +39,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
   @override
   void initState() {
     super.initState();
+
     _scrollDownButtonController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
@@ -63,7 +64,6 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       if (status == AnimationStatus.completed) {
         _lottieController.reset();
         _lottieController.forward();
-        // rotationController.reverse();
       }
     });
     _controller.forward();
@@ -129,26 +129,29 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                 children: [
                   Container(
                     padding: padding,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Lottie.network(
-                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
-                          width: screenWidth,
-                          controller: _lottieController,
-                          fit: BoxFit.cover,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 5, left: 4),
-                          child: ClipOval(
-                            child: Image.asset(
-                              ImagePath.DEV,
-                              width: screenWidth * .624,
-                              height: screenWidth * .624,
+                    child: FadeTransition(
+                      opacity: widget.controller,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Lottie.network(
+                            "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                            width: screenWidth,
+                            controller: _lottieController,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 5, left: 4),
+                            child: ClipOval(
+                              child: Image.asset(
+                                ImagePath.DEV,
+                                width: screenWidth * .624,
+                                height: screenWidth * .624,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -176,23 +179,26 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                   SizedBox(width: screenWidth * 0.05),
                   Container(
                     margin: imageMargin,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Lottie.network(
-                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
-                          width: screenWidth * 0.35,
-                          controller: _lottieController,
-                          fit: BoxFit.cover,
-                        ),
-                        ClipOval(
-                          child: Image.asset(
-                            ImagePath.DEV,
-                            width: screenWidth * 0.27,
-                            height: screenWidth * 0.27,
+                    child: FadeTransition(
+                      opacity: widget.controller,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Lottie.network(
+                            "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                            width: screenWidth * 0.35,
+                            controller: _lottieController,
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                      ],
+                          ClipOval(
+                            child: Image.asset(
+                              ImagePath.DEV,
+                              width: screenWidth * 0.27,
+                              height: screenWidth * 0.27,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
