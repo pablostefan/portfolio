@@ -42,6 +42,8 @@ flutter:
     - assets/images/projects/krykto/
     - assets/images/projects/forbes/
     - assets/images/projects/foxbit/
+    - assets/images/projects/alphaconds/
+    - assets/images/projects/treineaqui/
 
   fonts:
     - family: VisueltPro

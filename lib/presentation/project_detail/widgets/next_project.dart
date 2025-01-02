@@ -167,13 +167,16 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
                       width: widget.width * 0.55,
                       child: ScaleTransition(
                         scale: scaleAnimation,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            widget.nextProject?.coverUrl ?? "",
-                            fit: BoxFit.fitWidth,
-                            color: _isHovering ? Colors.transparent : Colors.grey,
-                            colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
+                        child: Hero(
+                          tag: widget.nextProject?.title ?? "",
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              widget.nextProject?.coverUrl ?? "",
+                              fit: BoxFit.fitWidth,
+                              color: _isHovering ? Colors.transparent : Colors.grey,
+                              colorBlendMode: _isHovering ? BlendMode.color : BlendMode.saturation,
+                            ),
                           ),
                         ),
                       ),

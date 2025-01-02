@@ -24,6 +24,7 @@ class AnimatedBubbleButton extends StatefulWidget {
     this.targetOffset = const Offset(0.1, 0),
     this.controller,
     this.controlsOwnAnimation = true,
+    this.showShadow = false,
   });
 
   final String title;
@@ -47,6 +48,7 @@ class AnimatedBubbleButton extends StatefulWidget {
   // prevents button from animating on mouse enter and exit
   final bool controlsOwnAnimation;
   final AnimationController? controller;
+  final bool showShadow;
 
   @override
   State<AnimatedBubbleButton> createState() => _AnimatedBubbleButtonState();
@@ -111,6 +113,10 @@ class _AnimatedBubbleButtonState extends State<AnimatedBubbleButton> with Single
                     height: widget.height,
                     decoration: BoxDecoration(
                       color: widget.color,
+                      boxShadow: [
+                        if ((widget.hovering ?? _isHovering) && widget.showShadow)
+                          BoxShadow(color: AppColors.black.withOpacity(.2), blurRadius: 8, spreadRadius: 3),
+                      ],
                       borderRadius: (widget.hovering ?? _isHovering)
                           ? (widget.endBorderRadius ?? widget.startBorderRadius)
                           : widget.startBorderRadius,

@@ -216,6 +216,23 @@ abstract final class StringConst {
   static const String FOXBIT_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=br.com.foxbit.pay";
   static const String FOXBIT_APP_STORE_URL = "https://apps.apple.com/br/app/foxbit-pay/id1667357279";
 
+  static const String ALPHA_CONDS = "Alpha Conds";
+  static const String ALPHA_CONDS_PLATFORM = "Android / IOS.";
+  static const String ALPHA_CONDS_CATEGORY = "Gestão.";
+  static const String ALPHA_CONDS_DETAIL =
+      "Aplicativo de gestão de contas, reservas, boletos e assembleia virtual, entre outras funcionalidades.";
+  static const String ALPHA_CONDS_URL = "https://alphacondominios.com.br";
+  static const String ALPHA_CONDS_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.alphacondominium";
+  static const String ALPHA_CONDS_APP_STORE_URL = "https://apps.apple.com/br/app/alpha-conds/id6477987022";
+
+  static const String TREINEAQUI = "Treineaqui";
+  static const String TREINEAQUI_PLATFORM = "Android / IOS.";
+  static const String TREINEAQUI_CATEGORY = "Treinos.";
+  static const String TREINEAQUI_DETAIL = "Plataforma dedicada ao planejamento e à criação de treinos personalizados.";
+  static const String TREINEAQUI_URL = "https://www.treineaqui.com";
+  static const String TREINEAQUI_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.treineaqui";
+  static const String TREINEAQUI_APP_STORE_URL = "https://apps.apple.com/br/app/treineaqui/id6737910491";
+
   static const String EMPIRICUS = "Empiricus";
   static const String EMPIRICUS_URL = "https://github.com/pablostefan/empiricus";
 

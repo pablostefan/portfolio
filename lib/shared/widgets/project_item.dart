@@ -428,7 +428,10 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
                 child: Container(
                   width: imageWidth,
                   height: containerHeight,
-                  color: widget.containerColor,
+                  decoration: BoxDecoration(
+                    color: widget.containerColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   child: Image.asset(
                     widget.imageUrl,
                     height: containerHeight,
@@ -441,6 +444,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
               top: positionOfButton, //places button
               right: assignWidth(context, 0.1),
               child: AnimatedBubbleButton(
+                showShadow: true,
                 startWidth: buttonWidth,
                 hovering: _isHovering,
                 controller: _controller,

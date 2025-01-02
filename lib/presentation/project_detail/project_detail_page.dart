@@ -115,20 +115,21 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
       navBarTitleColor: _projectDetails.data.navTitleColor,
       navBarSelectedTitleColor: _projectDetails.data.navSelectedTitleColor,
       appLogoColor: _projectDetails.data.appLogoColor,
-      onLoadingAnimationDone: () {
-        _controller.forward();
-      },
+      onLoadingAnimationDone: _controller.forward,
       child: ListView(
         padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
-          Container(
-            color: _projectDetails.data.primaryColor,
-            padding: EdgeInsets.only(top: 70),
-            child: Image.asset(
-              _projectDetails.data.coverUrl,
-              fit: BoxFit.fitWidth,
-              width: widthOfScreen(context),
+          Hero(
+            tag: _projectDetails.data.title,
+            child: Container(
+              color: _projectDetails.data.primaryColor,
+              padding: EdgeInsets.only(top: 70),
+              child: Image.asset(
+                _projectDetails.data.coverUrl,
+                fit: BoxFit.fitWidth,
+                width: widthOfScreen(context),
+              ),
             ),
           ),
           VisibilityDetector(

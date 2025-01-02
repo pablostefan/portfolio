@@ -57,4 +57,12 @@ abstract final class ImagePath {
   // Foxbit
   static const String FOXBIT_COVER = "$projectsDir/foxbit/cover.png";
   static const String FOXBIT_SCREENS = "$projectsDir/foxbit/header.png";
+
+  // AlphaConds
+  static const String ALPHA_CONDS_COVER = "$projectsDir/alphaconds/cover.png";
+  static const String ALPHA_CONDS_SCREENS = "$projectsDir/alphaconds/header.png";
+
+  // Treineaqui
+  static const String TREINEAQUI_COVER = "$projectsDir/treineaqui/cover.png";
+  static const String TREINEAQUI_SCREENS = "$projectsDir/treineaqui/header.png";
 }
