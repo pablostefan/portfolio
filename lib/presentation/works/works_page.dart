@@ -175,7 +175,7 @@ class _WorksPageState extends State<WorksPage> with TickerProviderStateMixin {
           },
         ),
       );
-      items.add(CustomSpacer(heightFactor: 0.10));
+      items.add(CustomSpacer(heightFactor: .17));
     }
     return items;
   }

@@ -544,8 +544,6 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
     double widthOfProjectImageCover = widget.imageWidth ?? assignWidth(context, 0.9);
     // takes 30% of the height of the device
     double heightOfColoredContainer = widget.coloredContainerHeight ?? assignHeight(context, 0.3);
-    // takes 80% of the width of the device
-    double widthOfColoredContainer = widget.coloredContainerWidth ?? assignWidth(context, 0.8);
     // this positions the colored container at the middle of the cover image.
     double positionOfColoredContainer = heightOfProjectImageCover / 2;
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -584,35 +582,6 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
         width: projectItemWidth,
         child: Column(
           children: [
-            SizedBox(
-              height: heightOfProjectImageCover + (heightOfColoredContainer - positionOfColoredContainer),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: positionOfColoredContainer,
-                    child: Container(
-                      width: widthOfColoredContainer,
-                      color: widget.containerColor,
-                      height: heightOfColoredContainer,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.0095)
-                        ..rotateY(0.085),
-                      child: Image.asset(
-                        widget.imageUrl,
-                        width: widthOfProjectImageCover,
-                        height: heightOfProjectImageCover,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             SpaceH12(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -636,27 +605,44 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
                   titleStyle: defaultTitleStyle,
                   projectNumberStyle: defaultNumberStyle,
                 ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(right: 30),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: AnimatedBubbleButton(
+                      startWidth: startWidthOfButtonSm,
+                      hovering: _isHovering,
+                      controller: _controller,
+                      duration: widget.duration,
+                      height: startWidthOfButtonSm,
+                      targetWidth: targetWidthSm,
+                      controlsOwnAnimation: false,
+                      startBorderRadius: const BorderRadius.all(Radius.circular(100.0)),
+                      title: StringConst.VIEW_PROJECT.toUpperCase(),
+                      color: AppColors.grey100,
+                      titleStyle: buttonStyle,
+                      imageColor: AppColors.black,
+                      onTap: widget.onTap,
+                    ),
+                  ),
+                ),
               ],
             ),
             SpaceH16(),
-            Container(
-              margin: EdgeInsets.only(right: 30),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: AnimatedBubbleButton(
-                  startWidth: startWidthOfButtonSm,
-                  hovering: _isHovering,
-                  controller: _controller,
-                  duration: widget.duration,
-                  height: startWidthOfButtonSm,
-                  targetWidth: targetWidthSm,
-                  controlsOwnAnimation: false,
-                  startBorderRadius: const BorderRadius.all(Radius.circular(100.0)),
-                  title: StringConst.VIEW_PROJECT.toUpperCase(),
-                  color: AppColors.grey100,
-                  titleStyle: buttonStyle,
-                  imageColor: AppColors.black,
-                  onTap: widget.onTap,
+            SizedBox(
+              height: heightOfProjectImageCover + (heightOfColoredContainer - positionOfColoredContainer),
+              child: Transform(
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.0095)
+                  ..rotateY(0.085),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    widget.imageUrl,
+                    height: heightOfProjectImageCover,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
             ),

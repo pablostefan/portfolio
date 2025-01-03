@@ -45,7 +45,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       duration: Duration(milliseconds: 300),
     );
     _lottieController = AnimationController(
-      duration: const Duration(seconds: 20),
+      duration: const Duration(seconds: 22),
       vsync: this,
     )..repeat();
     _controller = AnimationController(
@@ -102,12 +102,6 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       vertical: screenHeight * 0.1,
     );
     final EdgeInsets imageMargin = EdgeInsets.only(
-      right: responsiveSize(
-        context,
-        20,
-        screenWidth * 0.05,
-        sm: screenWidth * 0.05,
-      ),
       top: responsiveSize(
         context,
         30,
@@ -140,13 +134,18 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                             controller: _lottieController,
                             fit: BoxFit.cover,
                           ),
+                          Container(
+                            width: screenWidth * .5,
+                            height: screenWidth * .5,
+                            decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 5, left: 4),
+                            padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
                             child: ClipOval(
                               child: Image.asset(
                                 ImagePath.DEV,
-                                width: screenWidth * .624,
-                                height: screenWidth * .624,
+                                width: screenWidth * .57,
+                                height: screenWidth * .57,
                               ),
                             ),
                           ),
@@ -186,15 +185,23 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                         children: [
                           Lottie.network(
                             "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
-                            width: screenWidth * 0.35,
+                            width: screenWidth * 0.36,
                             controller: _lottieController,
                             fit: BoxFit.cover,
                           ),
-                          ClipOval(
-                            child: Image.asset(
-                              ImagePath.DEV,
-                              width: screenWidth * 0.27,
-                              height: screenWidth * 0.27,
+                          Container(
+                            width: screenWidth * 0.24,
+                            height: screenWidth * 0.24,
+                            decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: screenWidth * .03, left: 3),
+                            child: ClipOval(
+                              child: Image.asset(
+                                ImagePath.DEV,
+                                width: screenWidth * 0.26,
+                                height: screenWidth * 0.25,
+                              ),
                             ),
                           ),
                         ],

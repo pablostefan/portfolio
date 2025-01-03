@@ -54,9 +54,15 @@ class NavBar extends StatelessWidget {
   Widget mobileNavBar(BuildContext context) {
     return Container(
       width: widthOfScreen(context),
+      decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(Sizes.RADIUS_12),
+          ),
+          boxShadow: [BoxShadow(blurRadius: 5, color: AppColors.grey200)]),
       padding: const EdgeInsets.symmetric(
         horizontal: Sizes.PADDING_30,
-        vertical: Sizes.PADDING_24,
+        vertical: Sizes.PADDING_8,
       ),
       child: Row(
         children: [

@@ -293,7 +293,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           },
         ),
       );
-      items.add(CustomSpacer(heightFactor: 0.10));
+      items.add(CustomSpacer(heightFactor: .17));
     }
     return items;
   }
