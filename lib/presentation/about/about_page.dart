@@ -6,7 +6,7 @@ import 'package:portfolio/presentation/about/widgets/technology_section.dart';
 import 'package:portfolio/presentation/home/widgets/scroll_down.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/adaptative_builder_widget.dart';
+import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 import 'package:portfolio/shared/widgets/animated_footer.dart';
 import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';

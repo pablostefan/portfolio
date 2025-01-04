@@ -588,10 +588,7 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
                     top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
                     right: Sizes.MARGIN_8,
                   ),
-                  indicatorMargin: EdgeInsets.only(
-                    top: defaultNumberStyle.fontSize! / 2.5,
-                    right: Sizes.MARGIN_8,
-                  ),
+                  indicatorMargin: EdgeInsets.only(top: defaultNumberStyle.fontSize! / 2.5, right: Sizes.MARGIN_8),
                   title: widget.title,
                   subtitle: widget.subtitle,
                   subtitleStyle: defaultSubtitleStyle,

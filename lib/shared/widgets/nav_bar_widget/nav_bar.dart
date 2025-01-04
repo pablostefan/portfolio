@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/adaptative_builder_widget.dart';
+import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 import 'package:portfolio/shared/widgets/nav_bar_widget/desktop_nav_bar_widget.dart';
 import 'package:portfolio/shared/widgets/nav_bar_widget/mobile_nav_bar_widget.dart';
 

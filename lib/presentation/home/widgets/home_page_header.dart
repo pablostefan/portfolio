@@ -5,7 +5,7 @@ import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/home/widgets/scroll_down.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/adaptative_builder_widget.dart';
+import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
 import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
@@ -44,10 +44,12 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       vsync: this,
       duration: Duration(milliseconds: 300),
     );
+
     _lottieController = AnimationController(
       duration: const Duration(seconds: 22),
       vsync: this,
     )..repeat();
+
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1500),
@@ -66,6 +68,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
         _lottieController.forward();
       }
     });
+
     _controller.forward();
     _lottieController.forward();
   }
