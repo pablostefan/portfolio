@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
 import 'package:portfolio/shared/widgets/empty.dart';
@@ -49,12 +49,9 @@ class ContentBuilder extends StatelessWidget {
     );
     TextStyle? defaultTitleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: responsiveSize(
-        context,
-        Sizes.TEXT_SIZE_16,
-        Sizes.TEXT_SIZE_20,
-      ),
+      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
     );
+
     return Container(
       width: width,
       child: ResponsiveBuilder(

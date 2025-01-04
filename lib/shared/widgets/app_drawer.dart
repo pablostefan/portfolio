@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/app_logo.dart';
-import 'package:portfolio/shared/widgets/nav_item.dart';
+import 'package:portfolio/shared/widgets/nav_bar_widget/nav_item.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
 import 'package:portfolio/shared/widgets/socials.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
@@ -81,13 +81,13 @@ class _AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMix
       fontSize: Sizes.TEXT_SIZE_10,
     );
     return SizedBox(
-      width: widget.width ?? widthOfScreen(context),
-      height: heightOfScreen(context),
+      width: widget.width ?? context.widthOfScreen,
+      height: context.heightOfScreen,
       child: Drawer(
         child: Container(
           color: widget.color,
-          width: widget.width ?? widthOfScreen(context),
-          height: heightOfScreen(context),
+          width: widget.width ?? context.widthOfScreen,
+          height: context.heightOfScreen,
           child: Stack(
             children: [
               Column(
@@ -138,7 +138,7 @@ class _AppDrawerState extends State<AppDrawer> with SingleTickerProviderStateMix
                 child: Container(
                   margin: EdgeInsets.only(
                     left: Sizes.MARGIN_24,
-                    bottom: assignHeight(context, 0.1),
+                    bottom: context.assignHeight(0.1),
                   ),
                   child: Align(
                     alignment: Alignment.bottomLeft,

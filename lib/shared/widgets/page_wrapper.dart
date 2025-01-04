@@ -3,7 +3,7 @@ import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/app_drawer.dart';
 import 'package:portfolio/shared/widgets/empty.dart';
-import 'package:portfolio/shared/widgets/nav_bar.dart';
+import 'package:portfolio/shared/widgets/nav_bar_widget/nav_bar.dart';
 
 class NavigationArguments {
   bool showUnVeilPageAnimation;

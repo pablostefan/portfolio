@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
-import 'package:portfolio/core/utils/functions.dart';
+import 'package:portfolio/core/layout/extensions.dart';
+import 'package:portfolio/presentation/certification/widgets/certification_widget.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/certification_card.dart';
 import 'package:portfolio/shared/widgets/content_area.dart';
 import 'package:portfolio/shared/widgets/custom_spacer.dart';
 import 'package:portfolio/shared/widgets/page_header.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
 import 'package:portfolio/shared/widgets/simple_footer.dart';
-import 'package:visibility_detector/visibility_detector.dart';
+import 'package:portfolio/shared/widgets/visibility_detector_widget.dart';
 
 class CertificationPage extends StatefulWidget {
   const CertificationPage({super.key});
@@ -45,31 +44,16 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
 
   @override
   Widget build(BuildContext context) {
-    double spacing = assignWidth(context, 0.05);
-    double contentAreaWidth = responsiveSize(
-      context,
-      assignWidth(context, 0.8),
-      assignWidth(context, 0.7),
-      sm: assignWidth(context, 0.8),
+    double spacing = context.assignWidth(.05);
+    double contentAreaWidth = context.responsiveSize(
+      context.assignWidth(.8),
+      context.assignWidth(.7),
+      sm: context.assignWidth(.8),
     );
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
-      ),
-      right: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
-        sm: assignWidth(context, 0.10),
-      ),
-      top: responsiveSize(
-        context,
-        assignHeight(context, 0.15),
-        assignHeight(context, 0.15),
-        sm: assignWidth(context, 0.10),
-      ),
+      left: context.responsiveSize(context.assignWidth(.10), context.assignWidth(.15)),
+      right: context.responsiveSize(context.assignWidth(.10), context.assignWidth(.15), sm: context.assignWidth(.10)),
+      top: context.responsiveSize(context.assignHeight(.15), context.assignHeight(.15), sm: context.assignWidth(.10)),
     );
     return PageWrapper(
       selectedRoute: Routes.certifications,
@@ -88,14 +72,11 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
             headingText: StringConst.CERTIFICATIONS,
             headingTextController: _headingTextController,
           ),
-          VisibilityDetector(
+          VisibilityDetectorWidget(
             key: Key('certifications'),
-            onVisibilityChanged: (visibilityInfo) {
-              double visiblePercentage = visibilityInfo.visibleFraction * 100;
-              if (visiblePercentage > 40) {
-                _certificationsController.forward();
-              }
-            },
+            context: context,
+            minVisible: 40,
+            action: _certificationsController.forward,
             child: Padding(
               padding: padding,
               child: ContentArea(
@@ -105,12 +86,16 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
                   builder: (context, child) {
                     return Wrap(
                       direction: Axis.horizontal,
-                      spacing: assignWidth(context, 0.05),
-                      runSpacing: assignHeight(context, 0.02),
-                      children: _certificateList(
-                        data: Data.certificationData,
-                        width: contentAreaWidth,
-                        spacing: spacing,
+                      spacing: context.assignWidth(.05),
+                      runSpacing: context.assignHeight(0.02),
+                      children: List.generate(
+                        Data.certificationData.length,
+                        (index) => CertificationWidget(
+                          certificationsController: _certificationsController,
+                          index: index,
+                          width: contentAreaWidth,
+                          spacing: spacing,
+                        ),
                       ),
                     );
                   },
@@ -123,52 +108,5 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
         ],
       ),
     );
-  }
-
-  List<Widget> _certificateList({
-    required List<CertificationData> data,
-    required double width,
-    required double spacing,
-  }) {
-    List<Widget> widgets = [];
-    double duration = _certificationsController.duration!.inMilliseconds.roundToDouble();
-    double durationForEachPortfolio = _certificationsController.duration!.inMilliseconds.roundToDouble() / data.length;
-
-    for (var i = 0; i < data.length; i++) {
-      double start = durationForEachPortfolio * i;
-      double end = durationForEachPortfolio * (i + 1);
-      widgets.add(
-        FadeTransition(
-          opacity: Tween<double>(
-            begin: 0,
-            end: 1,
-          ).animate(
-            CurvedAnimation(
-              parent: _certificationsController,
-              curve: Interval(
-                start > 0.0 ? start / duration : 0.0,
-                end > 0.0 ? end / duration : 1.0,
-                curve: Curves.easeIn,
-              ),
-            ),
-          ),
-          child: CertificationCard(
-            imageUrl: data[i].image,
-            onTap: () => _viewCertificate(data[i].url),
-            title: data[i].title,
-            subtitle: data[i].awardedBy,
-            actionTitle: StringConst.VIEW,
-            isMobileOrTablet: isDisplayMobileOrTablet(context) ? true : false,
-            height: isDisplayMobile(context) ? assignHeight(context, 0.40) : assignHeight(context, 0.45),
-            width: isDisplayMobile(context) ? assignWidth(context, 0.8) : (width - spacing) / 2,
-          ),
-        ),
-      );
-    }
-    return widgets;
-  }
-
-  void _viewCertificate(String url) {
-    Functions.launchUrl(url);
   }
 }

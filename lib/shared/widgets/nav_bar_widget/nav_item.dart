@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/shared/values/values.dart';
 
-import 'animated_line_through_text.dart';
+import '../animated_line_through_text.dart';
 
 const double indicatorWidth = Sizes.WIDTH_60;
 
@@ -154,42 +154,41 @@ class _NavItemState extends State<NavItem> {
   Widget desktopText() {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    double textSize = responsiveSize(
-      context,
-      Sizes.TEXT_SIZE_14,
-      Sizes.TEXT_SIZE_16,
-      md: Sizes.TEXT_SIZE_15,
-    );
+    double textSize = context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, md: Sizes.TEXT_SIZE_15);
+
     TextStyle? defaultSelectedItemStyle = textTheme.bodyLarge?.copyWith(
       fontSize: textSize,
       color: widget.selectedColor,
       fontWeight: FontWeight.w400,
     );
+
     TextStyle? defaultUnselectedItemStyle = textTheme.bodyLarge?.copyWith(
       fontSize: textSize,
       color: widget.titleColor,
     );
 
-    return widget.isSelected
-        ? AnimatedLineThroughText(
-            slideBoxCoverColor: AppColors.white,
-            text: widget.title,
-            isUnderlinedOnHover: false,
-            hasOffsetAnimation: true,
-            hasSlideBoxAnimation: true,
-            controller: widget.controller,
-            textStyle: widget.titleStyle ?? defaultSelectedItemStyle,
-          )
-        : AnimatedLineThroughText(
-            text: widget.title,
-            isUnderlinedOnHover: false,
-            hasOffsetAnimation: true,
-            textStyle: widget.titleStyle ?? defaultUnselectedItemStyle,
-            onHoverTextStyle: defaultUnselectedItemStyle?.copyWith(
-              color: widget.selectedColor,
-              fontWeight: FontWeight.w400,
-            ),
-          );
+    return Visibility(
+      visible: widget.isSelected,
+      replacement: AnimatedLineThroughText(
+        text: widget.title,
+        isUnderlinedOnHover: false,
+        hasOffsetAnimation: true,
+        textStyle: widget.titleStyle ?? defaultUnselectedItemStyle,
+        onHoverTextStyle: defaultUnselectedItemStyle?.copyWith(
+          color: widget.selectedColor,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+      child: AnimatedLineThroughText(
+        slideBoxCoverColor: AppColors.white,
+        text: widget.title,
+        isUnderlinedOnHover: false,
+        hasOffsetAnimation: true,
+        hasSlideBoxAnimation: true,
+        controller: widget.controller,
+        textStyle: widget.titleStyle ?? defaultSelectedItemStyle,
+      ),
+    );
   }
 
   Widget _buildNavItemIndex({required int index, double? indexTextSize}) {

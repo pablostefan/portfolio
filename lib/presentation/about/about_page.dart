@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/about/widgets/about_header.dart';
 import 'package:portfolio/presentation/about/widgets/technology_section.dart';
 import 'package:portfolio/presentation/home/widgets/scroll_down.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
+import 'package:portfolio/shared/widgets/adaptative_builder_widget.dart';
 import 'package:portfolio/shared/widgets/animated_footer.dart';
 import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
@@ -17,8 +18,7 @@ import 'package:portfolio/shared/widgets/custom_spacer.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
 import 'package:portfolio/shared/widgets/socials.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
+import 'package:portfolio/shared/widgets/visibility_detector_widget.dart';
 
 const kDuration = Duration(milliseconds: 600);
 
@@ -86,30 +86,16 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double contentAreaWidth = responsiveSize(
-      context,
-      assignWidth(context, .8),
-      assignWidth(context, .75),
-      sm: assignWidth(context, .8),
+    double contentAreaWidth = context.responsiveSize(
+      context.assignWidth(.8),
+      context.assignWidth(.75),
+      sm: context.assignWidth(.8),
     );
+
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: responsiveSize(
-        context,
-        assignWidth(context, .1),
-        assignWidth(context, .15),
-      ),
-      right: responsiveSize(
-        context,
-        assignWidth(context, .1),
-        assignWidth(context, .1),
-        // sm: assignWidth(context, 0.10),
-      ),
-      top: responsiveSize(
-        context,
-        assignHeight(context, .2),
-        assignHeight(context, .2),
-        sm: assignWidth(context, .15),
-      ),
+      left: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.1)),
+      top: context.responsiveSize(context.assignHeight(.2), context.assignHeight(.2), sm: context.assignWidth(.15)),
     );
 
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -120,28 +106,26 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       height: 2.0,
       // letterSpacing: 2,
     );
+
     TextStyle? bodySmallStyle = textTheme.bodyLarge?.copyWith(color: AppColors.grey750);
+
     TextStyle? titleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: responsiveSize(
-        context,
-        Sizes.TEXT_SIZE_16,
-        Sizes.TEXT_SIZE_20,
-      ),
+      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
     );
+
     CurvedAnimation storySectionAnimation = CurvedAnimation(
       parent: _storyController,
-      curve: Interval(0.6, 1.0, curve: Curves.ease),
+      curve: Interval(.6, 1, curve: Curves.ease),
     );
+
     CurvedAnimation technologySectionAnimation = CurvedAnimation(
       parent: _technologyController,
-      curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
+      curve: Interval(.6, 1, curve: Curves.fastOutSlowIn),
     );
-    double widthOfBody = responsiveSize(
-      context,
-      assignWidth(context, 0.75),
-      assignWidth(context, 0.5),
-    );
+
+    double widthOfBody = context.responsiveSize(context.assignWidth(.75), context.assignWidth(.5));
+
     return PageWrapper(
       selectedRoute: Routes.about,
       selectedPageName: StringConst.ABOUT,
@@ -160,19 +144,13 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                   width: contentAreaWidth,
                   child: Column(
                     children: [
-                      AboutHeader(
-                        width: contentAreaWidth,
-                        controller: _controller,
-                      ),
+                      AboutHeader(width: contentAreaWidth, controller: _controller),
                       CustomSpacer(heightFactor: 0.1),
-                      VisibilityDetector(
+                      VisibilityDetectorWidget(
                         key: Key('story-section'),
-                        onVisibilityChanged: (visibilityInfo) {
-                          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-                          if (visiblePercentage > responsiveSize(context, 40, 70, md: 50)) {
-                            _storyController.forward();
-                          }
-                        },
+                        action: _storyController.forward,
+                        context: context,
+                        minVisible: context.responsiveSize(40, 70, md: 50),
                         child: ContentBuilder(
                           controller: _storyController,
                           number: "/01 ",
@@ -207,14 +185,11 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                         ),
                       ),
                       CustomSpacer(heightFactor: 0.1),
-                      VisibilityDetector(
+                      VisibilityDetectorWidget(
                         key: Key('technology-section'),
-                        onVisibilityChanged: (visibilityInfo) {
-                          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-                          if (visiblePercentage > 50) {
-                            _technologyController.forward();
-                          }
-                        },
+                        minVisible: 50,
+                        action: _technologyController.forward,
+                        context: context,
                         child: ContentBuilder(
                           controller: _technologyController,
                           number: "/02 ",
@@ -232,14 +207,11 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                               ),
                             ],
                           ),
-                          footer: VisibilityDetector(
+                          footer: VisibilityDetectorWidget(
                             key: Key('technology-list'),
-                            onVisibilityChanged: (visibilityInfo) {
-                              double visiblePercentage = visibilityInfo.visibleFraction * 100;
-                              if (visiblePercentage > 60) {
-                                _technologyListController.forward();
-                              }
-                            },
+                            context: context,
+                            minVisible: 60,
+                            action: _technologyListController.forward,
                             child: Column(
                               children: [
                                 SpaceH40(),
@@ -253,14 +225,11 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                         ),
                       ),
                       CustomSpacer(heightFactor: 0.1),
-                      VisibilityDetector(
+                      VisibilityDetectorWidget(
                         key: Key('contact-section'),
-                        onVisibilityChanged: (visibilityInfo) {
-                          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-                          if (visiblePercentage > 50) {
-                            _contactController.forward();
-                          }
-                        },
+                        context: context,
+                        minVisible: 50,
+                        action: _contactController.forward,
                         child: ContentBuilder(
                           controller: _contactController,
                           number: "/03 ",
@@ -302,14 +271,11 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                         ),
                       ),
                       CustomSpacer(heightFactor: 0.1),
-                      VisibilityDetector(
+                      VisibilityDetectorWidget(
                         key: Key('quote-section'),
-                        onVisibilityChanged: (visibilityInfo) {
-                          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-                          if (visiblePercentage > 50) {
-                            _quoteController.forward();
-                          }
-                        },
+                        context: context,
+                        minVisible: 50,
+                        action: _quoteController.forward,
                         child: Column(
                           children: [
                             AnimatedTextSlideBoxTransition(
@@ -319,8 +285,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                               width: contentAreaWidth,
                               textAlign: TextAlign.center,
                               textStyle: titleStyle?.copyWith(
-                                fontSize: responsiveSize(
-                                  context,
+                                fontSize: context.responsiveSize(
                                   Sizes.TEXT_SIZE_24,
                                   Sizes.TEXT_SIZE_36,
                                   md: Sizes.TEXT_SIZE_28,
@@ -335,8 +300,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                                 controller: _quoteController,
                                 text: "— ${StringConst.FAMOUS_QUOTE_AUTHOR}",
                                 textStyle: textTheme.bodyLarge?.copyWith(
-                                  fontSize: responsiveSize(
-                                    context,
+                                  fontSize: context.responsiveSize(
                                     Sizes.TEXT_SIZE_16,
                                     Sizes.TEXT_SIZE_18,
                                     md: Sizes.TEXT_SIZE_16,
@@ -357,37 +321,30 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
               Positioned(
                 right: 0,
                 top: 500,
-                child: ResponsiveBuilder(
-                  builder: (context, sizingInformation) {
-                    double screenWidth = sizingInformation.screenSize.width;
-                    if (screenWidth < RefinedBreakpoints().tabletNormal) {
-                      return SizedBox.shrink();
-                    } else {
-                      return InkWell(
-                        hoverColor: Colors.transparent,
-                        onTap: () {
-                          _scrollController.animateTo(
-                            MediaQuery.sizeOf(context).height * .5,
-                            duration: kDuration,
-                            curve: Curves.easeInOut,
-                          );
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(right: 24, bottom: 40),
-                          child: MouseRegion(
-                            onEnter: (e) => _scrollDownButtonController.forward(),
-                            onExit: (e) => _scrollDownButtonController.reverse(),
-                            child: AnimatedSlideTransition(
-                              controller: _scrollDownButtonController,
-                              beginOffset: Offset(0, 0),
-                              targetOffset: Offset(0, 0.1),
-                              child: ScrollDownButton(),
-                            ),
-                          ),
-                        ),
+                child: AdaptiveBuilderWidget(
+                  desktop: InkWell(
+                    hoverColor: Colors.transparent,
+                    onTap: () {
+                      _scrollController.animateTo(
+                        MediaQuery.sizeOf(context).height * .5,
+                        duration: kDuration,
+                        curve: Curves.easeInOut,
                       );
-                    }
-                  },
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(right: 24, bottom: 40),
+                      child: MouseRegion(
+                        onEnter: (e) => _scrollDownButtonController.forward(),
+                        onExit: (e) => _scrollDownButtonController.reverse(),
+                        child: AnimatedSlideTransition(
+                          controller: _scrollDownButtonController,
+                          beginOffset: Offset(0, 0),
+                          targetOffset: Offset(0, 0.1),
+                          child: ScrollDownButton(),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],

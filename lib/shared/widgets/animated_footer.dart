@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
@@ -45,7 +45,6 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    double circleImageSize = responsiveSize(context, 100, 150);
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? style = textTheme.bodyLarge?.copyWith(
       color: AppColors.accentColor,
@@ -53,8 +52,7 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
     );
     TextStyle? titleStyle = textTheme.headlineSmall?.copyWith(
       color: AppColors.accentColor,
-      fontSize: responsiveSize(
-        context,
+      fontSize: context.responsiveSize(
         Sizes.TEXT_SIZE_20,
         Sizes.TEXT_SIZE_50,
         md: Sizes.TEXT_SIZE_40,
@@ -67,8 +65,8 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
     );
 
     return Container(
-      width: widget.width ?? widthOfScreen(context),
-      height: widget.height ?? assignHeight(context, 0.8),
+      width: widget.width ?? context.widthOfScreen,
+      height: widget.height ?? context.assignHeight(.8),
       color: widget.backgroundColor,
       child: VisibilityDetector(
         key: Key('animated-footer'),

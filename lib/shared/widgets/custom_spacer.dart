@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 
 class CustomSpacer extends StatelessWidget {
   const CustomSpacer({
@@ -16,8 +16,8 @@ class CustomSpacer extends StatelessWidget {
     double widthFraction = widthFactor ?? 0;
     double heightFraction = heightFactor ?? 0;
     return SizedBox(
-      width: assignWidth(context, widthFraction),
-      height: assignHeight(context, heightFraction),
+      width: context.assignWidth(widthFraction),
+      height: context.assignHeight(heightFraction),
     );
   }
 }

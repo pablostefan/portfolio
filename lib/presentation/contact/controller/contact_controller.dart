@@ -36,7 +36,7 @@ class ContactController extends ChangeNotifier {
   }
 
   void isEmailValid(String email) {
-    bool isValid = email.isValidEmail();
+    bool isValid = email.isValidEmail;
     emailFilled = isValid;
     emailHasError = !isValid;
     notifyListeners();

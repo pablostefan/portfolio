@@ -125,15 +125,13 @@ class _PortfolioButtonState extends State<PortfolioButton> with SingleTickerProv
                   ],
                 )
               : Stack(
+                  alignment: Alignment.center,
                   children: [
                     animatedBackground(),
                     Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: Sizes.PADDING_2),
-                        child: Text(
-                          widget.title,
-                          style: widget.titleStyle ?? style,
-                        ),
+                      child: Text(
+                        widget.title,
+                        style: widget.titleStyle ?? style,
                       ),
                     ),
                   ],

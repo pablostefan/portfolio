@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
@@ -22,8 +22,8 @@ class SimpleFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ?? widthOfScreen(context),
-      height: height ?? assignHeight(context, 0.2),
+      width: width ?? context.widthOfScreen,
+      height: height ?? context.assignHeight(.2),
       color: backgroundColor,
       child: Center(
         child: ResponsiveBuilder(

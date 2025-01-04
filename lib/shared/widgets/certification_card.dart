@@ -48,40 +48,25 @@ class CertificationCard extends StatefulWidget {
 class _CertificationCardState extends State<CertificationCard> with SingleTickerProviderStateMixin {
   late AnimationController _portfolioCoverController;
   late Animation<double> _opacityAnimation;
-  final int duration = 400;
+  final int duration = 200;
   bool _hovering = false;
 
   @override
   void initState() {
-    _portfolioCoverController = AnimationController(
-      duration: Duration(milliseconds: duration),
-      vsync: this,
-    );
-    initTweens();
-
     super.initState();
+    _portfolioCoverController = AnimationController(duration: Duration(milliseconds: duration), vsync: this);
+    _opacityAnimation = Tween<double>(begin: 0.0, end: .8).animate(
+      CurvedAnimation(
+        parent: _portfolioCoverController,
+        curve: Interval(0.0, 1.0, curve: Curves.easeIn),
+      ),
+    );
   }
 
   @override
   void dispose() {
     _portfolioCoverController.dispose();
     super.dispose();
-  }
-
-  void initTweens() {
-    _opacityAnimation = Tween<double>(
-      begin: 0.0,
-      end: 0.8,
-    ).animate(
-      CurvedAnimation(
-        parent: _portfolioCoverController,
-        curve: Interval(
-          0.0,
-          1.0,
-          curve: Curves.easeIn,
-        ),
-      ),
-    );
   }
 
   Future<void> _playPortfolioCoverAnimation() async {
@@ -106,47 +91,49 @@ class _CertificationCardState extends State<CertificationCard> with SingleTicker
             children: [
               Image.asset(
                 widget.imageUrl,
+                opacity: AlwaysStoppedAnimation(_hovering ? 0.3 : 1.0),
                 width: widget.width,
                 height: widget.height,
                 fit: BoxFit.contain,
               ),
               // if it is not a tablet or mobile device, allow on hover effect
-              !widget.isMobileOrTablet && _hovering
-                  ? FadeTransition(
-                      opacity: _opacityAnimation,
-                      child: Container(
-                        width: widget.width,
-                        height: widget.height,
-                        color: widget.hoverColor,
-                        child: _buildCardInfo(),
+              Visibility(
+                visible: !widget.isMobileOrTablet && _hovering,
+                replacement: Empty(),
+                child: FadeTransition(
+                  opacity: _opacityAnimation,
+                  child: Container(
+                    width: widget.width,
+                    height: widget.height,
+                    color: widget.hoverColor,
+                    child: _buildCardInfo(),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: widget.isMobileOrTablet,
+                child: Container(
+                  width: widget.width,
+                  height: widget.height,
+                  color: widget.hoverColor.withOpacity(0.15),
+                  child: Column(
+                    children: [
+                      Spacer(flex: 3),
+                      PortfolioButton(
+                        height: Sizes.HEIGHT_36,
+                        hasIcon: false,
+                        width: 90,
+                        buttonColor: AppColors.white,
+                        borderColor: AppColors.black,
+                        onHoverColor: AppColors.black,
+                        title: widget.actionTitle.toUpperCase(),
+                        onPressed: widget.onTap,
                       ),
-                    )
-                  : Empty(),
-              //show info instantly if it is a mobile or tablet device
-              widget.isMobileOrTablet
-                  ? Container(
-                      width: widget.width,
-                      height: widget.height,
-                      color: widget.hoverColor.withOpacity(0.15),
-                      child: Column(
-                        children: [
-                          Spacer(flex: 3),
-                          PortfolioButton(
-                            height: Sizes.HEIGHT_36,
-                            hasIcon: false,
-                            width: 90,
-                            buttonColor: AppColors.white,
-                            borderColor: AppColors.black,
-                            onHoverColor: AppColors.black,
-                            title: widget.actionTitle.toUpperCase(),
-                            onPressed: widget.onTap,
-                          ),
-                          Spacer(),
-                          // SpaceH20(),
-                        ],
-                      ),
-                    )
-                  : Empty(),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

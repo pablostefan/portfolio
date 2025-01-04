@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/home/widgets/scroll_down.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
+import 'package:portfolio/shared/widgets/adaptative_builder_widget.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
 import 'package:portfolio/shared/widgets/animated_line_through_text.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
@@ -13,7 +14,6 @@ import 'package:portfolio/shared/widgets/animated_slide_transition.dart';
 import 'package:portfolio/shared/widgets/animated_text_slide_box_transition.dart';
 import 'package:portfolio/shared/widgets/socials.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 const kDuration = Duration(milliseconds: 600);
 
@@ -80,35 +80,23 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = widthOfScreen(context);
-    final double screenHeight = heightOfScreen(context);
+    final double screenWidth = context.widthOfScreen;
+    final double screenHeight = context.heightOfScreen;
+
     final EdgeInsets textMargin = EdgeInsets.only(
-      left: responsiveSize(
-        context,
-        20,
-        screenWidth * 0.15,
-        sm: screenWidth * 0.15,
-      ),
-      top: responsiveSize(
-        context,
-        60,
-        screenHeight * 0.35,
-        sm: screenHeight * 0.35,
-      ),
-      bottom: responsiveSize(context, 20, 40),
+      left: context.responsiveSize(20, screenWidth * .15, sm: screenWidth * .15),
+      top: context.responsiveSize(60, screenHeight * .35, sm: screenHeight * .35),
+      bottom: context.responsiveSize(20, 40),
     );
+
     final EdgeInsets padding = EdgeInsets.symmetric(
       horizontal: screenWidth * 0.1,
       vertical: screenHeight * 0.1,
     );
+
     final EdgeInsets imageMargin = EdgeInsets.only(
-      top: responsiveSize(
-        context,
-        30,
-        screenHeight * 0.17,
-        sm: screenHeight * 0.17,
-      ),
-      bottom: responsiveSize(context, 20, 40),
+      top: context.responsiveSize(30, screenHeight * .17, sm: screenHeight * .17),
+      bottom: context.responsiveSize(20, 40),
     );
 
     return Container(
@@ -116,162 +104,128 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
       color: AppColors.accentColor2.withOpacity(0.35),
       child: Stack(
         children: [
-          ResponsiveBuilder(builder: (context, sizingInformation) {
-            double screenWidth = sizingInformation.screenSize.width;
-            if (screenWidth < RefinedBreakpoints().tabletNormal) {
-              return Column(
-                children: [
-                  Container(
-                    padding: padding,
-                    child: FadeTransition(
-                      opacity: widget.controller,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Lottie.network(
-                            "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
-                            width: screenWidth,
-                            controller: _lottieController,
-                            fit: BoxFit.cover,
-                          ),
-                          Container(
-                            width: screenWidth * .5,
-                            height: screenWidth * .5,
-                            decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
-                            child: ClipOval(
-                              child: Image.asset(
-                                ImagePath.DEV,
-                                width: screenWidth * .57,
-                                height: screenWidth * .57,
-                              ),
+          AdaptiveBuilderWidget(
+            tabletNormal: Column(
+              children: [
+                Container(
+                  padding: padding,
+                  child: FadeTransition(
+                    opacity: widget.controller,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Lottie.network(
+                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                          width: screenWidth,
+                          controller: _lottieController,
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          width: screenWidth * .5,
+                          height: screenWidth * .5,
+                          decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
+                          child: ClipOval(
+                            child: Image.asset(
+                              ImagePath.DEV,
+                              width: screenWidth * .57,
+                              height: screenWidth * .57,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  Container(
-                    padding: padding.copyWith(top: 0),
+                ),
+                Container(
+                  padding: padding.copyWith(top: 0),
+                  width: screenWidth,
+                  child: AboutDev(
+                    controller: widget.controller,
                     width: screenWidth,
-                    child: AboutDev(
-                      controller: widget.controller,
-                      width: screenWidth,
-                    ),
                   ),
-                ],
-              );
-            } else {
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: textMargin,
+                ),
+              ],
+            ),
+            desktop: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: textMargin,
+                  width: screenWidth * 0.40,
+                  child: AboutDev(
+                    controller: widget.controller,
                     width: screenWidth * 0.40,
-                    child: AboutDev(
-                      controller: widget.controller,
-                      width: screenWidth * 0.40,
-                    ),
                   ),
-                  SizedBox(width: screenWidth * 0.05),
-                  Container(
-                    margin: imageMargin,
-                    child: FadeTransition(
-                      opacity: widget.controller,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Lottie.network(
-                            "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
-                            width: screenWidth * 0.36,
-                            controller: _lottieController,
-                            fit: BoxFit.cover,
-                          ),
-                          Container(
-                            width: screenWidth * 0.24,
-                            height: screenWidth * 0.24,
-                            decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(top: screenWidth * .03, left: 3),
-                            child: ClipOval(
-                              child: Image.asset(
-                                ImagePath.DEV,
-                                width: screenWidth * 0.26,
-                                height: screenWidth * 0.25,
-                              ),
+                ),
+                SizedBox(width: screenWidth * 0.05),
+                Container(
+                  margin: imageMargin,
+                  child: FadeTransition(
+                    opacity: widget.controller,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Lottie.network(
+                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                          width: screenWidth * 0.36,
+                          controller: _lottieController,
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          width: screenWidth * 0.24,
+                          height: screenWidth * 0.24,
+                          decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(top: screenWidth * .03, left: 3),
+                          child: ClipOval(
+                            child: Image.asset(
+                              ImagePath.DEV,
+                              width: screenWidth * 0.26,
+                              height: screenWidth * 0.25,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              );
-            }
-          }),
+                ),
+              ],
+            ),
+          ),
           Positioned(
             right: 0,
             bottom: 0,
-            child: ResponsiveBuilder(
-              builder: (context, sizingInformation) {
-                double screenWidth = sizingInformation.screenSize.width;
-                if (screenWidth < RefinedBreakpoints().tabletNormal) {
-                  return SizedBox.shrink();
-                } else {
-                  return InkWell(
-                    hoverColor: Colors.transparent,
-                    enableFeedback: false,
-                    onTap: () {
-                      Scrollable.ensureVisible(
-                        widget.scrollToWorksKey.currentContext!,
-                        duration: kDuration,
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(right: 24, bottom: 40),
-                      child: MouseRegion(
-                        onEnter: (e) => _scrollDownButtonController.forward(),
-                        onExit: (e) => _scrollDownButtonController.reverse(),
-                        child: AnimatedSlideTransition(
-                          controller: _scrollDownButtonController,
-                          beginOffset: Offset(0, 0),
-                          targetOffset: Offset(0, 0.1),
-                          child: ScrollDownButton(),
-                        ),
-                      ),
-                    ),
+            child: AdaptiveBuilderWidget(
+              desktop: InkWell(
+                hoverColor: Colors.transparent,
+                enableFeedback: false,
+                onTap: () {
+                  Scrollable.ensureVisible(
+                    widget.scrollToWorksKey.currentContext!,
+                    duration: kDuration,
                   );
-                }
-              },
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: 24, bottom: 40),
+                  child: MouseRegion(
+                    onEnter: (e) => _scrollDownButtonController.forward(),
+                    onExit: (e) => _scrollDownButtonController.reverse(),
+                    child: AnimatedSlideTransition(
+                      controller: _scrollDownButtonController,
+                      beginOffset: Offset(0, 0),
+                      targetOffset: Offset(0, 0.1),
+                      child: ScrollDownButton(),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class WhiteCircle extends StatelessWidget {
-  const WhiteCircle({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final widthOfCircle = responsiveSize(
-      context,
-      widthOfScreen(context) / 2.5,
-      widthOfScreen(context) / 3.5,
-    );
-    return Container(
-      width: widthOfCircle,
-      height: widthOfCircle,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(widthOfCircle / 2),
-        ),
       ),
     );
   }
@@ -300,7 +254,7 @@ class _AboutDevState extends State<AboutDev> {
       parent: widget.controller,
       curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
     );
-    double headerFontSize = responsiveSize(context, 28, 48, md: 36, sm: 32);
+    double headerFontSize = context.responsiveSize(28, 48, md: 36, sm: 32);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -337,8 +291,7 @@ class _AboutDevState extends State<AboutDev> {
           child: AnimatedTextSlideBoxTransition(
             controller: widget.controller,
             text: StringConst.DEV_TITLE,
-            width: responsiveSize(
-              context,
+            width: context.responsiveSize(
               widget.width * 0.75,
               widget.width,
               md: widget.width,
@@ -361,11 +314,7 @@ class _AboutDevState extends State<AboutDev> {
             factor: 2,
             text: StringConst.DEV_DESC,
             textStyle: textTheme.bodyLarge?.copyWith(
-              fontSize: responsiveSize(
-                context,
-                Sizes.TEXT_SIZE_16,
-                Sizes.TEXT_SIZE_18,
-              ),
+              fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
               height: 2,
               fontWeight: FontWeight.w400,
             ),
@@ -388,17 +337,14 @@ class _AboutDevState extends State<AboutDev> {
             title: StringConst.SEE_MY_WORKS.toUpperCase(),
             titleStyle: textTheme.bodyLarge?.copyWith(
               color: AppColors.black,
-              fontSize: responsiveSize(
-                context,
+              fontSize: context.responsiveSize(
                 Sizes.TEXT_SIZE_14,
                 Sizes.TEXT_SIZE_16,
                 sm: Sizes.TEXT_SIZE_15,
               ),
               fontWeight: FontWeight.w500,
             ),
-            onTap: () {
-              Navigator.pushNamed(context, Routes.work);
-            },
+            onTap: () => Navigator.pushNamed(context, Routes.work),
           ),
         ),
         SpaceH40(),
@@ -422,12 +368,15 @@ class _AboutDevState extends State<AboutDev> {
     required List<SocialData> data,
   }) {
     TextTheme textTheme = Theme.of(context).textTheme;
+
     TextStyle? style = textTheme.bodyLarge?.copyWith(color: AppColors.grey750);
+
     TextStyle? slashStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.grey750,
       fontWeight: FontWeight.w400,
       fontSize: 18,
     );
+
     List<Widget> items = [];
 
     for (int index = 0; index < data.length; index++) {
@@ -439,18 +388,12 @@ class _AboutDevState extends State<AboutDev> {
           hasSlideBoxAnimation: true,
           hasOffsetAnimation: true,
           isUnderlinedOnHover: false,
-          onTap: () {
-            Functions.launchUrl(data[index].url);
-          },
+          onTap: () => Functions.launchUrl(data[index].url),
           textStyle: style,
         ),
       );
 
-      if (index < data.length - 1) {
-        items.add(
-          Text('/', style: slashStyle),
-        );
-      }
+      if (index < data.length - 1) items.add(Text('/', style: slashStyle));
     }
 
     return items;

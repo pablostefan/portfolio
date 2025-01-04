@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
@@ -50,34 +50,38 @@ class _AboutProjectState extends State<AboutProject> {
   @override
   Widget build(BuildContext context) {
     double googlePlayButtonWidth = 150;
-    double targetWidth = responsiveSize(context, 118, 150, md: 150);
-    double initialWidth = responsiveSize(context, 36, 50, md: 50);
+
+    double targetWidth = context.responsiveSize(118, 150, md: 150);
+
+    double initialWidth = context.responsiveSize(36, 50, md: 50);
+
     TextTheme textTheme = Theme.of(context).textTheme;
+
     TextStyle? bodyTextStyle = textTheme.bodyLarge?.copyWith(
       fontSize: Sizes.TEXT_SIZE_18,
       color: AppColors.grey750,
       fontWeight: FontWeight.w400,
       height: 2.0,
     );
-    double projectDataWidth = responsiveSize(
-      context,
+
+    double projectDataWidth = context.responsiveSize(
       widget.width,
       widget.width * 0.55,
       md: widget.width * 0.75,
     );
-    double projectDataSpacing = responsiveSize(context, widget.width * 0.1, 48, md: 36);
+
+    double projectDataSpacing = context.responsiveSize(widget.width * 0.1, 48, md: 36);
+
     double widthOfProjectItem = (projectDataWidth - (projectDataSpacing)) / 2;
-    BorderRadiusGeometry borderRadius = BorderRadius.all(Radius.circular(100.0));
+
+    BorderRadiusGeometry borderRadius = BorderRadius.all(Radius.circular(100));
+
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: responsiveSize(
-        context,
-        Sizes.TEXT_SIZE_14,
-        Sizes.TEXT_SIZE_16,
-        sm: Sizes.TEXT_SIZE_15,
-      ),
+      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
       fontWeight: FontWeight.w500,
     );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -105,7 +109,7 @@ class _AboutProjectState extends State<AboutProject> {
           width: projectDataWidth,
           child: Wrap(
             spacing: projectDataSpacing,
-            runSpacing: responsiveSize(context, 30, 40),
+            runSpacing: context.responsiveSize(30, 40),
             children: [
               ProjectData(
                 controller: widget.projectDataController,
@@ -191,9 +195,7 @@ class _AboutProjectState extends State<AboutProject> {
                   titleStyle: buttonStyle,
                   startOffset: Offset(0, 0),
                   targetOffset: Offset(0.1, 0),
-                  onTap: () {
-                    Functions.launchUrl(widget.projectData.gitHubUrl);
-                  },
+                  onTap: () => Functions.launchUrl(widget.projectData.gitHubUrl),
                 ),
               ),
             ),

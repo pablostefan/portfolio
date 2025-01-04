@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
@@ -304,9 +304,9 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     // width of the project item - it takes the entire width of the device
-    double projectItemWidth = widthOfScreen(context);
+    double projectItemWidth = context.widthOfScreen;
     // height of the overall project item - it defaults to 40% of the height of the device
-    double projectItemHeight = widget.projectItemHeight ?? assignHeight(context, 0.4);
+    double projectItemHeight = widget.projectItemHeight ?? context.assignHeight(0.4);
     // it defaults to 75% of the height of the full [projectItemHeight]
     double subHeight = widget.subHeight ?? (3 / 4 * projectItemHeight);
     // defaults to 80% of the height of the [subHeight]
@@ -315,16 +315,14 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     // of the container using subHeight as it's height
     double positionOfButton = (subHeight / 2) - startWidthOfButton;
     // width of project cover - takes 1/3 of the width of the screen
-    double imageWidth = responsiveSize(
-      context,
+    double imageWidth = context.responsiveSize(
       projectItemWidth / 3,
       projectItemWidth / 4.5,
       md: projectItemWidth / 3.5,
       sm: projectItemWidth / 3.3,
     );
     Animation<double> animation = Tween<double>(
-      begin: responsiveSize(
-        context,
+      begin: context.responsiveSize(
         -imageWidth * 2.2,
         -imageWidth * 1.8,
         md: -imageWidth * 2.2,
@@ -334,14 +332,12 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
       ..addListener(() {
         setState(() {});
       });
-    double buttonWidth = responsiveSize(
-      context,
+    double buttonWidth = context.responsiveSize(
       startWidthOfButtonMd,
       startWidthOfButton,
       md: startWidthOfButtonMd,
     );
-    double buttonTargetWidth = responsiveSize(
-      context,
+    double buttonTargetWidth = context.responsiveSize(
       targetWidthOfButtonMd,
       targetWidthOfButton,
       md: targetWidthOfButtonMd,
@@ -350,8 +346,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     // textStyle for button for viewing project
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: responsiveSize(
-        context,
+      fontSize: context.responsiveSize(
         Sizes.TEXT_SIZE_14,
         Sizes.TEXT_SIZE_16,
         md: Sizes.TEXT_SIZE_14,
@@ -369,7 +364,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     TextStyle? defaultTitleStyle = widget.titleStyle ??
         textTheme.labelLarge?.copyWith(
           color: AppColors.black,
-          fontSize: responsiveSize(context, 24, 40, md: 36, sm: 30),
+          fontSize: context.responsiveSize(24, 40, md: 36, sm: 30),
         );
     // textStyle for the subtitle (describing project platform) of the project
     TextStyle? defaultSubtitleStyle = widget.subtitleStyle ??
@@ -403,7 +398,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
                     child: ProjectData(
                       duration: Duration(milliseconds: 400),
                       projectNumber: widget.projectNumber,
-                      indicatorWidth: _isHovering ? assignWidth(context, 0.18) : assignWidth(context, 0.12),
+                      indicatorWidth: _isHovering ? context.assignWidth(.18) : context.assignWidth(.12),
                       leadingMargin: EdgeInsets.only(
                           top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
                           right: Sizes.MARGIN_8),
@@ -442,7 +437,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
             ),
             Positioned(
               top: positionOfButton, //places button
-              right: assignWidth(context, 0.1),
+              right: context.assignWidth(.1),
               child: AnimatedBubbleButton(
                 showShadow: true,
                 startWidth: buttonWidth,
@@ -537,13 +532,11 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     // takes full width of screen
-    double projectItemWidth = widthOfScreen(context);
+    double projectItemWidth = context.widthOfScreen;
     // takes 40% of the height of the device
-    double heightOfProjectImageCover = widget.imageHeight ?? assignHeight(context, 0.3);
-    // takes 90% of the width of the device
-    double widthOfProjectImageCover = widget.imageWidth ?? assignWidth(context, 0.9);
+    double heightOfProjectImageCover = widget.imageHeight ?? context.assignHeight(0.3);
     // takes 30% of the height of the device
-    double heightOfColoredContainer = widget.coloredContainerHeight ?? assignHeight(context, 0.3);
+    double heightOfColoredContainer = widget.coloredContainerHeight ?? context.assignHeight(0.3);
     // this positions the colored container at the middle of the cover image.
     double positionOfColoredContainer = heightOfProjectImageCover / 2;
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -590,7 +583,7 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
                 ProjectData(
                   duration: widget.duration,
                   projectNumber: widget.projectNumber,
-                  indicatorWidth: assignWidth(context, 0.12),
+                  indicatorWidth: context.assignWidth(.12),
                   leadingMargin: EdgeInsets.only(
                     top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
                     right: Sizes.MARGIN_8,

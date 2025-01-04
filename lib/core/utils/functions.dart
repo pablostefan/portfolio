@@ -6,8 +6,8 @@ import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Functions {
-  static void launchUrl(String url) async {
-    await launch(url);
+  static void launchUrl(String? url) async {
+    if (url?.isNotEmpty ?? false) await launch(url!);
   }
 
   static Size textSize({

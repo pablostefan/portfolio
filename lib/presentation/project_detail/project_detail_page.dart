@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/project_detail/models/project_details.dart';
 import 'package:portfolio/presentation/project_detail/widgets/about_project.dart';
@@ -85,27 +85,22 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
     getArguments();
 
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      top: responsiveSize(
-        context,
-        assignHeight(context, .05),
-        assignHeight(context, .1),
+      top: context.responsiveSize(
+        context.assignHeight(.05),
+        context.assignHeight(.1),
       ),
-      left: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
+      left: context.responsiveSize(
+        context.assignWidth(.10),
+        context.assignWidth(.15),
       ),
-      right: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.25),
-      ),
+      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.25)),
     );
-    double contentAreaWidth = responsiveSize(
-      context,
-      assignWidth(context, 0.60),
-      assignWidth(context, 0.80),
+
+    double contentAreaWidth = context.responsiveSize(
+      context.assignWidth(.6),
+      context.assignWidth(.8),
     );
+
     return PageWrapper(
       backgroundColor: AppColors.white,
       selectedRoute: Routes.projectDetail,
@@ -128,7 +123,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
               child: Image.asset(
                 _projectDetails.data.coverUrl,
                 fit: BoxFit.fitWidth,
-                width: widthOfScreen(context),
+                width: context.widthOfScreen,
               ),
             ),
           ),

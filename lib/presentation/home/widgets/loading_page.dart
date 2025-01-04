@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/empty.dart';
@@ -124,10 +124,10 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
   @override
   Widget build(BuildContext context) {
     setTextWidthAndHeight();
-    double screenWidth = widthOfScreen(context);
-    double screenHeight = heightOfScreen(context);
+    double screenWidth = context.widthOfScreen;
+    double screenHeight = context.heightOfScreen;
     double halfHeightOfScreen = screenHeight / 2;
-    double widthOfLeftLine = assignWidth(context, 0.5) - (textWidth / 2);
+    double widthOfLeftLine = context.assignWidth(.5) - (textWidth / 2);
     double widthOfRightLine = screenWidth - (widthOfLeftLine + textWidth);
     double leftContainerStart = (screenWidth / 2) - (textWidth / 2);
 
@@ -155,7 +155,7 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                 ),
               ),
               SizedBox(
-                width: widthOfScreen(context),
+                width: context.widthOfScreen,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,10 +218,13 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                               ],
                             ),
                           ),
-                          containerAnimationBuilder(
-                            controller: _containerController,
-                            animation: containerAnimation,
-                            color: lineColor,
+                          AnimatedBuilder(
+                            animation: _containerController,
+                            builder: (context, child) => Container(
+                              height: lineHeight,
+                              width: containerAnimation.value,
+                              color: lineColor,
+                            ),
                           ),
                           SizedBox(
                             width: widthOfRightLine,
@@ -256,20 +259,5 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
               ),
             ],
           );
-  }
-
-  Widget containerAnimationBuilder({
-    required Animation<double> animation,
-    required AnimationController controller,
-    Color color = AppColors.white,
-  }) {
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (context, child) => Container(
-        height: lineHeight,
-        width: animation.value,
-        color: color,
-      ),
-    );
   }
 }

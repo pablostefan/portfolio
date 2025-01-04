@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/presentation/works/widgets/noteworthy_projects.dart';
 import 'package:portfolio/routing/routes.dart';
@@ -45,27 +45,21 @@ class _WorksPageState extends State<WorksPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double projectItemHeight = assignHeight(context, 0.4);
+    double projectItemHeight = context.assignHeight(.4);
+
     double subHeight = (3 / 4) * projectItemHeight;
+
     double extra = projectItemHeight - subHeight;
 
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
-      ),
-      right: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.10),
-      ),
+      left: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.1)),
     );
+
     return PageWrapper(
       selectedRoute: Routes.work,
       selectedPageName: StringConst.WORKS,
       navBarAnimationController: _headingTextController,
-      hasSideTitle: false,
       onLoadingAnimationDone: _headingTextController.forward,
       child: ListView(
         padding: EdgeInsets.zero,

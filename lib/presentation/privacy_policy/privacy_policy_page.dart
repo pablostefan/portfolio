@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/adaptive.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_footer.dart';
@@ -30,29 +30,18 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> with TickerProvid
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    double contentAreaWidth = responsiveSize(
-      context,
-      assignWidth(context, 0.8),
-      assignWidth(context, 0.75),
-      sm: assignWidth(context, 0.8),
+    double contentAreaWidth = context.responsiveSize(
+      context.assignWidth(.8),
+      context.assignWidth(.75),
+      sm: context.assignWidth(.8),
     );
+
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.15),
-      ),
-      right: responsiveSize(
-        context,
-        assignWidth(context, 0.10),
-        assignWidth(context, 0.10),
-      ),
-      top: responsiveSize(
-        context,
-        assignHeight(context, 0.15),
-        assignHeight(context, 0.15),
-      ),
+      left: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.1)),
+      top: context.responsiveSize(context.assignHeight(.15), context.assignHeight(.15)),
     );
+
     return PageWrapper(
       selectedRoute: Routes.privacyPolicy,
       selectedPageName: StringConst.PRIVACY_POLICY,
