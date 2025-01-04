@@ -11,7 +11,7 @@ class AnimatedPositionedText extends StatefulWidget {
     this.width = double.infinity,
     this.textAlign,
     this.relativeRect,
-    this.slideAnimationcurve = Curves.fastOutSlowIn,
+    this.slideAnimationCurve = Curves.fastOutSlowIn,
   });
 
   final CurvedAnimation controller;
@@ -20,7 +20,7 @@ class AnimatedPositionedText extends StatefulWidget {
   final TextStyle? textStyle;
   final TextAlign? textAlign;
   final Animation<RelativeRect>? relativeRect;
-  final Curve slideAnimationcurve;
+  final Curve slideAnimationCurve;
   final double width;
   final int maxLines;
 
@@ -36,7 +36,10 @@ class _AnimatedPositionedTextState extends State<AnimatedPositionedText> {
 
   @override
   void initState() {
-    setTextWidthAndHeight();
+    super.initState();
+    size = _textSize(widget.text, widget.textStyle);
+    textWidth = size.width;
+    textHeight = size.height * widget.factor;
 
     textPositionAnimation = widget.relativeRect ??
         RelativeRectTween(
@@ -49,20 +52,10 @@ class _AnimatedPositionedTextState extends State<AnimatedPositionedText> {
             Size(textWidth, textHeight),
           ),
         ).animate(widget.controller);
-
-    super.initState();
-  }
-
-  void setTextWidthAndHeight() {
-    size = _textSize(widget.text, widget.textStyle);
-    textWidth = size.width;
-    textHeight = size.height * widget.factor;
   }
 
   @override
   Widget build(BuildContext context) {
-    setTextWidthAndHeight();
-
     return SizedBox(
       height: textHeight,
       child: Stack(
@@ -71,6 +64,7 @@ class _AnimatedPositionedTextState extends State<AnimatedPositionedText> {
             rect: textPositionAnimation,
             child: Text(
               widget.text,
+              maxLines: widget.maxLines,
               textAlign: widget.textAlign,
               style: widget.textStyle,
             ),

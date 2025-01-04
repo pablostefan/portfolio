@@ -81,6 +81,8 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
           children: [
             Spacer(flex: 2),
             AnimatedPositionedText(
+              maxLines: 3,
+              width: context.widthOfScreen * 0.8,
               text: StringConst.WORK_TOGETHER,
               textAlign: TextAlign.center,
               textStyle: titleStyle,

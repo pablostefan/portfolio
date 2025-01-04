@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:layout/layout.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 extension Layout on BuildContext {
   double get widthOfScreen => MediaQuery.sizeOf(this).width;
 
   double get heightOfScreen => MediaQuery.sizeOf(this).height;
+
+  bool get isDisplayMobileOrTablet {
+    return widthOfScreen <= RefinedBreakpoints().tabletNormal;
+  }
+
+  bool get isDisplayMobile {
+    return widthOfScreen <= RefinedBreakpoints().tabletSmall;
+  }
 
   double assignHeight(
     double fraction, {

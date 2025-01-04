@@ -70,6 +70,7 @@ class _ExperiencePageState extends State<ExperiencePage> with TickerProviderStat
               ),
             ),
           ),
+          CustomSpacer(heightFactor: 0.15),
           AnimatedFooter(),
         ],
       ),

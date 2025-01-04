@@ -131,16 +131,18 @@ class _RoleWidget extends StatelessWidget {
     );
 
     return Row(
-      mainAxisSize: MainAxisSize.min,
-      spacing: 12,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          Icons.play_arrow_outlined,
-          color: AppColors.black,
-          size: 12,
+        Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Icon(
+            Icons.play_arrow_outlined,
+            color: AppColors.black,
+            size: 12,
+          ),
         ),
-        SpaceW8(),
-        Flexible(
+        SpaceW12(),
+        Expanded(
           child: AnimatedPositionedText(
             text: role,
             textStyle: bodyLargeStyle,

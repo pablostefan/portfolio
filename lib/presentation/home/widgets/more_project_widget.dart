@@ -49,13 +49,16 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Visibility(
+            visible: context.isDisplayMobileOrTablet,
+            child: SizedBox(height: 150),
+          ),
           Text(
             StringConst.THERES_MORE.toUpperCase(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontSize: context.responsiveSize(11, Sizes.TEXT_SIZE_12),
-                  letterSpacing: 2,
-                  fontWeight: FontWeight.w300,
-                ),
+                fontSize: context.responsiveSize(11, Sizes.TEXT_SIZE_12),
+                letterSpacing: 2,
+                fontWeight: FontWeight.w300),
           ),
           const SpaceH16(),
           MouseRegion(
