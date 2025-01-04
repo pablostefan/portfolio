@@ -14,89 +14,57 @@ class ProjectsDisplayWidget extends StatelessWidget {
     final projectItemHeight = context.assignHeight(0.4);
     final subHeight = projectItemHeight * 0.75;
     final extraHeight = projectItemHeight - subHeight;
+    int margin = subHeight.toInt() * (Data.recentWorks.length - 1);
 
     return AdaptiveBuilderWidget(
-      tabletSmall: Column(
-        children: _buildProjectsForMobile(
-          data: Data.recentWorks,
-          projectHeight: projectItemHeight.toInt(),
-          subHeight: subHeight.toInt(),
-          context: context,
+      tabletSmall: ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: Data.recentWorks.length,
+        separatorBuilder: (_, __) => const CustomSpacer(heightFactor: 0.17),
+        itemBuilder: (_, index) => ProjectItemSm(
+          projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
+          imageUrl: Data.recentWorks[index].image,
+          title: Data.recentWorks[index].title,
+          subtitle: Data.recentWorks[index].category,
+          containerColor: Data.recentWorks[index].primaryColor,
+          onTap: () => Functions.navigateToProject(
+            context: context,
+            dataSource: Data.recentWorks,
+            currentProject: Data.recentWorks[index],
+            currentProjectIndex: index,
+          ),
         ),
       ),
       desktop: SizedBox(
         height: subHeight * Data.recentWorks.length + extraHeight,
         child: Stack(
-          children: _buildProjectsDesktop(
-            data: Data.recentWorks,
-            context: context,
-            projectHeight: projectItemHeight.toInt(),
-            subHeight: subHeight.toInt(),
+          children: List.generate(
+            Data.recentWorks.length,
+            (index) {
+              return Padding(
+                padding: EdgeInsets.only(top: subHeight * index),
+                child: ProjectItemLg(
+                  projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
+                  imageUrl: Data.recentWorks[index].image,
+                  projectItemHeight: projectItemHeight,
+                  subHeight: subHeight,
+                  backgroundColor: AppColors.accentColor2.withOpacity(0.35),
+                  title: Data.recentWorks[index].title,
+                  subtitle: Data.recentWorks[index].category,
+                  containerColor: Data.recentWorks[index].primaryColor,
+                  onTap: () => Functions.navigateToProject(
+                    context: context,
+                    dataSource: Data.recentWorks,
+                    currentProject: Data.recentWorks[index],
+                    currentProjectIndex: index,
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),
     );
-  }
-
-  List<Widget> _buildProjectsDesktop({
-    required List<ProjectItemData> data,
-    required int projectHeight,
-    required int subHeight,
-    required BuildContext context,
-  }) {
-    final items = <Widget>[];
-    int margin = subHeight * (data.length - 1);
-
-    for (int index = data.length - 1; index >= 0; index--) {
-      items.add(
-        Container(
-          margin: EdgeInsets.only(top: margin.toDouble()),
-          child: ProjectItemLg(
-            projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
-            imageUrl: data[index].image,
-            projectItemHeight: projectHeight.toDouble(),
-            subHeight: subHeight.toDouble(),
-            backgroundColor: AppColors.accentColor2.withOpacity(0.35),
-            title: data[index].title.toLowerCase(),
-            subtitle: data[index].category,
-            containerColor: data[index].primaryColor,
-            onTap: () => Functions.navigateToProject(
-              context: context,
-              dataSource: data,
-              currentProject: data[index],
-              currentProjectIndex: index,
-            ),
-          ),
-        ),
-      );
-      margin -= subHeight;
-    }
-    return items;
-  }
-
-  List<Widget> _buildProjectsForMobile({
-    required List<ProjectItemData> data,
-    required int projectHeight,
-    required int subHeight,
-    required BuildContext context,
-  }) {
-    return [
-      for (int index = 0; index < data.length; index++) ...[
-        ProjectItemSm(
-          projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
-          imageUrl: data[index].image,
-          title: data[index].title.toLowerCase(),
-          subtitle: data[index].category,
-          containerColor: data[index].primaryColor,
-          onTap: () => Functions.navigateToProject(
-            context: context,
-            dataSource: data,
-            currentProject: data[index],
-            currentProjectIndex: index,
-          ),
-        ),
-        const CustomSpacer(heightFactor: 0.17),
-      ],
-    ];
   }
 }

@@ -422,14 +422,13 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
                   ..rotateY(0.075),
                 child: Container(
                   width: imageWidth,
-                  height: containerHeight,
+                  height: containerHeight - 10,
                   decoration: BoxDecoration(
                     color: widget.containerColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Image.asset(
                     widget.imageUrl,
-                    height: containerHeight,
                     fit: BoxFit.fitHeight,
                   ),
                 ),

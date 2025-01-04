@@ -118,7 +118,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                       alignment: Alignment.center,
                       children: [
                         Lottie.network(
-                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                          ImagePath.HOME_LOTTIE,
                           width: screenWidth,
                           controller: _lottieController,
                           fit: BoxFit.cover,
@@ -153,7 +153,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
               ],
             ),
             desktop: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   margin: textMargin,
@@ -172,7 +172,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                       alignment: Alignment.center,
                       children: [
                         Lottie.network(
-                          "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json",
+                          ImagePath.HOME_LOTTIE,
                           width: screenWidth * 0.36,
                           controller: _lottieController,
                           fit: BoxFit.cover,

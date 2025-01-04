@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/empty.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
 
 const double lineHeight = 2;
@@ -35,9 +34,9 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
   late Animation<double> opacityAnimation;
   late Animation<double> fadeAnimation;
   late Color lineColor;
-  final Duration _scaleDuration = Duration(milliseconds: 300);
-  final Duration _leftRightContainerDuration = Duration(milliseconds: 200);
-  final Duration _containerDuration = Duration(milliseconds: 500);
+  final Duration _scaleDuration = Duration(milliseconds: 400);
+  final Duration _leftRightContainerDuration = Duration(milliseconds: 300);
+  final Duration _containerDuration = Duration(milliseconds: 600);
   bool _leftRightAnimationStarted = false;
   bool _leftRightAnimationDone = false;
   bool _isAnimationOver = false;
@@ -131,133 +130,134 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
     double widthOfRightLine = screenWidth - (widthOfLeftLine + textWidth);
     double leftContainerStart = (screenWidth / 2) - (textWidth / 2);
 
-    return _isAnimationOver
-        ? Empty()
-        : Stack(
-            children: [
-              AnimatedContainer(
-                width: screenWidth,
-                height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
-                duration: _scaleDuration,
-                color: AppColors.black,
-                onEnd: () {
-                  widget.onLoadingDone();
-                  if (mounted) setState(() => _isAnimationOver = true);
-                },
-              ),
-              Positioned(
-                bottom: 0,
-                child: AnimatedContainer(
-                  width: screenWidth,
-                  height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
-                  duration: _scaleDuration,
-                  color: AppColors.black,
-                ),
-              ),
-              SizedBox(
-                width: context.widthOfScreen,
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+    return Visibility(
+      visible: !_isAnimationOver,
+      child: Stack(
+        children: [
+          AnimatedContainer(
+            width: screenWidth,
+            height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
+            duration: _scaleDuration,
+            color: AppColors.black,
+            onEnd: () {
+              widget.onLoadingDone();
+              if (mounted) setState(() => _isAnimationOver = true);
+            },
+          ),
+          Positioned(
+            bottom: 0,
+            child: AnimatedContainer(
+              width: screenWidth,
+              height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
+              duration: _scaleDuration,
+              color: AppColors.black,
+            ),
+          ),
+          SizedBox(
+            width: context.widthOfScreen,
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Spacer(),
-                          SizedBox(
-                            width: textWidth,
-                            child: FadeTransition(
-                              opacity: fadeAnimation,
-                              child: AnimatedBuilder(
-                                animation: _scaleOpacityController,
-                                child: Text(
-                                  widget.text,
-                                  textAlign: TextAlign.center,
-                                  style: widget.style,
-                                ),
-                                builder: (context, child) => Transform.scale(
-                                  scale: 2 * scaleAnimation.value,
-                                  alignment: Alignment.center,
-                                  child: AnimatedOpacity(
-                                    opacity: opacityAnimation.value,
-                                    duration: _scaleDuration,
-                                    child: child,
-                                  ),
-                                ),
+                      Spacer(),
+                      SizedBox(
+                        width: textWidth,
+                        child: FadeTransition(
+                          opacity: fadeAnimation,
+                          child: AnimatedBuilder(
+                            animation: _scaleOpacityController,
+                            child: Text(
+                              widget.text,
+                              textAlign: TextAlign.center,
+                              style: widget.style,
+                            ),
+                            builder: (context, child) => Transform.scale(
+                              scale: 2 * scaleAnimation.value,
+                              alignment: Alignment.center,
+                              child: AnimatedOpacity(
+                                opacity: opacityAnimation.value,
+                                duration: _scaleDuration,
+                                child: child,
                               ),
                             ),
                           ),
-                          Spacer(),
-                        ],
+                        ),
                       ),
-                      SpaceH20(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: widthOfLeftLine,
-                            child: Stack(
-                              children: [
-                                Visibility(
-                                  visible: _fadeOutController.isAnimating,
-                                  child: Container(
-                                    width: widthOfLeftLine,
-                                    height: lineHeight,
-                                    color: lineColor,
-                                  ),
-                                ),
-                                Positioned(
-                                  child: AnimatedContainer(
-                                    width: _leftRightAnimationStarted ? 0 : leftContainerStart,
-                                    height: lineHeight,
-                                    color: AppColors.black,
-                                    duration: _leftRightContainerDuration,
-                                    // curve: Curves.ease,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          AnimatedBuilder(
-                            animation: _containerController,
-                            builder: (context, child) => Container(
-                              height: lineHeight,
-                              width: containerAnimation.value,
-                              color: lineColor,
-                            ),
-                          ),
-                          SizedBox(
-                            width: widthOfRightLine,
-                            child: Stack(
-                              children: [
-                                Visibility(
-                                  visible: _fadeOutController.isAnimating,
-                                  child: Container(
-                                    width: widthOfRightLine,
-                                    height: lineHeight,
-                                    color: lineColor,
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  child: AnimatedContainer(
-                                    width: _leftRightAnimationStarted ? 0 : widthOfRightLine,
-                                    height: lineHeight,
-                                    color: AppColors.black,
-                                    duration: _leftRightContainerDuration,
-                                    onEnd: () {},
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )
+                      Spacer(),
                     ],
                   ),
-                ),
+                  SpaceH20(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: widthOfLeftLine,
+                        child: Stack(
+                          children: [
+                            Visibility(
+                              visible: _fadeOutController.isAnimating,
+                              child: Container(
+                                width: widthOfLeftLine,
+                                height: lineHeight,
+                                color: lineColor,
+                              ),
+                            ),
+                            Positioned(
+                              child: AnimatedContainer(
+                                width: _leftRightAnimationStarted ? 0 : leftContainerStart,
+                                height: lineHeight,
+                                color: AppColors.black,
+                                duration: _leftRightContainerDuration,
+                                // curve: Curves.ease,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      AnimatedBuilder(
+                        animation: _containerController,
+                        builder: (context, child) => Container(
+                          height: lineHeight,
+                          width: containerAnimation.value,
+                          color: lineColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: widthOfRightLine,
+                        child: Stack(
+                          children: [
+                            Visibility(
+                              visible: _fadeOutController.isAnimating,
+                              child: Container(
+                                width: widthOfRightLine,
+                                height: lineHeight,
+                                color: lineColor,
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              child: AnimatedContainer(
+                                width: _leftRightAnimationStarted ? 0 : widthOfRightLine,
+                                height: lineHeight,
+                                color: AppColors.black,
+                                duration: _leftRightContainerDuration,
+                                onEnd: () {},
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
               ),
-            ],
-          );
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
