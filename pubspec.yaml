@@ -25,8 +25,9 @@ dependencies:
   lottie: ^3.3.0
   emailjs: ^4.0.0
   dio: ^5.7.0
-  json_annotation: ^4.9.0
   either_dart: ^1.0.0
+  email_validator: ^3.0.0
+  firebase_core: ^3.9.0
 
 dev_dependencies:
   flutter_test:
