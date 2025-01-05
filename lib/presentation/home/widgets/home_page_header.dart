@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/core/utils/functions.dart';
@@ -87,9 +88,9 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
     final double screenHeight = context.heightOfScreen;
 
     final EdgeInsets textMargin = EdgeInsets.only(
-      left: context.responsiveSize(20, screenWidth * .15, sm: screenWidth * .15),
-      top: context.responsiveSize(60, screenHeight * .35, sm: screenHeight * .35),
-      bottom: context.responsiveSize(20, 40),
+      left: context.responsive(20, screenWidth * .15, sm: screenWidth * .15),
+      top: context.responsive(60, screenHeight * .35, sm: screenHeight * .35),
+      bottom: context.responsive(20, 40),
     );
 
     final EdgeInsets padding = EdgeInsets.symmetric(
@@ -98,8 +99,8 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
     );
 
     final EdgeInsets imageMargin = EdgeInsets.only(
-      top: context.responsiveSize(30, screenHeight * .17, sm: screenHeight * .17),
-      bottom: context.responsiveSize(20, 40),
+      top: context.responsive(30, screenHeight * .17, sm: screenHeight * .17),
+      bottom: context.responsive(20, 40),
     );
 
     return Container(
@@ -112,34 +113,31 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
               children: [
                 Container(
                   padding: padding,
-                  child: FadeTransition(
-                    opacity: widget.controller,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Lottie.network(
-                          ImagePath.HOME_LOTTIE,
-                          width: screenWidth,
-                          controller: _lottieController,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          width: screenWidth * .5,
-                          height: screenWidth * .5,
-                          decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
-                          child: ClipOval(
-                            child: Image.asset(
-                              ImagePath.DEV,
-                              width: screenWidth * .57,
-                              height: screenWidth * .57,
-                            ),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Lottie.network(
+                        ImagePath.HOME_LOTTIE,
+                        width: screenWidth,
+                        controller: _lottieController,
+                        fit: BoxFit.cover,
+                      ),
+                      Container(
+                        width: screenWidth * .5,
+                        height: screenWidth * .5,
+                        decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
+                        child: ClipOval(
+                          child: Image.asset(
+                            ImagePath.DEV,
+                            width: screenWidth * .57,
+                            height: screenWidth * .57,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -257,7 +255,7 @@ class _AboutDevState extends State<AboutDev> {
       parent: widget.controller,
       curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
     );
-    double headerFontSize = context.responsiveSize(28, 48, md: 36, sm: 32);
+    double headerFontSize = context.responsive(28, 48, md: 36, sm: 32);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -294,7 +292,7 @@ class _AboutDevState extends State<AboutDev> {
           child: AnimatedTextSlideBoxTransition(
             controller: widget.controller,
             text: StringConst.DEV_TITLE,
-            width: context.responsiveSize(
+            width: context.responsive(
               widget.width * 0.75,
               widget.width,
               md: widget.width,
@@ -317,7 +315,7 @@ class _AboutDevState extends State<AboutDev> {
             factor: 2,
             text: StringConst.DEV_DESC,
             textStyle: textTheme.bodyLarge?.copyWith(
-              fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
+              fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
               height: 2,
               fontWeight: FontWeight.w400,
             ),
@@ -334,20 +332,18 @@ class _AboutDevState extends State<AboutDev> {
             startOffset: Offset(0, 0),
             targetOffset: Offset(0.1, 0),
             targetWidth: 290,
-            startBorderRadius: const BorderRadius.all(
-              Radius.circular(100.0),
-            ),
+            startBorderRadius: BorderRadius.circular(100),
             title: StringConst.SEE_MY_WORKS.toUpperCase(),
             titleStyle: textTheme.bodyLarge?.copyWith(
               color: AppColors.black,
-              fontSize: context.responsiveSize(
+              fontSize: context.responsive(
                 Sizes.TEXT_SIZE_14,
                 Sizes.TEXT_SIZE_16,
                 sm: Sizes.TEXT_SIZE_15,
               ),
               fontWeight: FontWeight.w500,
             ),
-            onTap: () => Navigator.pushNamed(context, Routes.work),
+            onTap: () => context.go(Routes.work),
           ),
         ),
         SpaceH40(),

@@ -34,8 +34,6 @@ class PortfolioButton extends StatefulWidget {
   final Color iconColor;
   final Color buttonColor;
   final Color borderColor;
-
-  /// this is the color that shows when hovered
   final Color onHoverColor;
   final double width;
   final double borderWidth;
@@ -61,25 +59,31 @@ class _PortfolioButtonState extends State<PortfolioButton> with SingleTickerProv
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
+
     _textAndIconColor = ColorTween(
       begin: widget.onHoverColor,
       end: widget.buttonColor,
     ).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      });
+      ..addListener(() => setState(() {}));
 
     _offsetAnimation = Tween<Offset>(
       begin: Offset(0, 0),
       end: Offset(0.5, 0),
     ).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      });
+      ..addListener(() => setState(() {}));
+  }
+
+  @override
+  void didUpdateWidget(covariant PortfolioButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.onHoverColor != oldWidget.onHoverColor) {
+      _textAndIconColor = ColorTween(
+        begin: widget.onHoverColor,
+        end: widget.buttonColor,
+      ).animate(_controller)
+        ..addListener(() => setState(() {}));
+    }
   }
 
   @override
@@ -90,24 +94,16 @@ class _PortfolioButtonState extends State<PortfolioButton> with SingleTickerProv
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? style = textTheme.bodyLarge?.copyWith(
-      color: _textAndIconColor.value,
-      fontSize: Sizes.TEXT_SIZE_14,
-      fontWeight: FontWeight.w400,
-    );
     final ButtonStyle defaultButtonStyle = ElevatedButton.styleFrom(
       foregroundColor: widget.onHoverColor,
       backgroundColor: widget.onHoverColor,
       padding: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius)),
-        side: BorderSide(
-          width: 1,
-          color: widget.borderColor,
-        ),
+        side: BorderSide(width: 1, color: widget.borderColor),
       ),
     );
+
     return MouseRegion(
       onEnter: (e) => _mouseEnter(true),
       onExit: (e) => _mouseEnter(false),
@@ -117,88 +113,96 @@ class _PortfolioButtonState extends State<PortfolioButton> with SingleTickerProv
         child: ElevatedButton(
           onPressed: widget.onPressed,
           style: widget.buttonStyle ?? defaultButtonStyle,
-          child: widget.hasIcon
-              ? Stack(
-                  children: [
-                    animatedBackground(),
-                    childWithIcon(),
-                  ],
-                )
-              : Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    animatedBackground(),
-                    Center(
-                      child: Text(
-                        widget.title,
-                        style: widget.titleStyle ?? style,
-                      ),
-                    ),
-                  ],
-                ),
-        ),
-      ),
-    );
-  }
-
-  Widget animatedBackground() {
-    return Positioned(
-      right: 0,
-      child: AnimatedContainer(
-        duration: widget.duration,
-        width: _isHovering ? 0 : widget.width,
-        height: widget.height,
-        color: widget.buttonColor,
-        curve: widget.curve,
-      ),
-    );
-  }
-
-  Widget childWithIcon() {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? style = textTheme.bodyLarge?.copyWith(
-      color: _textAndIconColor.value,
-      fontSize: Sizes.TEXT_SIZE_14,
-      fontWeight: FontWeight.w400,
-    );
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            widget.title,
-            style: widget.titleStyle ?? style,
-          ),
-          SpaceW8(),
-          SlideTransition(
-            position: _offsetAnimation,
-            child: widget.isLoading
-                ? SpinKitWanderingCubes(
-                    color: _textAndIconColor.value,
-                    size: 16.0,
-                  )
-                : Icon(
-                    widget.iconData,
-                    size: widget.iconSize,
-                    color: _textAndIconColor.value,
+          child: Visibility(
+            visible: widget.hasIcon,
+            replacement: Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  right: 0,
+                  child: AnimatedContainer(
+                    duration: widget.duration,
+                    width: _isHovering ? 0 : widget.width,
+                    height: widget.height,
+                    color: widget.buttonColor,
+                    curve: widget.curve,
                   ),
-          )
-        ],
+                ),
+                Center(
+                  child: Text(
+                    widget.title,
+                    style: widget.titleStyle ??
+                        Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: _textAndIconColor.value,
+                              fontSize: Sizes.TEXT_SIZE_14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                  ),
+                ),
+              ],
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  right: 0,
+                  child: AnimatedContainer(
+                    duration: widget.duration,
+                    width: _isHovering ? 0 : widget.width,
+                    height: widget.height,
+                    color: widget.buttonColor,
+                    curve: widget.curve,
+                  ),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Text(
+                          widget.title,
+                          style: widget.titleStyle ??
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: _textAndIconColor.value,
+                                    fontSize: Sizes.TEXT_SIZE_14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                        ),
+                      ),
+                      SpaceW8(),
+                      SlideTransition(
+                        position: _offsetAnimation,
+                        child: Visibility(
+                          visible: widget.isLoading,
+                          replacement: Icon(
+                            widget.iconData,
+                            size: widget.iconSize,
+                            color: _textAndIconColor.value,
+                          ),
+                          child: SpinKitWanderingCubes(
+                            color: _textAndIconColor.value,
+                            size: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
 
   void _mouseEnter(bool hovering) {
     if (hovering) {
-      setState(() {
-        _controller.forward();
-        _isHovering = hovering;
-      });
+      _controller.forward();
+      setState(() => _isHovering = hovering);
     } else {
-      setState(() {
-        _controller.reverse();
-        _isHovering = hovering;
-      });
+      _controller.reverse();
+      setState(() => _isHovering = hovering);
     }
   }
 }

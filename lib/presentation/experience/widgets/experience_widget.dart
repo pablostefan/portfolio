@@ -40,7 +40,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> with SingleTickerPr
 
     TextStyle? defaultTitleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_18, Sizes.TEXT_SIZE_20),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_18, Sizes.TEXT_SIZE_20),
     );
 
     return Align(
@@ -68,7 +68,7 @@ class _ExperienceWidgetState extends State<ExperienceWidget> with SingleTickerPr
                 controller: _controller,
                 text: widget.data.position,
                 textStyle: defaultTitleStyle?.copyWith(
-                  fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
+                  fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -99,7 +99,7 @@ class _RolesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 12,
+      spacing: 20,
       children: List.generate(
         roles.length,
         (index) => _RoleWidget(
@@ -124,10 +124,9 @@ class _RoleWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     final TextStyle? bodyLargeStyle = textTheme.bodyLarge?.copyWith(
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, 17),
+      fontSize: context.responsive(15, 17),
       color: AppColors.grey750,
       fontWeight: FontWeight.w300,
-      height: 1.5,
     );
 
     return Row(
@@ -135,19 +134,15 @@ class _RoleWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 5),
-          child: Icon(
-            Icons.play_arrow_outlined,
-            color: AppColors.black,
-            size: 12,
-          ),
+          child: Icon(Icons.play_arrow_outlined, color: AppColors.black, size: 12),
         ),
         SpaceW12(),
         Expanded(
           child: AnimatedPositionedText(
             text: role,
             textStyle: bodyLargeStyle,
-            maxLines: 7,
-            width: width,
+            maxLines: 30,
+            width: context.widthOfScreen * .75,
             controller: CurvedAnimation(
               parent: controller,
               curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),

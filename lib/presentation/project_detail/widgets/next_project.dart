@@ -70,7 +70,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
   Widget _buildDesktopLayout(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    final double projectTitleFontSize = context.responsiveSize(28, 48, md: 40, sm: 36);
+    final double projectTitleFontSize = context.responsive(28, 48, md: 40, sm: 36);
 
     return SizedBox(
       height: context.assignHeight(0.3),
@@ -95,7 +95,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
   }) {
     final TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
       fontWeight: FontWeight.w500,
     );
 
@@ -134,7 +134,7 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
     return Text(
       StringConst.NEXT_PROJECT,
       style: textTheme.bodyLarge?.copyWith(
-        fontSize: context.responsiveSize(11, Sizes.TEXT_SIZE_12),
+        fontSize: context.responsive(11, Sizes.TEXT_SIZE_12),
         letterSpacing: 2,
         fontWeight: FontWeight.w300,
       ),
@@ -180,11 +180,11 @@ class _NextProjectState extends State<NextProject> with SingleTickerProviderStat
 
   Widget _buildTabletLayout(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final double projectTitleFontSize = context.responsiveSize(28, 48, md: 40, sm: 36);
+    final double projectTitleFontSize = context.responsive(28, 48, md: 40, sm: 36);
 
     final TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
       fontWeight: FontWeight.w500,
     );
 

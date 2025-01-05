@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/shared/values/values.dart';
 
@@ -55,7 +56,26 @@ class _NavItemState extends State<NavItem> {
       child: InkWell(
         onTap: widget.onTap,
         hoverColor: Colors.transparent,
-        child: _buildNavItem(),
+        child: Visibility(
+          visible: widget.isMobile,
+          replacement: _DesktopTextWidget(
+            titleColor: widget.titleColor,
+            selectedColor: widget.selectedColor,
+            isSelected: widget.isSelected,
+            titleStyle: widget.titleStyle,
+            title: widget.title,
+            controller: widget.controller,
+          ),
+          child: _MobileTextWidget(
+            isSelected: widget.isSelected,
+            opacity: _hoveringUnselectedNavItemMobile ? 1 : 0,
+            index: widget.index,
+            title: widget.title,
+            titleStyle: widget.titleStyle,
+            onEnter: (e) => _onMouseEnterUnselectedNavItemMobile(true),
+            onExit: (e) => _onMouseEnterUnselectedNavItemMobile(false),
+          ),
+        ),
       ),
     );
   }
@@ -65,144 +85,178 @@ class _NavItemState extends State<NavItem> {
       _hoveringUnselectedNavItemMobile = hovering;
     });
   }
+}
 
-  Widget _buildNavItem() {
-    return widget.isMobile ? mobileText() : desktopText();
-  }
+class _DesktopTextWidget extends StatelessWidget {
+  final Color titleColor;
+  final Color selectedColor;
+  final bool isSelected;
+  final TextStyle? titleStyle;
+  final String title;
+  final AnimationController controller;
 
-  Widget mobileText() {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    double indexTextSize = 80;
-    double selectedTextSize = 36;
-    double unselectedTextSize = 36;
-    return widget.isSelected
-        ? Stack(
-            children: [
-              _buildNavItemIndex(
-                index: widget.index,
-                indexTextSize: indexTextSize,
-              ),
-              Container(
-                margin: EdgeInsets.only(top: (indexTextSize - selectedTextSize) / 3),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: AnimatedLineThroughText(
-                    text: widget.title.toLowerCase(),
-                    isUnderlinedOnHover: false,
-                    textStyle: widget.titleStyle ??
-                        widget.titleStyle ??
-                        textTheme.displaySmall?.copyWith(
-                          fontSize: selectedTextSize,
-                          color: AppColors.accentColor,
-                          fontWeight: FontWeight.w400,
-                        ),
-                    hoverColor: AppColors.accentColor,
-                    coverColor: AppColors.black,
-                    lineThickness: 4,
-                    onHoverTextStyle: textTheme.displaySmall?.copyWith(
-                      fontSize: selectedTextSize,
-                      color: AppColors.accentColor,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
-        : MouseRegion(
-            onEnter: (e) => _onMouseEnterUnselectedNavItemMobile(true),
-            onExit: (e) => _onMouseEnterUnselectedNavItemMobile(false),
-            child: Stack(
-              children: [
-                AnimatedOpacity(
-                  opacity: _hoveringUnselectedNavItemMobile ? 1 : 0,
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.ease,
-                  child: _buildNavItemIndex(
-                    index: widget.index,
-                    indexTextSize: indexTextSize,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: (indexTextSize - selectedTextSize) / 3),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: AnimatedLineThroughText(
-                      text: widget.title.toLowerCase(),
-                      isUnderlinedOnHover: false,
-                      textStyle: widget.titleStyle ??
-                          textTheme.bodyLarge?.copyWith(
-                            fontSize: unselectedTextSize,
-                            fontWeight: FontWeight.w400,
-                          ),
-                      hoverColor: AppColors.accentColor,
-                      coverColor: AppColors.black,
-                      lineThickness: 4,
-                      onHoverTextStyle: textTheme.bodyLarge?.copyWith(
-                        fontSize: unselectedTextSize,
-                        color: AppColors.accentColor,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-  }
+  const _DesktopTextWidget({
+    required this.titleColor,
+    required this.selectedColor,
+    required this.isSelected,
+    this.titleStyle,
+    required this.title,
+    required this.controller,
+  });
 
-  Widget desktopText() {
+  @override
+  Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    double textSize = context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, md: Sizes.TEXT_SIZE_15);
+    double textSize = context.responsive(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, md: Sizes.TEXT_SIZE_15);
 
     TextStyle? defaultSelectedItemStyle = textTheme.bodyLarge?.copyWith(
       fontSize: textSize,
-      color: widget.selectedColor,
+      color: selectedColor,
       fontWeight: FontWeight.w400,
     );
 
-    TextStyle? defaultUnselectedItemStyle = textTheme.bodyLarge?.copyWith(
-      fontSize: textSize,
-      color: widget.titleColor,
-    );
+    TextStyle? defaultUnselectedItemStyle = textTheme.bodyLarge?.copyWith(fontSize: textSize, color: titleColor);
 
     return Visibility(
-      visible: widget.isSelected,
+      visible: isSelected,
       replacement: AnimatedLineThroughText(
-        text: widget.title,
+        text: title,
         isUnderlinedOnHover: false,
         hasOffsetAnimation: true,
-        textStyle: widget.titleStyle ?? defaultUnselectedItemStyle,
+        textStyle: titleStyle ?? defaultUnselectedItemStyle,
         onHoverTextStyle: defaultUnselectedItemStyle?.copyWith(
-          color: widget.selectedColor,
+          color: selectedColor,
           fontWeight: FontWeight.w400,
         ),
       ),
       child: AnimatedLineThroughText(
         slideBoxCoverColor: AppColors.white,
-        text: widget.title,
+        text: title,
         isUnderlinedOnHover: false,
         hasOffsetAnimation: true,
         hasSlideBoxAnimation: true,
-        controller: widget.controller,
-        textStyle: widget.titleStyle ?? defaultSelectedItemStyle,
+        controller: controller,
+        textStyle: titleStyle ?? defaultSelectedItemStyle,
       ),
     );
   }
+}
 
-  Widget _buildNavItemIndex({required int index, double? indexTextSize}) {
+class _MobileTextWidget extends StatelessWidget {
+  final bool isSelected;
+  final PointerEnterEventListener? onEnter;
+  final PointerExitEventListener? onExit;
+  final double opacity;
+  final int index;
+  final TextStyle? titleStyle;
+  final String title;
+
+  const _MobileTextWidget({
+    required this.isSelected,
+    required this.opacity,
+    required this.index,
+    required this.title,
+    this.titleStyle,
+    this.onEnter,
+    this.onExit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    return Align(
-      alignment: Alignment.center,
-      child: Text(
-        '0$index',
-        style: widget.titleStyle ??
-            textTheme.headlineLarge?.copyWith(
-              fontSize: indexTextSize,
-              color: AppColors.grey800,
-              // fontWeight: FontWeight.w400,
+    double indexTextSize = 80;
+    double selectedTextSize = 36;
+    double unselectedTextSize = 36;
+
+    return Visibility(
+      visible: isSelected,
+      replacement: MouseRegion(
+        onEnter: onEnter,
+        onExit: onExit,
+        child: Stack(
+          children: [
+            AnimatedOpacity(
+              opacity: opacity,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.ease,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  '0${index}',
+                  style: titleStyle ??
+                      textTheme.headlineLarge?.copyWith(
+                        fontSize: indexTextSize,
+                        color: AppColors.grey800,
+                      ),
+                ),
+              ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: (indexTextSize - selectedTextSize) / 3),
+              child: Align(
+                alignment: Alignment.center,
+                child: AnimatedLineThroughText(
+                  text: title.toLowerCase(),
+                  isUnderlinedOnHover: false,
+                  textStyle: titleStyle ??
+                      textTheme.bodyLarge?.copyWith(
+                        fontSize: unselectedTextSize,
+                        fontWeight: FontWeight.w400,
+                      ),
+                  hoverColor: AppColors.accentColor,
+                  coverColor: AppColors.black,
+                  lineThickness: 4,
+                  onHoverTextStyle: textTheme.bodyLarge?.copyWith(
+                    fontSize: unselectedTextSize,
+                    color: AppColors.accentColor,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              '0${index}',
+              style: titleStyle ??
+                  textTheme.headlineLarge?.copyWith(
+                    fontSize: indexTextSize,
+                    color: AppColors.grey800,
+                    // fontWeight: FontWeight.w400,
+                  ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: (indexTextSize - selectedTextSize) / 3),
+            child: Align(
+              alignment: Alignment.center,
+              child: AnimatedLineThroughText(
+                text: title.toLowerCase(),
+                isUnderlinedOnHover: false,
+                textStyle: titleStyle ??
+                    textTheme.displaySmall?.copyWith(
+                      fontSize: selectedTextSize,
+                      color: AppColors.accentColor,
+                      fontWeight: FontWeight.w400,
+                    ),
+                hoverColor: AppColors.accentColor,
+                coverColor: AppColors.black,
+                lineThickness: 4,
+                onHoverTextStyle: textTheme.displaySmall?.copyWith(
+                  fontSize: selectedTextSize,
+                  color: AppColors.accentColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

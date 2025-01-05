@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/layout/extensions.dart';
-import 'package:portfolio/core/utils/functions.dart';
+import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 import 'package:portfolio/shared/widgets/custom_spacer.dart';
@@ -14,7 +15,6 @@ class ProjectsDisplayWidget extends StatelessWidget {
     final projectItemHeight = context.assignHeight(0.4);
     final subHeight = projectItemHeight * 0.75;
     final extraHeight = projectItemHeight - subHeight;
-    int margin = subHeight.toInt() * (Data.recentWorks.length - 1);
 
     return AdaptiveBuilderWidget(
       tabletSmall: ListView.separated(
@@ -28,12 +28,7 @@ class ProjectsDisplayWidget extends StatelessWidget {
           title: Data.recentWorks[index].title,
           subtitle: Data.recentWorks[index].category,
           containerColor: Data.recentWorks[index].primaryColor,
-          onTap: () => Functions.navigateToProject(
-            context: context,
-            dataSource: Data.recentWorks,
-            currentProject: Data.recentWorks[index],
-            currentProjectIndex: index,
-          ),
+          onTap: () => context.go(Routes.projectDetailRoute(Data.recentWorks[index].title)),
         ),
       ),
       desktop: SizedBox(
@@ -53,12 +48,7 @@ class ProjectsDisplayWidget extends StatelessWidget {
                   title: Data.recentWorks[index].title,
                   subtitle: Data.recentWorks[index].category,
                   containerColor: Data.recentWorks[index].primaryColor,
-                  onTap: () => Functions.navigateToProject(
-                    context: context,
-                    dataSource: Data.recentWorks,
-                    currentProject: Data.recentWorks[index],
-                    currentProjectIndex: index,
-                  ),
+                  onTap: () => context.go(Routes.projectDetailRoute(Data.recentWorks[index].title)),
                 ),
               );
             },

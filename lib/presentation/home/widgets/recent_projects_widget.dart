@@ -36,7 +36,7 @@ class _RecentProjectsWidgetState extends State<RecentProjectsWidget> with Single
     final textTheme = Theme.of(context).textTheme;
 
     final margin = EdgeInsets.only(
-      left: context.responsiveSize(context.assignWidth(0.1), context.assignWidth(0.15), sm: context.assignWidth(0.15)),
+      left: context.responsive(context.assignWidth(0.1), context.assignWidth(0.15), sm: context.assignWidth(0.15)),
     );
 
     return VisibilityDetectorWidget(
@@ -54,7 +54,7 @@ class _RecentProjectsWidgetState extends State<RecentProjectsWidget> with Single
               text: StringConst.CRAFTED_WITH_LOVE,
               textStyle: textTheme.headlineSmall?.copyWith(
                 color: AppColors.black,
-                fontSize: context.responsiveSize(30, 48, md: 40, sm: 36),
+                fontSize: context.responsive(30, 48, md: 40, sm: 36),
                 height: 2.0,
               ),
             ),
@@ -66,7 +66,7 @@ class _RecentProjectsWidgetState extends State<RecentProjectsWidget> with Single
               ),
               text: StringConst.SELECTION,
               textStyle: textTheme.bodyLarge?.copyWith(
-                fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
+                fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
                 height: 2,
                 fontWeight: FontWeight.w400,
               ),

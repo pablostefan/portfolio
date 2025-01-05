@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
@@ -52,7 +53,7 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
     );
     TextStyle? titleStyle = textTheme.headlineSmall?.copyWith(
       color: AppColors.accentColor,
-      fontSize: context.responsiveSize(
+      fontSize: context.responsive(
         Sizes.TEXT_SIZE_20,
         Sizes.TEXT_SIZE_50,
         md: Sizes.TEXT_SIZE_40,
@@ -82,7 +83,7 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
             Spacer(flex: 2),
             AnimatedPositionedText(
               maxLines: 3,
-              width: context.widthOfScreen * 0.8,
+              width: context.widthOfScreen - 40,
               text: StringConst.WORK_TOGETHER,
               textAlign: TextAlign.center,
               textStyle: titleStyle,
@@ -97,6 +98,8 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
               textAlign: TextAlign.center,
               textStyle: subtitleStyle,
               factor: 2.0,
+              maxLines: 3,
+              width: context.widthOfScreen - 40,
               controller: CurvedAnimation(
                 parent: controller,
                 curve: Curves.fastOutSlowIn,
@@ -105,9 +108,7 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
             SpaceH40(),
             AnimatedBubbleButton(
               title: StringConst.SAY_HELLO.toUpperCase(),
-              onTap: () {
-                Navigator.pushNamed(context, Routes.contact);
-              },
+              onTap: () => context.go(Routes.contact),
             ),
             Spacer(flex: 3),
             ResponsiveBuilder(

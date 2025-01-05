@@ -51,9 +51,9 @@ class _AboutProjectState extends State<AboutProject> {
   Widget build(BuildContext context) {
     double googlePlayButtonWidth = 150;
 
-    double targetWidth = context.responsiveSize(118, 150, md: 150);
+    double targetWidth = context.responsive(118, 150, md: 150);
 
-    double initialWidth = context.responsiveSize(36, 50, md: 50);
+    double initialWidth = context.responsive(36, 50, md: 50);
 
     TextTheme textTheme = Theme.of(context).textTheme;
 
@@ -64,13 +64,13 @@ class _AboutProjectState extends State<AboutProject> {
       height: 2.0,
     );
 
-    double projectDataWidth = context.responsiveSize(
+    double projectDataWidth = context.responsive(
       widget.width,
       widget.width * 0.55,
       md: widget.width * 0.75,
     );
 
-    double projectDataSpacing = context.responsiveSize(widget.width * 0.1, 48, md: 36);
+    double projectDataSpacing = context.responsive(widget.width * 0.1, 48, md: 36);
 
     double widthOfProjectItem = (projectDataWidth - (projectDataSpacing)) / 2;
 
@@ -78,7 +78,7 @@ class _AboutProjectState extends State<AboutProject> {
 
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_14, Sizes.TEXT_SIZE_16, sm: Sizes.TEXT_SIZE_15),
       fontWeight: FontWeight.w500,
     );
 
@@ -109,7 +109,7 @@ class _AboutProjectState extends State<AboutProject> {
           width: projectDataWidth,
           child: Wrap(
             spacing: projectDataSpacing,
-            runSpacing: context.responsiveSize(30, 40),
+            runSpacing: context.responsive(30, 40),
             children: [
               ProjectData(
                 controller: widget.projectDataController,

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/project_detail/models/project_details.dart';
-import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
-import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Functions {
@@ -22,32 +19,6 @@ class Functions {
       textDirection: TextDirection.ltr,
     )..layout(minWidth: 0, maxWidth: maxWidth);
     return textPainter.size;
-  }
-
-  static void navigateToProject({
-    required BuildContext context,
-    required List<ProjectItemData> dataSource,
-    required ProjectItemData currentProject,
-    required int currentProjectIndex,
-  }) {
-    ProjectItemData? nextProject;
-    bool hasNextProject;
-    if ((currentProjectIndex + 1) > (dataSource.length - 1)) {
-      hasNextProject = false;
-    } else {
-      hasNextProject = true;
-      nextProject = dataSource[currentProjectIndex + 1];
-    }
-    Navigator.of(context).pushNamed(
-      Routes.projectDetail,
-      arguments: ProjectDetailArguments(
-        dataSource: dataSource,
-        currentIndex: currentProjectIndex,
-        data: currentProject,
-        nextProject: nextProject,
-        hasNextProject: hasNextProject,
-      ),
-    );
   }
 
   static void showSnackBar({

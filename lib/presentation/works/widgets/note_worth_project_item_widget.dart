@@ -67,7 +67,7 @@ class _NoteWorthyProjectItem extends StatelessWidget {
       decoration: TextDecoration.underline,
     );
     TextStyle? defaultProjectNameStyle = textTheme.labelLarge?.copyWith(
-      fontSize: context.responsiveSize(
+      fontSize: context.responsive(
         Sizes.TEXT_SIZE_16,
         Sizes.TEXT_SIZE_20,
         sm: Sizes.TEXT_SIZE_18,

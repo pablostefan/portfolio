@@ -45,15 +45,15 @@ class _CertificationPageState extends State<CertificationPage> with TickerProvid
   @override
   Widget build(BuildContext context) {
     double spacing = context.assignWidth(.05);
-    double contentAreaWidth = context.responsiveSize(
+    double contentAreaWidth = context.responsive(
       context.assignWidth(.8),
       context.assignWidth(.7),
       sm: context.assignWidth(.8),
     );
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: context.responsiveSize(context.assignWidth(.10), context.assignWidth(.15)),
-      right: context.responsiveSize(context.assignWidth(.10), context.assignWidth(.15), sm: context.assignWidth(.10)),
-      top: context.responsiveSize(context.assignHeight(.15), context.assignHeight(.15), sm: context.assignWidth(.10)),
+      left: context.responsive(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsive(context.assignWidth(.1), context.assignWidth(.15), sm: context.assignWidth(.1)),
+      top: context.responsive(context.assignHeight(.15), context.assignHeight(.15), sm: context.assignWidth(.1)),
     );
     return PageWrapper(
       selectedRoute: Routes.certifications,

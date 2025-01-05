@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/routing/routes.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/app_drawer.dart';
 import 'package:portfolio/shared/widgets/empty.dart';
@@ -88,7 +88,7 @@ class _PageWrapperState extends State<PageWrapper> {
             appLogoColor: widget.appLogoColor,
             titleColor: widget.navBarTitleColor,
             selectedTitleColor: widget.navBarSelectedTitleColor,
-            onNavItemWebTap: (route) => _navigateToRoute(context, route),
+            onNavItemWebTap: (route) => context.go(route, extra: true),
             onMenuTap: _toggleDrawer,
           ),
           Visibility(
@@ -98,17 +98,6 @@ class _PageWrapperState extends State<PageWrapper> {
         ],
       ),
     );
-  }
-
-  void _navigateToRoute(BuildContext context, String route) {
-    if (route == Routes.home) {
-      Navigator.of(context).pushNamed(
-        route,
-        arguments: NavigationArguments(showUnVeilPageAnimation: true),
-      );
-    } else {
-      Navigator.of(context).pushNamed(route);
-    }
   }
 
   void _toggleDrawer() {

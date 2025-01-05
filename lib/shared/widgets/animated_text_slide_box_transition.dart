@@ -57,6 +57,8 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
 
   @override
   void initState() {
+    super.initState();
+
     setTextWidthAndHeight();
     controller = widget.controller;
     visibleAnimation = widget.visibleBoxAnimation ??
@@ -98,8 +100,6 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
         curve: Interval(0.6, 1.0, curve: widget.invisibleAnimationCurve),
       ),
     );
-
-    super.initState();
   }
 
   void setTextWidthAndHeight() {

@@ -70,7 +70,7 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
 
     TextStyle? headingStyle = textTheme.headlineLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_40, Sizes.TEXT_SIZE_60),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_40, Sizes.TEXT_SIZE_60),
     );
 
     return SizedBox(

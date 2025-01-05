@@ -58,6 +58,7 @@ class _AnimatedPositionedTextState extends State<AnimatedPositionedText> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: textHeight,
+      width: widget.width,
       child: Stack(
         children: [
           PositionedTransition(

@@ -44,8 +44,6 @@ class AnimatedBubbleButton extends StatefulWidget {
   final GestureTapCallback? onTap;
   final BorderRadiusGeometry? endBorderRadius;
   final bool? hovering;
-
-  // prevents button from animating on mouse enter and exit
   final bool controlsOwnAnimation;
   final AnimationController? controller;
   final bool showShadow;
@@ -61,21 +59,16 @@ class _AnimatedBubbleButtonState extends State<AnimatedBubbleButton> with Single
 
   @override
   void initState() {
-    _controller = widget.controller ??
-        AnimationController(
-          vsync: this,
-          duration: widget.duration,
-        );
+    super.initState();
+
+    _controller = widget.controller ?? AnimationController(vsync: this, duration: widget.duration);
 
     _offsetAnimation = widget.offsetAnimation ??
         Tween<Offset>(
           begin: widget.startOffset,
           end: widget.targetOffset,
         ).animate(CurvedAnimation(parent: _controller, curve: widget.curve))
-      ..addListener(() {
-        setState(() {});
-      });
-    super.initState();
+      ..addListener(() => setState(() {}));
   }
 
   @override
@@ -87,11 +80,13 @@ class _AnimatedBubbleButtonState extends State<AnimatedBubbleButton> with Single
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.accentColor,
       fontSize: Sizes.TEXT_SIZE_16,
       fontWeight: FontWeight.w500,
     );
+
     return MouseRegion(
       onEnter: widget.controlsOwnAnimation ? (e) => _mouseEnter(true) : null,
       onExit: widget.controlsOwnAnimation ? (e) => _mouseEnter(false) : null,
@@ -99,7 +94,11 @@ class _AnimatedBubbleButtonState extends State<AnimatedBubbleButton> with Single
         position: _offsetAnimation,
         child: InkWell(
           hoverColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           onTap: widget.onTap,
+          enableFeedback: false,
           child: SizedBox(
             width: widget.targetWidth,
             height: widget.height,
@@ -115,7 +114,7 @@ class _AnimatedBubbleButtonState extends State<AnimatedBubbleButton> with Single
                       color: widget.color,
                       boxShadow: [
                         if ((widget.hovering ?? _isHovering) && widget.showShadow)
-                          BoxShadow(color: AppColors.black.withOpacity(.2), blurRadius: 8, spreadRadius: 3),
+                          BoxShadow(color: AppColors.black.withOpacity(.15), blurRadius: 8, spreadRadius: 3),
                       ],
                       borderRadius: (widget.hovering ?? _isHovering)
                           ? (widget.endBorderRadius ?? widget.startBorderRadius)

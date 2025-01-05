@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:html' as html;
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/layout/extensions.dart';
-import 'package:portfolio/core/utils/functions.dart';
-import 'package:portfolio/presentation/project_detail/models/project_details.dart';
 import 'package:portfolio/presentation/project_detail/widgets/about_project.dart';
 import 'package:portfolio/presentation/project_detail/widgets/next_project.dart';
 import 'package:portfolio/routing/routes.dart';
@@ -12,11 +8,14 @@ import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/content_area.dart';
 import 'package:portfolio/shared/widgets/custom_spacer.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
+import 'package:portfolio/shared/widgets/project_item.dart';
 import 'package:portfolio/shared/widgets/simple_footer.dart';
-import 'package:visibility_detector/visibility_detector.dart';
+import 'package:portfolio/shared/widgets/visibility_detector_widget.dart';
 
 class ProjectDetailPage extends StatefulWidget {
-  const ProjectDetailPage({super.key});
+  final String project;
+
+  const ProjectDetailPage({super.key, required this.project});
 
   @override
   State<ProjectDetailPage> createState() => _ProjectDetailPageState();
@@ -27,24 +26,17 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
   late AnimationController _waveController;
   late AnimationController _aboutProjectController;
   late AnimationController _projectDataController;
-  late ProjectDetailArguments _projectDetails;
   double waveLineHeight = 100;
 
   @override
   void initState() {
     super.initState();
-    _waveController = AnimationController(
-      vsync: this,
-      duration: Animations.waveDuration,
-    )..repeat();
-    _controller = AnimationController(
-      vsync: this,
-      duration: Animations.slideAnimationDurationLong,
-    );
-    _aboutProjectController = AnimationController(
-      vsync: this,
-      duration: Animations.slideAnimationDurationShort,
-    );
+    _waveController = AnimationController(vsync: this, duration: Animations.waveDuration)..repeat();
+
+    _controller = AnimationController(vsync: this, duration: Animations.slideAnimationDurationLong);
+
+    _aboutProjectController = AnimationController(vsync: this, duration: Animations.slideAnimationDurationShort);
+
     _waveController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         _waveController.reverse();
@@ -52,10 +44,9 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
         _waveController.forward();
       }
     });
-    _projectDataController = AnimationController(
-      vsync: this,
-      duration: Animations.slideAnimationDurationShort,
-    );
+
+    _projectDataController = AnimationController(vsync: this, duration: Animations.slideAnimationDurationShort);
+
     _waveController.forward();
   }
 
@@ -67,39 +58,35 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
     super.dispose();
   }
 
-  void getArguments() {
-    final Object? args = ModalRoute.of(context)?.settings.arguments;
-    if (args != null) {
-      _projectDetails = args as ProjectDetailArguments;
-      html.window.localStorage['projectDetailArguments'] = args.toJson();
-    } else {
-      final storedArguments = html.window.localStorage['projectDetailArguments'];
-      if (storedArguments != null) {
-        _projectDetails = ProjectDetailArguments.fromMap(json.decode(storedArguments));
-      }
+  int get _index {
+    try {
+      return Data.recentWorks.indexWhere((element) => element.title == widget.project);
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  ProjectItemData get _projectDetails => Data.recentWorks[_index];
+
+  bool get _isLastProject => _index == Data.recentWorks.length - 1;
+
+  ProjectItemData? get _nextProject {
+    try {
+      return Data.recentWorks[_index + 1];
+    } catch (e) {
+      return null;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    getArguments();
-
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      top: context.responsiveSize(
-        context.assignHeight(.05),
-        context.assignHeight(.1),
-      ),
-      left: context.responsiveSize(
-        context.assignWidth(.10),
-        context.assignWidth(.15),
-      ),
-      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.25)),
+      top: context.responsive(context.assignHeight(.05), context.assignHeight(.1)),
+      left: context.responsive(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsive(context.assignWidth(.1), context.assignWidth(.25)),
     );
 
-    double contentAreaWidth = context.responsiveSize(
-      context.assignWidth(.6),
-      context.assignWidth(.8),
-    );
+    double contentAreaWidth = context.responsive(context.assignWidth(.6), context.assignWidth(.8));
 
     return PageWrapper(
       backgroundColor: AppColors.white,
@@ -107,40 +94,37 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
       hasSideTitle: false,
       selectedPageName: StringConst.PROJECT,
       navBarAnimationController: _controller,
-      navBarTitleColor: _projectDetails.data.navTitleColor,
-      navBarSelectedTitleColor: _projectDetails.data.navSelectedTitleColor,
-      appLogoColor: _projectDetails.data.appLogoColor,
+      navBarTitleColor: _projectDetails.navTitleColor,
+      navBarSelectedTitleColor: _projectDetails.navSelectedTitleColor,
+      appLogoColor: _projectDetails.appLogoColor,
       onLoadingAnimationDone: _controller.forward,
       child: ListView(
         padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           Hero(
-            tag: _projectDetails.data.title,
+            tag: _projectDetails.title,
             child: Container(
-              color: _projectDetails.data.primaryColor,
+              color: _projectDetails.primaryColor,
               padding: EdgeInsets.only(top: 70),
               child: Image.asset(
-                _projectDetails.data.coverUrl,
+                _projectDetails.coverUrl,
                 fit: BoxFit.fitWidth,
                 width: context.widthOfScreen,
               ),
             ),
           ),
-          VisibilityDetector(
+          VisibilityDetectorWidget(
             key: Key('about-project'),
-            onVisibilityChanged: (visibilityInfo) {
-              double visiblePercentage = visibilityInfo.visibleFraction * 100;
-              if (visiblePercentage > 40) {
-                _aboutProjectController.forward();
-              }
-            },
+            context: context,
+            minVisible: 40,
+            action: _aboutProjectController.forward,
             child: Padding(
               padding: padding,
               child: ContentArea(
                 width: contentAreaWidth,
                 child: AboutProject(
-                  projectData: _projectDetails.data,
+                  projectData: _projectDetails,
                   controller: _aboutProjectController,
                   projectDataController: _projectDataController,
                   width: contentAreaWidth,
@@ -149,27 +133,20 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> with TickerProvid
             ),
           ),
           Visibility(
-            visible: _projectDetails.hasNextProject,
+            visible: !_isLastProject,
             child: Padding(
               padding: padding,
               child: ContentArea(
                 width: contentAreaWidth,
                 child: NextProject(
                   width: contentAreaWidth,
-                  nextProject: _projectDetails.nextProject,
-                  navigateToNextProject: () {
-                    Functions.navigateToProject(
-                      context: context,
-                      dataSource: _projectDetails.dataSource,
-                      currentProject: _projectDetails.nextProject!,
-                      currentProjectIndex: _projectDetails.currentIndex + 1,
-                    );
-                  },
+                  nextProject: _nextProject,
+                  navigateToNextProject: () => context.go(Routes.projectDetailRoute(_nextProject?.title)),
                 ),
               ),
             ),
           ),
-          CustomSpacer(heightFactor: 0.15),
+          CustomSpacer(heightFactor: .15),
           SimpleFooter(),
         ],
       ),

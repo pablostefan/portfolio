@@ -49,7 +49,7 @@ class ContentBuilder extends StatelessWidget {
     );
     TextStyle? defaultTitleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
     );
 
     return Container(
@@ -86,7 +86,7 @@ class ContentBuilder extends StatelessWidget {
                         text: title!,
                         textStyle: titleStyle ?? defaultTitleStyle,
                       ),
-                  SpaceH30(),
+                  SpaceH12(),
                   body,
                   footer ?? Empty(),
                 ],

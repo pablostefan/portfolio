@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
@@ -36,12 +37,12 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
 
     final textButtonStyle = textTheme.headlineSmall?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(30, 40, md: 36, sm: 32),
+      fontSize: context.responsive(30, 40, md: 36, sm: 32),
       height: 2.0,
     );
 
     final margin = EdgeInsets.only(
-      left: context.responsiveSize(context.assignWidth(0.1), context.assignWidth(0.15), sm: context.assignWidth(0.15)),
+      left: context.responsive(context.assignWidth(0.1), context.assignWidth(0.15), sm: context.assignWidth(0.15)),
     );
 
     return Container(
@@ -50,14 +51,13 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Visibility(
-            visible: context.isDisplayMobileOrTablet,
+            visible: context.isMobileOrTablet,
             child: SizedBox(height: 150),
           ),
           Text(
             StringConst.THERES_MORE.toUpperCase(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontSize: context.responsiveSize(11, Sizes.TEXT_SIZE_12),
-                letterSpacing: 2,
+                fontSize: context.responsive(11, Sizes.TEXT_SIZE_12), letterSpacing: 2,
                 fontWeight: FontWeight.w300),
           ),
           const SpaceH16(),
@@ -69,7 +69,7 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
               beginOffset: const Offset(0, 0),
               targetOffset: const Offset(0.05, 0),
               child: TextButton(
-                onPressed: () => Navigator.pushNamed(context, Routes.work),
+                onPressed: () => context.go(Routes.work),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

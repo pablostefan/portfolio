@@ -51,12 +51,10 @@ abstract final class StringConst {
       "Algo deu errado. Por favor, envie um email manualmente - ${StringConst.EMAIL_VALUE}";
 
   // About Page
-  static const String ABOUT_DEV_CATCH_LINE =
-      "Sou um desenvolvedor front-end apaixonado e designer de UI/UX com um olhar atento aos detalhes.";
-  static const String ABOUT_DEV_CATCH_LINE_1 = "Especializado no desenvolvimento";
-  static const String ABOUT_DEV_CATCH_LINE_2 = "aplicativos móveis e web de alta qualidade.";
-  static const String ABOUT_DEV_CATCH_LINE_4 = "Experiência em soluções";
-  static const String ABOUT_DEV_CATCH_LINE_5 = "para saúde, gestão de condomínios, pagamentos e criptomoedas.";
+  static const String ABOUT_DEV_CATCH_LINE_1 =
+      "Especializado no desenvolvimento de aplicativos móveis e web de alta qualidade.";
+  static const String ABOUT_DEV_CATCH_LINE_2 =
+      "Experiência em soluções para saúde, gestão de condomínios, pagamentos e criptomoedas.";
   static const String ABOUT_DEV_STORY = "História";
   static const String ABOUT_DEV_STORY_TITLE = "Um pouco sobre mim.";
   static const String ABOUT_DEV_STORY_CONTENT_1 =
@@ -179,7 +177,7 @@ abstract final class StringConst {
   static const String COMPANY_FIIBO_ROLE_7 =
       "Mentoria e apoio técnico a membros da equipe de desenvolvimento, promovendo o crescimento e o compartilhamento de conhecimento;";
   static const String COMPANY_FIIBO_ROLE_8 =
-      "Implementação de animações avançadas e interações intuitivas para melhorar a experiência do usuário.";
+      "Implementação de animações avançadas e interações intuitivas para melhorar a experiência do usuário;";
   static const String COMPANY_FIIBO_ROLE_9 =
       "Condução e liderança das provas de conceito (POCs) para validar novas soluções e tecnologias;";
   static const String LOCATION_FIIBO = "São Paulo - Brasil";

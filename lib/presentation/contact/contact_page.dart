@@ -62,19 +62,19 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
       fontSize: Sizes.TEXT_SIZE_12,
       letterSpacing: 1,
     );
-    double contentAreaWidth = context.responsiveSize(context.assignWidth(.8), context.assignWidth(.6));
+    double contentAreaWidth = context.responsive(context.assignWidth(.8), context.assignWidth(.6));
 
-    double buttonWidth = context.responsiveSize(contentAreaWidth * .6, contentAreaWidth * .25);
+    double buttonWidth = context.responsive(contentAreaWidth * .6, contentAreaWidth * .25);
 
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.15)),
-      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.25)),
-      top: context.responsiveSize(context.assignHeight(.1), context.assignHeight(.15)),
+      left: context.responsive(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsive(context.assignWidth(.1), context.assignWidth(.25)),
+      top: context.responsive(context.assignHeight(.1), context.assignHeight(.15)),
     );
 
     TextStyle? headingStyle = textTheme.headlineLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(40, 60),
+      fontSize: context.responsive(40, 60),
     );
 
     return PageWrapper(
@@ -111,7 +111,7 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                     textStyle: textTheme.bodyLarge?.copyWith(
                       color: AppColors.grey700,
                       height: 2.0,
-                      fontSize: context.responsiveSize(
+                      fontSize: context.responsive(
                         Sizes.TEXT_SIZE_16,
                         Sizes.TEXT_SIZE_18,
                       ),

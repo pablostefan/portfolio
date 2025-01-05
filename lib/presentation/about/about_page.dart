@@ -16,7 +16,6 @@ import 'package:portfolio/shared/widgets/content_area.dart';
 import 'package:portfolio/shared/widgets/content_builder.dart';
 import 'package:portfolio/shared/widgets/custom_spacer.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
-import 'package:portfolio/shared/widgets/socials.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
 import 'package:portfolio/shared/widgets/visibility_detector_widget.dart';
 
@@ -86,32 +85,39 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double contentAreaWidth = context.responsiveSize(
+    double contentAreaWidth = context.responsive(
       context.assignWidth(.8),
       context.assignWidth(.75),
       sm: context.assignWidth(.8),
     );
 
     EdgeInsetsGeometry padding = EdgeInsets.only(
-      left: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.15)),
-      right: context.responsiveSize(context.assignWidth(.1), context.assignWidth(.1)),
-      top: context.responsiveSize(context.assignHeight(.2), context.assignHeight(.2), sm: context.assignWidth(.15)),
+      left: context.responsive(context.assignWidth(.1), context.assignWidth(.15)),
+      right: context.responsive(context.assignWidth(.1), context.assignWidth(.1)),
+      top: context.responsive(context.assignHeight(.15), context.assignHeight(.2), sm: context.assignWidth(.15)),
     );
 
     TextTheme textTheme = Theme.of(context).textTheme;
+
     TextStyle? bodyLargeStyle = textTheme.bodyLarge?.copyWith(
-      fontSize: Sizes.TEXT_SIZE_18,
+      fontSize: context.responsive(15, 17, sm: 15, md: 16, xl: 17),
       color: AppColors.grey750,
       fontWeight: FontWeight.w400,
       height: 2.0,
       // letterSpacing: 2,
     );
 
+    TextStyle? slashStyle = textTheme.bodyLarge?.copyWith(
+      color: AppColors.grey750,
+      fontWeight: FontWeight.w400,
+      fontSize: 18,
+    );
+
     TextStyle? bodySmallStyle = textTheme.bodyLarge?.copyWith(color: AppColors.grey750);
 
     TextStyle? titleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
     );
 
     CurvedAnimation storySectionAnimation = CurvedAnimation(
@@ -124,7 +130,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       curve: Interval(.6, 1, curve: Curves.fastOutSlowIn),
     );
 
-    double widthOfBody = context.responsiveSize(context.assignWidth(.75), context.assignWidth(.5));
+    double widthOfBody = context.responsive(context.assignWidth(.75), context.assignWidth(.5));
 
     return PageWrapper(
       selectedRoute: Routes.about,
@@ -150,7 +156,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                         key: Key('story-section'),
                         action: _storyController.forward,
                         context: context,
-                        minVisible: context.responsiveSize(40, 70, md: 50),
+                        minVisible: 40,
                         child: ContentBuilder(
                           controller: _storyController,
                           number: "/01 ",
@@ -158,6 +164,8 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           section: StringConst.ABOUT_DEV_STORY.toUpperCase(),
                           title: StringConst.ABOUT_DEV_STORY_TITLE,
                           body: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            spacing: 20,
                             children: [
                               AnimatedPositionedText(
                                 controller: storySectionAnimation,
@@ -179,6 +187,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                                 maxLines: 30,
                                 text: StringConst.ABOUT_DEV_STORY_CONTENT_3,
                                 textStyle: bodyLargeStyle,
+                                factor: context.responsive(1, 1.1, sm: 1.4, md: 1.1),
                               ),
                             ],
                           ),
@@ -187,7 +196,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                       CustomSpacer(heightFactor: 0.1),
                       VisibilityDetectorWidget(
                         key: Key('technology-section'),
-                        minVisible: 50,
+                        minVisible: 30,
                         action: _technologyController.forward,
                         context: context,
                         child: ContentBuilder(
@@ -196,30 +205,24 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           width: contentAreaWidth,
                           section: StringConst.ABOUT_DEV_TECHNOLOGY.toUpperCase(),
                           title: StringConst.ABOUT_DEV_TECHNOLOGY_TITLE,
-                          body: Column(
-                            children: [
-                              AnimatedPositionedText(
-                                controller: technologySectionAnimation,
-                                width: widthOfBody,
-                                maxLines: 12,
-                                text: StringConst.ABOUT_DEV_TECHNOLOGY_CONTENT,
-                                textStyle: bodyLargeStyle,
-                              ),
-                            ],
+                          body: AnimatedPositionedText(
+                            controller: technologySectionAnimation,
+                            width: widthOfBody,
+                            maxLines: 12,
+                            text: StringConst.ABOUT_DEV_TECHNOLOGY_CONTENT,
+                            textStyle: bodyLargeStyle,
                           ),
-                          footer: VisibilityDetectorWidget(
-                            key: Key('technology-list'),
-                            context: context,
-                            minVisible: 60,
-                            action: _technologyListController.forward,
-                            child: Column(
-                              children: [
-                                SpaceH40(),
-                                TechnologySection(
-                                  width: contentAreaWidth,
-                                  controller: _technologyListController,
-                                ),
-                              ],
+                          footer: Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: VisibilityDetectorWidget(
+                              key: Key('technology-list'),
+                              context: context,
+                              minVisible: 40,
+                              action: _technologyListController.forward,
+                              child: TechnologySection(
+                                width: contentAreaWidth,
+                                controller: _technologyListController,
+                              ),
                             ),
                           ),
                         ),
@@ -236,34 +239,41 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           width: contentAreaWidth,
                           section: StringConst.ABOUT_DEV_CONTACT.toUpperCase(),
                           title: StringConst.GET_IN_TOUCH,
-                          body: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SpaceH20(),
-                              Wrap(
-                                spacing: 20,
-                                runSpacing: 20,
-                                children: _buildSocials(Data.socialData2),
+                          body: SizedBox(
+                            height: 40,
+                            child: ListView.separated(
+                              itemCount: Data.socialData.length,
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.horizontal,
+                              physics: const NeverScrollableScrollPhysics(),
+                              separatorBuilder: (_, __) => Text(' / ', style: bodySmallStyle),
+                              itemBuilder: (_, index) => AnimatedLineThroughText(
+                                text: Data.socialData[index].name,
+                                isUnderlinedByDefault: true,
+                                controller: _contactController,
+                                hasSlideBoxAnimation: true,
+                                isUnderlinedOnHover: false,
+                                onTap: () => Functions.launchUrl(Data.socialData[index].url),
+                                textStyle: slashStyle,
                               ),
-                            ],
+                            ),
                           ),
                           footer: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SpaceH40(),
+                              SpaceH30(),
                               AnimatedTextSlideBoxTransition(
                                 controller: _contactController,
                                 text: StringConst.ABOUT_DEV_CONTACT_EMAIL,
                                 textStyle: titleStyle,
                               ),
-                              SpaceH40(),
+                              SpaceH12(),
                               AnimatedLineThroughText(
                                 text: StringConst.EMAIL_VALUE,
                                 hasSlideBoxAnimation: true,
                                 controller: _contactController,
-                                onTap: () {
-                                  Functions.launchUrl(StringConst.EMAIL_URL);
-                                },
+                                onTap: () => Functions.launchUrl(StringConst.EMAIL_URL),
                                 textStyle: bodySmallStyle,
                               ),
                             ],
@@ -285,7 +295,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                               width: contentAreaWidth,
                               textAlign: TextAlign.center,
                               textStyle: titleStyle?.copyWith(
-                                fontSize: context.responsiveSize(
+                                fontSize: context.responsive(
                                   Sizes.TEXT_SIZE_24,
                                   Sizes.TEXT_SIZE_36,
                                   md: Sizes.TEXT_SIZE_28,
@@ -300,7 +310,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                                 controller: _quoteController,
                                 text: "— ${StringConst.FAMOUS_QUOTE_AUTHOR}",
                                 textStyle: textTheme.bodyLarge?.copyWith(
-                                  fontSize: context.responsiveSize(
+                                  fontSize: context.responsive(
                                     Sizes.TEXT_SIZE_16,
                                     Sizes.TEXT_SIZE_18,
                                     md: Sizes.TEXT_SIZE_16,
@@ -313,7 +323,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                      CustomSpacer(heightFactor: 0.2),
+                      CustomSpacer(heightFactor: 0.1),
                     ],
                   ),
                 ),
@@ -332,7 +342,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                       );
                     },
                     child: Container(
-                      margin: EdgeInsets.only(right: 24, bottom: 40),
+                      margin: EdgeInsets.only(right: context.responsive(8, 24), bottom: 40),
                       child: MouseRegion(
                         onEnter: (e) => _scrollDownButtonController.forward(),
                         onExit: (e) => _scrollDownButtonController.reverse(),
@@ -353,40 +363,5 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
         ],
       ),
     );
-  }
-
-  List<Widget> _buildSocials(List<SocialData> data) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? style = textTheme.bodyLarge?.copyWith(color: AppColors.grey750);
-    TextStyle? slashStyle = textTheme.bodyLarge?.copyWith(
-      color: AppColors.grey750,
-      fontWeight: FontWeight.w400,
-      fontSize: 18,
-    );
-    List<Widget> items = [];
-
-    for (int index = 0; index < data.length; index++) {
-      items.add(
-        AnimatedLineThroughText(
-          text: data[index].name,
-          isUnderlinedByDefault: true,
-          controller: _contactController,
-          hasSlideBoxAnimation: true,
-          isUnderlinedOnHover: false,
-          onTap: () {
-            Functions.launchUrl(data[index].url);
-          },
-          textStyle: style,
-        ),
-      );
-
-      if (index < data.length - 1) {
-        items.add(
-          Text('/', style: slashStyle),
-        );
-      }
-    }
-
-    return items;
   }
 }

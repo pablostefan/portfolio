@@ -38,11 +38,11 @@ class _NoteWorthyProjectsState extends State<NoteWorthyProjects> with SingleTick
 
     TextStyle? titleStyle = textTheme.labelLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_20, Sizes.TEXT_SIZE_30),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_20, Sizes.TEXT_SIZE_30),
     );
 
     TextStyle? bodyLargeStyle = textTheme.bodyLarge?.copyWith(
-      fontSize: context.responsiveSize(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
+      fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
       color: AppColors.grey750,
       fontWeight: FontWeight.w400,
       height: 2.0,

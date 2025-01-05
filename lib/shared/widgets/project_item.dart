@@ -315,14 +315,14 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     // of the container using subHeight as it's height
     double positionOfButton = (subHeight / 2) - startWidthOfButton;
     // width of project cover - takes 1/3 of the width of the screen
-    double imageWidth = context.responsiveSize(
+    double imageWidth = context.responsive(
       projectItemWidth / 3,
       projectItemWidth / 4.5,
       md: projectItemWidth / 3.5,
       sm: projectItemWidth / 3.3,
     );
     Animation<double> animation = Tween<double>(
-      begin: context.responsiveSize(
+      begin: context.responsive(
         -imageWidth * 2.2,
         -imageWidth * 1.8,
         md: -imageWidth * 2.2,
@@ -332,12 +332,12 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
       ..addListener(() {
         setState(() {});
       });
-    double buttonWidth = context.responsiveSize(
+    double buttonWidth = context.responsive(
       startWidthOfButtonMd,
       startWidthOfButton,
       md: startWidthOfButtonMd,
     );
-    double buttonTargetWidth = context.responsiveSize(
+    double buttonTargetWidth = context.responsive(
       targetWidthOfButtonMd,
       targetWidthOfButton,
       md: targetWidthOfButtonMd,
@@ -346,7 +346,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     // textStyle for button for viewing project
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsiveSize(
+      fontSize: context.responsive(
         Sizes.TEXT_SIZE_14,
         Sizes.TEXT_SIZE_16,
         md: Sizes.TEXT_SIZE_14,
@@ -364,7 +364,7 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
     TextStyle? defaultTitleStyle = widget.titleStyle ??
         textTheme.labelLarge?.copyWith(
           color: AppColors.black,
-          fontSize: context.responsiveSize(24, 40, md: 36, sm: 30),
+          fontSize: context.responsive(24, 40, md: 36, sm: 30),
         );
     // textStyle for the subtitle (describing project platform) of the project
     TextStyle? defaultSubtitleStyle = widget.subtitleStyle ??

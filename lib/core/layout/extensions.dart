@@ -7,13 +7,9 @@ extension Layout on BuildContext {
 
   double get heightOfScreen => MediaQuery.sizeOf(this).height;
 
-  bool get isDisplayMobileOrTablet {
-    return widthOfScreen <= RefinedBreakpoints().tabletNormal;
-  }
+  bool get isMobileOrTablet => widthOfScreen <= RefinedBreakpoints().tabletNormal;
 
-  bool get isDisplayMobile {
-    return widthOfScreen <= RefinedBreakpoints().tabletSmall;
-  }
+  bool get isMobile => widthOfScreen <= RefinedBreakpoints().tabletSmall;
 
   double assignHeight(
     double fraction, {
@@ -31,7 +27,7 @@ extension Layout on BuildContext {
     return (widthOfScreen - (subs) + (additions)) * fraction;
   }
 
-  double responsiveSize(
+  double responsive(
     double xs,
     double lg, {
     double? sm,

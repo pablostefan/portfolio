@@ -11,7 +11,9 @@ import 'package:portfolio/shared/widgets/custom_spacer.dart';
 import 'package:portfolio/shared/widgets/page_wrapper.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final bool showAnimation;
+
+  const HomePage({super.key, required this.showAnimation});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,7 +24,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
   late final AnimationController _viewProjectsController;
   late final AnimationController _slideTextController;
-  late NavigationArguments _arguments;
 
   @override
   void initState() {
@@ -48,9 +49,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final Object? args = ModalRoute.of(context)?.settings.arguments;
-    _arguments = args == null ? NavigationArguments(showUnVeilPageAnimation: false) : args as NavigationArguments;
-
     final textTheme = Theme.of(context).textTheme;
 
     return PageWrapper(
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       selectedPageName: StringConst.HOME,
       navBarAnimationController: _slideTextController,
       hasSideTitle: false,
-      hasUnveilPageAnimation: _arguments.showUnVeilPageAnimation,
+      hasUnveilPageAnimation: widget.showAnimation,
       onLoadingAnimationDone: _slideTextController.forward,
       hasCustomAnimation: true,
       customLoadingAnimation: LoadingHomePageAnimation(
@@ -69,7 +67,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: ListView(
         padding: EdgeInsets.zero,
         controller: _scrollController,
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(),
         children: [
           HomePageHeader(controller: _slideTextController, scrollToWorksKey: _scrollKey),
           const CustomSpacer(heightFactor: 0.1),
