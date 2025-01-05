@@ -1,5 +1,5 @@
 abstract final class Routes {
-  static const String home = "/";
+  static const String home = "/home";
   static const String about = "/about";
   static const String work = "/works";
   static const String contact = "/contact";

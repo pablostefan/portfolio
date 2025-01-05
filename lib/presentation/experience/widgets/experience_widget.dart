@@ -143,10 +143,7 @@ class _RoleWidget extends StatelessWidget {
             textStyle: bodyLargeStyle,
             maxLines: 30,
             width: context.widthOfScreen * .75,
-            controller: CurvedAnimation(
-              parent: controller,
-              curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
-            ),
+            controller: controller,
           ),
         ),
       ],

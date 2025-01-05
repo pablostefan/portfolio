@@ -3,12 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/routing/routes.dart';
 import 'package:portfolio/shared/values/values.dart';
+import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 import 'package:portfolio/shared/widgets/animated_bubble_button.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
 import 'package:portfolio/shared/widgets/simple_footer.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
+import 'package:portfolio/shared/widgets/visibility_detector_widget.dart';
 
 class AnimatedFooter extends StatefulWidget {
   const AnimatedFooter({
@@ -31,11 +31,9 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
 
   @override
   void initState() {
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 500),
-    );
     super.initState();
+
+    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
   }
 
   @override
@@ -47,10 +45,12 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+
     TextStyle? style = textTheme.bodyLarge?.copyWith(
       color: AppColors.accentColor,
       fontSize: Sizes.TEXT_SIZE_14,
     );
+
     TextStyle? titleStyle = textTheme.headlineSmall?.copyWith(
       color: AppColors.accentColor,
       fontSize: context.responsive(
@@ -59,6 +59,7 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
         md: Sizes.TEXT_SIZE_40,
       ),
     );
+
     TextStyle? subtitleStyle = style?.copyWith(
       color: AppColors.grey550,
       fontSize: Sizes.TEXT_SIZE_18,
@@ -69,14 +70,11 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
       width: widget.width ?? context.widthOfScreen,
       height: widget.height ?? context.assignHeight(.8),
       color: widget.backgroundColor,
-      child: VisibilityDetector(
+      child: VisibilityDetectorWidget(
         key: Key('animated-footer'),
-        onVisibilityChanged: (visibilityInfo) {
-          double visiblePercentage = visibilityInfo.visibleFraction * 100;
-          if (visiblePercentage > 25) {
-            controller.forward();
-          }
-        },
+        context: context,
+        minVisible: 25,
+        action: controller.forward,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -87,23 +85,16 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
               text: StringConst.WORK_TOGETHER,
               textAlign: TextAlign.center,
               textStyle: titleStyle,
-              controller: CurvedAnimation(
-                parent: controller,
-                curve: Curves.fastOutSlowIn,
-              ),
+              controller: controller,
             ),
             Spacer(),
             AnimatedPositionedText(
               text: StringConst.AVAILABLE_FOR_FREELANCE,
               textAlign: TextAlign.center,
               textStyle: subtitleStyle,
-              factor: 2.0,
               maxLines: 3,
               width: context.widthOfScreen - 40,
-              controller: CurvedAnimation(
-                parent: controller,
-                curve: Curves.fastOutSlowIn,
-              ),
+              controller: controller,
             ),
             SpaceH40(),
             AnimatedBubbleButton(
@@ -111,25 +102,15 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
               onTap: () => context.go(Routes.contact),
             ),
             Spacer(flex: 3),
-            ResponsiveBuilder(
-              builder: (context, sizingInformation) {
-                double screenWidth = sizingInformation.screenSize.width;
-                if (screenWidth <= RefinedBreakpoints().tabletNormal) {
-                  return Column(
-                    children: [
-                      SimpleFooterSm(),
-                      SpaceH8(),
-                    ],
-                  );
-                } else {
-                  return Column(
-                    children: [
-                      SimpleFooterLg(),
-                      SpaceH8(),
-                    ],
-                  );
-                }
-              },
+            AdaptiveBuilderWidget(
+              tabletNormal: Padding(
+                padding: const EdgeInsets.only(bottom: Sizes.PADDING_8),
+                child: SimpleFooterSm(),
+              ),
+              desktop: Padding(
+                padding: const EdgeInsets.only(bottom: Sizes.PADDING_8),
+                child: SimpleFooterLg(),
+              ),
             ),
             Spacer(),
           ],

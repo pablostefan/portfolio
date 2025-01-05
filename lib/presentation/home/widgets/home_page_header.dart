@@ -309,10 +309,9 @@ class _AboutDevState extends State<AboutDev> {
         Container(
           margin: margin,
           child: AnimatedPositionedText(
-            controller: curvedAnimation,
+            controller: widget.controller,
             width: widget.width,
             maxLines: 3,
-            factor: 2,
             text: StringConst.DEV_DESC,
             textStyle: textTheme.bodyLarge?.copyWith(
               fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),

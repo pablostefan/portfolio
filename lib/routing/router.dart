@@ -12,6 +12,10 @@ import 'package:portfolio/routing/web_page.dart';
 abstract final class AppRouter {
   static final router = GoRouter(
     initialLocation: Routes.home,
+    redirect: (_, state) {
+      if (state.path == '/') return Routes.home;
+      if (state.name == '/') return Routes.home;
+    },
     routes: [
       GoRoute(
         name: Routes.home,

@@ -155,14 +155,7 @@ class TechnologySection extends StatelessWidget {
         SizedBox(
           width: width,
           child: AnimatedPositionedText(
-            controller: CurvedAnimation(
-              parent: controller,
-              curve: Interval(
-                0.6,
-                1.0,
-                curve: Curves.ease,
-              ),
-            ),
+            controller: controller,
             text: item,
             textStyle: bodyLargeStyle,
           ),

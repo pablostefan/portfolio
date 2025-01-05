@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
+import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
 import 'package:portfolio/shared/widgets/animated_slide_box.dart';
 
 class AnimatedTextSlideBoxTransition extends StatefulWidget {
@@ -130,14 +131,14 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
             visibleBoxAnimation: visibleAnimation,
             invisibleBoxAnimation: invisibleAnimation,
           ),
-          PositionedTransition(
-            rect: textPositionAnimation,
-            child: Text(
-              widget.text,
-              style: widget.textStyle,
-              textAlign: widget.textAlign,
-            ),
-          ),
+          AnimatedPositionedText(
+            text: widget.text,
+            controller: widget.controller,
+            maxLines: widget.maxLines,
+            textAlign: widget.textAlign,
+            textStyle: widget.textStyle,
+            width: textWidth,
+          )
         ],
       ),
     );

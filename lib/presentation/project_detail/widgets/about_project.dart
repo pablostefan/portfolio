@@ -95,10 +95,7 @@ class _AboutProjectState extends State<AboutProject> {
         ),
         SpaceH40(),
         AnimatedPositionedText(
-          controller: CurvedAnimation(
-            parent: widget.controller,
-            curve: Animations.textSlideInCurve,
-          ),
+          controller: widget.controller,
           width: widget.width * 0.7,
           maxLines: 10,
           text: widget.projectData.portfolioDescription,
@@ -309,10 +306,7 @@ class ProjectData extends StatelessWidget {
           AnimatedPositionedText(
             width: width,
             maxLines: 2,
-            controller: CurvedAnimation(
-              parent: controller,
-              curve: Animations.textSlideInCurve,
-            ),
+            controller: controller,
             text: subtitle,
             textStyle: subtitleStyle ?? defaultSubtitleStyle,
           ),

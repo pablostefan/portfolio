@@ -64,10 +64,7 @@ class _NoteWorthyProjectsState extends State<NoteWorthyProjects> with SingleTick
           ),
           SpaceH16(),
           AnimatedPositionedText(
-            controller: CurvedAnimation(
-              parent: _controller,
-              curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
-            ),
+            controller: _controller,
             text: StringConst.NOTE_WORTHY_PROJECTS_DESC,
             textStyle: bodyLargeStyle,
           ),

@@ -27,6 +27,6 @@ class VisibilityDetectorWidget extends VisibilityDetector {
     required VoidCallback action,
   }) {
     double percentage = visibilityInfo.visibleFraction * 100;
-    if (percentage > minSize) action.call();
+    if (percentage > minSize && context.mounted) action.call();
   }
 }

@@ -102,10 +102,7 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                   CustomSpacer(heightFactor: 0.05),
                   AnimatedPositionedText(
                     width: contentAreaWidth,
-                    controller: CurvedAnimation(
-                      parent: _controller,
-                      curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
-                    ),
+                    controller: _controller,
                     text: StringConst.CONTACT_MSG,
                     maxLines: 5,
                     textStyle: textTheme.bodyLarge?.copyWith(

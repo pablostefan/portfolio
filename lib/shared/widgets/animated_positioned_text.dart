@@ -1,84 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/functions.dart';
 
 class AnimatedPositionedText extends StatefulWidget {
-  const AnimatedPositionedText({
-    super.key,
-    required this.controller,
-    required this.text,
-    required this.textStyle,
-    this.factor = 1,
-    this.maxLines = 1,
-    this.width = double.infinity,
-    this.textAlign,
-    this.relativeRect,
-    this.slideAnimationCurve = Curves.fastOutSlowIn,
-  });
-
-  final CurvedAnimation controller;
+  final AnimationController controller;
   final String text;
-  final double factor;
   final TextStyle? textStyle;
   final TextAlign? textAlign;
-  final Animation<RelativeRect>? relativeRect;
   final Curve slideAnimationCurve;
   final double width;
   final int maxLines;
+  final double minVisible;
+
+  const AnimatedPositionedText({
+    super.key,
+    required this.text,
+    required this.textStyle,
+    required this.controller,
+    this.maxLines = 1,
+    this.width = double.infinity,
+    this.textAlign,
+    this.slideAnimationCurve = Curves.fastOutSlowIn,
+    this.minVisible = 40,
+  });
 
   @override
   State<AnimatedPositionedText> createState() => _AnimatedPositionedTextState();
 }
 
-class _AnimatedPositionedTextState extends State<AnimatedPositionedText> {
-  late Animation<RelativeRect> textPositionAnimation;
-  late Size size;
-  late double textWidth;
-  late double textHeight;
+class _AnimatedPositionedTextState extends State<AnimatedPositionedText> with SingleTickerProviderStateMixin {
+  late Size _size;
+  late Animation<RelativeRect> _textPosition;
+  late Animation<double> _opacity;
+  late double _textHeight;
 
   @override
   void initState() {
     super.initState();
-    size = _textSize(widget.text, widget.textStyle);
-    textWidth = size.width;
-    textHeight = size.height * widget.factor;
+    _size = Functions.textSize(
+      text: widget.text,
+      style: widget.textStyle,
+      maxWidth: widget.width,
+      maxLines: widget.maxLines,
+    );
 
-    textPositionAnimation = widget.relativeRect ??
-        RelativeRectTween(
-          begin: RelativeRect.fromSize(
-            Rect.fromLTWH(0, textHeight, textWidth, textHeight),
-            Size(textWidth, textHeight),
-          ),
-          end: RelativeRect.fromSize(
-            Rect.fromLTWH(0, 0, textWidth, textHeight),
-            Size(textWidth, textHeight),
-          ),
-        ).animate(widget.controller);
-  }
+    _textHeight = _size.height * 1.1;
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: textHeight,
-      width: widget.width,
-      child: Stack(
-        children: [
-          PositionedTransition(
-            rect: textPositionAnimation,
-            child: Text(
-              widget.text,
-              maxLines: widget.maxLines,
-              textAlign: widget.textAlign,
-              style: widget.textStyle,
-            ),
-          ),
-        ],
+    _textPosition = RelativeRectTween(
+      begin: RelativeRect.fromSize(Rect.fromLTWH(0, _textHeight, 0, _textHeight), Size(0, _textHeight)),
+      end: RelativeRect.fromSize(Rect.fromLTWH(0, 0, 0, _textHeight), Size(0, _textHeight)),
+    ).animate(
+      CurvedAnimation(
+        parent: widget.controller,
+        curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
+      ),
+    );
+
+    _opacity = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: widget.controller,
+        curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
       ),
     );
   }
 
-  Size _textSize(String text, TextStyle? style) {
-    final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: style), maxLines: widget.maxLines, textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: widget.width);
-    return textPainter.size;
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: widget.controller,
+      child: SizedBox(
+          width: widget.width,
+          child: Text(widget.text, maxLines: widget.maxLines, textAlign: widget.textAlign, style: widget.textStyle)),
+      builder: (context, child) {
+        return Opacity(
+          opacity: _opacity.value,
+          child: Transform.translate(
+            offset: Offset(0, _textPosition.value.top),
+            child: child ?? SizedBox.shrink(),
+          ),
+        );
+      },
+    );
   }
 }

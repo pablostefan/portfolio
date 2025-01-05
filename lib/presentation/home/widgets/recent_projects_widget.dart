@@ -60,10 +60,7 @@ class _RecentProjectsWidgetState extends State<RecentProjectsWidget> with Single
             ),
             const SpaceH16(),
             AnimatedPositionedText(
-              controller: CurvedAnimation(
-                parent: _controller,
-                curve: const Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
-              ),
+              controller: _controller,
               text: StringConst.SELECTION,
               textStyle: textTheme.bodyLarge?.copyWith(
                 fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),

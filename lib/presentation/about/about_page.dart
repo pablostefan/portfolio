@@ -120,16 +120,6 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
       fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_20),
     );
 
-    CurvedAnimation storySectionAnimation = CurvedAnimation(
-      parent: _storyController,
-      curve: Interval(.6, 1, curve: Curves.ease),
-    );
-
-    CurvedAnimation technologySectionAnimation = CurvedAnimation(
-      parent: _technologyController,
-      curve: Interval(.6, 1, curve: Curves.fastOutSlowIn),
-    );
-
     double widthOfBody = context.responsive(context.assignWidth(.75), context.assignWidth(.5));
 
     return PageWrapper(
@@ -168,26 +158,25 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                             spacing: 20,
                             children: [
                               AnimatedPositionedText(
-                                controller: storySectionAnimation,
+                                controller: _storyController,
                                 width: widthOfBody,
                                 maxLines: 30,
                                 text: StringConst.ABOUT_DEV_STORY_CONTENT_1,
                                 textStyle: bodyLargeStyle,
                               ),
                               AnimatedPositionedText(
-                                controller: storySectionAnimation,
+                                controller: _storyController,
                                 width: widthOfBody,
                                 maxLines: 30,
                                 text: StringConst.ABOUT_DEV_STORY_CONTENT_2,
                                 textStyle: bodyLargeStyle,
                               ),
                               AnimatedPositionedText(
-                                controller: storySectionAnimation,
+                                controller: _storyController,
                                 width: widthOfBody,
                                 maxLines: 30,
                                 text: StringConst.ABOUT_DEV_STORY_CONTENT_3,
                                 textStyle: bodyLargeStyle,
-                                factor: context.responsive(1, 1.1, sm: 1.4, md: 1.1),
                               ),
                             ],
                           ),
@@ -206,7 +195,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                           section: StringConst.ABOUT_DEV_TECHNOLOGY.toUpperCase(),
                           title: StringConst.ABOUT_DEV_TECHNOLOGY_TITLE,
                           body: AnimatedPositionedText(
-                            controller: technologySectionAnimation,
+                            controller: _technologyController,
                             width: widthOfBody,
                             maxLines: 12,
                             text: StringConst.ABOUT_DEV_TECHNOLOGY_CONTENT,
