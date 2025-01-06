@@ -18,6 +18,10 @@
     <!-- Favicon -->
     <link href="favicon.png" rel="icon" type="image/png"/>
 
+    <!-- Cor da barra superior -->
+    <meta content="#a1a1a1" name="theme-color">
+
+
     <title>Pablo Stefan</title>
     <link href="manifest.json" rel="manifest">
 
@@ -111,9 +115,10 @@
     </style>
 </head>
 <body>
+<!-- Script principal do Flutter -->
+<script async src="flutter_bootstrap.js"></script>
 <!-- Carregador -->
-<div class="main-content" id="loader-content"
-     style="background-color: #0A0A0A; display: flex; align-items: center; justify-content: center;">
+<div class="main-content" id="loader-content">
     <div class="loader">
         <span></span>
         <span></span>
@@ -122,8 +127,7 @@
     </div>
     <img alt="Logo do site" src="favicon.png"/>
 
-    <!-- Script principal do Flutter -->
-    <script async src="flutter_bootstrap.js"></script>
+
 </div>
 </body>
 </html>
