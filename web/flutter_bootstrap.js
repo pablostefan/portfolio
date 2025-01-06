@@ -1,21 +1,17 @@
-{
-    {
-        flutter_js
-    }
-}
-{
-    {
-        flutter_build_config
-    }
-}
+{{flutter_js}}
+{{flutter_build_config}}
 
 
 _flutter.loader.load({
-    onEntrypointLoaded: function (engineInitializer) {
-        engineInitializer.initializeEngine().then(function (appRunner) {
-            // Oculta o loader após o app Flutter ser carregado
-            document.getElementById('loader-content').style.display = 'none';
-            appRunner.runApp();
-        });
+    onEntrypointLoaded: async function (engineInitializer) {
+        const appRunner = await engineInitializer.initializeEngine();
+        await appRunner.runApp();
+        try {
+            console.log("Flutter carregado com sucesso.");
+            const loader = document.getElementById('loader-content');
+            loader.style.display = 'none';
+        } catch (error) {
+            console.error("Erro ao executar o app Flutter:", error);
+        }
     }
 });
