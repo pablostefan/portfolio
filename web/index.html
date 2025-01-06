@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
 
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
-    -->
     <base href="$FLUTTER_BASE_HREF">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta content="A new Flutter project." name="description">
+    <meta content="Conheça o portfólio de Pablo Stefan, especialista em aplicativos móveis e web de alta qualidade."
+          name="description">
 
     <!-- iOS meta tags & icons -->
     <meta content="yes" name="mobile-web-app-capable">
@@ -122,15 +111,19 @@
     </style>
 </head>
 <body>
-<script async src="flutter_bootstrap.js"></script>
-<div class="main-content" id="loader-content">
+<!-- Carregador -->
+<div class="main-content" id="loader-content"
+     style="background-color: #0A0A0A; display: flex; align-items: center; justify-content: center;">
     <div class="loader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <img alt="" src="favicon.png"/>
+    <img alt="Logo do site" src="favicon.png"/>
+
+    <!-- Script principal do Flutter -->
+    <script async src="flutter_bootstrap.js"></script>
 </div>
 </body>
 </html>

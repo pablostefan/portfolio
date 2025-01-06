@@ -22,7 +22,6 @@ class PageHeader extends StatefulWidget {
 class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
-  late AnimationController _lottieController;
 
   @override
   void initState() {
@@ -30,11 +29,6 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1500),
-    )..repeat();
-
-    _lottieController = AnimationController(
-      duration: const Duration(seconds: 5),
-      vsync: this,
     )..repeat();
 
     _animation = Tween<Offset>(
@@ -60,7 +54,6 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
   @override
   void dispose() {
     _controller.dispose();
-    _lottieController.dispose();
     super.dispose();
   }
 
@@ -83,8 +76,11 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
             child: Opacity(
               opacity: 0.2,
               child: Lottie.network(
-                "https://lottie.host/27454443-4cc3-4ce2-8510-e463a4525f88/wWNg3XvdF2.json",
-                controller: _lottieController,
+                ImagePath.CERTIFICATION_LOTTIE,
+                filterQuality: FilterQuality.low,
+                animate: true,
+                repeat: true,
+                frameRate: FrameRate.composition,
                 width: 480,
                 fit: BoxFit.cover,
               ),

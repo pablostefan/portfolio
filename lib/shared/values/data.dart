@@ -4,13 +4,11 @@ class CertificationData {
   CertificationData({
     required this.title,
     required this.image,
-    required this.imageSize,
     required this.url,
     required this.awardedBy,
   });
 
   final String image;
-  final double imageSize;
   final String url;
   final String title;
   final String awardedBy;
@@ -94,7 +92,6 @@ class Data {
     NavItemData(name: StringConst.ABOUT, route: Routes.about),
     NavItemData(name: StringConst.WORKS, route: Routes.work),
     NavItemData(name: StringConst.EXPERIENCE, route: Routes.experience),
-    NavItemData(name: StringConst.CERTIFICATIONS, route: Routes.certifications),
     NavItemData(name: StringConst.CONTACT, route: Routes.contact),
   ];
 
@@ -278,36 +275,31 @@ class Data {
       title: StringConst.XP_MOBILE,
       url: StringConst.XP_CERT_URL,
       image: ImagePath.XP_MOBILE_CERT,
-      imageSize: 0.325,
       awardedBy: StringConst.XP_EDUCATION,
     ),
     CertificationData(
       title: StringConst.XP_ARCHITECT,
       url: StringConst.XP_CERT_URL,
       image: ImagePath.XP_ARCHITECT_CERT,
-      imageSize: 0.325,
       awardedBy: StringConst.XP_EDUCATION,
-    ),
-    CertificationData(
-      title: StringConst.COODESH_TITLE,
-      url: StringConst.COODESH_URL,
-      image: ImagePath.COODESH_CERT,
-      imageSize: 0.325,
-      awardedBy: StringConst.COODESH,
     ),
     CertificationData(
       title: StringConst.FLUTTER_ANDROID,
       url: StringConst.FLUTTER_ANDROID_URL,
       image: ImagePath.FLUTTER_ANDROID_CERT,
-      imageSize: 0.325,
       awardedBy: StringConst.UDEMY,
     ),
     CertificationData(
       title: StringConst.ANDROID,
       url: StringConst.ANDROID_CERT_URL,
       image: ImagePath.ANDROID_CERT,
-      imageSize: 0.325,
       awardedBy: StringConst.UDEMY,
+    ),
+    CertificationData(
+      title: StringConst.COODESH_TITLE,
+      url: StringConst.COODESH_URL,
+      image: ImagePath.COODESH_CERT,
+      awardedBy: StringConst.COODESH,
     ),
   ];
 

@@ -10,6 +10,7 @@ abstract final class ImagePath {
   static const String DEV = "$imageDir/dev.png";
   static const String ABOUT = "$imageDir/about.png";
   static const String HOME_LOTTIE = "https://lottie.host/fc984e4f-8230-4548-8326-9b9c76c1dbbf/QoBwgOzAnw.json";
+  static const String CERTIFICATION_LOTTIE = "https://lottie.host/27454443-4cc3-4ce2-8510-e463a4525f88/wWNg3XvdF2.json";
   static const String VYBZ = "$imageDir/vybz.jpg";
   static const String COLOSSAL_TOONS = "$imageDir/colossal_toons.jpg";
   static const String LOGIN_CATALOG = "$imageDir/login_catalog.jpg";

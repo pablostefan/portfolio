@@ -28,7 +28,7 @@ class AboutHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
                 ImagePath.ABOUT,
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.contain,
                 width: context.assignWidth(.7),
                 filterQuality: FilterQuality.high,
               ),
@@ -39,18 +39,17 @@ class AboutHeader extends StatelessWidget {
       desktop: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: AboutDescription(controller: controller, width: width * 0.55)),
-          SpaceH30(),
-          Expanded(
-            child: FadeTransition(
-              opacity: controller,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(40),
-                child: Image.asset(
-                  ImagePath.ABOUT,
-                  filterQuality: FilterQuality.high,
-                  fit: BoxFit.fitHeight,
-                ),
+          AboutDescription(controller: controller, width: width * 0.55),
+          Spacer(),
+          FadeTransition(
+            opacity: controller,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: Image.asset(
+                ImagePath.ABOUT,
+                width: context.assignWidth(.27),
+                filterQuality: FilterQuality.high,
+                fit: BoxFit.fitWidth,
               ),
             ),
           ),

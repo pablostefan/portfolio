@@ -124,7 +124,7 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
     setTextWidthAndHeight();
     double screenWidth = context.widthOfScreen;
     double screenHeight = context.heightOfScreen;
-    double halfHeightOfScreen = screenHeight / 2;
+    double halfHeightOfScreen = (screenHeight / 2) + 4;
 
     return Visibility(
       visible: !_isAnimationOver,
@@ -133,15 +133,18 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
         height: screenHeight,
         child: Stack(
           children: [
-            AnimatedContainer(
-              width: screenWidth,
-              height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
-              duration: _scaleDuration,
-              color: AppColors.black,
-              onEnd: () {
-                widget.onLoadingDone();
-                if (mounted) setState(() => _isAnimationOver = true);
-              },
+            Positioned(
+              top: 0,
+              child: AnimatedContainer(
+                width: screenWidth,
+                height: _leftRightAnimationDone ? 0 : halfHeightOfScreen,
+                duration: _scaleDuration,
+                color: AppColors.black,
+                onEnd: () {
+                  widget.onLoadingDone();
+                  if (mounted) setState(() => _isAnimationOver = true);
+                },
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -183,7 +186,7 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                 child: AnimatedBuilder(
                   animation: _fadeOutController,
                   builder: (context, child) => Container(
-                    margin: EdgeInsets.only(top: 40),
+                    margin: EdgeInsets.only(top: 50),
                     height: lineHeight,
                     width: Tween<double>(begin: textWidth, end: context.widthOfScreen)
                         .animate(CurvedAnimation(parent: _fadeOutController, curve: Curves.easeIn))
@@ -193,13 +196,13 @@ class _LoadingHomePageAnimationState extends State<LoadingHomePageAnimation> wit
                 ),
               ),
             ),
-            Visibility(
-              visible: _containerController.isAnimating,
-              child: Center(
-                child: AnimatedBuilder(
-                  animation: _containerController,
-                  builder: (context, child) => Container(
-                    margin: EdgeInsets.only(top: 40),
+            Center(
+              child: AnimatedBuilder(
+                animation: _containerController,
+                builder: (context, child) => Visibility(
+                  visible: _containerController.isAnimating,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 50),
                     height: lineHeight,
                     width: _containerAnimation.value,
                     color: lineColor,
