@@ -21,7 +21,7 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Animations.slideAnimationDurationLong,
+      duration: Animations.switcherDuration,
     );
   }
 
@@ -69,10 +69,7 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        StringConst.VIEW_ALL_PROJECTS,
-                        style: textButtonStyle,
-                      ),
+                      Text(StringConst.VIEW_ALL_PROJECTS, style: textButtonStyle),
                       const SpaceW12(),
                       Image.asset(
                         ImagePath.ARROW_RIGHT,

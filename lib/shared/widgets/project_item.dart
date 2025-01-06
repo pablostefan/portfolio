@@ -531,7 +531,7 @@ class _ProjectItemTabletState extends State<ProjectItemTablet> with SingleTicker
     // textStyle for button for viewing project
     TextStyle? buttonStyle = textTheme.bodyLarge?.copyWith(
       color: AppColors.black,
-      fontSize: Sizes.TEXT_SIZE_14,
+      fontSize: context.responsive(10, 14),
       fontWeight: FontWeight.w500,
     );
     // textStyle for the current number or position of project in the list
@@ -583,7 +583,7 @@ class _ProjectItemTabletState extends State<ProjectItemTablet> with SingleTicker
               ),
               Spacer(),
               Container(
-                margin: EdgeInsets.only(right: context.responsive(0, 30)),
+                margin: EdgeInsets.only(left: context.responsive(10, 0), right: context.responsive(0, 30)),
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: AnimatedBubbleButton(

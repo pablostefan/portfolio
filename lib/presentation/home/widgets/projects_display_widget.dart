@@ -21,7 +21,7 @@ class ProjectsDisplayWidget extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: Data.recentWorks.length,
-        separatorBuilder: (_, __) => const CustomSpacer(heightFactor: 0.17),
+        separatorBuilder: (_, __) => const CustomSpacer(heightFactor: .17),
         itemBuilder: (_, index) => ProjectItemTablet(
           projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
           imageHeight: context.responsive(context.assignHeight(0.1), context.assignHeight(0.3)),

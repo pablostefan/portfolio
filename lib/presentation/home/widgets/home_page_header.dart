@@ -86,20 +86,20 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
   Widget build(BuildContext context) {
     return Container(
       width: context.widthOfScreen,
-      color: AppColors.accentColor2.withOpacity(0.35),
+      color: AppColors.accentColor2.withOpacity(.4),
       child: Stack(
         children: [
           AdaptiveBuilderWidget(
-            tabletNormal: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: context.widthOfScreen * 0.1),
-                  child: Stack(
+            tabletNormal: Padding(
+              padding: EdgeInsets.only(top: 60),
+              child: Column(
+                children: [
+                  Stack(
                     alignment: Alignment.center,
                     children: [
                       Lottie.network(
                         ImagePath.HOME_LOTTIE,
-                        width: context.widthOfScreen,
+                        width: context.widthOfScreen * .79,
                         controller: _lottieController,
                         fit: BoxFit.cover,
                       ),
@@ -120,16 +120,17 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                       ),
                     ],
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: context.widthOfScreen * 0.1),
-                  width: context.widthOfScreen,
-                  child: AboutDev(
-                    controller: widget.controller,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
                     width: context.widthOfScreen,
+                    child: AboutDev(
+                      controller: widget.controller,
+                      width: context.widthOfScreen,
+                    ),
                   ),
-                ),
-              ],
+                  SpaceH24(),
+                ],
+              ),
             ),
             desktop: SizedBox(
               height: context.heightOfScreen,
@@ -233,82 +234,79 @@ class AboutDev extends StatefulWidget {
 }
 
 class _AboutDevState extends State<AboutDev> {
+  late CurvedAnimation _curvedAnimation;
+
   @override
-  Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    EdgeInsetsGeometry margin = const EdgeInsets.only(left: 16);
-    final CurvedAnimation curvedAnimation = CurvedAnimation(
+  void initState() {
+    super.initState();
+    _curvedAnimation = CurvedAnimation(
       parent: widget.controller,
       curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
     );
+  }
+
+  double get _fontSizeTitle => context.responsive(24, 48, md: 36, sm: 32, xl: 60);
+
+  double get _fontSizeDesc => context.responsive(15, 18, md: 16, sm: 14, xl: 20);
+
+  @override
+  Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          margin: margin,
-          child: TextSlideBoxWidget(
-            controller: widget.controller,
-            text: StringConst.HI,
-            width: widget.width,
-            maxLines: 3,
-            textStyle: textTheme.headlineLarge?.copyWith(
-              color: AppColors.black,
-              fontSize: context.responsive(28, 48, md: 36, sm: 32),
-            ),
+        TextSlideBoxWidget(
+          controller: widget.controller,
+          text: StringConst.HI,
+          width: widget.width,
+          maxLines: 3,
+          textStyle: textTheme.headlineLarge?.copyWith(
+            color: AppColors.black,
+            fontSize: _fontSizeTitle,
           ),
         ),
         SpaceH12(),
-        Container(
-          margin: margin,
-          child: TextSlideBoxWidget(
-            controller: widget.controller,
-            text: StringConst.DEV_INTRO,
-            width: widget.width,
-            maxLines: 3,
-            textStyle: textTheme.headlineLarge?.copyWith(
-              color: AppColors.black,
-              fontSize: context.responsive(28, 48, md: 36, sm: 32),
-            ),
+        TextSlideBoxWidget(
+          controller: widget.controller,
+          text: StringConst.DEV_INTRO,
+          width: widget.width,
+          maxLines: 3,
+          textStyle: textTheme.headlineLarge?.copyWith(
+            color: AppColors.black,
+            fontSize: _fontSizeTitle,
           ),
         ),
         SpaceH12(),
-        Container(
-          margin: margin,
-          child: TextSlideBoxWidget(
-            controller: widget.controller,
-            text: StringConst.DEV_TITLE,
-            width: context.responsive(
-              widget.width * 0.75,
-              widget.width,
-              md: widget.width,
-              sm: widget.width,
-            ),
-            maxLines: 3,
-            textStyle: textTheme.headlineLarge?.copyWith(
-              color: AppColors.black,
-              fontSize: context.responsive(28, 48, md: 36, sm: 32),
-            ),
+        TextSlideBoxWidget(
+          controller: widget.controller,
+          text: StringConst.DEV_TITLE,
+          width: context.responsive(
+            widget.width * 0.75,
+            widget.width,
+            md: widget.width,
+            sm: widget.width,
+          ),
+          maxLines: 3,
+          textStyle: textTheme.headlineLarge?.copyWith(
+            color: AppColors.black,
+            fontSize: _fontSizeTitle,
           ),
         ),
         SpaceH30(),
-        Container(
-          margin: margin,
-          child: AnimatedPositionedText(
-            controller: widget.controller,
-            width: widget.width,
-            maxLines: 3,
-            text: StringConst.DEV_DESC,
-            textStyle: textTheme.bodyLarge?.copyWith(
-              fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
-              height: 2,
-              fontWeight: FontWeight.w400,
-            ),
+        AnimatedPositionedText(
+          controller: widget.controller,
+          width: widget.width,
+          maxLines: 3,
+          text: StringConst.DEV_DESC,
+          textStyle: textTheme.bodyLarge?.copyWith(
+            fontSize: _fontSizeDesc,
+            fontWeight: FontWeight.w400,
           ),
         ),
         SpaceH30(),
         AnimatedPositionedWidget(
-          controller: curvedAnimation,
+          controller: _curvedAnimation,
           width: 340,
           height: 60,
           child: AnimatedBubbleButton(
@@ -332,15 +330,12 @@ class _AboutDevState extends State<AboutDev> {
           ),
         ),
         SpaceH40(),
-        Container(
-          margin: margin,
-          child: Wrap(
-            spacing: 20,
-            runSpacing: 20,
-            children: _buildSocials(
-              context: context,
-              data: Data.socialData1,
-            ),
+        Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          children: _buildSocials(
+            context: context,
+            data: Data.socialData1,
           ),
         )
       ],

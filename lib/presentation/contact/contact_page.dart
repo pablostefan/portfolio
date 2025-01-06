@@ -24,20 +24,26 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
+  late Animation<double> _opacity;
 
   final ContactController _contactController = GetIt.I.get<ContactController>();
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: Animations.slideAnimationDurationLong,
-    );
+    _controller = AnimationController(vsync: this, duration: Animations.slideAnimationDurationLong);
+
     _slideAnimation = Tween<Offset>(begin: Offset(0, 1), end: Offset(0, 0)).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Interval(0.6, 1.0, curve: Curves.ease),
+        curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
+      ),
+    );
+
+    _opacity = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
       ),
     );
   }
@@ -122,66 +128,70 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                       builder: (_, __) {
                         return SlideTransition(
                           position: _slideAnimation,
-                          child: Column(
-                            children: [
-                              PortfolioTextFormField(
-                                hasTitle: _contactController.nameHasError,
-                                title: StringConst.NAME_ERROR_MSG,
-                                titleStyle: _contactController.nameHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.YOUR_NAME,
-                                controller: _contactController.nameController,
-                                filled: _contactController.nameFilled,
-                                onChanged: _contactController.isNameValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _contactController.emailHasError,
-                                title: StringConst.EMAIL_ERROR_MSG,
-                                titleStyle: _contactController.emailHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.EMAIL,
-                                controller: _contactController.emailController,
-                                filled: _contactController.emailFilled,
-                                onChanged: _contactController.isEmailValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _contactController.subjectHasError,
-                                title: StringConst.SUBJECT_ERROR_MSG,
-                                titleStyle: _contactController.subjectHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.SUBJECT,
-                                controller: _contactController.subjectController,
-                                filled: _contactController.subjectFilled,
-                                onChanged: _contactController.isSubjectValid,
-                              ),
-                              SpaceH20(),
-                              PortfolioTextFormField(
-                                hasTitle: _contactController.messageHasError,
-                                title: StringConst.MESSAGE_ERROR_MSG,
-                                titleStyle: _contactController.messageHasError ? errorStyle : initialErrorStyle,
-                                hintText: StringConst.MESSAGE,
-                                controller: _contactController.messageController,
-                                filled: _contactController.messageFilled,
-                                textInputType: TextInputType.multiline,
-                                maxLines: 5,
-                                onChanged: _contactController.isMessageValid,
-                              ),
-                              SpaceH20(),
-                              ValueListenableBuilder(
-                                valueListenable: _contactController.isLoading,
-                                builder: (_, value, __) {
-                                  return Align(
-                                    alignment: Alignment.topRight,
-                                    child: PortfolioButton(
-                                      height: Sizes.HEIGHT_56,
-                                      width: buttonWidth,
-                                      isLoading: value,
-                                      title: StringConst.SEND_MESSAGE.toUpperCase(),
-                                      onPressed: () => _contactController.sendEmail(context),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
+                          child: AnimatedBuilder(
+                            animation: _controller,
+                            builder: (_, child) => Opacity(opacity: _opacity.value, child: child),
+                            child: Column(
+                              children: [
+                                PortfolioTextFormField(
+                                  hasTitle: _contactController.nameHasError,
+                                  title: StringConst.NAME_ERROR_MSG,
+                                  titleStyle: _contactController.nameHasError ? errorStyle : initialErrorStyle,
+                                  hintText: StringConst.YOUR_NAME,
+                                  controller: _contactController.nameController,
+                                  filled: _contactController.nameFilled,
+                                  onChanged: _contactController.isNameValid,
+                                ),
+                                SpaceH20(),
+                                PortfolioTextFormField(
+                                  hasTitle: _contactController.emailHasError,
+                                  title: StringConst.EMAIL_ERROR_MSG,
+                                  titleStyle: _contactController.emailHasError ? errorStyle : initialErrorStyle,
+                                  hintText: StringConst.EMAIL,
+                                  controller: _contactController.emailController,
+                                  filled: _contactController.emailFilled,
+                                  onChanged: _contactController.isEmailValid,
+                                ),
+                                SpaceH20(),
+                                PortfolioTextFormField(
+                                  hasTitle: _contactController.subjectHasError,
+                                  title: StringConst.SUBJECT_ERROR_MSG,
+                                  titleStyle: _contactController.subjectHasError ? errorStyle : initialErrorStyle,
+                                  hintText: StringConst.SUBJECT,
+                                  controller: _contactController.subjectController,
+                                  filled: _contactController.subjectFilled,
+                                  onChanged: _contactController.isSubjectValid,
+                                ),
+                                SpaceH20(),
+                                PortfolioTextFormField(
+                                  hasTitle: _contactController.messageHasError,
+                                  title: StringConst.MESSAGE_ERROR_MSG,
+                                  titleStyle: _contactController.messageHasError ? errorStyle : initialErrorStyle,
+                                  hintText: StringConst.MESSAGE,
+                                  controller: _contactController.messageController,
+                                  filled: _contactController.messageFilled,
+                                  textInputType: TextInputType.multiline,
+                                  maxLines: 5,
+                                  onChanged: _contactController.isMessageValid,
+                                ),
+                                SpaceH20(),
+                                ValueListenableBuilder(
+                                  valueListenable: _contactController.isLoading,
+                                  builder: (_, value, __) {
+                                    return Align(
+                                      alignment: Alignment.topRight,
+                                      child: PortfolioButton(
+                                        height: Sizes.HEIGHT_56,
+                                        width: buttonWidth,
+                                        isLoading: value,
+                                        title: StringConst.SEND_MESSAGE.toUpperCase(),
+                                        onPressed: () => _contactController.sendEmail(context),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       })

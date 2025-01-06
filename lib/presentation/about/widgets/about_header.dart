@@ -17,7 +17,6 @@ class AboutHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double imageWidthLg = context.responsive(width * .4, width * .4, md: width * .4);
     return AdaptiveBuilderWidget(
       tabletSmall: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,10 +27,10 @@ class AboutHeader extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                ImagePath.DEV,
-                fit: BoxFit.fitHeight,
+                ImagePath.ABOUT,
+                fit: BoxFit.fitWidth,
+                width: context.assignWidth(.7),
                 filterQuality: FilterQuality.high,
-                height: context.assignHeight(.45),
               ),
             ),
           ),
@@ -40,20 +39,18 @@ class AboutHeader extends StatelessWidget {
       desktop: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AboutDescription(
-            controller: controller,
-            width: width * 0.55,
-          ),
-          const Spacer(),
-          FadeTransition(
-            opacity: controller,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(40),
-              child: Image.asset(
-                ImagePath.DEV,
-                filterQuality: FilterQuality.high,
-                height: context.assignHeight(.55),
-                fit: BoxFit.fitHeight,
+          Expanded(child: AboutDescription(controller: controller, width: width * 0.55)),
+          SpaceH30(),
+          Expanded(
+            child: FadeTransition(
+              opacity: controller,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.asset(
+                  ImagePath.ABOUT,
+                  filterQuality: FilterQuality.high,
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ),
