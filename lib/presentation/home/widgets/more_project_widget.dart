@@ -37,8 +37,7 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
 
     final textButtonStyle = textTheme.headlineSmall?.copyWith(
       color: AppColors.black,
-      fontSize: context.responsive(30, 40, md: 36, sm: 32),
-      height: 2.0,
+      fontSize: context.responsive(28, 48, md: 36, sm: 32),
     );
 
     final margin = EdgeInsets.only(
@@ -50,15 +49,10 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Visibility(
-            visible: context.isMobileOrTablet,
-            child: SizedBox(height: 150),
-          ),
           Text(
             StringConst.THERES_MORE.toUpperCase(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontSize: context.responsive(11, Sizes.TEXT_SIZE_12), letterSpacing: 2,
-                fontWeight: FontWeight.w300),
+                fontSize: context.responsive(11, Sizes.TEXT_SIZE_12), letterSpacing: 2, fontWeight: FontWeight.w300),
           ),
           const SpaceH16(),
           MouseRegion(
@@ -70,19 +64,23 @@ class _MoreProjectWidgetState extends State<MoreProjectWidget> with TickerProvid
               targetOffset: const Offset(0.05, 0),
               child: TextButton(
                 onPressed: () => context.go(Routes.work),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      StringConst.VIEW_ALL_PROJECTS.toLowerCase(),
-                      style: textButtonStyle,
-                    ),
-                    const SpaceW12(),
-                    Image.asset(
-                      ImagePath.ARROW_RIGHT,
-                      width: 25,
-                    ),
-                  ],
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        StringConst.VIEW_ALL_PROJECTS,
+                        style: textButtonStyle,
+                      ),
+                      const SpaceW12(),
+                      Image.asset(
+                        ImagePath.ARROW_RIGHT,
+                        width: 25,
+                      ),
+                      const SpaceW12(),
+                    ],
+                  ),
                 ),
               ),
             ),

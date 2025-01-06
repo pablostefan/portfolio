@@ -78,7 +78,7 @@ class _NoteWorthyProjectItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AnimatedTextSlideBoxTransition(
+        TextSlideBoxWidget(
           controller: controller,
           text: number,
           textStyle: defaultNumberStyle,
@@ -87,7 +87,7 @@ class _NoteWorthyProjectItem extends StatelessWidget {
         InkWell(
           onTap: onSourceTap,
           hoverColor: Colors.transparent,
-          child: AnimatedTextSlideBoxTransition(
+          child: TextSlideBoxWidget(
             controller: controller,
             text: "<src/>",
             textStyle: defaultSourceStyle,

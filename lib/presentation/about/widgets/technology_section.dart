@@ -35,7 +35,7 @@ class TechnologySection extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AnimatedTextSlideBoxTransition(
+                TextSlideBoxWidget(
                   controller: controller,
                   width: screenWidth,
                   text: StringConst.MOBILE_TECH,
@@ -53,7 +53,7 @@ class TechnologySection extends StatelessWidget {
                   ),
                 ),
                 SpaceH40(),
-                AnimatedTextSlideBoxTransition(
+                TextSlideBoxWidget(
                   controller: controller,
                   width: screenWidth,
                   text: StringConst.OTHER_TECH,
@@ -82,7 +82,7 @@ class TechnologySection extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AnimatedTextSlideBoxTransition(
+                      TextSlideBoxWidget(
                         controller: controller,
                         width: width * 0.25,
                         text: StringConst.MOBILE_TECH,
@@ -108,7 +108,7 @@ class TechnologySection extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AnimatedTextSlideBoxTransition(
+                        TextSlideBoxWidget(
                           controller: controller,
                           width: (width * 0.75),
                           text: StringConst.OTHER_TECH,

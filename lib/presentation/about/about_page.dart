@@ -252,7 +252,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SpaceH30(),
-                              AnimatedTextSlideBoxTransition(
+                              TextSlideBoxWidget(
                                 controller: _contactController,
                                 text: StringConst.ABOUT_DEV_CONTACT_EMAIL,
                                 textStyle: titleStyle,
@@ -277,7 +277,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                         action: _quoteController.forward,
                         child: Column(
                           children: [
-                            AnimatedTextSlideBoxTransition(
+                            TextSlideBoxWidget(
                               controller: _quoteController,
                               text: StringConst.FAMOUS_QUOTE,
                               maxLines: 5,
@@ -295,7 +295,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                             SpaceH20(),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: AnimatedTextSlideBoxTransition(
+                              child: TextSlideBoxWidget(
                                 controller: _quoteController,
                                 text: "— ${StringConst.FAMOUS_QUOTE_AUTHOR}",
                                 textStyle: textTheme.bodyLarge?.copyWith(

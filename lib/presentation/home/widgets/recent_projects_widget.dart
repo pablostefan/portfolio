@@ -49,22 +49,24 @@ class _RecentProjectsWidgetState extends State<RecentProjectsWidget> with Single
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AnimatedTextSlideBoxTransition(
+            TextSlideBoxWidget(
               controller: _controller,
               text: StringConst.CRAFTED_WITH_LOVE,
+              maxLines: 5,
+              width: context.widthOfScreen * .8,
               textStyle: textTheme.headlineSmall?.copyWith(
                 color: AppColors.black,
                 fontSize: context.responsive(30, 48, md: 40, sm: 36),
-                height: 2.0,
               ),
             ),
             const SpaceH16(),
             AnimatedPositionedText(
               controller: _controller,
               text: StringConst.SELECTION,
+              maxLines: 5,
+              width: context.widthOfScreen * .8,
               textStyle: textTheme.bodyLarge?.copyWith(
                 fontSize: context.responsive(Sizes.TEXT_SIZE_16, Sizes.TEXT_SIZE_18),
-                height: 2,
                 fontWeight: FontWeight.w400,
               ),
             ),

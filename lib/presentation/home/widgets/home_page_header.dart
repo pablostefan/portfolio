@@ -84,27 +84,8 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = context.widthOfScreen;
-    final double screenHeight = context.heightOfScreen;
-
-    final EdgeInsets textMargin = EdgeInsets.only(
-      left: context.responsive(20, screenWidth * .15, sm: screenWidth * .15),
-      top: context.responsive(60, screenHeight * .35, sm: screenHeight * .35),
-      bottom: context.responsive(20, 40),
-    );
-
-    final EdgeInsets padding = EdgeInsets.symmetric(
-      horizontal: screenWidth * 0.1,
-      vertical: screenHeight * 0.1,
-    );
-
-    final EdgeInsets imageMargin = EdgeInsets.only(
-      top: context.responsive(30, screenHeight * .17, sm: screenHeight * .17),
-      bottom: context.responsive(20, 40),
-    );
-
     return Container(
-      width: screenWidth,
+      width: context.widthOfScreen,
       color: AppColors.accentColor2.withOpacity(0.35),
       child: Stack(
         children: [
@@ -112,28 +93,28 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
             tabletNormal: Column(
               children: [
                 Container(
-                  padding: padding,
+                  padding: EdgeInsets.symmetric(horizontal: context.widthOfScreen * 0.1),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       Lottie.network(
                         ImagePath.HOME_LOTTIE,
-                        width: screenWidth,
+                        width: context.widthOfScreen,
                         controller: _lottieController,
                         fit: BoxFit.cover,
                       ),
                       Container(
-                        width: screenWidth * .5,
-                        height: screenWidth * .5,
+                        width: context.widthOfScreen * .5,
+                        height: context.widthOfScreen * .5,
                         decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: screenWidth * .06, left: 3),
+                        padding: EdgeInsets.only(top: context.widthOfScreen * .06, left: 3),
                         child: ClipOval(
                           child: Image.asset(
                             ImagePath.DEV,
-                            width: screenWidth * .57,
-                            height: screenWidth * .57,
+                            width: context.widthOfScreen * .57,
+                            height: context.widthOfScreen * .57,
                           ),
                         ),
                       ),
@@ -141,60 +122,65 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                   ),
                 ),
                 Container(
-                  padding: padding.copyWith(top: 0),
-                  width: screenWidth,
+                  padding: EdgeInsets.symmetric(horizontal: context.widthOfScreen * 0.1),
+                  width: context.widthOfScreen,
                   child: AboutDev(
                     controller: widget.controller,
-                    width: screenWidth,
+                    width: context.widthOfScreen,
                   ),
                 ),
               ],
             ),
-            desktop: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  margin: textMargin,
-                  width: screenWidth * 0.40,
-                  child: AboutDev(
-                    controller: widget.controller,
-                    width: screenWidth * 0.40,
-                  ),
-                ),
-                SizedBox(width: screenWidth * 0.05),
-                Container(
-                  margin: imageMargin,
-                  child: FadeTransition(
-                    opacity: widget.controller,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Lottie.network(
-                          ImagePath.HOME_LOTTIE,
-                          width: screenWidth * 0.36,
-                          controller: _lottieController,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          width: screenWidth * 0.24,
-                          height: screenWidth * 0.24,
-                          decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: screenWidth * .03, left: 3),
-                          child: ClipOval(
-                            child: Image.asset(
-                              ImagePath.DEV,
-                              width: screenWidth * 0.26,
-                              height: screenWidth * 0.25,
-                            ),
-                          ),
-                        ),
-                      ],
+            desktop: SizedBox(
+              height: context.heightOfScreen,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(width: context.widthOfScreen * .08),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: AboutDev(
+                        controller: widget.controller,
+                        width: context.widthOfScreen,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(width: 40),
+                  Expanded(
+                    child: FadeTransition(
+                      opacity: widget.controller,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Lottie.network(
+                            ImagePath.HOME_LOTTIE,
+                            width: context.widthOfScreen * .36,
+                            controller: _lottieController,
+                            fit: BoxFit.cover,
+                          ),
+                          Container(
+                            width: context.widthOfScreen * .24,
+                            height: context.widthOfScreen * .24,
+                            decoration: BoxDecoration(color: AppColors.grey, shape: BoxShape.circle),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: context.widthOfScreen * .03, left: 3),
+                            child: ClipOval(
+                              child: Image.asset(
+                                ImagePath.DEV,
+                                width: context.widthOfScreen * .26,
+                                height: context.widthOfScreen * .25,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -211,7 +197,7 @@ class _HomePageHeaderState extends State<HomePageHeader> with TickerProviderStat
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.only(right: 24, bottom: 40),
+                  margin: EdgeInsets.only(right: context.responsive(6, 24), bottom: 40),
                   child: MouseRegion(
                     onEnter: (e) => _scrollDownButtonController.forward(),
                     onExit: (e) => _scrollDownButtonController.reverse(),
@@ -255,41 +241,41 @@ class _AboutDevState extends State<AboutDev> {
       parent: widget.controller,
       curve: Interval(0.6, 1.0, curve: Curves.fastOutSlowIn),
     );
-    double headerFontSize = context.responsive(28, 48, md: 36, sm: 32);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: margin,
-          child: AnimatedTextSlideBoxTransition(
+          child: TextSlideBoxWidget(
             controller: widget.controller,
             text: StringConst.HI,
             width: widget.width,
             maxLines: 3,
             textStyle: textTheme.headlineLarge?.copyWith(
               color: AppColors.black,
-              fontSize: headerFontSize,
+              fontSize: context.responsive(28, 48, md: 36, sm: 32),
             ),
           ),
         ),
         SpaceH12(),
         Container(
           margin: margin,
-          child: AnimatedTextSlideBoxTransition(
+          child: TextSlideBoxWidget(
             controller: widget.controller,
             text: StringConst.DEV_INTRO,
             width: widget.width,
             maxLines: 3,
             textStyle: textTheme.headlineLarge?.copyWith(
               color: AppColors.black,
-              fontSize: headerFontSize,
+              fontSize: context.responsive(28, 48, md: 36, sm: 32),
             ),
           ),
         ),
         SpaceH12(),
         Container(
           margin: margin,
-          child: AnimatedTextSlideBoxTransition(
+          child: TextSlideBoxWidget(
             controller: widget.controller,
             text: StringConst.DEV_TITLE,
             width: context.responsive(
@@ -301,7 +287,7 @@ class _AboutDevState extends State<AboutDev> {
             maxLines: 3,
             textStyle: textTheme.headlineLarge?.copyWith(
               color: AppColors.black,
-              fontSize: headerFontSize,
+              fontSize: context.responsive(28, 48, md: 36, sm: 32),
             ),
           ),
         ),

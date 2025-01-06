@@ -150,31 +150,22 @@ class ProjectData extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: leadingMargin,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AnimatedContainer(
-                width: indicatorWidth,
-                height: indicatorHeight,
-                margin: indicatorMargin,
-                color: indicatorColor,
-                duration: duration,
-                curve: curve,
-              ),
-              SpaceW4(),
-              Text(projectNumber, style: projectNumberStyle),
-            ],
-          ),
+        AnimatedContainer(
+          width: indicatorWidth,
+          height: indicatorHeight,
+          margin: indicatorMargin,
+          color: indicatorColor,
+          duration: duration,
+          curve: curve,
         ),
+        SpaceW4(),
+        Text(projectNumber, style: projectNumberStyle),
         SpaceW30(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(title, style: titleStyle),
-            SpaceH16(),
+            SizedBox(height: context.responsive(6, 16)),
             Text(subtitle, style: subtitleStyle),
           ],
         ),
@@ -196,8 +187,8 @@ const double startWidthOfButtonSm = 40;
 const double targetWidthSm = 160;
 const double heightOfButtonSm = startWidthOfButtonSm;
 
-class ProjectItemLg extends StatefulWidget {
-  const ProjectItemLg({
+class ProjectItemDesktop extends StatefulWidget {
+  const ProjectItemDesktop({
     super.key,
     required this.projectNumber,
     required this.title,
@@ -272,10 +263,10 @@ class ProjectItemLg extends StatefulWidget {
   final GestureTapCallback? onTap;
 
   @override
-  State<ProjectItemLg> createState() => _ProjectItemLgState();
+  State<ProjectItemDesktop> createState() => _ProjectItemDesktopState();
 }
 
-class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProviderStateMixin {
+class _ProjectItemDesktopState extends State<ProjectItemDesktop> with SingleTickerProviderStateMixin {
   bool _isHovering = false;
   late AnimationController _controller;
 
@@ -461,8 +452,8 @@ class _ProjectItemLgState extends State<ProjectItemLg> with SingleTickerProvider
   }
 }
 
-class ProjectItemSm extends StatefulWidget {
-  const ProjectItemSm({
+class ProjectItemTablet extends StatefulWidget {
+  const ProjectItemTablet({
     super.key,
     required this.projectNumber,
     required this.title,
@@ -500,10 +491,10 @@ class ProjectItemSm extends StatefulWidget {
   final GestureTapCallback? onTap;
 
   @override
-  State<ProjectItemSm> createState() => _ProjectItemSmState();
+  State<ProjectItemTablet> createState() => _ProjectItemTabletState();
 }
 
-class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProviderStateMixin {
+class _ProjectItemTabletState extends State<ProjectItemTablet> with SingleTickerProviderStateMixin {
   bool _isHovering = false;
   late AnimationController _controller;
 
@@ -530,8 +521,6 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    // takes full width of screen
-    double projectItemWidth = context.widthOfScreen;
     // takes 40% of the height of the device
     double heightOfProjectImageCover = widget.imageHeight ?? context.assignHeight(0.3);
     // takes 30% of the height of the device
@@ -570,73 +559,70 @@ class _ProjectItemSmState extends State<ProjectItemSm> with SingleTickerProvider
     return MouseRegion(
       onEnter: (e) => _mouseEnter(true),
       onExit: (e) => _mouseEnter(false),
-      child: SizedBox(
-        width: projectItemWidth,
-        child: Column(
-          children: [
-            SpaceH12(),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ProjectData(
-                  duration: widget.duration,
-                  projectNumber: widget.projectNumber,
-                  indicatorWidth: context.assignWidth(.12),
-                  leadingMargin: EdgeInsets.only(
-                    top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
-                    right: Sizes.MARGIN_8,
-                  ),
-                  indicatorMargin: EdgeInsets.only(top: defaultNumberStyle.fontSize! / 2.5, right: Sizes.MARGIN_8),
-                  title: widget.title,
-                  subtitle: widget.subtitle,
-                  subtitleStyle: defaultSubtitleStyle,
-                  titleStyle: defaultTitleStyle,
-                  projectNumberStyle: defaultNumberStyle,
+      child: Column(
+        children: [
+          SizedBox(width: context.responsive(0, 12)),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ProjectData(
+                duration: widget.duration,
+                projectNumber: widget.projectNumber,
+                indicatorWidth: context.assignWidth(.1),
+                leadingMargin: EdgeInsets.only(
+                  top: (defaultTitleStyle!.fontSize! - defaultNumberStyle!.fontSize!) / 2.5,
+                  right: Sizes.MARGIN_8,
                 ),
-                Spacer(),
-                Container(
-                  margin: EdgeInsets.only(right: 30),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: AnimatedBubbleButton(
-                      startWidth: startWidthOfButtonSm,
-                      hovering: _isHovering,
-                      controller: _controller,
-                      duration: widget.duration,
-                      height: startWidthOfButtonSm,
-                      targetWidth: targetWidthSm,
-                      controlsOwnAnimation: false,
-                      startBorderRadius: const BorderRadius.all(Radius.circular(100.0)),
-                      title: StringConst.VIEW_PROJECT.toUpperCase(),
-                      color: AppColors.grey100,
-                      titleStyle: buttonStyle,
-                      imageColor: AppColors.black,
-                      onTap: widget.onTap,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SpaceH16(),
-            SizedBox(
-              height: heightOfProjectImageCover + (heightOfColoredContainer - positionOfColoredContainer),
-              child: Transform(
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.0095)
-                  ..rotateY(0.085),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    widget.imageUrl,
-                    height: heightOfProjectImageCover,
-                    fit: BoxFit.fitHeight,
+                indicatorMargin: EdgeInsets.only(top: defaultNumberStyle.fontSize! / 2.5, right: Sizes.MARGIN_8),
+                title: widget.title,
+                subtitle: widget.subtitle,
+                subtitleStyle: defaultSubtitleStyle,
+                titleStyle: defaultTitleStyle,
+                projectNumberStyle: defaultNumberStyle,
+              ),
+              Spacer(),
+              Container(
+                margin: EdgeInsets.only(right: context.responsive(0, 30)),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: AnimatedBubbleButton(
+                    startWidth: startWidthOfButtonSm,
+                    hovering: _isHovering,
+                    controller: _controller,
+                    duration: widget.duration,
+                    height: startWidthOfButtonSm,
+                    targetWidth: targetWidthSm,
+                    controlsOwnAnimation: false,
+                    startBorderRadius: const BorderRadius.all(Radius.circular(100.0)),
+                    title: StringConst.VIEW_PROJECT.toUpperCase(),
+                    color: AppColors.grey100,
+                    titleStyle: buttonStyle,
+                    imageColor: AppColors.black,
+                    onTap: widget.onTap,
                   ),
                 ),
               ),
+            ],
+          ),
+          SpaceH16(),
+          SizedBox(
+            height: heightOfProjectImageCover + (heightOfColoredContainer - positionOfColoredContainer),
+            child: Transform(
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.0095)
+                ..rotateY(0.085),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  widget.imageUrl,
+                  height: heightOfProjectImageCover,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

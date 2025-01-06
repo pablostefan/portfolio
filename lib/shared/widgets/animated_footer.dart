@@ -68,7 +68,8 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
 
     return Container(
       width: widget.width ?? context.widthOfScreen,
-      height: widget.height ?? context.assignHeight(.8),
+      height: widget.height ??
+          context.responsive(context.assignHeight(.8), context.assignHeight(.8), md: context.assignHeight(.5)),
       color: widget.backgroundColor,
       child: VisibilityDetectorWidget(
         key: Key('animated-footer'),

@@ -66,13 +66,13 @@ class ContentBuilder extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AnimatedTextSlideBoxTransition(
+                      TextSlideBoxWidget(
                         controller: controller,
                         text: number,
                         textStyle: numberStyle ?? defaultNumberStyle,
                       ),
                       SpaceW8(),
-                      AnimatedTextSlideBoxTransition(
+                      TextSlideBoxWidget(
                         controller: controller,
                         text: section,
                         textStyle: sectionStyle ?? defaultSectionStyle,
@@ -81,7 +81,7 @@ class ContentBuilder extends StatelessWidget {
                   ),
                   SpaceH16(),
                   heading ??
-                      AnimatedTextSlideBoxTransition(
+                      TextSlideBoxWidget(
                         controller: controller,
                         text: title!,
                         textStyle: titleStyle ?? defaultTitleStyle,
@@ -101,14 +101,14 @@ class ContentBuilder extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AnimatedTextSlideBoxTransition(
+                      TextSlideBoxWidget(
                         controller: controller,
                         text: number,
                         textStyle: numberStyle ?? defaultNumberStyle,
                       ),
                       SpaceW16(),
                       Expanded(
-                        child: AnimatedTextSlideBoxTransition(
+                        child: TextSlideBoxWidget(
                           controller: controller,
                           text: section,
                           textStyle: sectionStyle ?? defaultSectionStyle,
@@ -124,7 +124,7 @@ class ContentBuilder extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       heading ??
-                          AnimatedTextSlideBoxTransition(
+                          TextSlideBoxWidget(
                             controller: controller,
                             text: title!,
                             textStyle: titleStyle ?? defaultTitleStyle,

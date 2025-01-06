@@ -4,30 +4,8 @@ import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/animated_positioned_text.dart';
 import 'package:portfolio/shared/widgets/animated_slide_box.dart';
 
-class AnimatedTextSlideBoxTransition extends StatefulWidget {
-  const AnimatedTextSlideBoxTransition({
-    super.key,
-    required this.controller,
-    required this.text,
-    required this.textStyle,
-    this.width = double.infinity,
-    this.maxLines = 1,
-    this.widthFactor = 1,
-    this.heightFactor = 1,
-    this.visibleBoxAnimation,
-    this.invisibleBoxAnimation,
-    this.position,
-    this.textAlign,
-    this.boxColor = AppColors.black,
-    this.coverColor = AppColors.primaryColor,
-    this.visibleAnimationCurve = Curves.fastOutSlowIn,
-    this.invisibleAnimationCurve = Curves.fastOutSlowIn,
-    this.slideAnimationCurve = Curves.fastOutSlowIn,
-  });
-
+class TextSlideBoxWidget extends StatefulWidget {
   final AnimationController controller;
-  final double heightFactor;
-  final double widthFactor;
   final Color boxColor;
   final Color coverColor;
   final Animation<double>? visibleBoxAnimation;
@@ -42,30 +20,48 @@ class AnimatedTextSlideBoxTransition extends StatefulWidget {
   final double width;
   final int maxLines;
 
+  const TextSlideBoxWidget({
+    super.key,
+    required this.controller,
+    required this.text,
+    required this.textStyle,
+    this.width = double.infinity,
+    this.maxLines = 1,
+    this.visibleBoxAnimation,
+    this.invisibleBoxAnimation,
+    this.position,
+    this.textAlign,
+    this.boxColor = AppColors.black,
+    this.coverColor = AppColors.primaryColor,
+    this.visibleAnimationCurve = Curves.fastOutSlowIn,
+    this.invisibleAnimationCurve = Curves.fastOutSlowIn,
+    this.slideAnimationCurve = Curves.fastOutSlowIn,
+  });
+
   @override
-  State<AnimatedTextSlideBoxTransition> createState() => _AnimatedTextSlideBoxTransitionState();
+  State<TextSlideBoxWidget> createState() => _TextSlideBoxWidgetState();
 }
 
-class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTransition>
-    with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> visibleAnimation;
-  late Animation<double> invisibleAnimation;
-  late Animation<RelativeRect> textPositionAnimation;
-  late Size size;
-  late double textWidth;
-  late double textHeight;
+class _TextSlideBoxWidgetState extends State<TextSlideBoxWidget> with SingleTickerProviderStateMixin {
+  late Animation<double> _visibleAnimation;
+  late Animation<double> _invisibleAnimation;
+  late Size _size;
 
   @override
   void initState() {
     super.initState();
 
-    setTextWidthAndHeight();
-    controller = widget.controller;
-    visibleAnimation = widget.visibleBoxAnimation ??
-        Tween<double>(begin: 0, end: textWidth).animate(
+    _size = Functions.textSize(
+      text: widget.text,
+      style: widget.textStyle,
+      maxWidth: widget.width,
+      maxLines: widget.maxLines,
+    );
+
+    _visibleAnimation = widget.visibleBoxAnimation ??
+        Tween<double>(begin: 0, end: _size.width).animate(
           CurvedAnimation(
-            parent: controller,
+            parent: widget.controller,
             curve: Interval(
               0,
               0.35,
@@ -74,10 +70,10 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
           ),
         );
 
-    invisibleAnimation = widget.invisibleBoxAnimation ??
-        Tween<double>(begin: 0, end: textWidth).animate(
+    _invisibleAnimation = widget.invisibleBoxAnimation ??
+        Tween<double>(begin: 0, end: _size.width).animate(
           CurvedAnimation(
-            parent: controller,
+            parent: widget.controller,
             curve: Interval(
               0.35,
               0.7,
@@ -85,51 +81,28 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
             ),
           ),
         );
-
-    textPositionAnimation = RelativeRectTween(
-      begin: RelativeRect.fromSize(
-        Rect.fromLTWH(0, textHeight, textWidth, textHeight),
-        Size(textWidth, textHeight),
-      ),
-      end: RelativeRect.fromSize(
-        Rect.fromLTWH(0, 0, textWidth, textHeight),
-        Size(textWidth, textHeight),
-      ),
-    ).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Interval(0.6, 1.0, curve: widget.invisibleAnimationCurve),
-      ),
-    );
   }
 
-  void setTextWidthAndHeight() {
-    size = Functions.textSize(
+  @override
+  Widget build(BuildContext context) {
+    _size = Functions.textSize(
       text: widget.text,
       style: widget.textStyle,
       maxWidth: widget.width,
       maxLines: widget.maxLines,
     );
-    textWidth = size.width * widget.widthFactor;
-    textHeight = size.height * widget.heightFactor;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    setTextWidthAndHeight();
-
     return SizedBox(
-      height: textHeight,
+      height: _size.height,
       child: Stack(
         children: [
           AnimatedSlideBox(
             controller: widget.controller,
-            height: textHeight,
-            width: textWidth,
+            height: _size.height,
+            width: _size.width,
             coverColor: widget.coverColor,
             boxColor: widget.boxColor,
-            visibleBoxAnimation: visibleAnimation,
-            invisibleBoxAnimation: invisibleAnimation,
+            visibleBoxAnimation: _visibleAnimation,
+            invisibleBoxAnimation: _invisibleAnimation,
           ),
           AnimatedPositionedText(
             text: widget.text,
@@ -137,7 +110,7 @@ class _AnimatedTextSlideBoxTransitionState extends State<AnimatedTextSlideBoxTra
             maxLines: widget.maxLines,
             textAlign: widget.textAlign,
             textStyle: widget.textStyle,
-            width: textWidth,
+            width: _size.width,
           )
         ],
       ),

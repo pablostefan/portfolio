@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/spaces.dart';
 
@@ -14,7 +15,7 @@ class ScrollDownButton extends StatelessWidget {
           child: Text(
             StringConst.SCROLL_DOWN.toUpperCase(),
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  fontSize: 10,
+                  fontSize: context.responsive(6, 10),
                   letterSpacing: 1.7,
                 ),
           ),

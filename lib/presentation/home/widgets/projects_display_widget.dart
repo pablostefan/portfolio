@@ -14,16 +14,18 @@ class ProjectsDisplayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final projectItemHeight = context.assignHeight(0.4);
     final subHeight = projectItemHeight * 0.75;
-    final extraHeight = projectItemHeight - subHeight;
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return AdaptiveBuilderWidget(
-      tabletSmall: ListView.separated(
+      tabletNormal: ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: Data.recentWorks.length,
         separatorBuilder: (_, __) => const CustomSpacer(heightFactor: 0.17),
-        itemBuilder: (_, index) => ProjectItemSm(
+        itemBuilder: (_, index) => ProjectItemTablet(
           projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
+          imageHeight: context.responsive(context.assignHeight(0.1), context.assignHeight(0.3)),
+          titleStyle: textTheme.labelLarge?.copyWith(color: AppColors.black, fontSize: context.responsive(20, 26)),
           imageUrl: Data.recentWorks[index].image,
           title: Data.recentWorks[index].title,
           subtitle: Data.recentWorks[index].category,
@@ -32,14 +34,14 @@ class ProjectsDisplayWidget extends StatelessWidget {
         ),
       ),
       desktop: SizedBox(
-        height: subHeight * Data.recentWorks.length + extraHeight,
+        height: subHeight * Data.recentWorks.length,
         child: Stack(
           children: List.generate(
             Data.recentWorks.length,
             (index) {
               return Padding(
                 padding: EdgeInsets.only(top: subHeight * index),
-                child: ProjectItemLg(
+                child: ProjectItemDesktop(
                   projectNumber: index + 1 > 9 ? "${index + 1}" : "0${index + 1}",
                   imageUrl: Data.recentWorks[index].image,
                   projectItemHeight: projectItemHeight,

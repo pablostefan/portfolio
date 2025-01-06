@@ -61,7 +61,6 @@ class _AboutProjectState extends State<AboutProject> {
       fontSize: Sizes.TEXT_SIZE_18,
       color: AppColors.grey750,
       fontWeight: FontWeight.w400,
-      height: 2.0,
     );
 
     double projectDataWidth = context.responsive(
@@ -85,18 +84,17 @@ class _AboutProjectState extends State<AboutProject> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AnimatedTextSlideBoxTransition(
+        TextSlideBoxWidget(
           controller: widget.controller,
           text: StringConst.ABOUT_PROJECT,
           coverColor: AppColors.white,
-          textStyle: textTheme.headlineSmall?.copyWith(
-            fontSize: Sizes.TEXT_SIZE_48,
-          ),
+          width: context.widthOfScreen * 0.7,
+          textStyle: textTheme.headlineSmall?.copyWith(fontSize: context.responsive(30, 40)),
         ),
         SpaceH40(),
         AnimatedPositionedText(
           controller: widget.controller,
-          width: widget.width * 0.7,
+          width: context.widthOfScreen * 0.7,
           maxLines: 10,
           text: widget.projectData.portfolioDescription,
           textStyle: bodyTextStyle,
@@ -201,40 +199,25 @@ class _AboutProjectState extends State<AboutProject> {
         Visibility(visible: widget.projectData.isOnPlayStore, child: SpaceH80()),
         Visibility(
           visible: widget.projectData.isOnPlayStore,
-          child: AnimatedTextSlideBoxTransition(
+          child: TextSlideBoxWidget(
             controller: widget.controller,
             text: StringConst.IN_STORE,
             coverColor: AppColors.white,
-            textStyle: textTheme.headlineSmall?.copyWith(fontSize: Sizes.TEXT_SIZE_40),
+            maxLines: 4,
+            width: context.widthOfScreen * 0.7,
+            textStyle: textTheme.headlineSmall?.copyWith(fontSize: context.responsive(30, 40)),
           ),
         ),
         Visibility(visible: widget.projectData.isOnPlayStore, child: SpaceH30()),
         Visibility(
           visible: widget.projectData.isOnPlayStore,
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  Functions.launchUrl(widget.projectData.playStoreUrl);
-                },
-                child: AnimatedPositionedWidget(
-                  controller: CurvedAnimation(
-                    parent: widget.projectDataController,
-                    curve: Animations.textSlideInCurve,
-                  ),
-                  width: googlePlayButtonWidth,
-                  height: 50,
-                  child: Image.asset(
-                    ImagePath.GOOGLE_PLAY,
-                    width: googlePlayButtonWidth,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: InkWell(
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Row(
+              children: [
+                InkWell(
                   onTap: () {
-                    Functions.launchUrl(widget.projectData.appStoreUrl);
+                    Functions.launchUrl(widget.projectData.playStoreUrl);
                   },
                   child: AnimatedPositionedWidget(
                     controller: CurvedAnimation(
@@ -244,13 +227,33 @@ class _AboutProjectState extends State<AboutProject> {
                     width: googlePlayButtonWidth,
                     height: 50,
                     child: Image.asset(
-                      ImagePath.APP_STORE,
+                      ImagePath.GOOGLE_PLAY,
                       width: googlePlayButtonWidth,
                     ),
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: InkWell(
+                    onTap: () {
+                      Functions.launchUrl(widget.projectData.appStoreUrl);
+                    },
+                    child: AnimatedPositionedWidget(
+                      controller: CurvedAnimation(
+                        parent: widget.projectDataController,
+                        curve: Animations.textSlideInCurve,
+                      ),
+                      width: googlePlayButtonWidth,
+                      height: 50,
+                      child: Image.asset(
+                        ImagePath.APP_STORE,
+                        width: googlePlayButtonWidth,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -294,7 +297,7 @@ class ProjectData extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          AnimatedTextSlideBoxTransition(
+          TextSlideBoxWidget(
             width: width,
             maxLines: 2,
             coverColor: AppColors.white,

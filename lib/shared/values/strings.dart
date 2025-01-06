@@ -18,8 +18,8 @@ abstract final class StringConst {
 
   // Home Page
   static const String LOGO = "Pablo";
-  static const String HI = "Oi,";
-  static const String DEV_INTRO = "Eu sou Pablo.";
+  static const String HI = "Olá,";
+  static const String DEV_INTRO = "Eu sou Pablo Stefan.";
   static const String DEV_TITLE = "Engenheiro de Software.";
   static const String DEV_DESC = "Desenvolvedor mobile com foco em qualidade e inovação.";
   static const String SEE_MY_WORKS = "Conheça Meu Trabalho";
@@ -78,7 +78,7 @@ abstract final class StringConst {
   static const String SAY_HELLO = "Diga Oi";
 
   // Works Page
-  static const String VIEW_PROJECT = "Ver Projeto";
+  static const String VIEW_PROJECT = "Ver projeto";
   static const String MY_WORKS = "Meus Trabalhos.";
   static const String NOTE_WORTHY_PROJECTS = "Outros Projetos Relevantes.";
   static const String NOTE_WORTHY_PROJECTS_DESC =

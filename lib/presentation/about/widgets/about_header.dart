@@ -26,10 +26,11 @@ class AboutHeader extends StatelessWidget {
           SpaceH30(),
           Center(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(40),
+              borderRadius: BorderRadius.circular(20),
               child: Image.asset(
                 ImagePath.DEV,
-                fit: BoxFit.contain,
+                fit: BoxFit.fitHeight,
+                filterQuality: FilterQuality.high,
                 height: context.assignHeight(.45),
               ),
             ),
@@ -44,20 +45,15 @@ class AboutHeader extends StatelessWidget {
             width: width * 0.55,
           ),
           const Spacer(),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(40),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: imageWidthLg,
-                minWidth: imageWidthLg,
-                maxHeight: context.assignHeight(.55),
-              ),
-              child: FadeTransition(
-                opacity: controller,
-                child: Image.asset(
-                  ImagePath.DEV,
-                  fit: BoxFit.contain,
-                ),
+          FadeTransition(
+            opacity: controller,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: Image.asset(
+                ImagePath.DEV,
+                filterQuality: FilterQuality.high,
+                height: context.assignHeight(.55),
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),
@@ -91,21 +87,19 @@ class AboutDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        AnimatedTextSlideBoxTransition(
+        TextSlideBoxWidget(
           controller: controller,
           text: StringConst.ABOUT_DEV_CATCH_LINE_1,
           width: width,
           maxLines: 10,
-          heightFactor: context.responsive(1.6, 1.4, sm: 1.4, md: 1.4, xl: 1.4),
           textStyle: style,
         ),
         SizedBox(height: context.responsive(20, 40, sm: 20, md: 40, xl: 40)),
-        AnimatedTextSlideBoxTransition(
+        TextSlideBoxWidget(
           controller: controller,
           text: StringConst.ABOUT_DEV_CATCH_LINE_2,
           width: width,
           maxLines: 10,
-          heightFactor: context.responsive(1.4, 1.4, sm: 1.4, md: 1.4, xl: 1.4),
           textStyle: style,
         ),
       ],

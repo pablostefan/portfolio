@@ -58,13 +58,13 @@ class _ExperienceWidgetState extends State<ExperienceWidget> with SingleTickerPr
           heading: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AnimatedTextSlideBoxTransition(
+              TextSlideBoxWidget(
                 controller: _controller,
                 text: widget.data.company,
                 textStyle: defaultTitleStyle,
               ),
               SpaceH16(),
-              AnimatedTextSlideBoxTransition(
+              TextSlideBoxWidget(
                 controller: _controller,
                 text: widget.data.position,
                 textStyle: defaultTitleStyle?.copyWith(
@@ -74,38 +74,13 @@ class _ExperienceWidgetState extends State<ExperienceWidget> with SingleTickerPr
               ),
             ],
           ),
-          body: _RolesWidget(
-            roles: widget.data.roles,
-            controller: _controller,
-            width: widget.width * .75,
+          body: Column(
+            spacing: 20,
+            children: List.generate(
+              widget.data.roles.length,
+              (index) => _RoleWidget(role: widget.data.roles[index], controller: _controller),
+            ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _RolesWidget extends StatelessWidget {
-  final List<String> roles;
-  final AnimationController controller;
-  final double width;
-
-  const _RolesWidget({
-    required this.roles,
-    required this.controller,
-    required this.width,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: 20,
-      children: List.generate(
-        roles.length,
-        (index) => _RoleWidget(
-          role: roles[index],
-          controller: controller,
-          width: width,
         ),
       ),
     );
@@ -115,9 +90,8 @@ class _RolesWidget extends StatelessWidget {
 class _RoleWidget extends StatelessWidget {
   final String role;
   final AnimationController controller;
-  final double width;
 
-  const _RoleWidget({required this.role, required this.controller, required this.width});
+  const _RoleWidget({required this.role, required this.controller});
 
   @override
   Widget build(BuildContext context) {

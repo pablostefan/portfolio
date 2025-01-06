@@ -92,7 +92,7 @@ class _PageHeaderState extends State<PageHeader> with TickerProviderStateMixin {
           ),
           Align(
             alignment: Alignment.center,
-            child: AnimatedTextSlideBoxTransition(
+            child: TextSlideBoxWidget(
               controller: widget.headingTextController,
               text: widget.headingText,
               textStyle: headingStyle,

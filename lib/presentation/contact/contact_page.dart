@@ -94,9 +94,11 @@ class _ContactPageState extends State<ContactPage> with SingleTickerProviderStat
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AnimatedTextSlideBoxTransition(
+                  TextSlideBoxWidget(
                     controller: _controller,
+                    maxLines: 3,
                     text: StringConst.GET_IN_TOUCH,
+                    width: context.widthOfScreen * .75,
                     textStyle: headingStyle,
                   ),
                   CustomSpacer(heightFactor: 0.05),

@@ -56,8 +56,8 @@ class _NoteWorthyProjectsState extends State<NoteWorthyProjects> with SingleTick
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AnimatedTextSlideBoxTransition(
-            heightFactor: 1.5,
+          SizedBox(height: context.responsive(40, 0)),
+          TextSlideBoxWidget(
             controller: _controller,
             text: StringConst.NOTE_WORTHY_PROJECTS,
             textStyle: titleStyle,

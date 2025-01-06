@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/layout/extensions.dart';
 import 'package:portfolio/presentation/home/widgets/home_page_header.dart';
 import 'package:portfolio/presentation/home/widgets/loading_page.dart';
 import 'package:portfolio/presentation/home/widgets/more_project_widget.dart';
@@ -70,13 +71,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         physics: const BouncingScrollPhysics(),
         children: [
           HomePageHeader(controller: _slideTextController, scrollToWorksKey: _scrollKey),
-          const CustomSpacer(heightFactor: 0.1),
+          CustomSpacer(heightFactor: context.responsive(.1, .1, md: .05)),
           RecentProjectsWidget(),
-          const CustomSpacer(heightFactor: 0.1),
+          CustomSpacer(heightFactor: context.responsive(.1, .1, md: .05)),
           ProjectsDisplayWidget(),
-          const CustomSpacer(heightFactor: 0.05),
+          CustomSpacer(heightFactor: context.responsive(.1, .1, md: .05)),
           MoreProjectWidget(),
-          const CustomSpacer(heightFactor: 0.15),
+          CustomSpacer(heightFactor: context.responsive(.1, .1, md: .05)),
           const AnimatedFooter(),
         ],
       ),

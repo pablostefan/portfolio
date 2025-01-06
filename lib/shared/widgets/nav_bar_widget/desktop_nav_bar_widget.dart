@@ -65,7 +65,7 @@ class DesktopNavBarWidget extends StatelessWidget {
               padding: const EdgeInsets.only(left: Sizes.PADDING_12),
               child: RotatedBox(
                 quarterTurns: 3,
-                child: AnimatedTextSlideBoxTransition(
+                child: TextSlideBoxWidget(
                   controller: controller,
                   text: selectedRouteTitle.toUpperCase(),
                   textStyle: style,

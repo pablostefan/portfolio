@@ -17,9 +17,7 @@ class ContentArea extends StatelessWidget {
     this.backgroundColor,
     this.padding,
     this.decoration,
-    this.borderRadius = const BorderRadius.all(
-      Radius.circular(Sizes.RADIUS_0),
-    ),
+    this.borderRadius = const BorderRadius.all(Radius.circular(Sizes.RADIUS_4)),
     this.child,
   });
 
