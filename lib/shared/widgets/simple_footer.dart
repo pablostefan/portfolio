@@ -32,7 +32,7 @@ class SimpleFooter extends StatelessWidget {
               return Column(
                 children: [
                   Spacer(flex: 2),
-                  SimpleFooterSm(),
+                  TabletSimpleFooter(),
                   Spacer(),
                 ],
               );
@@ -40,7 +40,7 @@ class SimpleFooter extends StatelessWidget {
               return Column(
                 children: [
                   Spacer(),
-                  SimpleFooterLg(),
+                  DesktopSimpleFooter(),
                   SpaceH20(),
                 ],
               );
@@ -52,8 +52,8 @@ class SimpleFooter extends StatelessWidget {
   }
 }
 
-class SimpleFooterSm extends StatelessWidget {
-  const SimpleFooterSm({super.key});
+class TabletSimpleFooter extends StatelessWidget {
+  const TabletSimpleFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,68 +66,27 @@ class SimpleFooterSm extends StatelessWidget {
       children: [
         Socials(socialData: Data.socialData),
         SpaceH30(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              StringConst.COPYRIGHT,
-              style: style,
-            ),
-          ],
-        ),
-        SpaceH12(),
+        Text(StringConst.COPYRIGHT, style: style),
+        SpaceW8(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
               onTap: () {
-                Functions.launchUrl(StringConst.DESIGN_LINK);
+                Functions.launchUrl(StringConst.DAVID_COBBINA);
               },
               child: AnimatedLineThroughText(
-                text: StringConst.DESIGNED_BY,
+                text: StringConst.INSPIRED,
                 isUnderlinedByDefault: true,
                 isUnderlinedOnHover: false,
                 hoverColor: AppColors.white,
                 coverColor: AppColors.black,
                 textStyle: style?.copyWith(
+                  decorationThickness: 1,
+                  decorationColor: AppColors.white,
                   decoration: TextDecoration.underline,
                 ),
               ),
-            ),
-          ],
-        ),
-        SpaceH8(),
-        BuiltWithFlutter(),
-      ],
-    );
-  }
-}
-
-class SimpleFooterLg extends StatelessWidget {
-  const SimpleFooterLg({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? style = textTheme.bodyLarge?.copyWith(
-      color: AppColors.accentColor,
-      fontSize: Sizes.TEXT_SIZE_14,
-    );
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Socials(socialData: Data.socialData),
-          ],
-        ),
-        SpaceH20(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              StringConst.COPYRIGHT,
-              style: style,
             ),
             SpaceW8(),
             InkWell(
@@ -141,13 +100,76 @@ class SimpleFooterLg extends StatelessWidget {
                 hoverColor: AppColors.white,
                 coverColor: AppColors.black,
                 textStyle: style?.copyWith(
+                  decorationThickness: 1,
+                  decorationColor: AppColors.white,
                   decoration: TextDecoration.underline,
                 ),
               ),
             ),
           ],
         ),
-        SpaceH8(),
+        SpaceH20(),
+        BuiltWithFlutter(),
+      ],
+    );
+  }
+}
+
+class DesktopSimpleFooter extends StatelessWidget {
+  const DesktopSimpleFooter({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+    TextStyle? style = textTheme.bodyLarge?.copyWith(color: AppColors.accentColor, fontSize: Sizes.TEXT_SIZE_14);
+
+    return Column(
+      children: [
+        Socials(socialData: Data.socialData),
+        SpaceH20(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(StringConst.COPYRIGHT, style: style),
+            SpaceW8(),
+            InkWell(
+              onTap: () {
+                Functions.launchUrl(StringConst.DAVID_COBBINA);
+              },
+              child: AnimatedLineThroughText(
+                text: StringConst.INSPIRED,
+                isUnderlinedByDefault: true,
+                isUnderlinedOnHover: false,
+                hoverColor: AppColors.white,
+                coverColor: AppColors.black,
+                textStyle: style?.copyWith(
+                  decorationThickness: 1,
+                  decorationColor: AppColors.white,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+            SpaceW8(),
+            InkWell(
+              onTap: () {
+                Functions.launchUrl(StringConst.DESIGN_LINK);
+              },
+              child: AnimatedLineThroughText(
+                text: StringConst.DESIGNED_BY,
+                isUnderlinedByDefault: true,
+                isUnderlinedOnHover: false,
+                hoverColor: AppColors.white,
+                coverColor: AppColors.black,
+                textStyle: style?.copyWith(
+                  decorationThickness: 1,
+                  decorationColor: AppColors.white,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ],
+        ),
+        SpaceH20(),
         BuiltWithFlutter(),
       ],
     );
@@ -168,11 +190,9 @@ class BuiltWithFlutter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          StringConst.BUILT_WITH_FLUTTER,
-          style: style,
-        ),
-        FlutterLogo(size: 14),
+        Text(StringConst.BUILT_WITH_FLUTTER, style: style),
+        SpaceW8(),
+        FlutterLogo(size: 18),
       ],
     );
   }

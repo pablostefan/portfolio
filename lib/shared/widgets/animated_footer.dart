@@ -104,13 +104,10 @@ class _AnimatedFooterState extends State<AnimatedFooter> with SingleTickerProvid
             ),
             Spacer(flex: 3),
             AdaptiveBuilderWidget(
-              tabletNormal: Padding(
-                padding: const EdgeInsets.only(bottom: Sizes.PADDING_8),
-                child: SimpleFooterSm(),
-              ),
+              tabletNormal: Padding(padding: const EdgeInsets.only(bottom: Sizes.PADDING_8), child: TabletSimpleFooter()),
               desktop: Padding(
                 padding: const EdgeInsets.only(bottom: Sizes.PADDING_8),
-                child: SimpleFooterLg(),
+                child: DesktopSimpleFooter(),
               ),
             ),
             Spacer(),

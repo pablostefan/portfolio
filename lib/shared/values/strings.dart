@@ -43,8 +43,10 @@ abstract final class StringConst {
   static const String MESSAGE_ERROR_MSG = "* Por favor, insira algo para enviar este formulário";
   static const String SEND_MESSAGE = "Enviar Mensagem";
   static const String COPYRIGHT = "© 2024 Feito por $DEV_NAME,";
-  static const String DESIGNED_BY = "Design por Julius G.";
+  static const String INSPIRED = "David Cobbina,";
+  static const String DESIGNED_BY = "Julius G.";
   static const String DESIGN_LINK = "https://www.behance.net/gallery/63574251/Personal-Portfolio-Website-Design";
+  static const String DAVID_COBBINA = "https://davidcobbina.com";
   static const String MESSAGE_ME = "Me mande uma mensagem";
   static const String EMAIL_RESPONSE = "Obrigado por entrar em contato! Responderei o mais rápido possível.";
   static const String EMAIL_FAILED_RESPONSE =
