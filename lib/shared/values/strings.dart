@@ -90,7 +90,7 @@ abstract final class StringConst {
   static const String ABOUT_PROJECT = "Sobre o Projeto";
   static const String PLATFORM = "Plataforma";
   static const String CATEGORY = "Categoria";
-  static const String AUTHOR = "Autor";
+  static const String AUTHOR = "Responsável Técnico";
   static const String DESIGNER = "Designer";
   static const String TECHNOLOGY_USED = "Tecnologia Utilizada";
   static const String LAUNCH_WEB = "Abrir Site";

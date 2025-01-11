@@ -116,26 +116,35 @@ class Data {
     ),
   ];
 
-  static List<String> mobileTechnologies = ["Android", "Kotlin", "Flutter", "Dart", "Swift", "SwiftUI"];
+  static List<String> mobileTechnologies = [
+    "Flutter",
+    "Dart",
+    "Android",
+    "Kotlin",
+    "Swift",
+    "SwiftUI",
+  ];
 
   static List<String> otherTechnologies = [
-    "HTML 5",
-    "CSS 3",
-    "JavaScript",
-    "Typescript",
+    "Firebase",
+    "Google Cloud",
+    "AWS",
+    "Cognito",
+    "GraphQL",
+    "CI/CD",
+    "GitHub Actions",
+    "CodeMagic",
+    "Fastlane",
+    "Git",
+    "Bitbucket",
+    "Jira",
     "React JS",
     "Next JS",
-    "Node JS",
-    "Git",
-    "AWS",
-    "Docker",
-    "Google Cloud",
-    "Azure",
-    "Travis CI",
-    "Circle CI",
-    "Express",
-    "C++",
-    "Firebase",
+    "React Native",
+    "JavaScript",
+    "Typescript",
+    "HTML 5",
+    "CSS 3",
     "Figma",
   ];
   static List<SocialData> socialData1 = [

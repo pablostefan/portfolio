@@ -17,7 +17,7 @@ class CertificationsListWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 24,
+            spacing: 40,
             children: List.from(Data.certificationData.map((data) => MobileCertificationWidget(data: data))),
           ),
         ),

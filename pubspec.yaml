@@ -1,7 +1,7 @@
 name: portfolio
 description: "Portfólio de Pablo Stefan."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+2
+version: 2.0.0+1
 
 environment:
   sdk: ^3.6.0
