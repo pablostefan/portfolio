@@ -11,7 +11,6 @@ class DesktopCardInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
 
     return Container(
       width: double.infinity,
@@ -27,13 +26,13 @@ class DesktopCardInfoWidget extends StatelessWidget {
           Text(
             data.title,
             textAlign: TextAlign.center,
-            style: theme.textTheme.headlineSmall?.copyWith(color: AppColors.black),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: AppColors.black),
           ),
           SpaceH4(),
           Text(
             data.awardedBy,
             textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge?.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: AppColors.black,
               fontSize: Sizes.TEXT_SIZE_16,
             ),
@@ -46,7 +45,7 @@ class DesktopCardInfoWidget extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: StringConst.CODE,
-                    style: theme.textTheme.bodyLarge?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: AppColors.black,
                       fontSize: Sizes.TEXT_SIZE_14,
                       fontWeight: FontWeight.w600,
@@ -54,7 +53,7 @@ class DesktopCardInfoWidget extends StatelessWidget {
                   ),
                   TextSpan(
                     text: data.code,
-                    style: theme.textTheme.bodyLarge?.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: AppColors.black,
                       fontSize: Sizes.TEXT_SIZE_14,
                     ),

@@ -77,7 +77,7 @@ class _DesktopCertificationWidgetState extends State<DesktopCertificationWidget>
                           duration: Durations.long2,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(.2),
@@ -87,7 +87,7 @@ class _DesktopCertificationWidgetState extends State<DesktopCertificationWidget>
                               ],
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(5),
                               child: Image.asset(
                                 widget.data.image,
                                 filterQuality: FilterQuality.low,

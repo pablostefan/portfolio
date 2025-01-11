@@ -48,7 +48,6 @@ class _MobileCertificationWidgetState extends State<MobileCertificationWidget> w
           children: [
             DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(.1),
@@ -57,40 +56,72 @@ class _MobileCertificationWidgetState extends State<MobileCertificationWidget> w
                   ),
                 ],
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  widget.data.image,
-                  filterQuality: FilterQuality.low,
-                  fit: BoxFit.contain,
-                ),
+              child: Image.asset(
+                widget.data.image,
+                filterQuality: FilterQuality.low,
+                fit: BoxFit.contain,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: Sizes.PADDING_16),
-              child: Opacity(
-                opacity: .6,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(.2),
-                        blurRadius: 6,
-                        offset: const Offset(3, 3),
+            Container(
+              width: double.infinity,
+              color: AppColors.white.withOpacity(.9),
+              padding: const EdgeInsets.symmetric(vertical: Sizes.PADDING_8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Visibility(
+                    visible: widget.data.code?.isNotEmpty ?? false,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: Sizes.PADDING_4),
+                      child: SelectableText.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: StringConst.CODE,
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: AppColors.black,
+                                    fontSize: Sizes.TEXT_SIZE_10,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: widget.data.code,
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: AppColors.black,
+                                    fontSize: Sizes.TEXT_SIZE_10,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                  child: PortfolioButton(
-                    height: Sizes.HEIGHT_36,
-                    hasIcon: false,
-                    width: 90,
-                    buttonColor: AppColors.white,
-                    borderColor: AppColors.black,
-                    onHoverColor: AppColors.black,
-                    title: StringConst.VIEW,
-                    onPressed: () => Functions.launchUrl(widget.data.url),
+                  Opacity(
+                    opacity: .6,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(.2),
+                            blurRadius: 6,
+                            offset: const Offset(3, 3),
+                          ),
+                        ],
+                      ),
+                      child: PortfolioButton(
+                        height: Sizes.HEIGHT_30,
+                        hasIcon: false,
+                        width: 90,
+                        buttonColor: AppColors.white,
+                        borderColor: AppColors.black,
+                        onHoverColor: AppColors.black,
+                        title: StringConst.VIEW,
+                        onPressed: () => Functions.launchUrl(widget.data.url),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ],
