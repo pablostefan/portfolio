@@ -46,6 +46,7 @@ flutter:
     - assets/images/projects/foxbit/
     - assets/images/projects/alphaconds/
     - assets/images/projects/treineaqui/
+    - assets/images/certificates/
 
   fonts:
     - family: VisueltPro

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/functions.dart';
 import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/portfolio_button.dart';
 
 class TabletCardInfoWidget extends StatelessWidget {
-  final String actionTitle;
-  final GestureTapCallback? onTap;
+  final CertificationData data;
 
-  const TabletCardInfoWidget({super.key, required this.actionTitle, this.onTap});
+  const TabletCardInfoWidget({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class TabletCardInfoWidget extends StatelessWidget {
           buttonColor: AppColors.white,
           borderColor: AppColors.black,
           onHoverColor: AppColors.black,
-          title: actionTitle.toUpperCase(),
-          onPressed: onTap,
+          title: StringConst.VIEW,
+          onPressed: () => Functions.launchUrl(data.url),
         ),
         SizedBox(height: Sizes.HEIGHT_16),
       ],

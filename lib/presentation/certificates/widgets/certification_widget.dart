@@ -1,30 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/layout/extensions.dart';
-import 'package:portfolio/presentation/certification/widgets/certification_card/desktop_card_info_widget.dart';
-import 'package:portfolio/presentation/certification/widgets/certification_card/tablet_card_info_widget.dart';
+import 'package:portfolio/presentation/certificates/widgets/desktop_card_info_widget.dart';
+import 'package:portfolio/presentation/certificates/widgets/tablet_card_info_widget.dart';
+import 'package:portfolio/shared/values/values.dart';
 import 'package:portfolio/shared/widgets/adaptive_builder_widget.dart';
 
-class CertificationCardWidget extends StatefulWidget {
-  final String title;
-  final String subtitle;
-  final String actionTitle;
-  final String imageUrl;
-  final GestureTapCallback? onTap;
+class CertificationWidget extends StatefulWidget {
+  final CertificationData data;
 
-  const CertificationCardWidget({
-    super.key,
-    required this.title,
-    required this.subtitle,
-    required this.actionTitle,
-    required this.imageUrl,
-    this.onTap,
-  });
+  const CertificationWidget({super.key, required this.data});
 
   @override
-  State<CertificationCardWidget> createState() => _CertificationCardWidgetState();
+  State<CertificationWidget> createState() => _CertificationWidgetState();
 }
 
-class _CertificationCardWidgetState extends State<CertificationCardWidget> with SingleTickerProviderStateMixin {
+class _CertificationWidgetState extends State<CertificationWidget> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacityAnimation;
 
@@ -40,6 +29,12 @@ class _CertificationCardWidgetState extends State<CertificationCardWidget> with 
         curve: Interval(0.0, 1.0, curve: Curves.easeIn),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   void _onEnter(_) {
@@ -64,7 +59,7 @@ class _CertificationCardWidgetState extends State<CertificationCardWidget> with 
       child: LayoutBuilder(
         builder: (context, constraints) {
           return SizedBox(
-            width: context.responsive(constraints.maxWidth - 40, (constraints.maxWidth - 60) / 2),
+            width: constraints.maxWidth / 2.2,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -82,7 +77,7 @@ class _CertificationCardWidgetState extends State<CertificationCardWidget> with 
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      widget.imageUrl,
+                      widget.data.image,
                       filterQuality: FilterQuality.low,
                       opacity: AlwaysStoppedAnimation(_hovering ? .2 : 1),
                       fit: BoxFit.contain,
@@ -90,15 +85,10 @@ class _CertificationCardWidgetState extends State<CertificationCardWidget> with 
                   ),
                 ),
                 AdaptiveBuilderWidget(
-                  tabletNormal: TabletCardInfoWidget(actionTitle: widget.actionTitle, onTap: widget.onTap),
+                  tabletNormal: TabletCardInfoWidget(data: widget.data),
                   desktop: FadeTransition(
                     opacity: _opacityAnimation,
-                    child: DesktopCardInfoWidget(
-                      title: widget.title,
-                      subtitle: widget.subtitle,
-                      actionTitle: widget.actionTitle,
-                      onTap: widget.onTap,
-                    ),
+                    child: DesktopCardInfoWidget(data: widget.data),
                   ),
                 ),
               ],

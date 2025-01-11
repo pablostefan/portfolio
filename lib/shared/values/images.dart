@@ -5,6 +5,7 @@ abstract final class ImagePath {
   static const String imageDir = "assets/images";
   static const String projectsDir = "assets/images/projects";
   static const String screenshotsDir = "assets/screenshots";
+  static const String certificatesDir = "assets/images/certificates";
 
   //Images
   static const String DEV = "$imageDir/dev.png";
@@ -37,11 +38,11 @@ abstract final class ImagePath {
   static const String APP_STORE = "$imageDir/app_store.png";
 
   // Certifications
-  static const String ANDROID_CERT = "$imageDir/certificado_android.png";
-  static const String COODESH_CERT = "$imageDir/certificado_codesh.png";
-  static const String XP_MOBILE_CERT = "$imageDir/certificado_mobile.png";
-  static const String XP_ARCHITECT_CERT = "$imageDir/certificado_arquiteto.png";
-  static const String FLUTTER_ANDROID_CERT = "$imageDir/certificado_flutter.png";
+  static const String ANDROID_CERT = "$certificatesDir/certificado_android.png";
+  static const String COODESH_CERT = "$certificatesDir/certificado_codesh.png";
+  static const String XP_MOBILE_CERT = "$certificatesDir/certificado_mobile.png";
+  static const String XP_ARCHITECT_CERT = "$certificatesDir/certificado_arquiteto.png";
+  static const String FLUTTER_ANDROID_CERT = "$certificatesDir/certificado_flutter.png";
 
   // Projects
 

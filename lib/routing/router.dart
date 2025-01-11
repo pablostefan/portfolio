@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/presentation/about/about_page.dart';
-import 'package:portfolio/presentation/certification/certification_page.dart';
+import 'package:portfolio/presentation/certificates/certifications_page.dart';
 import 'package:portfolio/presentation/contact/contact_page.dart';
 import 'package:portfolio/presentation/experience/experience_page.dart';
 import 'package:portfolio/presentation/home/home_page.dart';
@@ -15,6 +15,7 @@ abstract final class AppRouter {
     redirect: (_, state) {
       if (state.path == '/') return Routes.home;
       if (state.name == '/') return Routes.home;
+      return null;
     },
     routes: [
       GoRoute(
@@ -83,7 +84,7 @@ abstract final class AppRouter {
         pageBuilder: (_, state) {
           return WebPage(
             key: state.pageKey,
-            child: CertificationPage(),
+            child: CertificationsPage(),
           );
         },
       ),

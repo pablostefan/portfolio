@@ -92,6 +92,7 @@ class Data {
     NavItemData(name: StringConst.ABOUT, route: Routes.about),
     NavItemData(name: StringConst.WORKS, route: Routes.work),
     NavItemData(name: StringConst.EXPERIENCE, route: Routes.experience),
+    NavItemData(name: StringConst.CERTIFICATIONS, route: Routes.certifications),
     NavItemData(name: StringConst.CONTACT, route: Routes.contact),
   ];
 
