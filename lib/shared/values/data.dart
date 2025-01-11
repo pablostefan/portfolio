@@ -6,12 +6,14 @@ class CertificationData {
     required this.image,
     required this.url,
     required this.awardedBy,
+    this.code,
   });
 
   final String image;
   final String url;
   final String title;
   final String awardedBy;
+  final String? code;
 }
 
 class NoteWorthyProjectDetails {
@@ -277,12 +279,14 @@ class Data {
       url: StringConst.XP_CERT_URL,
       image: ImagePath.XP_MOBILE_CERT,
       awardedBy: StringConst.XP_EDUCATION,
+      code: "b38d6ca0b0e9dc65a22ddb1f51856828",
     ),
     CertificationData(
       title: StringConst.XP_ARCHITECT,
       url: StringConst.XP_CERT_URL,
       image: ImagePath.XP_ARCHITECT_CERT,
       awardedBy: StringConst.XP_EDUCATION,
+      code: "181c5a7fea2f132b76fb4e79a5826dda",
     ),
     CertificationData(
       title: StringConst.FLUTTER_ANDROID,

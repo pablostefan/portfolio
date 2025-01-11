@@ -102,23 +102,24 @@ abstract final class StringConst {
   static const String DEV_NAME = "Pablo Stefan";
   static const String IN_STORE = "Disponível na loja";
 
-  //Skills
+  // Skills
   static const String FLUTTER = "Flutter";
   static const String JETPACK_COMPOSE = "Jetpack Compose";
   static const String PYTHON = "Python";
 
-  //Socials
+  // Socials
   static const String GITHUB_URL = "https://github.com/pablostefan";
   static const String LINKED_IN_URL = "https://www.linkedin.com/in/pablosgpereira";
   static const String TELEGRAM_URL = "https://t.me/pablo_stefan";
 
-  //Contacts
+  // Contacts
   static const String EMAIL = "Email";
   static const String LINKED_IN = "LinkedIn";
   static const String TELEGRAM = "Telegram";
   static const String GITHUB = "Github";
 
-  //Certificate Urls
+  // Certificate
+  static const String CODE = "Código: ";
   static const String XP_CERT_URL = "https://certificados.xpeducacao.com.br";
   static const String FLUTTER_ANDROID_URL =
       "https://udemy-certificate.s3.amazonaws.com/pdf/UC-2d0993dc-b188-4542-951d-570210fa40a3.pdf";
