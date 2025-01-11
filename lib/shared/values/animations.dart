@@ -7,4 +7,5 @@ abstract final class Animations {
   static const Duration waveDuration = Duration(milliseconds: 1500);
   static const Duration emailSnackBarDuration = Duration(milliseconds: 3500);
   static const Curve textSlideInCurve = Interval(0.6, 1.0, curve: Curves.fastOutSlowIn);
+  static const String notFound = "assets/animations/not_found.json";
 }

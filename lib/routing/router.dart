@@ -4,6 +4,7 @@ import 'package:portfolio/presentation/certificates/certifications_page.dart';
 import 'package:portfolio/presentation/contact/contact_page.dart';
 import 'package:portfolio/presentation/experience/experience_page.dart';
 import 'package:portfolio/presentation/home/home_page.dart';
+import 'package:portfolio/presentation/not_found/not_found_page.dart';
 import 'package:portfolio/presentation/project_detail/project_detail_page.dart';
 import 'package:portfolio/presentation/works/works_page.dart';
 import 'package:portfolio/routing/routes.dart';
@@ -12,6 +13,7 @@ import 'package:portfolio/routing/web_page.dart';
 abstract final class AppRouter {
   static final router = GoRouter(
     initialLocation: Routes.home,
+    errorBuilder: (context, state) => NotFoundPage(),
     redirect: (_, state) {
       if (state.path == '/') return Routes.home;
       if (state.name == '/') return Routes.home;

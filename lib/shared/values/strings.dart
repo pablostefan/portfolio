@@ -101,6 +101,7 @@ abstract final class StringConst {
   static const String EMAIL_URL = "mailto:<$EMAIL_VALUE>?subject=&body=";
   static const String DEV_NAME = "Pablo Stefan";
   static const String IN_STORE = "Disponível na loja";
+  static const String GO_HOME = "HOME";
 
   // Skills
   static const String FLUTTER = "Flutter";
