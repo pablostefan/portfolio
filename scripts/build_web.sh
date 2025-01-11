@@ -5,4 +5,4 @@ flutter clean && \
 flutter build web --wasm --dart-define-from-file=.env && \
 firebase deploy --only hosting
 
-echo "Termino da geração build do app Android"
+echo "Termino da geração build do app web"
